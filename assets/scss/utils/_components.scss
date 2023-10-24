@@ -1,6 +1,12 @@
+//位置
+.top-75 {
+    top: 75%;
+}
+
 //字距
-.text-subtitle{
+.text-subtitle {
     letter-spacing: 12px;
+
     @include md {
         letter-spacing: 8px;
     }
@@ -13,7 +19,8 @@
     -webkit-background-clip: text;
 
     color: transparent;
- }
+}
+
 //圓角
 .rounded-16 {
     border-radius: 16px;
@@ -50,4 +57,37 @@
         background-position: center;
         background-repeat: no-repeat;
     }
+}
+
+//logo
+.navbar-brand {
+    a {
+        height: 32px;
+
+        @include md {
+            height: 48px;
+        }
+    }
+
+    img {
+        height: 32px;
+    }
+
+    @include md {
+        height: 48px;
+    }
+}
+
+//社群
+.social {
+    &-item {
+        img {
+            width: 32px;
+        }
+    }
+}
+
+//懸浮按鈕
+.fab {
+    width: 48px;
 }
