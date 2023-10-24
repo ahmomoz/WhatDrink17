@@ -1,0 +1,53 @@
+//字距
+.text-subtitle{
+    letter-spacing: 12px;
+    @include md {
+        letter-spacing: 8px;
+    }
+}
+
+//文字漸層
+.text-gradient {
+    background: linear-gradient(180deg, $primary, $warning);
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    color: transparent;
+ }
+//圓角
+.rounded-16 {
+    border-radius: 16px;
+}
+
+.rounded-md-24 {
+    @include md {
+        border-radius: 24px;
+    }
+}
+
+.rounded-24 {
+    border-radius: 24px;
+}
+
+
+//圖片背景
+.bg-home {
+    background-image: url(../images/bg-home.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bg-header {
+    background-image: url(../images/bg-header-mobile.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include sm {
+        background-image: url(../images/bg-header.svg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}

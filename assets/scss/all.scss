@@ -1,5 +1,8 @@
 @import "../../node_modules/bootstrap/scss/functions";
 @import './utils/variables';
+@import './utils/base';
+@import './utils/mixin';
+@import './utils/components';
 
 
 @import './layout/header.scss';
