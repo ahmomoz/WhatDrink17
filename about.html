@@ -5,15 +5,118 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>about</title>
-    <script type="module" crossorigin src="/web-layout-training-vite/assets/main-4c97033a.js"></script>
-    <link rel="stylesheet" href="/web-layout-training-vite/assets/main-a17d3376.css">
+    <script type="module" crossorigin src="/web-layout-training-vite/assets/main-3ca4d046.js"></script>
+    <link rel="stylesheet" href="/web-layout-training-vite/assets/main-cb9e0d3f.css">
   </head>
   <body>
-    <h1 class="header">我是 header</h1>
-<a href="index.html">index</a>
-<a href="about.html">about</a>
-<a href="contact.html">contact</a>    <h1>我是about</h1>
-    <footer class="footer">我是 footer</footer>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow shadow-1" id="navbar">
+    <div class="container-fluid px-16 px-md-32 py-8">
+        <a class="navbar-brand" href="#"><img src="/web-layout-training-vite/assets/logo-71c4c530.svg" alt="今天喝什麼？"></a>
+
+        <!-- 行動版選單 -->
+        <div class="d-lg-none ms-auto">
+            <!-- 漢堡按鈕 Button trigger modal -->
+            <button type="button" class="border-0 bg-white" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas">
+                <span class="material-symbols-outlined fs-40 text-dark">
+                    <span class="material-symbols-outlined">
+                        drag_handle
+                    </span>
+                </span>
+            </button>
+            <!-- 展開選單 Modal -->
+            <div class="offcanvas offcanvas-end w-100" tabindex="-1" id="menuOffcanvas"
+                aria-labelledby="menuOffcanvasLabel">
+                <div class="offcanvas-header border-0 mb-40">
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body mx-auto d-flex flex-column justify-content-between">
+                    <ul class="list-group m-0 p-0">
+                        <li class="list-group-item mb-24">
+                            <div class="d-flex align-items-center">
+                                <span class="material-symbols-outlined">
+                                    search
+                                </span>
+                                <form class="w-75 d-flex">
+                                    <input class="form-control me-2 border-0 border-bottom" type="search"
+                                        placeholder="Search" aria-label="Search">
+                                </form>
+                            </div>
+                        </li>
+                        <li class="list-group-item mb-24">
+                            <a class="" href="member.html">會員專區</a>
+                        </li>
+                        <li class="list-group-item mb-24">
+                            <a class="" href="news-list.html">最新消息</a>
+                        </li>
+                        <li class="list-group-item mb-24">
+                            <a class="" href="drinks.html">熱門飲品</a>
+                        </li>
+                        <li class="list-group-item mb-24">
+                            <a class="" href="stores-list.html">熱門店家</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a class="text-danger" href="logIn.html">登出</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- 電腦版選單 -->
+        <div>
+            <ul class="navbar-nav mx-auto align-items-center d-none d-lg-flex flex-row">
+                <li class="nav-item me-md-40">
+                    <a href="news-list.html">最新消息</a>
+                </li>
+                <li class="nav-item me-md-40">
+                    <a href="drinks.html">熱門飲品</a>
+                </li>
+                <li class="nav-item me-md-40">
+                    <a href="stores-list.html">熱門店家</a>
+                </li>
+        </div>
+        <div class="d-lg-flex d-none justify-content-end" style="width: 200px;">
+            <a href="#" class="me-24"><span class="material-symbols-outlined">
+                    search
+                </span></a>
+            <a href="member.html"><span class="material-symbols-outlined">
+                    person
+                </span></a>
+        </div>
+    </div>
+</nav>
+
+<div class="d-none d-sm-block position-fixed top-75 end-0 pe-24">
+    <div class="position-relative d-flex flex-column justify-content-center">
+        <img class="fab mb-4" src="/web-layout-training-vite/assets/fab-feb45b3c.svg" alt="totop">
+        <a href="#navbar" class="stretched-link fs-14 text-center">TOTOP</a>
+    </div>
+</div>    <h1>我是about</h1>
+    <div class="py-40 border-top">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-center mb-8 mb-md-0">
+            <a class="navbar-brand mb-16 mb-md-0" href="#"><img src="/web-layout-training-vite/assets/logo-71c4c530.svg" alt="今天喝什麼？"></a>
+            <ul class="d-flex m-0 p-0">
+                <li class="social-item me-16"><a href="#"><img src="/web-layout-training-vite/assets/icon-fb-133bdfcc.svg" alt="facebook"></a>
+                </li>
+                <li class="social-item me-16"><a href="#"><img src="/web-layout-training-vite/assets/icon-ig-84987776.svg" alt="instagram"></a>
+                </li>
+                <li class="social-item"><a href="#"><img src="/web-layout-training-vite/assets/icon-yt-cdc9d719.svg" alt="youtube"></a></li>
+            </ul>
+        </div>
+        <div class="d-flex flex-column flex-md-row-reverse justify-content-between align-items-center align-items-md-end">
+            <ul class="d-flex m-0 p-0 mb-8 mb-md-0">
+                <li class="me-16"><a class="text-center" href="#">意見回饋</a></li>
+                <li class="me-16"><a class="text-center" href="#">聯絡我們</a></li>
+                <li class="me-16"><a class="text-center" href="#">服務條款</a></li>
+                <li><a href="#">隱私權政策</a></li>
+            </ul>
+            <p class="text-gray text-center text-md-start mb-md-0">Copyright © Drinking Something All Rights Reserved.</p>
+        </div>
+    </div>
+</div>
     
   </body>
 </html>
