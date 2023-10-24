@@ -3,22 +3,31 @@
     top: 75%;
 }
 
-//字距
-.text-subtitle {
-    letter-spacing: 12px;
-
-    @include md {
-        letter-spacing: 8px;
-    }
-}
-
 //文字漸層
-.text-gradient {
+.text-title {
+    font-size: 48px;
     background: linear-gradient(180deg, $primary, $warning);
     background-clip: text;
     -webkit-background-clip: text;
-
     color: transparent;
+    font-weight: 700;
+    text-align: center;
+
+    @include md {
+        font-size: 80px;
+    }
+}
+
+//字距
+.text-subtitle {
+    font-size: 16px;
+    letter-spacing: 8px;
+    text-align: center;
+
+    @include md {
+        font-size: 20px;
+        letter-spacing: 10px;
+    }
 }
 
 //圓角
@@ -39,6 +48,8 @@
 
 //圖片背景
 .bg-home {
+    width: 100%;
+    height: auto;
     background-image: url(../images/bg-home.svg);
     background-size: cover;
     background-position: center;

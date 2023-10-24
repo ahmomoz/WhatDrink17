@@ -14,3 +14,18 @@
     background-repeat: no-repeat;
   }
 }
+
+//輪播套件
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+    content: "";
+}
+
+.swiper-button-next:after,
+.swiper-rtl .swiper-button-prev:after {
+    content: "";
+}
+
+.swiper-pagination-bullet-active{
+  background-color: $primary !important;
+}
