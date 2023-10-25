@@ -14,6 +14,7 @@
     rel="stylesheet">
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://kit.fontawesome.com/6b74f216f9.js" crossorigin="anonymous"></script>
   <!-- swiper -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -22,12 +23,33 @@
 
 <body>
   <%- include('./layout/header'); -%>
-    <div class="bg-banner">
+    <div class="bg-banner d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center justify-content-md-start">
+          <div class="col-11 col-lg-5">
+            <h1 class="text-white mb-16 mb-md-24 ms-8 text-center text-lg-start">不知道今天要喝什麼嗎？</h1>
+            <div class="w-80 d-flex justify-content-between bg-white rounded-pill p-4 mb-16 mb-md-24">
+              <input class="w-50 form-control border-0 p-12 p-md-16 rounded-pill" type="search" placeholder="今天想要來點..."
+                aria-label="Search">
+              <button class="bg-primary border-0 rounded-pill fs-18 text-white px-24 px-md-36" type="submit">搜搜看</button>
+            </div>
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
+              <p class="fs-14 text-white me-8">熱門關鍵字</p>
+              <ul class="d-flex flex-wrap m-0 p-0">
+                <li class="fs-14 px-12 py-2 bg-primary rounded-pill me-4"><a href="#" class=" text-white">奶茶</a></li>
+                <li class="fs-14 px-12 py-2 bg-primary rounded-pill me-4"><a href="#" class=" text-white">紅茶</a></li>
+                <li class="fs-14 px-12 py-2 bg-primary rounded-pill me-4"><a href="#" class=" text-white">珍珠</a></li>
+                <li class="fs-14 px-12 py-2 bg-primary rounded-pill me-4"><a href="#" class=" text-white">椰果</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
 
+      </div>
     </div>
 
     <!-- 最新消息 -->
-    <div class="pt-60 pb-80 pt-80 pb-160">
+    <div class="pt-60 pb-80 pt-md-80 pb-md-120">
       <div class="container">
         <div class="mb-24 mb-md-40">
           <h2 class="text-title">NEWS</h2>
@@ -37,19 +59,23 @@
         <div class="swiper bannerSwiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="../assets/images/news-01.png" class="w-100 rounded-16" alt="banner">
+              <img src="../assets/images/news-01.png" class="w-100 rounded-16 mb-8" alt="banner">
+              <p class="fs-18 fw-500">甘潤芬芳的茉綠茶香+ㄋㄟㄋㄟ，無敵完美比例 每口青龍圓都充滿濃厚抹香，飽足QQ超好嚼 ヽ(✧∇✧)ノ</p>
               <a href="#" class="stretched-link"></a>
             </div>
             <div class="swiper-slide">
-              <img src="../assets/images/news-02.png" class="w-100 rounded-16" alt="banner">
+              <img src="../assets/images/news-02.png" class="w-100 rounded-16 mb-8" alt="banner">
+              <p class="fs-18 fw-500">在維持傳統茶舖的精神同時，展現出專屬我們茶飲文化 讓這杯茶成為【戒不掉的飲時尚】Trendsetter , My Daily Life</p>
               <a href="#" class="stretched-link"></a>
             </div>
             <div class="swiper-slide">
-              <img src="../assets/images/news-03.png" class="w-100 rounded-16" alt="banner">
+              <img src="../assets/images/news-03.png" class="w-100 rounded-16 mb-8" alt="banner">
+              <p class="fs-v fw-500">甘潤芬芳的茉綠茶香+ㄋㄟㄋㄟ，無敵完美比例 每口青龍圓都充滿濃厚抹香，飽足QQ超好嚼 ヽ(✧∇✧)ノ</p>
               <a href="#" class="stretched-link"></a>
             </div>
             <div class="swiper-slide">
-              <img src="../assets/images/news-04.png" class="w-100 rounded-16" alt="banner">
+              <img src="../assets/images/news-04.png" class="w-100 rounded-16 mb-8" alt="banner">
+              <p class="fs-18 fw-500">在維持傳統茶舖的精神同時，展現出專屬我們茶飲文化 讓這杯茶成為【戒不掉的飲時尚】Trendsetter , My Daily Life</p>
               <a href="#" class="stretched-link"></a>
             </div>
           </div>
@@ -69,21 +95,281 @@
     </div>
     <!-- 最新消息 end-->
 
-    <div class="bg-home pt-160 pb-240">
+    <!-- 熱門飲品 -->
+    <div class="bg-home py-160 pt-md-160 pb-md-240">
       <div class="container">
         <div class="mb-24 mb-md-40">
           <h2 class="text-title text-white">DRINKS</h2>
           <h3 class="text-subtitle text-white">｜熱門飲品｜</h3>
         </div>
+        <!-- 飲料列表 -->
+        <ul class="d-flex flex-wrap justify-content-between m-0 p-0">
+          <!-- 飲料項目 01-->
+          <li class="drinks-card px-16 py-24 px-md-24">
+            <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/drink-01.png" alt="drink image">
+            <div class="drinks-card-body ms-16">
+              <h4 class="mb-8 mb-md-12">珍珠伯爵紅茶拿鐵</h4>
+              <ul class="drinks-tag-group mb-8 mb-md-12">
+                <li class="drinks-tag">奶茶</li>
+                <li class="drinks-tag">牛奶</li>
+              </ul>
+              <p class="drinks-card-content mb-24 mb-md-32">茶底使用濃郁伯爵紅茶，帶有佛手柑香氣，香與味在飲品中隨時間釋放多層次風味。
+                珍珠咀嚼蜜香滋味呈現豐富並拉長整體風味感受。</p>
+              <a href="#" class="d-block text-primary text-end"><span
+                  class="material-symbols-outlined me-2s align-middle">
+                  location_on
+                </span>搜尋店家</a>
+            </div>
+          </li>
+          <!-- 飲料項目 end-->
+          <!-- 飲料項目 02-->
+          <li class="drinks-card px-16 py-24 px-md-24">
+            <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/drink-02.png" alt="drink image">
+            <div class="drinks-card-body ms-16">
+              <h4 class="mb-8 mb-md-12">蜜桃果粒冰沙</h4>
+              <ul class="drinks-tag-group mb-8 mb-md-12">
+                <li class="drinks-tag">水果</li>
+                <li class="drinks-tag">冰沙</li>
+              </ul>
+              <p class="drinks-card-content mb-24 mb-md-32">蜜桃果丁搭配現打蜜桃冰沙，下層是彈嫩手工綠茶凍。回甘茶香交疊清甜果香，每口都能吃到飽滿多汁蜜桃果肉，幸福指數爆表！
+              </p>
+              <a href="#" class="d-block text-primary text-end"><span
+                  class="material-symbols-outlined me-2s align-middle">
+                  location_on
+                </span>搜尋店家</a>
+            </div>
+          </li>
+          <!-- 飲料項目 end-->
+          <!-- 飲料項目 03-->
+          <li class="drinks-card px-16 py-24 px-md-24">
+            <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/drink-03.png" alt="drink image">
+            <div class="drinks-card-body ms-16">
+              <h4 class="mb-8 mb-md-12">芝芝葡萄果粒</h4>
+              <ul class="drinks-tag-group mb-8 mb-md-12">
+                <li class="drinks-tag">水果</li>
+                <li class="drinks-tag">冰沙</li>
+                <li class="drinks-tag">奶蓋</li>
+              </ul>
+              <p class="drinks-card-content mb-24 mb-md-32">新鮮葡萄打製成冰沙，放入一顆顆多汁飽滿的去籽葡萄果肉，再淋上由紐西蘭芝士搭配喜馬拉雅山玫瑰鹽打發而成的芝芝奶霜</p>
+              <a href="#" class="d-block text-primary text-end"><span
+                  class="material-symbols-outlined me-2s align-middle">
+                  location_on
+                </span>搜尋店家</a>
+            </div>
+          </li>
+          <!-- 飲料項目 end-->
+          <!-- 飲料項目 04-->
+          <li class="drinks-card px-16 py-24 px-md-24">
+            <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/drink-04.png" alt="drink image">
+            <div class="drinks-card-body ms-16">
+              <h4 class="mb-8 mb-md-12">許慶良酪梨布丁鮮奶</h4>
+              <ul class="drinks-tag-group mb-8 mb-md-12">
+                <li class="drinks-tag">水果</li>
+                <li class="drinks-tag">牛奶</li>
+              </ul>
+              <p class="drinks-card-content mb-24 mb-md-32">
+                以具有「森林奶油」美譽之稱的酪梨搭配順口的許慶良鮮乳再加入滑順的手工鮮奶布丁點綴口感升級再升級，讓人喝了就停不下來(⁎⁍̴̛ᴗ⁍̴̛⁎)</p>
+              <a href="#" class="d-block text-primary text-end"><span
+                  class="material-symbols-outlined me-2s align-middle">
+                  location_on
+                </span>搜尋店家</a>
+            </div>
+          </li>
+          <!-- 飲料項目 end-->
+          <!-- 飲料項目 05-->
+          <li class="drinks-card px-16 py-24 px-md-24">
+            <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/drink-05.png" alt="drink image">
+            <div class="drinks-card-body ms-16">
+              <h4 class="mb-8 mb-md-12">椰椰芋圓奶霜</h4>
+              <ul class="drinks-tag-group mb-8 mb-md-12">
+                <li class="drinks-tag">水果</li>
+                <li class="drinks-tag">冰沙</li>
+                <li class="drinks-tag">奶蓋</li>
+              </ul>
+              <p class="drinks-card-content mb-24 mb-md-32">
+                喝得到整顆椰子！米其林認證100%椰子水、進口椰肉、椰漿打成綿密冰沙。下層Ｑ彈小芋圓，再用鮮乳奶霜封頂，撒上椰子脆片酥爽清脆</p>
+              <a href="#" class="d-block text-primary text-end"><span
+                  class="material-symbols-outlined me-2s align-middle">
+                  location_on
+                </span>搜尋店家</a>
+            </div>
+          </li>
+          <!-- 飲料項目 end-->
+          <!-- 飲料項目 06-->
+          <li class="drinks-card px-16 py-24 px-md-24">
+            <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/drink-06.png" alt="drink image">
+            <div class="drinks-card-body ms-16">
+              <h4 class="mb-8 mb-md-12">台灣鮮搾柳丁綠</h4>
+              <ul class="drinks-tag-group mb-8 mb-md-12">
+                <li class="drinks-tag">水果</li>
+                <li class="drinks-tag">綠茶</li>
+              </ul>
+              <p class="drinks-card-content mb-24 mb-md-32">大苑子與您歡樂慶中秋，銷售排行前三名的國民飲品「台灣鮮搾柳丁綠」於中秋節當日9/29正式回歸！</p>
+              <a href="#" class="d-block text-primary text-end"><span
+                  class="material-symbols-outlined me-2s align-middle">
+                  location_on
+                </span>搜尋店家</a>
+            </div>
+          </li>
+          <!-- 飲料項目 end-->
 
-        <div class="py-160"></div>
-        <div class="py-160"></div>
-        <div class="py-160"></div>
-        <div class="py-160"></div>
-        <div class="py-160"></div>
+        </ul>
+        <!-- 飲料列表 end -->
+        <div class="d-flex justify-content-center justify-content-lg-end align-items-center mt-16">
+          <a href="drinks.html" class="text-white">更多飲品 <span class="material-symbols-outlined align-middle">
+              chevron_right
+            </span></a>
+        </div>
       </div>
     </div>
-
+    <!-- 熱門店家end -->
+    <div class="pt-80 pb-120 pb-md-160">
+      <div class="container">
+        <div class="mb-24 mb-md-40">
+          <h2 class="text-title">STORES</h2>
+          <h3 class="text-subtitle">｜熱門店家｜</h3>
+        </div>
+        <!-- 店家列表 -->
+        <ul class="d-flex flex-wrap justify-content-between m-0 p-0">
+          <!-- 店家項目 01-->
+          <li class="stores-card px-16 py-24 px-md-24">
+            <a href="#" class="stores-collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/store-01.png" class="mb-8" alt="store image">
+            <div class="stores-card-body">
+              <div class="d-flex justify-content-between">
+                <h5 class="mb-8 mb-md-12">大苑子</h5>
+                <ul class="d-flex text-primary">
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-regular fa-star"></i></li>
+                </ul>
+              </div>
+              <p class="stores-card-content mb-16">
+                傳達農業價值已經變成大苑子根深柢固的企業文化與精神，未來仍將堅守初衷，持續挖掘用心經營的果農，用好品質且可追溯源頭的水果,從食品源頭為顧客層層把關。</p>
+              <ul class="stores-tag-group mb-16">
+                <li class="stores-tag">uber eat</li>
+                <li class="stores-tag">food panda</li>
+                <li class="stores-tag">合作活動</li>
+              </ul>
+              <a href="#" class="stores-card-btn">查看店家資訊</a>
+            </div>
+          </li>
+          <!-- 店家項目 end-->
+          <!-- 店家項目 02-->
+          <li class="stores-card px-16 py-24 px-md-24">
+            <a href="#" class="stores-collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/store-02.png" class="mb-8" alt="store image">
+            <div class="stores-card-body">
+              <div class="d-flex justify-content-between">
+                <h5 class="mb-8 mb-md-12">麻古茶坊</h5>
+                <ul class="d-flex text-primary">
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-regular fa-star"></i></li>
+                </ul>
+              </div>
+              <p class="stores-card-content mb-16">
+                一個平凡的清晨四點，母牛的叫聲劃破本了寂靜的天際，空氣中還留著夜雨後的青草香，這是小牛即將出生的信號，今天的牧場，將既熱鬧又忙碌，新生命的喜悅。</p>
+              <ul class="stores-tag-group mb-16">
+                <li class="stores-tag">uber eat</li>
+                <li class="stores-tag">food panda</li>
+                <li class="stores-tag">合作活動</li>
+              </ul>
+              <a href="#" class="stores-card-btn">查看店家資訊</a>
+            </div>
+          </li>
+          <!-- 店家項目 end-->
+          <!-- 店家項目 03-->
+          <li class="stores-card px-16 py-24 px-md-24">
+            <a href="#" class="stores-collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/store-03.png" class="mb-8" alt="store image">
+            <div class="stores-card-body">
+              <div class="d-flex justify-content-between">
+                <h5 class="mb-8 mb-md-12">迷客夏</h5>
+                <ul class="d-flex text-primary">
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-regular fa-star"></i></li>
+                </ul>
+              </div>
+              <p class="stores-card-content mb-16">
+                麻古茶坊於2008年創立，以南台灣為基石，打造果粒茶飲創始品牌。嚴選當季鮮果農產，秉持著「自己都不能接受的東西，絕不推銷給客人」的理念</p>
+              <ul class="stores-tag-group mb-16">
+                <li class="stores-tag">uber eat</li>
+                <li class="stores-tag">food panda</li>
+                <li class="stores-tag">合作活動</li>
+              </ul>
+              <a href="#" class="stores-card-btn">查看店家資訊</a>
+            </div>
+          </li>
+          <!-- 店家項目 end-->
+          <!-- 店家項目 04-->
+          <li class="stores-card px-16 py-24 px-md-24">
+            <a href="#" class="stores-collect-btn text-primary"><span class="material-symbols-outlined">
+                favorite
+              </span></a>
+            <img src="../assets/images/store-04.png" class="mb-8" alt="store image">
+            <div class="stores-card-body">
+              <div class="d-flex justify-content-between">
+                <h5 class="mb-8 mb-md-12">五桐號</h5>
+                <ul class="d-flex text-primary">
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-solid fa-star"></i></li>
+                  <li><i class="fa-regular fa-star"></i></li>
+                </ul>
+              </div>
+              <p class="stores-card-content mb-16">
+                茶，貫穿古今餘4700年，是中華文化的代表，而它的發源地，就在河南的桐柏區，相傳神農氏採荼於此地，是為茶的起源。</p>
+              <ul class="stores-tag-group mb-16">
+                <li class="stores-tag">uber eat</li>
+                <li class="stores-tag">food panda</li>
+                <li class="stores-tag">合作活動</li>
+              </ul>
+              <a href="#" class="stores-card-btn">查看店家資訊</a>
+            </div>
+          </li>
+          <!-- 店家項目 end-->
+        </ul>
+        <!-- 店家列表 end-->
+        <div class="d-flex justify-content-center justify-content-lg-end align-items-center mt-16">
+          <a href="stores-list.html" class="text-gray">更多店家<span class="material-symbols-outlined align-middle">
+              chevron_right
+            </span></a>
+        </div>
+      </div>
+    </div>
 
     <%- include('./layout/footer'); -%>
 
