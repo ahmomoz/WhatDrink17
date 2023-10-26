@@ -20,10 +20,31 @@
         font-size: 80px;
     }
 }
+.text-title-white {
+    font-size: 48px;
+    color: $white;
+    font-weight: 700;
+    text-align: center;
+
+    @include md {
+        font-size: 80px;
+    }
+}
 .text-subtitle {
     font-size: 16px;
     letter-spacing: 8px;
     text-align: center;
+
+    @include md {
+        font-size: 20px;
+        letter-spacing: 10px;
+    }
+}
+.text-subtitle-white {
+    font-size: 16px;
+    letter-spacing: 8px;
+    text-align: center;
+    color: $white !important;
 
     @include md {
         font-size: 20px;
