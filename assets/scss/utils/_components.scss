@@ -2,10 +2,12 @@
 .top-75 {
     top: 75%;
 }
+
 //字重
-.fw-500{
+.fw-500 {
     font-weight: 500;
 }
+
 //標題
 .text-title {
     font-size: 48px;
@@ -20,6 +22,7 @@
         font-size: 80px;
     }
 }
+
 .text-title-white {
     font-size: 48px;
     color: $white;
@@ -30,6 +33,7 @@
         font-size: 80px;
     }
 }
+
 .text-subtitle {
     font-size: 16px;
     letter-spacing: 8px;
@@ -40,6 +44,7 @@
         letter-spacing: 10px;
     }
 }
+
 .text-subtitle-white {
     font-size: 16px;
     letter-spacing: 8px;
@@ -125,29 +130,30 @@
     width: 48px;
 }
 
-.breadcrumb-item.active{
+.breadcrumb-item.active.text-white {
+    a {
+        color: $white !important;
+    }
+}
+
+.text-white.breadcrumb-item::before {
     color: $white !important;
 }
 
-.breadcrumb-item + .breadcrumb-item::before{
-    color: $white !important;
-}
-
-.btn-primary{
+.btn-primary {
     display: block;
-    width: 100%;
-    margin: 0 auto;
-    padding: 12px 0;
+    padding: 10px 0;
     border: none;
     border-radius: 100px !important;
     background-color: $primary !important;
     color: $white !important;
-    
+
 }
 
-.or{
+.or {
     position: relative;
-    &::before{
+
+    &::before {
         position: absolute;
         content: "";
         width: 45%;
@@ -156,7 +162,8 @@
         left: 0;
         top: 50%;
     }
-    &::after{
+
+    &::after {
         position: absolute;
         content: "";
         width: 45%;
@@ -167,7 +174,7 @@
     }
 }
 
-.sso-btn{
+.sso-btn {
     position: relative;
     display: flex;
     justify-content: center;
@@ -175,4 +182,14 @@
     border: 1px solid $gray-light;
     border-radius: 100px;
     padding: 12px 0;
+}
+
+.form-select{
+    display: inline !important;
+    width: auto !important;
+}
+
+.form-control.form-control-textArea{
+    border-radius: 8px !important;
+    height: 320px;
 }

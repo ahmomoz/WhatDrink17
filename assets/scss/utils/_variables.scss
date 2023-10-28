@@ -879,8 +879,10 @@ $form-label-color: null !default;
 // scss-docs-end form-label-variables
 
 // scss-docs-start form-input-variables
-$input-padding-y: $input-btn-padding-y !default;
-$input-padding-x: $input-btn-padding-x !default;
+// $input-padding-y: $input-btn-padding-y !default;
+// $input-padding-x: $input-btn-padding-x !default;
+$input-padding-y: 12px !default;
+$input-padding-x: 16px !default;
 $input-font-family: $input-btn-font-family !default;
 $input-font-size: $input-btn-font-size !default;
 $input-font-weight: $font-weight-base !default;
@@ -1004,14 +1006,17 @@ $input-group-addon-border-color: $input-border-color !default;
 // scss-docs-end input-group-variables
 
 // scss-docs-start form-select-variables
-$form-select-padding-y: $input-padding-y !default;
-$form-select-padding-x: $input-padding-x !default;
+// $form-select-padding-y: $input-padding-y !default;
+$form-select-padding-y: .5rem !default;
+// $form-select-padding-x: $input-padding-x !default;
+$form-select-padding-x: 1rem !default;
 $form-select-font-family: $input-font-family !default;
 $form-select-font-size: $input-font-size !default;
 $form-select-indicator-padding: $form-select-padding-x * 3 !default; // Extra padding for background-image
 $form-select-font-weight: $input-font-weight !default;
 $form-select-line-height: $input-line-height !default;
-$form-select-color: $input-color !default;
+// $form-select-color: $input-color !default;
+$form-select-color: $gray-dark !default;
 $form-select-bg: $input-bg !default;
 $form-select-disabled-color: null !default;
 $form-select-disabled-bg: $gray-200 !default;
@@ -1032,7 +1037,8 @@ $form-select-box-shadow: $box-shadow-inset !default;
 
 $form-select-focus-border-color: $input-focus-border-color !default;
 $form-select-focus-width: $input-focus-width !default;
-$form-select-focus-box-shadow: 0 0 0 $form-select-focus-width $input-btn-focus-color !default;
+// $form-select-focus-box-shadow: 0 0 0 $form-select-focus-width $input-btn-focus-color !default;
+$form-select-focus-box-shadow: none !default;
 
 $form-select-padding-y-sm: $input-padding-y-sm !default;
 $form-select-padding-x-sm: $input-padding-x-sm !default;
@@ -1612,8 +1618,10 @@ $breadcrumb-padding-x: 0 !default;
 $breadcrumb-item-padding-x: .5rem !default;
 $breadcrumb-margin-bottom: 1rem !default;
 $breadcrumb-bg: null !default;
-$breadcrumb-divider-color: $gray-600 !default;
-$breadcrumb-active-color: $gray-600 !default;
+// $breadcrumb-divider-color: $gray-600 !default;
+$breadcrumb-divider-color: $dark !default;
+// $breadcrumb-active-color: $gray-600 !default;
+$breadcrumb-active-color: $dark !default;
 $breadcrumb-divider: quote("/") !default;
 $breadcrumb-divider-flipped: $breadcrumb-divider !default;
 $breadcrumb-border-radius: null !default;

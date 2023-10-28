@@ -20,11 +20,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </head>
-  <body>
-    <%- include('./layout/header'); -%>
-    <h1>shiro</h1>
+
+<body>
+  <%- include('./layout/header'); -%>
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb d-flex pt-24">
+          <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+          <li class="breadcrumb-item active" aria-current="page">意見回饋</li>
+        </ol>
+      </nav>
+
+      <div class="pt-24 pt-md-40 pb-120- pb-160">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6">
+            <h1 class="fs-24 text-center mb-8">意見回饋</h1>
+            <p class="text-center text-gray-dark mb-24">感謝您提供寶貴的意見，讓我們能更進步！</p>
+            <select class="form-select rounded-pill mb-12" aria-label=".form-select-sm">
+              <option selected>一般意見回饋</option>
+              <option value="1">錯誤訊息回報</option>
+            </select>
+            <div class="mb-16">
+              <textarea class="form-control form-control-textArea" id="reportTextarea"
+                placeholder="請詳細描述您的問題"></textarea>
+            </div>
+            <button type="submit" class="btn-primary px-80 ms-auto">送出</button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
     <%- include('./layout/footer'); -%>
 
-    <script type="module" src="../main.js"></script>
-  </body>
+      <script type="module" src="../main.js"></script>
+</body>
+
 </html>
