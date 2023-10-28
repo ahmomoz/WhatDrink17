@@ -19,11 +19,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/main-c9b3c3f9.js"></script>
-  <link rel="stylesheet" href="/WhatDrink17/assets/main-4f5dc9b6.css">
+  <script type="module" crossorigin src="/WhatDrink17/assets/main-fd0d062d.js"></script>
+  <link rel="stylesheet" href="/WhatDrink17/assets/main-f2ffa9ee.css">
 </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white px-16 px-md-24 py-16" id="top">
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white px-16 px-md-24 py-16" id="top">
     <div class="container-fluid">
         <a class="navbar-brand align-middle" href="#"><img src="/WhatDrink17/assets/logo-71c4c530.svg" alt="今天喝什麼？"></a>
 
@@ -109,7 +110,34 @@
         <img class="fab mb-4" src="/WhatDrink17/assets/fab-feb45b3c.svg" alt="totop">
         <a href="#top" class="stretched-link fs-14 text-center">TOTOP</a>
     </div>
-</div>    <h1>shiro</h1>
+</div>    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb d-flex pt-24">
+          <li class="breadcrumb-item"><a href="index.html">首頁</a></li>
+          <li class="breadcrumb-item active" aria-current="page">意見回饋</li>
+        </ol>
+      </nav>
+
+      <div class="pt-24 pt-md-40 pb-120- pb-160">
+        <div class="row justify-content-center">
+          <div class="col-12 col-md-6">
+            <h1 class="fs-24 text-center mb-8">意見回饋</h1>
+            <p class="text-center text-gray-dark mb-24">感謝您提供寶貴的意見，讓我們能更進步！</p>
+            <select class="form-select rounded-pill mb-12" aria-label=".form-select-sm">
+              <option selected>一般意見回饋</option>
+              <option value="1">錯誤訊息回報</option>
+            </select>
+            <div class="mb-16">
+              <textarea class="form-control form-control-textArea" id="reportTextarea"
+                placeholder="請詳細描述您的問題"></textarea>
+            </div>
+            <button type="submit" class="btn-primary px-80 ms-auto">送出</button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
     <div class="py-40 border-top">
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-center mb-8 mb-md-0">
@@ -124,7 +152,7 @@
         </div>
         <div class="d-flex flex-column flex-md-row-reverse justify-content-between align-items-center align-items-md-end">
             <ul class="d-flex m-0 p-0 mb-8 mb-md-0">
-                <li class="me-16"><a class="text-center" href="#">意見回饋</a></li>
+                <li class="me-16"><a class="text-center" href="report.html">意見回饋</a></li>
                 <li class="me-16"><a class="text-center" href="#">聯絡我們</a></li>
                 <li class="me-16"><a class="text-center" href="#">服務條款</a></li>
                 <li><a href="#">隱私權政策</a></li>
@@ -133,6 +161,7 @@
         </div>
     </div>
 </div>
-    
-  </body>
+      
+</body>
+
 </html>
