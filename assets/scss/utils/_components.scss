@@ -132,3 +132,51 @@
 .breadcrumb-item + .breadcrumb-item::before{
     color: $white !important;
 }
+
+.form-control{
+    padding: 12px 16px !important;
+}
+
+.btn-primary{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 12px 0;
+    border: none;
+    border-radius: 100px !important;
+    background-color: $primary !important;
+    color: $white !important;
+    
+}
+
+.or{
+    position: relative;
+    &::before{
+        position: absolute;
+        content: "";
+        width: 45%;
+        height: 1px;
+        background-color: $gray-light;
+        left: 0;
+        top: 50%;
+    }
+    &::after{
+        position: absolute;
+        content: "";
+        width: 45%;
+        height: 1px;
+        background-color: $gray-light;
+        right: 0;
+        top: 50%;
+    }
+}
+
+.sso-btn{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $gray-light;
+    border-radius: 100px;
+    padding: 12px 0;
+}

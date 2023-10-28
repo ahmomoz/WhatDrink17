@@ -20,11 +20,65 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 </head>
-  <body>
-    <%- include('./layout/header'); -%>
-    <h1>ryan</h1>
-    <%- include('./layout/footer'); -%>
 
-    <script type="module" src="../main.js"></script>
-  </body>
+<body>
+  <div class="pt-40 pt-md-80">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-10 col-md-6 col-lg-4">
+          <!-- logo -->
+          <div class="navbar-brand d-flex justify-content-center mb-40">
+            <a href="index.html"><img src="../assets/images/logo.svg" alt="logo"></a>
+          </div>
+          <!-- logo end-->
+          <h1 class="fs-24 text-center mb-8">會員登入</h1>
+          <p class="text-center text-gray-dark mb-24">立即登入，把喜歡的店家和飲料加入收藏！</p>
+          <form class="mb-24">
+            <!-- 帳號 -->
+            <div class="mb-16">
+              <label for="logInEmail" class="form-label mb-4">帳號</label>
+              <input type="text" class="form-control" id="logInEmail"
+                aria-describedby="logInEmailFeedback" placeholder="請輸入信箱帳號" required>
+              <div id="logInEmailFeedback" class="invalid-feedback">
+                信箱格式錯誤
+              </div>
+            </div>
+            <!-- 帳號 end-->
+            <!-- 密碼 -->
+            <div class="mb-4">
+              <label for="logInEmail" class="form-label mb-4">密碼</label>
+              <input type="text" class="form-control" id="logInEmail"
+                aria-describedby="logInEmailFeedback" placeholder="請輸入密碼" required>
+              <div id="logInEmailFeedback" class="invalid-feedback">
+                email格式錯誤
+              </div>
+            </div>
+            <!-- 密碼 end-->
+            <!-- 忘記密碼 -->
+            <div class="d-flex justify-content-end mb-16">
+              <a href="forgetPassword.html" class="fs-14 text-end text-gray-dark">忘記密碼？</a>
+            </div>
+            <!-- 忘記密碼 end-->
+            <button type="submit" class="btn-primary">登入</button>
+          </form>
+
+          <p class="or fs-14 text-center text-gray mb-24">OR</p>
+          <div class="sso-btn mb-24">
+            <a href="#" class="stretched-link"><img src="../assets/images/icon-google.svg" alt="google" class="me-8">Google 登入</a>
+          </div>
+          <div class="d-flex justify-content-center align-items-center">
+            <p class="me-4">還不是會員？</p>
+            <a href="signUp.html" class="text-primary">註冊會員</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script type="module" src="../main.js"></script>
+</body>
+
 </html>
