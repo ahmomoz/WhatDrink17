@@ -1,0 +1,41 @@
+@include sm{
+    .sm-title{
+        font-size: 32px!important;
+    }
+}
+
+.drinks {
+    &-card {
+        border: 1px solid $gray-light;
+}
+}
+.drink-nav-height{
+    height: 40px;
+}
+.drink-nav-padding {
+    padding-left: 20px!important;
+    padding-right: 68px!important;
+}
+.pagination{
+    align-items: center!important;
+    li{
+        a{
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            font-size: 24px;
+            border: 0 !important;
+            padding: 0;
+            span{
+                padding-bottom: 6px;
+            }
+            &:active,&:hover,&:focus{
+                color: #FFFFFF;
+                background-color: $primary;
+                border-radius: 40px;
+                box-shadow: none;
+            }
+        }
+    }
+    
+}
