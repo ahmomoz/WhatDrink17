@@ -2,7 +2,13 @@
 .top-75 {
     top: 75%;
 }
-
+//寬度
+.w-md-50{
+    width: 100% !important;
+    @include lg {
+        width: 50% !important;
+    }
+}
 //字重
 .fw-500 {
     font-weight: 500;
@@ -192,4 +198,17 @@
 .form-control.form-control-textArea{
     border-radius: 8px !important;
     height: 320px;
+}
+
+.btn-collect{
+    display: flex;
+    align-items: center;
+    background-color: $white;
+    border: 1px solid $primary;
+    color: $primary;
+
+    &:hover{
+        background-color: $primary;
+        color: $white;
+    }
 }
