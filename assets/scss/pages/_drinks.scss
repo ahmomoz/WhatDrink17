@@ -31,6 +31,14 @@
                 box-shadow: none;
             }
         }
+    }  
+}
+
+@media(max-width:768px)  {
+    .mt-sm-40{
+        margin-top: 40px;
     }
-    
+    .mb-sm-120{
+        margin-bottom: 120px;
+    }
 }
