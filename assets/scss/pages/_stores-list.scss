@@ -1,6 +1,10 @@
 .stores {
     &-card {
         border: 1px solid $gray-light;
+
+        &-btn{
+            color: $white !important;
+        }
 }
 }
 .store-nav-height{
