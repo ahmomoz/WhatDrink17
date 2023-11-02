@@ -2,13 +2,16 @@
 .top-75 {
     top: 75%;
 }
+
 //寬度
-.w-md-50{
+.w-md-50 {
     width: 100% !important;
+
     @include lg {
         width: 50% !important;
     }
 }
+
 //字重
 .fw-500 {
     font-weight: 500;
@@ -67,6 +70,7 @@
 .rounded-8 {
     border-radius: 8px;
 }
+
 .rounded-16 {
     border-radius: 16px;
 }
@@ -157,6 +161,16 @@
     background-color: $primary !important;
     color: $white !important;
 
+    &-outline {
+        display: block;
+        padding: 10px 0;
+        border: none;
+        border-radius: 100px !important;
+        border: 1px solid $primary;
+        background-color: $white !important;
+        color: $primary !important;
+    }
+
 }
 
 .or {
@@ -194,33 +208,34 @@
 
 }
 
-.form-select{
+.form-select {
     display: inline !important;
     width: auto !important;
 }
 
-.form-control.form-control-textArea{
+.form-control.form-control-textArea {
     border-radius: 8px !important;
     height: 320px;
 }
 
-.btn-collect{
+.btn-collect {
     display: flex;
     align-items: center;
     background-color: $white;
     border: 1px solid $primary;
     color: $primary;
 
-    &:hover{
+    &:hover {
         background-color: $primary;
         color: $white;
     }
 }
 
-.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link{
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
     position: relative;
 
-    &:after{
+    &:after {
         position: absolute;
         content: "";
         width: 100%;
@@ -231,8 +246,8 @@
     }
 }
 
-.nav-tabs .nav-link{
-    padding: 0 ;
+.nav-tabs .nav-link {
+    padding: 0;
 }
 
 
@@ -249,8 +264,8 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
     transition: opacity ease 0.3s;
     pointer-events: none;
 }
@@ -278,7 +293,7 @@
     background: rgba(255, 255, 255, 0.33);
 }
 
-@media only screen and (max-width: 45rem){
+@media only screen and (max-width: 45rem) {
     .image-cover-modal-content {
         max-width: 100%;
         max-height: 100%;

@@ -85,8 +85,8 @@
         <!-- 分頁 -->
         <!-- 分頁頁籤 -->
         <ul class="nav nav-tabs border-bottom pb-4 mb-24" id="myTab" role="tablist">
-          <li class="nav-item" role="presentation">
-            <button class="nav-link active fs-20 me-24" id="storeProfile-tab" data-bs-toggle="tab"
+          <li class="nav-item me-40" role="presentation">
+            <button class="nav-link active fs-20" id="storeProfile-tab" data-bs-toggle="tab"
               data-bs-target="#storeProfile" type="button" role="tab" aria-controls="storeProfile" aria-selected="true">
               門市資訊
             </button>
@@ -388,39 +388,12 @@
         </div>
         <!-- 分頁內容 end -->
         <!-- 分頁 end-->
-
-
-
       </div>
     </div>
     <%- include('./layout/footer'); -%>
 
       <script type="module" src="../main.js"></script>
-      <script>
-        // Get the DOM
-        var modal = document.getElementById('image-cover-modal');
-        var modalImg = document.getElementById("image-cover-image");
-        var captionText = document.getElementById("image-cover-caption");
-        var span = document.getElementsByClassName("image-cover-close")[0];
-
-        // When the user clicks on <span> (x), close the modal
-        modal.onclick = function () {
-          this.classList.remove("model-shown");
-        }
-
-        var i;
-        for (i = 0; i < document.images.length; i++) {
-
-          // Get the image and insert it inside the modal - use its "alt" text as a caption
-          var img = document.images[i];
-
-          img.onclick = function () {
-            modal.classList.add("model-shown");
-            modalImg.src = this.src;
-            captionText.innerHTML = this.alt;
-          }
-        }
-      </script>
+    
 </body>
 
 </html>
