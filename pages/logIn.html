@@ -22,21 +22,21 @@
 </head>
 
 <body>
-  <div class="pt-40 pt-md-80">
+  <!-- logo -->
+  <div class="navbar-brand mt-24 d-flex justify-content-center d-md-block ms-md-24">
+    <a href="index.html"><img src="../assets/images/logo.svg" alt="logo"></a>
+  </div>
+  <!-- logo end-->
+  <div class="pt-24">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-10 col-md-6 col-lg-4">
-          <!-- logo -->
-          <div class="navbar-brand d-flex justify-content-center mb-40">
-            <a href="index.html"><img src="../assets/images/logo.svg" alt="logo"></a>
-          </div>
-          <!-- logo end-->
           <h1 class="fs-24 text-center mb-8">會員登入</h1>
           <p class="text-center text-gray-dark mb-24">立即登入，把喜歡的店家和飲料加入收藏！</p>
           <form class="mb-24">
             <!-- 帳號 -->
             <div class="mb-16">
-              <label for="logInEmail" class="form-label mb-4">帳號</label>
+              <label for="logInEmail" class="form-label mb-2">帳號</label>
               <input type="text" class="form-control" id="logInEmail" aria-describedby="logInEmailFeedback"
                 placeholder="請輸入信箱帳號" required>
               <div id="logInEmailFeedback" class="invalid-feedback">
@@ -46,7 +46,7 @@
             <!-- 帳號 end-->
             <!-- 密碼 -->
             <div class="mb-4">
-              <label for="logInEmail" class="form-label mb-4">密碼</label>
+              <label for="logInEmail" class="form-label mb-2">密碼</label>
               <input type="text" class="form-control" id="logInEmail" aria-describedby="logInEmailFeedback"
                 placeholder="請輸入密碼" required>
               <div id="logInEmailFeedback" class="invalid-feedback">
