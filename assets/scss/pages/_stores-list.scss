@@ -6,9 +6,6 @@
         }
 }
 }
-.store-nav-height{
-    height: 40px;
-}
 .store-nav-padding {
     padding-left: 20px!important;
     padding-right: 68px!important;
@@ -35,4 +32,22 @@
         }
     }
     
+}
+@media(max-width:768px)  {
+    .mt-md-20{
+        margin-top: 20px!important;
+    }
+    .form-select{
+        height: 48px;
+        font-size: 20px!important;
+    }
+    .mb-md-14{
+        margin-bottom: 14px;
+    }
+    .mt-sm-40{
+        margin-top: 40px;
+    }
+    .mb-sm-120{
+        margin-bottom: 120px;
+    }
 }

@@ -33,44 +33,51 @@
             <li class="breadcrumb-item active text-gray" aria-current="page" class="fs-16">鮮奶茶</li>
           </ol>
         </nav>
-        <div class="pt-lg-24 pb-80 pb-md-40">
+        <div class="pt-lg-24 pb-lg-80 ml-md-40">
           <h3 class="fs-40 text-center mb-8">搜尋結果</h3>
         </div>
       </div>
     </div>
-    <nav class="container d-flex justify-content-between mb-40 drink-nav-height">
-      <!-- navbar -->
-      <div class="d-flex justify-content-between">
-        <!-- 篩選器-->
-        <select class="form-select form-select-sm rounded-pill drink-nav-padding" aria-label=".form-select-sm example">
-          <option selected>全部茶種</option>
-          <option value="1">紅茶</option>
-          <option value="2">綠茶</option>
-          <option value="3">奶茶</option>
-          <option value="4">烏龍茶</option>
-          <option value="5">冬瓜茶</option>
-          <option value="6">麥茶</option>
-          <option value="7">牛奶</option>
-          <option value="8">鮮果汁</option>
-        </select>
-        <select class="form-select form-select-sm rounded-pill mx-16 drink-nav-padding" aria-label=".form-select-sm example">
-          <option selected>不限配料</option>
-          <option value="1">珍珠</option>
-          <option value="2">波霸</option>
-          <option value="3">椰果</option>
-          <option value="4">仙草</option>
-          <option value="5">布丁</option>
-          <option value="6">奶蓋</option>
-        </select>
-      </div>
-      <div class="input-group mb-3 bg-white w-25 border-bottom border-2">
-        <!-- 搜尋bar-->
-        <span class="material-symbols-outlined input-group-text bg-white border-0 p-0 fs-24" id="basic-addon1">
-          search
-          </span>
-        <input type="text" class="form-control border-0 p-0 rounded-0" placeholder="今天想要來點..." aria-label="Searchame" aria-describedby="basic-addon1">
-      </div>
-    </nav>
+        <div class="mb-40">
+          <div class="container">
+            <div class="d-flex flex-column-reverse flex-md-row justify-content-md-between">
+              <!-- 篩選器-->
+              <div class="d-flex flex-column flex-md-row">
+                <select class="form-select rounded-pill drink-nav-padding me-md-8 mb-16 mb-md-0" aria-label="teaClass">
+                  <option selected>全部茶種</option>
+                  <option value="1">紅茶</option>
+                  <option value="2">綠茶</option>
+                  <option value="3">奶茶</option>
+                  <option value="4">烏龍茶</option>
+                  <option value="5">冬瓜茶</option>
+                  <option value="6">麥茶</option>
+                  <option value="7">牛奶</option>
+                  <option value="8">鮮果汁</option>
+                </select>
+                <select class="form-select rounded-pill drink-nav-padding" aria-label="mixingClass">
+                  <option selected>不限配料</option>
+                  <option value="1">珍珠</option>
+                  <option value="2">波霸</option>
+                  <option value="3">椰果</option>
+                  <option value="4">仙草</option>
+                  <option value="5">布丁</option>
+                  <option value="6">奶蓋</option>
+                  </select>
+                </div>
+                <!-- 篩選器 end-->
+                <!-- 搜尋bar-->
+                <div class="input-group mb-3 w-md-25 bg-white border-bottom border-gray-dark mb-24 mb-md-0">
+                  <span class="material-symbols-outlined input-group-text bg-white border-0 p-0 fs-24 me-4"
+                    id="basic-addon1">
+                    search
+                  </span>
+                  <input type="text" class="form-control border-0 p-0 rounded-0" placeholder="今天想要來點..."
+                    aria-label="Searchame" aria-describedby="basic-addon1">
+                </div>
+                <!-- 搜尋bar end-->
+            </div>
+          </div>
+        </div>
     <div class="container">
       <!-- 飲料列表 -->
       <ul class="d-flex flex-wrap justify-content-between m-0 p-0">

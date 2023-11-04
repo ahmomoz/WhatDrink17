@@ -39,3 +39,22 @@
     }
     
 }
+
+@media(max-width:768px)  {
+    .ml-md-40{
+        margin: 40px 0px;
+    }
+    .form-select{
+        height: 48px;
+        font-size: 20px!important;
+    }
+    .mb-md-14{
+        margin-bottom: 14px;
+    }
+    .mt-sm-40{
+        margin-top: 40px;
+    }
+    .mb-sm-120{
+        margin-bottom: 120px;
+    }
+}
