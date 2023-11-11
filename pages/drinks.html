@@ -82,9 +82,9 @@
       </div>
       <div class="container">
         <!-- 飲料列表 -->
-        <ul class="d-flex flex-wrap justify-content-between m-0 p-0">
+        <ul id="drinkList" class="d-flex flex-wrap justify-content-between m-0 p-0">
           <!-- 飲料項目 01-->
-          <li class="drinks-card px-16 py-24 px-md-24">
+          <li id="drinkListItem" class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24" value="collected"></button>
             <img src="../assets/images/drink-01.png" alt="drink image">
             <div class="drinks-card-body ms-16">
@@ -328,7 +328,9 @@
     </div> -->
     <%- include('./layout/footer'); -%>
 
+      <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
       <script type="module" src="../main.js"></script>
+      <script type="module" src="../assets/js/a.js"></script>
 </body>
 
 </html>
