@@ -19,7 +19,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/main-939ec6d3.js"></script>
+  <script type="module" crossorigin src="/WhatDrink17/assets/drinks-52b2636d.js"></script>
+  <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/main-939ec6d3.js">
   <link rel="stylesheet" href="/WhatDrink17/assets/main-d59299d6.css">
 </head>
 
@@ -170,9 +171,9 @@
       </div>
       <div class="container">
         <!-- 飲料列表 -->
-        <ul class="d-flex flex-wrap justify-content-between m-0 p-0">
+        <ul id="drinkList" class="d-flex flex-wrap justify-content-between m-0 p-0">
           <!-- 飲料項目 01-->
-          <li class="drinks-card px-16 py-24 px-md-24">
+          <li id="drinkListItem" class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24" value="collected"></button>
             <img src="/WhatDrink17/assets/drink-01-fac5d53e.png" alt="drink image">
             <div class="drinks-card-body ms-16">
@@ -437,6 +438,8 @@
         </div>
     </div>
 </div>
+      <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+      
       
 </body>
 
