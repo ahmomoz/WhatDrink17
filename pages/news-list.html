@@ -161,7 +161,8 @@
                                     <h2 class="card-title mb-0">大苑子酪梨系列 09/08正式登場！</h2>
                                     <p class="card-text release-time mb-8 mt-8">發佈日期: 2023/6/24</p>
                                     <p class="card-text">
-                                        秋季最受歡迎的酪梨，真的回來啦.ᐟ.ᐟ嚴選來自全台最大酪梨產區的台南酪梨營養豐富又美味，絕不能錯過 許慶良酪梨布丁鮮奶以具有「森林奶油」美譽之稱的酪梨搭配順口的許慶良鮮乳再加入滑順的手工鮮奶布丁點綴口感...</p>
+                                        秋季最受歡迎的酪梨，真的回來啦.ᐟ.ᐟ嚴選來自全台最大酪梨產區的台南酪梨營養豐富又美味，絕不能錯過
+                                        許慶良酪梨布丁鮮奶以具有「森林奶油」美譽之稱的酪梨搭配順口的許慶良鮮乳再加入滑順的手工鮮奶布丁點綴口感...</p>
                                     <div class="card-footer d-flex justify-content-end align-items-end">
                                         <p class="mb-0 text-right align-items-end"><a href="#">繼續閱讀 ></a></p>
                                     </div>
@@ -172,39 +173,36 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-center mt-40 mb-160">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&lt;&lt;</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&lt;</span>
-                                </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&gt;</span>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&gt;&gt;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+        <!-- 頁碼 -->
+        <nav aria-label="Page navigation" class="mt-40 mb-80">
+            <ul class="pagination m-0 p-0 justify-content-center">
+                <li class="page-item mx-4 d-none d-md-block">
+                    <a class="page-link text-gray" href="#" aria-label="Previous">
+                        <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
+                    </a>
+                </li>
+                <li class="page-item mx-4 d-none d-md-block">
+                    <a class="page-link text-gray" href="#" aria-label="Previous">
+                        <span class="material-symbols-outlined align-middle">chevron_left</span>
+                    </a>
+                </li>
+                <li class="page-item mx-4 active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item mx-4"><a class="page-link" href="#">2</a></li>
+                <li class="page-item mx-4"><a class="page-link" href="#">3</a></li>
+                <li class="page-item mx-4 d-none d-md-block">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span class="material-symbols-outlined align-middle">chevron_right</span>
+                    </a>
+                </li>
+                <li class="page-item mx-4 d-none d-md-block">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
         </div>
+        <!-- 頁碼 end-->
         </div>
 
         <%- include('./layout/footer'); -%>
