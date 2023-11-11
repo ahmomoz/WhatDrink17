@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
   <script type="module" crossorigin src="/WhatDrink17/assets/main-939ec6d3.js"></script>
+  <script type="module" crossorigin src="/WhatDrink17/assets/a-4a6494c7.js"></script>
   <link rel="stylesheet" href="/WhatDrink17/assets/main-d59299d6.css">
 </head>
 
@@ -164,9 +165,9 @@
       </div>
       <div class="container">
         <!-- 店家列表 -->
-        <ul class="d-flex flex-wrap justify-content-between m-0 p-0 stores">
+        <ul id="storeList" class="d-flex flex-wrap justify-content-between m-0 p-0 stores">
           <!-- 店家項目 01-->
-          <li class="stores-card px-16 py-24 mb-40 px-md-24">
+          <li id="storeListItem" class="stores-card px-16 py-24 mb-40 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24" value="collected"></button>
             <img src="/WhatDrink17/assets/store-01-fd5b119a.png" class="mb-8" alt="store image">
             <div class="stores-card-body">
@@ -561,8 +562,9 @@
             <p class="fs-14 text-gray text-center text-md-start mb-md-0">Copyright © WhatDrink All Rights Reserved. <br>作品僅為作業練習，無商業使用，若有侵權請來信告知，將立即移除</p>
         </div>
     </div>
-</div>
-      
+</div>    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    
+    
 </body>
 
 </html>
