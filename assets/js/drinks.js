@@ -3,14 +3,27 @@
 //變數命名
 const drinkList = document.querySelector("#drinkList");
 let drinkData = [];
-let drinkTag;
+let drinkTagAry=[];
 
+//茶種、配料tag組合函式----------------------------------------
 function drinkTagPush(){
-  drinkTag = drinkData.map(function(item,index){
-    return `${item.TeaType},${item.Ingredients}`
+  const drinkTag = drinkData.map(function(item,index){
+    if(item.Ingredients.length===0){
+      return `${item.TeaType}`
+    }else{
+      return `${item.TeaType},${item.Ingredients}`
+    }
   });
-  console.log(drinkTag);
+  const drinkTag2=[]; 
+  for(let i = 0 ; i<drinkTag.length ; i++){
+    drinkTag2.push(drinkTag[i].split(','));
+  };
+  console.log(drinkTag2);
+
+
+  drinkTagAry=drinkTag2;
 };
+
 
 //載入預設飲料卡片------------------------------------------------
 const drinkRender = () => {
@@ -23,7 +36,7 @@ const drinkRender = () => {
         <div class="drinks-card-body ms-16">
           <h4 class="mb-8 mb-md-12">${item.DrinkName}</h4>
           <ul class="drinks-tag-group mb-8 mb-md-12">
-            <li class="drinks-tag">${drinkTag}</li>
+            <li class="drinks-tag">${drinkTagAry[item.id-1]}</li>
           </ul>
           <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
           <a href="#" class="d-block text-primary text-end"><span
@@ -47,8 +60,8 @@ function drinkRenderData(){
 axios.get('https://json-server-project-wtkt.onrender.com/drinks')
 .then(function(response){
     drinkData = response.data;
-    drinkRenderData();
     drinkTagPush();
+    drinkRenderData();
 })
 .catch(error => {
   console.error('Error fetching data:', error);
