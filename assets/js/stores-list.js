@@ -7,7 +7,7 @@ let storeTagAry = [];
 
 //店家tag組合函式----------------------------------------
 const storeTagPush = () =>{      //合併茶種、配料成一個陣列
-  const storeTag = storeData.forEach(function(item){
+  const storeTag = storeData.forEach(item => {
     const tags = {
       uber: 'uber eat',
       foodpanda: 'food panda',
@@ -27,7 +27,7 @@ const storeTagPush = () =>{      //合併茶種、配料成一個陣列
 //載入預設店家卡片函式------------------------------------------------
 const storeRender = () => {
     let str='';
-    storeData.forEach(function(item){
+    storeData.forEach(item => {
         str+=`
         <li id="storeListItem" class="stores-card px-16 py-24 mb-40 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24" value="collected"></button>
@@ -62,7 +62,7 @@ const storeRenderData = () => {
 };
 //將店家資料由外部寫入
 axios.get('https://json-server-project-wtkt.onrender.com/shops')
-.then((response) => {
+.then(response => {
     storeData = response.data;
     storeTagPush()
     storeRenderData();
