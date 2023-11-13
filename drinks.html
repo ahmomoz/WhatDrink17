@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/drinks-6aed3152.js"></script>
+  <script type="module" crossorigin src="/WhatDrink17/assets/drinks-b44da3dc.js"></script>
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/main-751fc6a2.js">
   <link rel="stylesheet" href="/WhatDrink17/assets/main-756befb3.css">
 </head>
@@ -134,25 +134,25 @@
           <div class="d-flex flex-column-reverse flex-md-row justify-content-md-between">
             <!-- 篩選器-->
             <div class="d-flex flex-column flex-md-row">
-              <select class="form-select rounded-pill drink-nav-padding me-md-8 mb-16 mb-md-0" aria-label="teaClass">
-                <option selected>全部茶種</option>
-                <option value="1">紅茶</option>
-                <option value="2">綠茶</option>
-                <option value="3">奶茶</option>
-                <option value="4">烏龍茶</option>
-                <option value="5">冬瓜茶</option>
-                <option value="6">麥茶</option>
-                <option value="7">牛奶</option>
-                <option value="8">鮮果汁</option>
+              <select id="teaTypeSelect" class="form-select rounded-pill drink-nav-padding me-md-8 mb-16 mb-md-0" aria-label="teaClass">
+                <option selected value="">全部茶種</option>
+                <option value="紅茶">紅茶</option>
+                <option value="綠茶">綠茶</option>
+                <option value="奶茶">奶茶</option>
+                <option value="烏龍茶">烏龍茶</option>
+                <option value="冬瓜茶">冬瓜茶</option>
+                <option value="麥茶">麥茶</option>
+                <option value="牛奶">牛奶</option>
+                <option value="鮮果汁">鮮果汁</option>
               </select>
-              <select class="form-select rounded-pill drink-nav-padding" aria-label="mixingClass">
+              <select id="ingredientsSelect" class="form-select rounded-pill drink-nav-padding" aria-label="mixingClass">
                 <option selected>不限配料</option>
-                <option value="1">珍珠</option>
-                <option value="2">波霸</option>
-                <option value="3">椰果</option>
-                <option value="4">仙草</option>
-                <option value="5">布丁</option>
-                <option value="6">奶蓋</option>
+                <option value="珍珠">珍珠</option>
+                <option value="波霸">波霸</option>
+                <option value="椰果">椰果</option>
+                <option value="仙草">仙草</option>
+                <option value="布丁">布丁</option>
+                <option value="奶蓋">奶蓋</option>
               </select>
             </div>
             <!-- 篩選器 end-->
