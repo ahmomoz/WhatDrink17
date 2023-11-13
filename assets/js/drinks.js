@@ -6,8 +6,8 @@ let drinkData = [];
 let drinkTagAry = [];
 
 //茶種、配料tag組合函式----------------------------------------
-function drinkTagPush(){  //合併茶種、配料成一個陣列
-  const drinkTag = drinkData.map(function(item,index){
+const drinkTagPush = () => {  //合併茶種、配料成一個陣列
+  const drinkTag = drinkData.map((item) => {
     if(item.Ingredients.length===0){
       return `${item.TeaType}`   //如果沒有配料就只推入茶種
     }else{
@@ -31,12 +31,11 @@ function drinkTagPush(){  //合併茶種、配料成一個陣列
         }
     });
     drinkTagAry.push(partialTags);
-    partialTags = []; // 清空partialTags以便推入下一個標籤組，避免重複
+    partialTags = []; // 清空partialTags，避免重複推入
   });
 };
 
-
-//載入預設飲料卡片------------------------------------------------
+//載入預設飲料卡片函式------------------------------------------------
 const drinkRender = () => {
     let str='';
     drinkData.forEach(function(item){
@@ -62,14 +61,14 @@ const drinkRender = () => {
 };
 
 //初始化預設飲料卡片函式--------------------------------------------
-function drinkRenderData(){
+const drinkRenderData = () => {
   drinkRender();
 };
 
 
 //將飲料資料由外部寫入
 axios.get('https://json-server-project-wtkt.onrender.com/drinks')
-.then(function(response){
+.then((response) => {
     drinkData = response.data;
     drinkTagPush();
     drinkRenderData();
