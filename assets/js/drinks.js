@@ -3,25 +3,36 @@
 //變數命名
 const drinkList = document.querySelector("#drinkList");
 let drinkData = [];
-let drinkTagAry=[];
+let drinkTagAry = [];
 
 //茶種、配料tag組合函式----------------------------------------
-function drinkTagPush(){
+function drinkTagPush(){  //合併茶種、配料成一個陣列
   const drinkTag = drinkData.map(function(item,index){
     if(item.Ingredients.length===0){
-      return `${item.TeaType}`
+      return `${item.TeaType}`   //如果沒有配料就只推入茶種
     }else{
-      return `${item.TeaType},${item.Ingredients}`
+      return `${item.TeaType},${item.Ingredients}` //推入茶種,配料
     }
   });
-  const drinkTag2=[]; 
+  const drinkTag2=[]; //去掉逗點
   for(let i = 0 ; i<drinkTag.length ; i++){
     drinkTag2.push(drinkTag[i].split(','));
   };
-  console.log(drinkTag2);
 
-
-  drinkTagAry=drinkTag2;
+  let tagStr = '';
+  let partialTags = [];   //保存部分標籤
+  drinkTag2.forEach(function (tags) {
+    tags.forEach(function (i, index) {
+        tagStr += `<li class="drinks-tag">${i}</li>`;
+        if (index === tags.length - 1) {
+            // 將完整字串推入drinkTagAry
+            partialTags.push(tagStr);
+            tagStr = ''; // 清空tagStr以便推入下一個標籤組，避免重複
+        }
+    });
+    drinkTagAry.push(partialTags);
+    partialTags = []; // 清空partialTags以便推入下一個標籤組，避免重複
+  });
 };
 
 
@@ -36,7 +47,7 @@ const drinkRender = () => {
         <div class="drinks-card-body ms-16">
           <h4 class="mb-8 mb-md-12">${item.DrinkName}</h4>
           <ul class="drinks-tag-group mb-8 mb-md-12">
-            <li class="drinks-tag">${drinkTagAry[item.id-1]}</li>
+            ${drinkTagAry[item.id-1]}
           </ul>
           <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
           <a href="#" class="d-block text-primary text-end"><span
