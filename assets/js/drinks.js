@@ -62,10 +62,14 @@ const drinkRender = () => {
     drinkList.innerHTML = str;
 };
 
+
+
 //初始化預設飲料卡片函式--------------------------------------------
 const drinkRenderData = () => {
   drinkRender();
 };
+
+
 
 //飲料篩選邏輯-----------------------------------------------------
 teaTypeSelect.addEventListener('change', applyFilters); //監聽下拉變化事件
@@ -108,8 +112,6 @@ function displayFilteredData(data) {  //用於更新畫面的函數
 };
 
 
-
-
 /**teaTypeSelect.addEventListener('click',function(e){
   let filteredData = drinkData;
   if(teaTypeSelect.value==="紅茶" || teaTypeSelect.value==="綠茶" || teaTypeSelect.value==="奶茶" || teaTypeSelect.value==="烏龍茶" || teaTypeSelect.value==="冬瓜茶" || teaTypeSelect.value==="麥茶" || teaTypeSelect.value==="牛奶" || teaTypeSelect.value==="鮮果汁"){
@@ -150,4 +152,5 @@ axios.get('https://json-server-project-wtkt.onrender.com/drinks')
 .catch(error => {
   console.error('Error fetching data:', error);
 });
+
 
