@@ -63,6 +63,31 @@ const storeRenderData = () => {
   storeRender();
 };
 
+//收藏愛心CSS樣式函式-----------------------------------------------
+function isCollect(){
+  const collectBtn = document.querySelectorAll(".collect-btn"); //抓按鈕class
+  console.log(collectBtn);//驗證
+    //跑 querySelectorAll 陣列
+    collectBtn.forEach(function (item) {
+        //監聽按鈕
+        item.addEventListener("click", function (e) {
+            //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
+            if (e.target.value == "collected") {
+                item.value = "uncollect";
+                item.classList.remove("fa-regular");
+                item.classList.add("fa-solid");
+            //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
+            } else if (e.target.value == "uncollect") {
+                item.value = "collected";
+                item.classList.add("fa-regular");
+                item.classList.remove("fa-solid");
+            }
+            console.log("hi")//驗證
+        });
+    });
+};
+
+
 //店家篩選器邏輯-----------------------------------------------------
 deliverySelect.addEventListener('change', applyFilters); //監聽下拉變化事件
 CooperationSelect.addEventListener('change', applyFilters); //監聽下拉變化事件
@@ -121,6 +146,7 @@ axios.get('https://json-server-project-wtkt.onrender.com/shops')
     storeTagPush()  //組合Tag陣列
     storeRenderData();   //載入預設店家卡片
     applyFilters();  //載入預設篩選器
+    isCollect(); ////收藏愛心CSS
 })
 .catch(error => {
   console.error('Error fetching data:', error);
