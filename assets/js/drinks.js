@@ -42,21 +42,24 @@ const drinkRender = () => {
     let str='';
     drinkData.forEach(item => {
         str+=`
-        <li id="drinkListItem" class="drinks-card px-16 py-24 px-md-24">
-        <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24" value="collected"></button>
-        <img src="${item.ImageLink}">
-        <div class="drinks-card-body ms-16">
-          <h4 class="mb-8 mb-md-12">${item.DrinkName}</h4>
-          <ul class="drinks-tag-group mb-8 mb-md-12">
-            ${drinkTagAry[item.id-1]}
-          </ul>
-          <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
-          <a href="#" class="d-block text-primary text-end"><span
-              class="material-symbols-outlined me-2s align-middle">
-              location_on
-            </span>搜尋店家</a>
-        </div>
-      </li>
+          <li class="drinks-card px-16 py-24 px-md-24">
+            <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
+              value="collected"></button>
+            <img src="${item.ImageLink}" alt="drink image">
+            <div class="w-100 d-flex flex-column justify-content-between">
+              <div class="drinks-card-body ms-16">
+                <h4 class="mb-8 mb-md-12">${item.DrinkName}</h4>
+                <ul class="drinks-tag-group mb-8 mb-md-12">
+                  ${drinkTagAry[item.id-1]}
+                </ul>
+                <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
+              </div>
+              <a href="#" class="d-block text-primary text-end"><span
+                  class="material-symbols-outlined me-2s align-middle">
+                  location_on
+                </span>搜尋店家</a>
+            </div>
+          </li>
         `;
     });
     drinkList.innerHTML = str;
@@ -91,21 +94,24 @@ function displayFilteredData(data) {  //用於更新畫面的函數
   let str = '';
   data.forEach(item => {
     str += `
-      <li id="drinkListItem" class="drinks-card px-16 py-24 px-md-24">
-      <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24" value="collected"></button>
-      <img src="${item.ImageLink}">
-      <div class="drinks-card-body ms-16">
-        <h4 class="mb-8 mb-md-12">${item.DrinkName}</h4>
-        <ul class="drinks-tag-group mb-8 mb-md-12">
-          ${drinkTagAry[item.id-1]}
-        </ul>
-        <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
-        <a href="#" class="d-block text-primary text-end"><span
-            class="material-symbols-outlined me-2s align-middle">
-            location_on
-          </span>搜尋店家</a>
-      </div>
-    </li>
+      <li class="drinks-card px-16 py-24 px-md-24">
+        <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
+          value="collected"></button>
+        <img src="${item.ImageLink}" alt="drink image">
+        <div class="w-100 d-flex flex-column justify-content-between">
+          <div class="drinks-card-body ms-16">
+            <h4 class="mb-8 mb-md-12">${item.DrinkName}</h4>
+            <ul class="drinks-tag-group mb-8 mb-md-12">
+              ${drinkTagAry[item.id-1]}
+            </ul>
+            <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
+          </div>
+          <a href="#" class="d-block text-primary text-end"><span
+              class="material-symbols-outlined me-2s align-middle">
+              location_on
+            </span>搜尋店家</a>
+        </div>
+      </li>
     `;
   });
   drinkList.innerHTML = str;
