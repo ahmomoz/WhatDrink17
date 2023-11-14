@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/stores-list-209083a5.js"></script>
+  <script type="module" crossorigin src="/WhatDrink17/assets/stores-list-76b389a6.js"></script>
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/main-751fc6a2.js">
   <link rel="stylesheet" href="/WhatDrink17/assets/main-756befb3.css">
 </head>
@@ -134,20 +134,20 @@
           <div class="d-flex flex-column-reverse flex-md-row justify-content-md-between">
             <!-- 篩選器-->
             <div class="d-flex flex-column flex-md-row">
-              <select class="form-select rounded-pill drink-nav-padding me-md-8 mb-16 mb-md-0" aria-label="teaClass">
-                <option selected>不限外送服務</option>
-                <option value="1">uber eat</option>
-                <option value="2">food panda</option>
+              <select id="deliverySelect" class="form-select rounded-pill drink-nav-padding me-md-8 mb-16 mb-md-0" aria-label="teaClass">
+                <option value="" selected>不限外送服務</option>
+                <option value="uber eat">uber eat</option>
+                <option value="food panda">food panda</option>
               </select>
-              <select class="form-select rounded-pill drink-nav-padding me-md-8 mb-16 mb-md-0" aria-label="mixingClass">
-                <option selected>不限活動</option>
-                <option value="1">合作活動</option>
+              <select id="CooperationSelect" class="form-select rounded-pill drink-nav-padding" aria-label="mixingClass">
+                <option value="" selected>不限活動</option>
+                <option value="合作活動">合作活動</option>
               </select>
-              <select class="form-select rounded-pill drink-nav-padding"
+              <!--<select id="EatInSelect" class="form-select rounded-pill drink-nav-padding"
               aria-label="mixingClass">
-                <option selected>不限內用</option>
-                <option value="1">可內用</option>
-              </select>
+                <option value="" selected>不限內用</option>
+                <option value="可內用">可內用</option>
+              </select>-->
             </div>
             <!-- 篩選器 end-->
             <!-- 搜尋bar-->
