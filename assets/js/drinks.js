@@ -110,6 +110,7 @@ function applyFilters() {  //條件篩選的函數
   };
 
   displayFilteredData(filteredData); //顯示篩選後的數據
+  renderPagination(filteredData);  //更新篩選後的頁碼
 };
 function displayFilteredData(data) {  //用於更新畫面的函數
   let str = '';
@@ -139,6 +140,89 @@ function displayFilteredData(data) {  //用於更新畫面的函數
 };
 
 
+
+//分頁邏輯------------------------------------------------------
+
+const renderPagination = (pageData) =>{
+
+const totalItems = pageData.length; //飲料卡片數量
+const itemsPerPage = 10;  //每頁顯示十個卡片
+const totalPages = Math.ceil(totalItems / itemsPerPage); //計算總頁數
+let currentPage = 1;  //當前頁數，預設為第一頁
+
+function displayData(page) {   //計算目前頁面顯示的卡片數量範圍
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  // 獲取目前頁面的數據
+  const currentPageData = pageData.slice(startIndex, endIndex);
+
+  // 渲染當前頁面的數據
+  renderCards(currentPageData);
+
+  // 渲染分頁按鈕
+  renderPaginationButtons();
+};
+
+function renderCards(data) {
+  drinkList.innerHTML = ""; // 清空容器
+
+  let str='';
+  data.forEach(item => {
+    str+=`
+          <li class="drinks-card px-16 py-24 px-md-24">
+            <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
+              value="collected"></button>
+            <img src="${item.ImageLink}" alt="drink image">
+            <div class="w-100 d-flex flex-column justify-content-between">
+              <div class="drinks-card-body ms-16">
+                <h4 class="mb-8 mb-md-12">${item.DrinkName}</h4>
+                <ul class="drinks-tag-group mb-8 mb-md-12">
+                  ${drinkTagAry[item.id-1]}
+                </ul>
+                <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
+              </div>
+              <a href="#" class="d-block text-primary text-end"><span
+                  class="material-symbols-outlined me-2s align-middle">
+                  location_on
+                </span>搜尋店家</a>
+            </div>
+          </li>
+        `;
+    });
+    drinkList.innerHTML = str;
+};
+
+//渲染分頁按鈕的邏輯，根據前頁和總頁數產生分頁按鈕
+function renderPaginationButtons() {
+  const buttonsContainer = document.getElementById("pagination");
+  buttonsContainer.innerHTML = ""; // 清空按鈕容器
+
+  // 生成頁碼按鈕
+  for (let i = 1; i <= totalPages; i++) {
+    const button = document.createElement("button");
+    button.innerText = i;
+    button.addEventListener("click", () => onPageButtonClick(i));
+    buttonsContainer.appendChild(button);
+  };
+
+  buttonsContainer.innerHTML = str;
+};
+
+function onPageButtonClick(page) {
+  // 頁面按鈕點擊事件
+  currentPage = page;
+  displayData(currentPage);
+}
+
+// 初始化頁面顯示
+displayData(currentPage);
+
+};
+
+
+
+
+
 //將飲料資料由外部寫入
 axios.get('https://json-server-project-wtkt.onrender.com/drinks')
 .then(response => {
@@ -147,6 +231,7 @@ axios.get('https://json-server-project-wtkt.onrender.com/drinks')
     drinkRenderData(); //載入預設飲料卡片
     applyFilters();  //載入預設篩選器
     isCollect(); //收藏愛心CSS
+    renderPagination(drinkData); //頁碼邏輯
 })
 .catch(error => {
   console.error('Error fetching data:', error);
