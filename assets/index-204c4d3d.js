@@ -1,4 +1,4 @@
-import"./bootstrap.min-33c36378.js";const i=document.querySelector("#popularDrinkList");let s=[],a=[];const d=()=>{const l=s.map(t=>t.Ingredients.length===0?`${t.TeaType}`:`${t.TeaType},${t.Ingredients}`),e=[];for(let t=0;t<l.length;t++)e.push(l[t].split(","));let n="",r=[];e.forEach(t=>{t.forEach((c,o)=>{n+=`<li class="drinks-tag">${c}</li>`,o===t.length-1&&(r.push(n),n="")}),a.push(r),r=[]})},u=()=>{let l="";s.forEach((e,n)=>{if(n<=5)l+=`
+import"./bootstrap.min-362bd10f.js";const i=document.querySelector("#popularDrinkList");let s=[],a=[];const d=()=>{const l=s.map(t=>t.Ingredients.length===0?`${t.TeaType}`:`${t.TeaType},${t.Ingredients}`),e=[];for(let t=0;t<l.length;t++)e.push(l[t].split(","));let n="",r=[];e.forEach(t=>{t.forEach((c,o)=>{n+=`<li class="drinks-tag">${c}</li>`,o===t.length-1&&(r.push(n),n="")}),a.push(r),r=[]})},u=()=>{let l="";s.forEach((e,n)=>{if(n<=5)l+=`
             <li class="drinks-card px-16 py-24 px-md-24">
               <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
                 value="collected"></button>
