@@ -1,9 +1,50 @@
 .stores {
     &-card {
         border: 1px solid $gray-light;
+        margin-right: 0px;
+
+        @include sm{
+            &:nth-child(odd){
+                margin-right: 16px;
+            }
+        }
+
+        @include md{
+            margin-right: 16px;
+            
+            &:nth-child(2n){
+                margin-right: 0;
+            }
+        }
+        @include lg{
+            margin-right: 16px;
+
+            &:nth-child(2n){
+                margin-right: 16px;
+            }
+
+            &:nth-child(3n){
+                margin-right: 0;
+            }
+        }
+        @include xl{
+            margin-right: 16px;
+            
+            &:nth-child(2n){
+                margin-right: 16px;
+            }
+
+            &:nth-child(3n){
+                margin-right: 16px;
+            }
+
+            &:nth-child(4n){
+                margin-right: 0;
+            }
+        }
         &-btn{
             color: $white !important;
-        }
+        };
 }
 }
 .store-nav-padding {
