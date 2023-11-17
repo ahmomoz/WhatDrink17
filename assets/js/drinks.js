@@ -198,14 +198,76 @@ function renderPaginationButtons() {
   buttonsContainer.innerHTML = ""; // 清空按鈕容器
 
   // 生成頁碼按鈕
+  let str='';
   for (let i = 1; i <= totalPages; i++) {
-    const button = document.createElement("button");
-    button.innerText = i;
-    button.addEventListener("click", () => onPageButtonClick(i));
-    buttonsContainer.appendChild(button);
+    str+=`
+    <li class="page-item mx-4"><a class="page-link" href="#" data-page="${i}">${i}</a></li>
+    `;
   };
+  buttonsContainer.innerHTML =`
+    <li id="first-page-btn" class="page-item mx-4 d-none d-md-block">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
+      </a>
+    </li>
 
-  buttonsContainer.innerHTML = str;
+    <li id="previous-page-btn" class="page-item mx-4 d-none d-md-block">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span class="material-symbols-outlined align-middle">chevron_left</span>
+      </a>
+    </li>
+
+    ${str}
+
+    <li id="next-page-btn" class="page-item mx-4 d-none d-md-block">
+      <a class="page-link" href="#" aria-label="Next">
+        <span class="material-symbols-outlined align-middle">chevron_right</span>
+      </a>
+    </li>
+
+    <li id="last-page-btn" class="page-item mx-4 d-none d-md-block">
+      <a class="page-link" href="#" aria-label="Next">
+        <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
+      </a>
+    </li>`;
+
+    // 設定切頁按鈕事件監聽
+    const pageLinks = document.querySelectorAll(".page-link");
+    pageLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); //取消a連結效果
+        const pageNumber = parseInt(link.dataset.page);
+        onPageButtonClick(pageNumber);
+      });
+    })
+
+    // 前一頁按鈕事件監聽器
+    const previousPageBtn = document.getElementById("previous-page-btn");
+    previousPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+        onPageButtonClick(currentPage - 1);
+    });
+
+    // 後一頁按鈕事件監聽器
+    const nextPageBtn = document.getElementById("next-page-btn");
+    nextPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      onPageButtonClick(currentPage + 1);
+    });
+
+    // 最前頁按鈕事件監聽器
+    const firstPageBtn = document.getElementById("first-page-btn");
+    firstPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      onPageButtonClick(1);
+    });
+
+    // 最後頁按鈕事件監聽器
+    const lastPageBtn = document.getElementById("last-page-btn");
+    lastPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      onPageButtonClick(totalPages);
+    });
 };
 
 function onPageButtonClick(page) {
@@ -216,10 +278,7 @@ function onPageButtonClick(page) {
 
 // 初始化頁面顯示
 displayData(currentPage);
-
 };
-
-
 
 
 
