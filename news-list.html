@@ -19,14 +19,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/bootstrap.min-362bd10f.js"></script>
-  <link rel="stylesheet" href="/WhatDrink17/assets/bootstrap-756befb3.css">
+  <script type="module" crossorigin src="/WhatDrink17/assets/news-list-9e79f501.js"></script>
+  <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/bootstrap.min-cef82647.js">
+  <link rel="stylesheet" href="/WhatDrink17/assets/bootstrap-ee6f1c81.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-16 px-md-24 py-16 shadow shadow-sm" id="top">
     <div class="container-fluid">
-        <a class="navbar-brand align-middle" id="hi" href="index.html"><img src="/WhatDrink17/assets/logo-e7e0ca87.svg" alt="今天喝什麼？"></a>
+        <a class="navbar-brand align-middle" id="hi" href="index.html"><img src="/WhatDrink17/assets/logo-71c4c530.svg" alt="今天喝什麼？"></a>
 
         <!-- 行動版選單 -->
         <div class="d-lg-none ms-auto">
@@ -108,27 +109,26 @@
 
 <div class="topest d-none d-sm-block position-fixed top-75 end-0 pe-16">
     <div class="position-relative d-flex flex-column justify-content-center">
-        <img class="fab mb-4" src="/WhatDrink17/assets/fab-b803910f.svg" alt="totop">
+        <img class="fab mb-4" src="/WhatDrink17/assets/fab-feb45b3c.svg" alt="totop">
         <a href="#top" class="stretched-link fs-14 text-center">TOTOP</a>
     </div>
-</div>    <div class="pb-80 pb-md-120">
-        <div class="container">
-            <div class="pt-24">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb d-flex pt-lg-24">
-                    <li class="breadcrumb-item"><a href="index.html" class="breadcrumb-item fs-16">首頁</a></li>
-                    <li class="breadcrumb-item active" aria-current="page" class="fs-16">最新消息</li>
-                </ol>
-            </nav>
+</div>        <div class="pb-80 pb-md-120">
+            <div class="container">
+                <div class="pt-24">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb d-flex pt-lg-24">
+                            <li class="breadcrumb-item"><a href="index.html" class="breadcrumb-item fs-16">首頁</a></li>
+                            <li class="breadcrumb-item active" aria-current="page" class="fs-16">最新消息</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div>
+                    <h1 class="text-title">NEWS</h1>
+                    <h3 class="text-subtitle mb-64">｜最新消息｜</h3>
+                </div>
             </div>
-            <div>
-                <h1 class="text-title">NEWS</h1>
-                <h3 class="text-subtitle mb-64">｜最新消息｜</h3>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-12 news-card mb-0">
+            <div class="container">
+                <div class="col-12 news-card mb-0" id="newsCard">
                     <div class="card border-0">
                         <div class="row">
                             <div class="col-12 col-md-6 px-12">
@@ -152,13 +152,11 @@
                     </div>
                 </div>
                 <hr class="mb-40 mt-20 mt-md-40">
-            </div>
-            <div class="row">
-                <div class="col-12 news-card mb-0">
+                <!-- <div class="col-12 news-card mb-0">
                     <div class="card border-0">
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <img src="/WhatDrink17/assets/news-02-289ab502.png" class="card-img" alt="縮圖2">
+                                <img src="../assets/images/news-02.png" class="card-img" alt="縮圖2">
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="card-body">
@@ -178,14 +176,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <hr class="mb-40 mt-20 mt-md-40">
-            <div class="row">
+                <hr class="mb-40 mt-20 mt-md-40">
                 <div class="col-12 news-card mb-0">
                     <div class="card border-0">
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <img src="/WhatDrink17/assets/news-03-ba1fe2bc.png" class="card-img" alt="縮圖3">
+                                <img src="../assets/images/news-03.png" class="card-img" alt="縮圖3">
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="card-body">
@@ -204,14 +200,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <hr class="mb-40 mt-20 mt-md-40">
-            <div class="row">
+                <hr class="mb-40 mt-20 mt-md-40">
                 <div class="col-12 news-card mb-0">
                     <div class="card border-0">
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <img src="/WhatDrink17/assets/news-04-1430b34b.png" class="card-img" alt="縮圖4">
+                                <img src="../assets/images/news-04.png" class="card-img" alt="縮圖4">
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="card-body">
@@ -228,18 +222,15 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-            </div>
-            <hr class="mb-40 mt-20 mt-md-40">
-            <div class="row">
+                <hr class="mb-40 mt-20 mt-md-40">
                 <div class="col-12 news-card mb-0">
                     <div class="card border-0">
                         <div class="row">
                             <div class="col-12 col-md-6">
-                                <img src="/WhatDrink17/assets/news-05-a1666326.png" class="card-img" alt="縮圖5">
+                                <img src="../assets/images/news-05.png" class="card-img" alt="縮圖5">
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="card-body">
@@ -257,7 +248,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- 頁碼 -->
         <nav aria-label="Page navigation" class="mt-120 mb-80">
             <ul class="pagination m-0 p-0 justify-content-center">
@@ -289,18 +280,18 @@
         </div>
         <!-- 頁碼 end-->
         </div>
-    </div>
+        </div>
 
         <div class="py-40 border-top">
     <div class="container">
         <div class="d-flex flex-column flex-md-row justify-content-md-between align-items-center mb-8 mb-md-0">
-            <a class="navbar-brand mb-16 mb-md-0" href="#"><img src="/WhatDrink17/assets/logo-e7e0ca87.svg" alt="今天喝什麼？"></a>
+            <a class="navbar-brand mb-16 mb-md-0" href="#"><img src="/WhatDrink17/assets/logo-71c4c530.svg" alt="今天喝什麼？"></a>
             <ul class="d-flex m-0 p-0">
-                <li class="social-item me-16"><a href="#"><img src="/WhatDrink17/assets/icon-fb-cf0d32f1.svg" alt="facebook"></a>
+                <li class="social-item me-16"><a href="#"><img src="/WhatDrink17/assets/icon-fb-133bdfcc.svg" alt="facebook"></a>
                 </li>
-                <li class="social-item me-16"><a href="#"><img src="/WhatDrink17/assets/icon-ig-e19f4af3.svg" alt="instagram"></a>
+                <li class="social-item me-16"><a href="#"><img src="/WhatDrink17/assets/icon-ig-84987776.svg" alt="instagram"></a>
                 </li>
-                <li class="social-item"><a href="#"><img src="/WhatDrink17/assets/icon-yt-aea158ac.svg" alt="youtube"></a></li>
+                <li class="social-item"><a href="#"><img src="/WhatDrink17/assets/icon-yt-cdc9d719.svg" alt="youtube"></a></li>
             </ul>
         </div>
         <div class="d-flex flex-column flex-md-row-reverse justify-content-between align-items-center align-items-md-end">
@@ -314,6 +305,8 @@
         </div>
     </div>
 </div>            
+            <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+            
 </body>
 
 </html>
