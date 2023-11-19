@@ -210,7 +210,7 @@ axios.get('https://json-server-project-wtkt.onrender.com/userDrinkCollections')
     // console.log(userDrinkCollections);
     getTopSixDrinks();
     drinkTagPush();  //組合Tag陣列
-    drinkRenderData(); //載入預設飲料卡片
+    // drinkRenderData(); //載入預設飲料卡片
     isCollect(); //收藏愛心CSS
   })
   .catch(error => {
