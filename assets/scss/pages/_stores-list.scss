@@ -3,6 +3,10 @@
         border: 1px solid $gray-light;
         margin-right: 0px;
 
+        img{
+            border-radius: 16px 16px 0 0 ;
+        }
+
         @include sm{
             &:nth-child(odd){
                 margin-right: 16px;
