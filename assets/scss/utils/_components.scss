@@ -337,3 +337,14 @@
     height: auto;
 }
 
+.lastestNews-img{
+    object-fit: cover;
+    height: 200px;
+
+    @include md {
+        height: 240px;
+    }
+    @include lg {
+        height: 360px;
+    }
+}
