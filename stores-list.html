@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/stores-list-c52c17ca.js"></script>
+  <script type="module" crossorigin src="/WhatDrink17/assets/stores-list-f02eb92d.js"></script>
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/bootstrap.min-a7e784e5.js">
   <link rel="stylesheet" href="/WhatDrink17/assets/bootstrap-376d4f5f.css">
 </head>
@@ -483,26 +483,30 @@
       </div>
       <!-- 頁碼 -->
       <nav aria-label="Page navigation" class="mt-40">
-        <ul class="pagination m-0 p-0 justify-content-center">
-          <li class="page-item mx-4 d-none d-md-block">
+        <ul id="pagination" class="pagination m-0 p-0 justify-content-center">
+          <li id="first-page-btn" class="page-item mx-4 d-none d-md-block">
             <a class="page-link text-gray" href="#" aria-label="Previous">
               <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
             </a>
           </li>
-          <li class="page-item mx-4 d-none d-md-block">
+
+          <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block">
             <a class="page-link text-gray" href="#" aria-label="Previous">
               <span class="material-symbols-outlined align-middle">chevron_left</span>
             </a>
           </li>
-          <li class="page-item mx-4 active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item mx-4"><a class="page-link" href="#">2</a></li>
-          <li class="page-item mx-4"><a class="page-link" href="#">3</a></li>
-          <li class="page-item mx-4 d-none d-md-block">
+
+          <li id="button" class="page-item mx-4 active"><a class="page-link" href="#">1</a></li>
+          <li id="button" class="page-item mx-4"><a class="page-link" href="#">2</a></li>
+          <li id="button" class="page-item mx-4"><a class="page-link" href="#">3</a></li>
+
+          <li id="nextPageBtn" class="page-item mx-4 d-none d-md-block">
             <a class="page-link" href="#" aria-label="Next">
               <span class="material-symbols-outlined align-middle">chevron_right</span>
             </a>
           </li>
-          <li class="page-item mx-4 d-none d-md-block">
+
+          <li id="last-page-btn" class="page-item mx-4 d-none d-md-block">
             <a class="page-link" href="#" aria-label="Next">
               <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
             </a>
