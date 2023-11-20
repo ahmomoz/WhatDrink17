@@ -1,5 +1,5 @@
 const newsArea = document.querySelector(".newsArea")
-//取得列表功能本體function，未完成測試中
+//取得列表功能本體function
 function newsListRender(data){
     let text = "";
     for(let i=0; i<data.length; i++){
@@ -18,7 +18,7 @@ function newsListRender(data){
                         <p class="card-text">
                         ${limitedDescription}...</p>
                         <div class="card-footer d-flex justify-content-end align-items-end">
-                            <p class="mb-0 text-right align-items-end"><a href="#">繼續閱讀 ></a></p>
+                            <p class="mb-0 text-right align-items-end"><a href="news-info.html?id=${data[i].id}">繼續閱讀 ></a></p>
                         </div>
                     </div>
                 </div>
