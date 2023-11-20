@@ -1,19 +1,23 @@
-const newsArea = document.querySelector(".news-content")
-console.log(newsArea);
-
+const newsArea = document.querySelector(".news-content");
+const pageButton = document.querySelector(".page-button");
 const newsId = window.location.href.split("?id=").pop()
-console.log(newsId);
+const breadcrumb = document.querySelector(".breadcrumb");
 
 axios.get(`https://json-server-project-wtkt.onrender.com/latestNews?id=${newsId}`)
-.then(response => {
-    let data = response.data;
-    newsInfoRender(data);
-    console.log(data[0].id);
-});
+    .then(response => {
+        let data = response.data;
+        newsInfoRender(data);
+    });
 
-function newsInfoRender(data){
-    let text = "";
-        text += `<h1 class="text-left">${data[0].title}</h1>
+function newsInfoRender(data) {
+    let breadcrumbText = `
+          <li class="breadcrumb-item d-inline"><a href="index.html" class="breadcrumb-item fs-16">首頁</a></li>
+          <li class="breadcrumb-item d-inline"><a href="news-list.html" class="breadcrumb-item fs-16">最新消息</a></li>
+          <li class="breadcrumb-item active d-inline" aria-current="page" class="fs-16">${data[0].title}</li>
+        `
+    breadcrumb.innerHTML = breadcrumbText;
+
+    let contentText = `<h1 class="text-left">${data[0].title}</h1>
         <p class="text-left mb-20 text-gray">發布時間：${data[0].releaseTime}</p>
         <div class="row">
           <div class="col-12 mx-auto text-center">
@@ -32,42 +36,16 @@ function newsInfoRender(data){
             <hr class="mt-30 mb-30"> 
           </div>
         </div>`
-    console.log(text);
-    newsArea.innerHTML = text;
-    }
+    newsArea.innerHTML = contentText;
 
-
-//取得列表功能本體function
-// function newsListRender(data){
-//     let text = "";
-//     for(let i=0; i<data.length; i++){
-//         // 截取 Description，限制顯示的文字數
-//         const limitedDescription = data[i].Description.substring(0, 100);
-//         text += `<div class="col-12 news-card mb-0" id="newsCard">
-//         <div class="card border-0">
-//             <div class="row">
-//                 <div class="col-12 col-lg-6 px-12">
-//                     <img src="${data[i].photo1}" class="card-img" alt="縮圖${i}">
-//                 </div>
-//                 <div class="col-12 col-lg-6">
-//                     <div class="card-body">
-//                         <h2 class="card-title mb-0">${data[i].title}</h2>
-//                         <p class="card-text release-time mb-8 mt-8">發佈日期: ${data[i].releaseTime}</p>
-//                         <p class="card-text">
-//                         ${limitedDescription}...</p>
-//                         <div class="card-footer d-flex justify-content-end align-items-end">
-//                             <p class="mb-0 text-right align-items-end"><a href="news-info.html">繼續閱讀 ></a></p>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-//     <hr class="mb-40 mt-20 mt-lg-40">`
-//     }
-//     console.log(text);
-//     newsArea.innerHTML = text;
-//     }
-
-//使用axios去get新消息資料後執行newsListRender
+    let pageButtonText = `<div class="row">
+    <div class="col-6 mb-60">
+      <a href="news-info.html?id=${Number(newsId) - 1}"><span class="material-symbols-outlined align-middle">keyboard_arrow_left</span>上一篇</a>
+    </div>
+    <div class="col-6 text-end mb-60">
+      <a href="news-info.html?id=${Number(newsId) + 1}">下一篇<span class="material-symbols-outlined align-middle">keyboard_arrow_right</span></a>
+    </div>
+  </div>`
+    pageButton.innerHTML = pageButtonText;
+}
 
