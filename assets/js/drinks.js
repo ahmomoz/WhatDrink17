@@ -10,11 +10,14 @@ let drinkTagAry = [];
 //茶種、配料tag組合函式----------------------------------------
 const drinkTagPush = () => {  //合併茶種、配料成一個陣列
   const drinkTag = drinkData.map(item => {
+    if (!item || !item.TeaType) {    //防呆
+      return ''; 
+    };
     if(item.Ingredients.length===0){
       return `${item.TeaType}`   //如果沒有配料就只推入茶種
     }else{
       return `${item.TeaType},${item.Ingredients}` //推入茶種,配料
-    }
+    };
   });
   const drinkTag2=[]; //去掉逗點
   for(let i = 0 ; i<drinkTag.length ; i++){
@@ -54,11 +57,16 @@ const drinkRender = () => {
                 </ul>
                 <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
               </div>
-              <a href="#" class="d-block text-primary text-end"><span
-                  class="material-symbols-outlined me-2s align-middle">
-                  location_on
-                </span>搜尋店家</a>
-            </div>
+              <div class="d-flex justify-content-between align-items-end ms-16">
+                <div class="d-flex align-items-center">
+                  <img src="../assets/images/tri.svg" class="tri" alt="tri">
+                  <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
+                </div>
+                <a href="#" class="d-block text-primary text-end"><span
+                    class="material-symbols-outlined me-2 align-middle">
+                    location_on
+                  </span>搜尋店家</a>
+              </div>
           </li>
         `;
     });
@@ -128,11 +136,16 @@ function displayFilteredData(data) {  //用於更新畫面的函數
             </ul>
             <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
           </div>
-          <a href="#" class="d-block text-primary text-end"><span
-              class="material-symbols-outlined me-2s align-middle">
-              location_on
-            </span>搜尋店家</a>
-        </div>
+          <div class="d-flex justify-content-between align-items-end ms-16">
+                <div class="d-flex align-items-center">
+                  <img src="../assets/images/tri.svg" class="tri" alt="tri">
+                  <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
+                </div>
+                <a href="#" class="d-block text-primary text-end"><span
+                    class="material-symbols-outlined me-2 align-middle">
+                    location_on
+                  </span>搜尋店家</a>
+          </div>
       </li>
     `;
   });
@@ -328,11 +341,16 @@ function renderCards(data) {
                 </ul>
                 <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
               </div>
-              <a href="#" class="d-block text-primary text-end"><span
-                  class="material-symbols-outlined me-2s align-middle">
-                  location_on
-                </span>搜尋店家</a>
-            </div>
+              <div class="d-flex justify-content-between align-items-end ms-16">
+                <div class="d-flex align-items-center">
+                  <img src="../assets/images/tri.svg" class="tri" alt="tri">
+                  <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
+                </div>
+                <a href="#" class="d-block text-primary text-end"><span
+                    class="material-symbols-outlined me-2 align-middle">
+                    location_on
+                  </span>搜尋店家</a>
+              </div>
           </li>
         `;
     });
@@ -364,7 +382,7 @@ function renderPaginationButtons() {
       </a>
     </li>
 
-    <li id="previous-page-btn" class="page-item mx-4 d-none d-md-block">
+    <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block">
       <a class="page-link ${preIsGray}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">chevron_left</span>
       </a>
@@ -394,20 +412,24 @@ function renderPaginationButtons() {
       });
     })
 
+    const page=[currentPage]; //存放目前頁面數字
+
     // 前一頁按鈕事件監聽器
-    const previousPageBtn = document.getElementById("previous-page-btn");
+    const previousPageBtn = document.getElementById("previousPageBtn");
     previousPageBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      if (currentPage > 1) {
-        onPageButtonClick(currentPage - 1);
-      };
+      if (page[0]> 1) {
+        onPageButtonClick(page[0] - 1);
+      }
     });
 
     // 後一頁按鈕事件監聽器
     const nextPageBtn = document.getElementById("next-page-btn");
     nextPageBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      onPageButtonClick(currentPage + 1);
+      if (page[0]!==totalPages) {
+        onPageButtonClick(page[0] + 1);
+      }
     });
 
     // 最前頁按鈕事件監聽器
@@ -424,19 +446,13 @@ function renderPaginationButtons() {
       onPageButtonClick(totalPages);
     });
 };
-function updateButtons() {
-  previousPageBtn.disabled = currentPage === 1;
-  nextPageBtn.disabled = currentPage === totalPages;
-  firstPageBtn.disabled = currentPage === 1;
-  lastPageBtn.disabled = currentPage === totalPages;
-  // 其他按鈕的更新邏輯（例如 next、first、last 等）
-};
+
 
 function onPageButtonClick(page) {
   // 頁面按鈕點擊事件
   currentPage = page;
   displayData(currentPage);
-  updateButtons();
+  //updateButtons();
   window.scrollTo({      //讓頁面跑到最上方的語法
     top: 0,
     behavior: 'smooth', // 使用平滑的滾動效果
@@ -444,7 +460,7 @@ function onPageButtonClick(page) {
 };
 // 初始化頁面顯示
 displayData(currentPage);
-updateButtons();
+//updateButtons();
 
 };
 
@@ -455,8 +471,9 @@ axios.get('https://json-server-project-wtkt.onrender.com/drinks')
     drinkTagPush();  //組合Tag陣列
     drinkRenderData(); //載入預設飲料卡片
     applyFilters();  //載入預設篩選器
-    isCollect(); //收藏愛心CSS
     renderPagination(drinkData); //頁碼邏輯
+    isCollect(); //收藏愛心CSS
+    
 })
 .catch(error => {
   console.error('Error fetching data:', error);
