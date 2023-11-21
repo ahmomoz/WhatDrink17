@@ -2,9 +2,10 @@
 const branchesList = document.querySelector("#branchesList"); //卡片列表
 let branchesData = [];
 import axios from 'axios';
+const shopId = window.location.href.split("?id=").pop()
 
 //將分店資料由外部寫入
-axios.get(`https://json-server-project-wtkt.onrender.com/shopBranches`)
+axios.get(`https://json-server-project-wtkt.onrender.com/shopBranches?shopId=${shopId}`)
     .then(response => {
         branchesData = response.data;
         branchesRenderData(); //載入預設飲料卡片

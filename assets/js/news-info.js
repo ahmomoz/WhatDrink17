@@ -1,6 +1,6 @@
 const newsArea = document.querySelector(".news-content");
 const pageButton = document.querySelector(".page-button");
-const newsId = window.location.href.split("?id=").pop()
+const newsId = window.location.href.split("?id=").pop();
 const breadcrumb = document.querySelector(".breadcrumb");
 
 axios.get(`https://json-server-project-wtkt.onrender.com/latestNews?id=${newsId}`)

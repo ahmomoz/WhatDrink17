@@ -1,10 +1,12 @@
 //變數命名
 const lastestMenu = document.querySelector("#lastestMenu"); //卡片列表
 let menuData = [];
+const menuId = window.location.href.split("?id=").pop()
+
 import axios from 'axios';
 
 //將分店資料由外部寫入
-axios.get(`https://json-server-project-wtkt.onrender.com/shops`)
+axios.get(`https://json-server-project-wtkt.onrender.com/shops?id=${menuId}`)
     .then(response => {
         menuData = response.data;
         menuRenderData(); //載入預設飲料卡片
