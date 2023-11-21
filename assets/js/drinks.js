@@ -59,7 +59,7 @@ const drinkRender = () => {
               </div>
               <div class="d-flex justify-content-between align-items-end ms-16">
                 <div class="d-flex align-items-center">
-                  <img src="../assets/images/tri.svg" class="tri" alt="tri">
+                  <img src="../assets/images/tri.png" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
                 </div>
                 <a href="#" class="d-block text-primary text-end"><span
@@ -140,7 +140,7 @@ function displayFilteredData(data) {  //用於更新畫面的函數
           </div>
           <div class="d-flex justify-content-between align-items-end ms-16">
                 <div class="d-flex align-items-center">
-                  <img src="../assets/images/tri.svg" class="tri" alt="tri">
+                  <img src="../assets/images/tri.png" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
                 </div>
                 <a href="#" class="d-block text-primary text-end"><span
@@ -197,7 +197,7 @@ function renderCards(data) {
               </div>
               <div class="d-flex justify-content-between align-items-end ms-16">
                 <div class="d-flex align-items-center">
-                  <img src="../assets/images/tri.svg" class="tri" alt="tri">
+                  <img src="../assets/images/tri.png" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
                 </div>
                 <a href="#" class="d-block text-primary text-end"><span

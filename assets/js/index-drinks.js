@@ -80,10 +80,6 @@ function getTopSixDrinks() {
   // 驗證
   // console.log(topSixIds);
 
-  // console.log(drinkData);
-  // console.log(topSixIds);
-
-
   // 找出對應的飲料數據
   drinkData.forEach(function (item) {
     topSixIds.forEach(function (i) {
@@ -116,7 +112,7 @@ const drinkRender = () => {
       </div>
       <div class="d-flex justify-content-between align-items-end ms-16">
         <div class="d-flex align-items-center">
-          <img src="../assets/images/tri.svg" class="arrow-left" alt="">
+          <img src="../assets/images/tri.png" class="tri" alt="">
           <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
         </div>
         <a href="#" class="d-block text-primary text-end"><span
