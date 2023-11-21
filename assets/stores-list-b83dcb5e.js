@@ -1,4 +1,4 @@
-import"./bootstrap.min-0bbeed66.js";const g=document.querySelector("#storeList");let p=document.querySelector("#deliverySelect"),y=document.querySelector("#CooperationSelect"),c=[],m=[];const P=()=>{c.forEach(a=>{const e={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let s="";for(const n in e)a[n]&&(s+=`<li class="stores-tag">${e[n]}</li>`);m.push(s),s=""})},$=()=>{let a="";c.forEach(e=>{a+=`
+import"./bootstrap.min-141e3aaa.js";const g=document.querySelector("#storeList");let p=document.querySelector("#deliverySelect"),x=document.querySelector("#CooperationSelect"),c=[],m=[];const B=()=>{c.forEach(t=>{const e={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let a="";for(const l in e)t[l]&&(a+=`<li class="stores-tag">${e[l]}</li>`);m.push(a),a=""})},D=()=>{let t="";c.forEach(e=>{t+=`
         <li class="stores-card">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
@@ -22,14 +22,14 @@ import"./bootstrap.min-0bbeed66.js";const g=document.querySelector("#storeList")
               <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
             </div>
           </li>
-        `}),g.innerHTML=a},B=()=>{$()};function D(){const a=document.querySelectorAll(".collect-btn");console.log(a),a.forEach(function(e){e.addEventListener("click",function(s){s.target.value=="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):s.target.value=="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid")),console.log("hi")})})}p.addEventListener("change",b);y.addEventListener("change",b);function b(){let a=c;p.value!==""&&(p.value==="uber eat"?a=a.filter(e=>e.uber):p.value==="food panda"&&(a=a.filter(e=>e.foodpanda))),y.value!==""&&(a=a.filter(e=>e.hasEvent)),I(a),x(c)}function I(a){let e="";a.forEach(s=>{e+=`
+        `}),g.innerHTML=t},I=()=>{D(),E(c)};function S(){const t=document.querySelectorAll(".collect-btn");console.log(t),t.forEach(function(e){e.addEventListener("click",function(a){a.target.value=="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):a.target.value=="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid")),console.log("hi")})})}p.addEventListener("change",b);x.addEventListener("change",b);function b(){let t=c;p.value!==""&&(p.value==="uber eat"?t=t.filter(e=>e.uber):p.value==="food panda"&&(t=t.filter(e=>e.foodpanda))),x.value!==""&&(t=t.filter(e=>e.hasEvent)),k(t),E(t),v(c)}function k(t){let e="";t.forEach(a=>{e+=`
       <li class="stores-card">
       <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
         value="collected"></button>
-      <img src="${s.logo}" class="mb-8" alt="store image">
+      <img src="${a.logo}" class="mb-8" alt="store image">
       <div class="stores-card-body px-16 pt-8 pb-24 px-md-24">
         <div class="d-flex justify-content-between">
-          <h5 class="mb-8 mb-md-12">${s.name}</h5>
+          <h5 class="mb-8 mb-md-12">${a.name}</h5>
           <ul class="d-flex text-primary">
             <li><i class="fa-solid fa-star"></i></li>
             <li><i class="fa-solid fa-star"></i></li>
@@ -39,21 +39,21 @@ import"./bootstrap.min-0bbeed66.js";const g=document.querySelector("#storeList")
           </ul>
         </div>
         <p class="stores-card-content mb-16">
-          ${s.Description}</p>
+          ${a.Description}</p>
         <ul class="stores-tag-group mb-16">
-          ${m[s.id-1]}
+          ${m[a.id-1]}
         </ul>
         <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
       </div>
     </li>
-    `}),g.innerHTML=e}const x=a=>{const e=a.length,s=10,n=Math.ceil(e/s);let o=1;function v(i){const r=(i-1)*s,l=r+s,f=a.slice(r,l);k(f),E()}function k(i){g.innerHTML="";let r="";i.forEach(l=>{r+=`
+    `}),g.innerHTML=e}const v=t=>{const e=t.length,a=12,l=Math.ceil(e/a);let i=1;function h(n){const o=(n-1)*a,r=o+a,f=t.slice(o,r);L(f),P()}function L(n){g.innerHTML="";let o="";n.forEach(r=>{o+=`
           <li class="stores-card">
           <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
             value="collected"></button>
-          <img src="${l.logo}" class="mb-8" alt="store image">
+          <img src="${r.logo}" class="mb-8" alt="store image">
           <div class="stores-card-body px-16 pt-8 pb-24 px-md-24">
             <div class="d-flex justify-content-between">
-              <h5 class="mb-8 mb-md-12">${l.name}</h5>
+              <h5 class="mb-8 mb-md-12">${r.name}</h5>
               <ul class="d-flex text-primary">
                 <li><i class="fa-solid fa-star"></i></li>
                 <li><i class="fa-solid fa-star"></i></li>
@@ -63,31 +63,31 @@ import"./bootstrap.min-0bbeed66.js";const g=document.querySelector("#storeList")
               </ul>
             </div>
             <p class="stores-card-content mb-16">
-              ${l.Description}</p>
+              ${r.Description}</p>
             <ul class="stores-tag-group mb-16">
-              ${m[l.id-1]}
+              ${m[r.id-1]}
             </ul>
             <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
           </div>
         </li>
-          `}),g.innerHTML=r}function E(){const i=document.getElementById("pagination");i.innerHTML="";let r="";for(let t=1;t<=n;t++)r+=`
-        <li class="page-item mx-4 ${t===o?"active":""}">   
-          <a class="page-link" href="#" data-page="${t}">${t}</a>
+          `}),g.innerHTML=o}function P(){const n=document.getElementById("pagination");n.innerHTML="";let o="";for(let s=1;s<=l;s++)o+=`
+        <li class="page-item mx-4 ${s===i?"active":""}">   
+          <a class="page-link" href="#" data-page="${s}">${s}</a>
         </li>
-      `;const l=o===1?"text-gray":"",f=o===n?"text-gray":"";i.innerHTML=`
+      `;const r=i===1?"text-gray":"",f=i===l?"text-gray":"";n.innerHTML=`
       <li id="first-page-btn" class="page-item mx-4 d-none d-md-block">
-        <a class="page-link ${l}" href="#" aria-label="Previous">
+        <a class="page-link ${r}" href="#" aria-label="Previous">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
         </a>
       </li>
   
       <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block">
-        <a class="page-link ${l}" href="#" aria-label="Previous">
+        <a class="page-link ${r}" href="#" aria-label="Previous">
           <span class="material-symbols-outlined align-middle">chevron_left</span>
         </a>
       </li>
   
-      ${r}
+      ${o}
   
       <li id="next-page-btn" class="page-item mx-4 d-none d-md-block">
         <a class="page-link ${f}" href="#" aria-label="Next">
@@ -99,4 +99,4 @@ import"./bootstrap.min-0bbeed66.js";const g=document.querySelector("#storeList")
         <a class="page-link ${f}" href="#" aria-label="Next">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
         </a>
-      </li>`,document.querySelectorAll(".page-link").forEach(t=>{t.addEventListener("click",h=>{h.preventDefault();const L=parseInt(t.dataset.page);d(L)})});const u=[o];document.getElementById("previousPageBtn").addEventListener("click",t=>{t.preventDefault(),u[0]>1&&d(u[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",t=>{t.preventDefault(),u[0]!==n&&d(u[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",t=>{t.preventDefault(),d(1)}),document.getElementById("last-page-btn").addEventListener("click",t=>{t.preventDefault(),d(n)})}function d(i){o=i,v(o),window.scrollTo({top:0,behavior:"smooth"})}v(o)};axios.get("https://json-server-project-wtkt.onrender.com/shops").then(a=>{c=a.data,P(),B(),b(),x(c),D()}).catch(a=>{console.error("Error fetching data:",a)});
+      </li>`,document.querySelectorAll(".page-link").forEach(s=>{s.addEventListener("click",y=>{y.preventDefault();const $=parseInt(s.dataset.page);d($)})});const u=[i];document.getElementById("previousPageBtn").addEventListener("click",s=>{s.preventDefault(),u[0]>1&&d(u[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",s=>{s.preventDefault(),u[0]!==l&&d(u[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",s=>{s.preventDefault(),d(1)}),document.getElementById("last-page-btn").addEventListener("click",s=>{s.preventDefault(),d(l)})}function d(n){i=n,h(i),window.scrollTo({top:0,behavior:"smooth"})}h(i)},E=t=>{const e=document.querySelector("#searchStores");e.addEventListener("keydown",a=>{if(a.keyCode===13){let l=t;e.value!==""&&(l=l.filter(i=>i.name.includes(e.value))),k(l),v(l)}})};axios.get("https://json-server-project-wtkt.onrender.com/shops").then(t=>{c=t.data,B(),I(),b(),v(c),S()}).catch(t=>{console.error("Error fetching data:",t)});
