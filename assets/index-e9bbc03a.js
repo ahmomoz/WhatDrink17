@@ -1,4 +1,4 @@
-import"./bootstrap.min-328bce5f.js";import{a as m}from"./axios-28bc18a3.js";const b=document.querySelector("#lastestNews");let f=[];function k(){let e="";f.forEach(function(t){e+=`
+import"./bootstrap.min-0bbeed66.js";import{a as m}from"./axios-28bc18a3.js";const b=document.querySelector("#lastestNews");let f=[];function k(){let e="";f.forEach(function(t){e+=`
         <div class="swiper-slide">
         <img src="${t.photo1}" class="lastestNews-img w-100 rounded-16 mb-8" alt="banner">
         <p class="fs-18 fw-500">${t.title}</p>

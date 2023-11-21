@@ -1,4 +1,4 @@
-import"./bootstrap.min-328bce5f.js";import{a}from"./axios-28bc18a3.js";const l=document.querySelector("#branchesList");let n=[];const t=window.location.href.split("?id=").pop();a.get(`https://json-server-project-wtkt.onrender.com/shopBranches?shopId=${t}`).then(s=>{n=s.data,c()}).catch(s=>{console.error("Error fetching data:",s)});const r=()=>{let s="";n.forEach(e=>{s+=`              
+import"./bootstrap.min-0bbeed66.js";import{a}from"./axios-28bc18a3.js";const l=document.querySelector("#branchesList");let n=[];const t=window.location.href.split("?id=").pop();a.get(`https://json-server-project-wtkt.onrender.com/shopBranches?shopId=${t}`).then(s=>{n=s.data,c()}).catch(s=>{console.error("Error fetching data:",s)});const r=()=>{let s="";n.forEach(e=>{s+=`              
         <div class="col-12 col-md-6 col-lg-4 mb-16">
     <div class="border rounded-16 px-40 py-24">
       <p class="fs-20 fw-500 mb-12">${e.branchName}</p>
