@@ -13,7 +13,7 @@ import"./bootstrap.min-328bce5f.js";const u=document.querySelector("#drinkList")
               </div>
               <div class="d-flex justify-content-between align-items-end ms-16">
                 <div class="d-flex align-items-center">
-                  <img src="../assets/images/tri.svg" class="tri" alt="tri">
+                  <img src="../assets/images/tri.png" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${e.StoreName}</p>
                 </div>
                 <a href="#" class="d-block text-primary text-end"><span
@@ -37,7 +37,7 @@ import"./bootstrap.min-328bce5f.js";const u=document.querySelector("#drinkList")
           </div>
           <div class="d-flex justify-content-between align-items-end ms-16">
                 <div class="d-flex align-items-center">
-                  <img src="../assets/images/tri.svg" class="tri" alt="tri">
+                  <img src="../assets/images/tri.png" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${n.StoreName}</p>
                 </div>
                 <a href="#" class="d-block text-primary text-end"><span
@@ -46,7 +46,7 @@ import"./bootstrap.min-328bce5f.js";const u=document.querySelector("#drinkList")
                   </span>搜尋店家</a>
           </div>
       </li>
-    `}),u.innerHTML=e}const h=t=>{const e=t.length,n=10,l=Math.ceil(e/n);let a=1;function m(r){const c=(r-1)*n,i=c+n,g=t.slice(c,i);b(g),E()}function b(r){u.innerHTML="";let c="";r.forEach(i=>{c+=`
+    `}),u.innerHTML=e}const h=t=>{const e=t.length,n=10,l=Math.ceil(e/n);let a=1;function m(r){const c=(r-1)*n,i=c+n,p=t.slice(c,i);b(p),E()}function b(r){u.innerHTML="";let c="";r.forEach(i=>{c+=`
           <li class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
@@ -61,7 +61,7 @@ import"./bootstrap.min-328bce5f.js";const u=document.querySelector("#drinkList")
               </div>
               <div class="d-flex justify-content-between align-items-end ms-16">
                 <div class="d-flex align-items-center">
-                  <img src="../assets/images/tri.svg" class="tri" alt="tri">
+                  <img src="../assets/images/tri.png" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${i.StoreName}</p>
                 </div>
                 <a href="#" class="d-block text-primary text-end"><span
@@ -74,7 +74,7 @@ import"./bootstrap.min-328bce5f.js";const u=document.querySelector("#drinkList")
       <li class="page-item mx-4 ${s===a?"active":""}">   
         <a class="page-link" href="#" data-page="${s}">${s}</a>
       </li>
-    `;const i=a===1?"text-gray":"",g=a===l?"text-gray":"";r.innerHTML=`
+    `;const i=a===1?"text-gray":"",p=a===l?"text-gray":"";r.innerHTML=`
     <li id="first-page-btn" class="page-item mx-4 d-none d-md-block">
       <a class="page-link ${i}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
@@ -90,13 +90,13 @@ import"./bootstrap.min-328bce5f.js";const u=document.querySelector("#drinkList")
     ${c}
 
     <li id="next-page-btn" class="page-item mx-4 d-none d-md-block">
-      <a class="page-link ${g}" href="#" aria-label="Next">
+      <a class="page-link ${p}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">chevron_right</span>
       </a>
     </li>
 
     <li id="last-page-btn" class="page-item mx-4 d-none d-md-block">
-      <a class="page-link ${g}" href="#" aria-label="Next">
+      <a class="page-link ${p}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
       </a>
-    </li>`,document.querySelectorAll(".page-link").forEach(s=>{s.addEventListener("click",x=>{x.preventDefault();const T=parseInt(s.dataset.page);o(T)})});const p=[a];document.getElementById("previousPageBtn").addEventListener("click",s=>{s.preventDefault(),p[0]>1&&o(p[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",s=>{s.preventDefault(),p[0]!==l&&o(p[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",s=>{s.preventDefault(),o(1)}),document.getElementById("last-page-btn").addEventListener("click",s=>{s.preventDefault(),o(l)})}function o(r){a=r,m(a),window.scrollTo({top:0,behavior:"smooth"})}m(a)},L=t=>{const e=document.querySelector("#searchDrinks");e.addEventListener("keydown",n=>{if(n.keyCode===13){let l=t;e.value!==""&&(l=l.filter(a=>a.DrinkName.includes(e.value))),$(l),h(l)}})};axios.get("https://json-server-project-wtkt.onrender.com/drinks").then(t=>{d=t.data,w(),D(),k(),h(d),B()}).catch(t=>{console.error("Error fetching data:",t)});
+    </li>`,document.querySelectorAll(".page-link").forEach(s=>{s.addEventListener("click",x=>{x.preventDefault();const T=parseInt(s.dataset.page);o(T)})});const g=[a];document.getElementById("previousPageBtn").addEventListener("click",s=>{s.preventDefault(),g[0]>1&&o(g[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",s=>{s.preventDefault(),g[0]!==l&&o(g[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",s=>{s.preventDefault(),o(1)}),document.getElementById("last-page-btn").addEventListener("click",s=>{s.preventDefault(),o(l)})}function o(r){a=r,m(a),window.scrollTo({top:0,behavior:"smooth"})}m(a)},L=t=>{const e=document.querySelector("#searchDrinks");e.addEventListener("keydown",n=>{if(n.keyCode===13){let l=t;e.value!==""&&(l=l.filter(a=>a.DrinkName.includes(e.value))),$(l),h(l)}})};axios.get("https://json-server-project-wtkt.onrender.com/drinks").then(t=>{d=t.data,w(),D(),k(),h(d),B()}).catch(t=>{console.error("Error fetching data:",t)});
