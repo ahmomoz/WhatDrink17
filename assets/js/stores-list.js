@@ -327,7 +327,7 @@ axios.get('https://json-server-project-wtkt.onrender.com/shops')
     storeRenderData();   //載入預設店家卡片
     applyFilters();  //載入預設篩選器
     renderPagination(storeData); //頁碼邏輯
-    isCollect(); ////收藏愛心CSS
+    isCollect(); //收藏愛心CSS
 })
 .catch(error => {
   console.error('Error fetching data:', error);
