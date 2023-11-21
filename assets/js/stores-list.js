@@ -62,6 +62,7 @@ const storeRender = () => {
 //初始化預設飲料卡片函式--------------------------------------------
 const storeRenderData = () => {
   storeRender();
+  searchRender(storeData); //搜尋邏輯
 };
 
 //收藏愛心CSS樣式函式-----------------------------------------------
@@ -108,6 +109,7 @@ function applyFilters() {  //條件篩選的函數
   };
 
   displayFilteredData(filteredData); //顯示篩選後的數據
+  searchRender(filteredData);  //若於篩選條件中搜尋，顯示搜尋後的數據
   renderPagination(storeData); //頁碼邏輯
 };
 function displayFilteredData(data) {  //用於更新畫面的函數
@@ -146,7 +148,7 @@ function displayFilteredData(data) {  //用於更新畫面的函數
 const renderPagination = (pageData) =>{
 
   const totalItems = pageData.length; //卡片數量
-  const itemsPerPage = 10;  //每頁顯示十個卡片
+  const itemsPerPage = 12;  //每頁顯示十個卡片
   const totalPages = Math.ceil(totalItems / itemsPerPage); //計算總頁數
   let currentPage = 1;  //當前頁數，預設為第一頁
   
@@ -292,7 +294,6 @@ const renderPagination = (pageData) =>{
     // 頁面按鈕點擊事件
     currentPage = page;
     displayData(currentPage);
-    //updateButtons();
     window.scrollTo({      //讓頁面跑到最上方的語法
       top: 0,
       behavior: 'smooth', // 使用平滑的滾動效果
@@ -300,9 +301,23 @@ const renderPagination = (pageData) =>{
   };
   // 初始化頁面顯示
   displayData(currentPage);
-  //updateButtons();
   
   };
+
+//搜尋邏輯------------------------------------------------------
+const searchRender = (data) => {
+  const searchInput = document.querySelector("#searchStores");
+  searchInput.addEventListener('keydown', e =>{
+    if(e.keyCode===13){  //enter的keyCode是13
+      let searchData = data;
+        if (searchInput.value !== "") {  //搜尋
+          searchData = searchData.filter(item => item.name.includes(searchInput.value));
+        };
+      displayFilteredData(searchData); //顯示搜尋後的數據
+      renderPagination(searchData);  //更新搜尋後的頁碼
+    }
+  });
+};
 
 //將店家資料由外部寫入
 axios.get('https://json-server-project-wtkt.onrender.com/shops')
