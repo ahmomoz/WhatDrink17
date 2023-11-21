@@ -116,7 +116,7 @@ const drinkRender = () => {
       </div>
       <div class="d-flex justify-content-between align-items-end ms-16">
         <div class="d-flex align-items-center">
-          <img src="../assets/images/tri.svg" class="tri" alt="tri">
+          <img src="../assets/images/tri.svg" class="arrow-left" alt="">
           <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
         </div>
         <a href="#" class="d-block text-primary text-end"><span

@@ -14,7 +14,7 @@ function lastestNewsRender() {
     })
 
     lastestNews.innerHTML = str;
-    console.log(lastestNews);
+    // console.log(lastestNews);
 }
 
 import axios from 'axios';
