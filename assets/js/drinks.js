@@ -229,14 +229,19 @@ function renderPaginationButtons() {
   const preIsGray = currentPage === 1 ? 'text-gray' : ''; //檢查當前頁面是否為1，是的話加上灰色樣式
   const nextIsGray = currentPage === totalPages ? 'text-gray' : ''; //檢查當前頁面是否為最後一頁，是的話加上灰色樣式
 
+  const firstPageDisabled = currentPage === 1 ? 'disabled' : ''; // 如果當前頁面為第一頁，添加disabled屬性
+  const previousPageDisabled = currentPage === 1 ? 'disabled' : ''; // 如果當前頁面為第一頁，添加disabled屬性
+  const nextPageDisabled = currentPage === totalPages ? 'disabled' : ''; // 如果當前頁面為最後一頁，添加disabled屬性
+  const lastPageDisabled = currentPage === totalPages ? 'disabled' : ''; // 如果當前頁面為最後一頁，添加disabled屬性
+
   buttonsContainer.innerHTML =`
-    <li id="first-page-btn" class="page-item mx-4 d-none d-md-block">
+    <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${firstPageDisabled}">
       <a class="page-link ${preIsGray}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
       </a>
     </li>
 
-    <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block">
+    <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block ${previousPageDisabled}">
       <a class="page-link ${preIsGray}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">chevron_left</span>
       </a>
@@ -244,13 +249,13 @@ function renderPaginationButtons() {
 
     ${str}
 
-    <li id="next-page-btn" class="page-item mx-4 d-none d-md-block">
+    <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${nextPageDisabled}">
       <a class="page-link ${nextIsGray}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">chevron_right</span>
       </a>
     </li>
 
-    <li id="last-page-btn" class="page-item mx-4 d-none d-md-block">
+    <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${lastPageDisabled}">
       <a class="page-link ${nextIsGray}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
       </a>
@@ -290,14 +295,18 @@ function renderPaginationButtons() {
     const firstPageBtn = document.getElementById("first-page-btn");
     firstPageBtn.addEventListener("click", (e) => {
       e.preventDefault();
+      if (page[0]> 1) {
       onPageButtonClick(1);
+      };
     });
 
     // 最後頁按鈕事件監聽器
     const lastPageBtn = document.getElementById("last-page-btn");
     lastPageBtn.addEventListener("click", (e) => {
       e.preventDefault();
+      if (page[0]!==totalPages) {
       onPageButtonClick(totalPages);
+      };
     });
 };
 
@@ -306,15 +315,13 @@ function onPageButtonClick(page) {
   // 頁面按鈕點擊事件
   currentPage = page;
   displayData(currentPage);
-  window.scrollTo({      //讓頁面跑到最上方的語法
-    top: 0,
-    behavior: 'smooth', // 使用平滑的滾動效果
-  });
+  window.scrollTo(0,400);   //讓頁面跑到最上方的語法
 };
 // 初始化頁面顯示
 displayData(currentPage);
 
 };
+
 
 //搜尋邏輯------------------------------------------------------
 const searchRender = (data) => {
