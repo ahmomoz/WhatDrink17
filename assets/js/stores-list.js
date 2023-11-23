@@ -313,15 +313,22 @@ const renderPagination = (pageData) =>{
 //搜尋邏輯------------------------------------------------------
 const searchRender = (data) => {
   const searchInput = document.querySelector("#searchStores");
-  searchInput.addEventListener('keydown', e =>{
-    if(e.keyCode===13){  //enter的keyCode是13
-      let searchData = data;
+  const handleSearch = () => {                     //搜尋邏輯函式
+    let searchData = data;
         if (searchInput.value !== "") {  //搜尋
           searchData = searchData.filter(item => item.name.includes(searchInput.value));
         };
-      displayFilteredData(searchData); //顯示搜尋後的數據
-      renderPagination(searchData);  //更新搜尋後的頁碼
+    displayFilteredData(searchData); //顯示搜尋後的數據
+    renderPagination(searchData);  //更新搜尋後的頁碼
+  };
+
+  searchInput.addEventListener('keydown', e =>{   //ENTER按下觸發
+    if (e.keyCode === 13) {
+      handleSearch();
     }
+  });
+  searchInput.addEventListener('blur', e =>{  //輸入框失焦觸發
+    handleSearch();
   });
 };
 
