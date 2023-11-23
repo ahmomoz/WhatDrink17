@@ -1,0 +1,1 @@
+import"./bootstrap.min-141e3aaa.js";console.log("test");axios.post("https://json-server-project-wtkt.onrender.com/feedbacks",{id:1,memberId:1,category:"test",content:"test"}).then(e=>{console.log("成功：",e.data)}).catch(e=>{console.log("錯誤：",e.response.data)});
