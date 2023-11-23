@@ -1,4 +1,4 @@
-import"./bootstrap.min-141e3aaa.js";const p=document.querySelector("#storeList");let g=document.querySelector("#deliverySelect"),x=document.querySelector("#CooperationSelect"),d=[],b=[];const w=()=>{d.forEach(a=>{const e={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let t="";for(const l in e)a[l]&&(t+=`<li class="stores-tag">${e[l]}</li>`);b.push(t),t=""})},T=()=>{let a="";d.forEach(e=>{a+=`
+import"./bootstrap.min-141e3aaa.js";const p=document.querySelector("#storeList");let g=document.querySelector("#deliverySelect"),x=document.querySelector("#CooperationSelect"),d=[],b=[];const w=()=>{d.forEach(a=>{const e={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let t="";for(const s in e)a[s]&&(t+=`<li class="stores-tag">${e[s]}</li>`);b.push(t),t=""})},T=()=>{let a="";d.forEach(e=>{a+=`
         <li class="stores-card">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
@@ -46,7 +46,7 @@ import"./bootstrap.min-141e3aaa.js";const p=document.querySelector("#storeList")
         <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
       </div>
     </li>
-    `}),p.innerHTML=e}const v=a=>{const e=a.length,t=12,l=Math.ceil(e/t);let i=1;function h(r){const o=(r-1)*t,n=o+t,u=a.slice(o,n);k(u),E()}function k(r){p.innerHTML="";let o="";r.forEach(n=>{o+=`
+    `}),p.innerHTML=e}const v=a=>{const e=a.length,t=12,s=Math.ceil(e/t);let i=1;function h(r){const o=(r-1)*t,n=o+t,u=a.slice(o,n);k(u),E()}function k(r){p.innerHTML="";let o="";r.forEach(n=>{o+=`
           <li class="stores-card">
           <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
             value="collected"></button>
@@ -70,11 +70,11 @@ import"./bootstrap.min-141e3aaa.js";const p=document.querySelector("#storeList")
             <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
           </div>
         </li>
-          `}),p.innerHTML=o}function E(){const r=document.getElementById("pagination");r.innerHTML="";let o="";for(let s=1;s<=l;s++)o+=`
-        <li class="page-item mx-4 ${s===i?"active":""}">   
-          <a class="page-link" href="#" data-page="${s}">${s}</a>
+          `}),p.innerHTML=o}function E(){const r=document.getElementById("pagination");r.innerHTML="";let o="";for(let l=1;l<=s;l++)o+=`
+        <li class="page-item mx-4 ${l===i?"active":""}">   
+          <a class="page-link" href="#" data-page="${l}">${l}</a>
         </li>
-      `;const n=i===1?"text-gray":"",u=i===l?"text-gray":"",L=i===1?"disabled":"",B=i===1?"disabled":"",D=i===l?"disabled":"",I=i===l?"disabled":"";r.innerHTML=`
+      `;const n=i===1?"text-gray":"",u=i===s?"text-gray":"",L=i===1?"disabled":"",B=i===1?"disabled":"",D=i===s?"disabled":"",S=i===s?"disabled":"";r.innerHTML=`
       <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${L}">
         <a class="page-link ${n}" href="#" aria-label="Previous">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
@@ -95,8 +95,8 @@ import"./bootstrap.min-141e3aaa.js";const p=document.querySelector("#storeList")
         </a>
       </li>
   
-      <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${I}">
+      <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${S}">
         <a class="page-link ${u}" href="#" aria-label="Next">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
         </a>
-      </li>`,document.querySelectorAll(".page-link").forEach(s=>{s.addEventListener("click",y=>{y.preventDefault();const S=parseInt(s.dataset.page);f(S)})});const c=[i];document.getElementById("previousPageBtn").addEventListener("click",s=>{s.preventDefault(),c[0]>1&&f(c[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",s=>{s.preventDefault(),c[0]!==l&&f(c[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",s=>{s.preventDefault(),c[0]>1&&f(1)}),document.getElementById("last-page-btn").addEventListener("click",s=>{s.preventDefault(),c[0]!==l&&f(l)})}function f(r){i=r,h(i),window.scrollTo(0,400)}h(i)},$=a=>{const e=document.querySelector("#searchStores");e.addEventListener("keydown",t=>{if(t.keyCode===13){let l=a;e.value!==""&&(l=l.filter(i=>i.name.includes(e.value))),P(l),v(l)}})};axios.get("https://json-server-project-wtkt.onrender.com/shops").then(a=>{d=a.data,w(),_(),m(),v(d),C()}).catch(a=>{console.error("Error fetching data:",a)});
+      </li>`,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",y=>{y.preventDefault();const I=parseInt(l.dataset.page);f(I)})});const c=[i];document.getElementById("previousPageBtn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&f(c[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==s&&f(c[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&f(1)}),document.getElementById("last-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==s&&f(s)})}function f(r){i=r,h(i),window.scrollTo(0,400)}h(i)},$=a=>{const e=document.querySelector("#searchStores"),t=()=>{let s=a;e.value!==""&&(s=s.filter(i=>i.name.includes(e.value))),P(s),v(s)};e.addEventListener("keydown",s=>{s.keyCode===13&&t()}),e.addEventListener("blur",s=>{t()})};axios.get("https://json-server-project-wtkt.onrender.com/shops").then(a=>{d=a.data,w(),_(),m(),v(d),C()}).catch(a=>{console.error("Error fetching data:",a)});
