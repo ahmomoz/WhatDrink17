@@ -21,7 +21,7 @@ axios.get(`https://json-server-project-wtkt.onrender.com/shops?id=${menuId}`)
 const menuRender = () => {
     let str = '';
     menuData.forEach(item => {
-        console.log(item.menu);
+        // console.log(item.menu);
 
         str += `              
         <img src="${item.menu}" class="d-block mw-100" alt="菜單">`;
