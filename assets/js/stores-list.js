@@ -51,7 +51,7 @@ const storeRender = () => {
               <ul class="stores-tag-group mb-16">
                 ${storeTagAry[item.id-1]}
               </ul>
-              <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
+              <a href="stores-info.html?id=${item.id}" class="stores-card-btn">查看店家資訊</a>
             </div>
           </li>
         `;
@@ -191,7 +191,7 @@ const renderPagination = (pageData) =>{
             <ul class="stores-tag-group mb-16">
               ${storeTagAry[item.id-1]}
             </ul>
-            <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
+            <a href="stores-info.html?id=${item.id}" class="stores-card-btn">查看店家資訊</a>
           </div>
         </li>
           `;
