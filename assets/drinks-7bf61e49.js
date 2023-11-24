@@ -1,4 +1,4 @@
-import"./bootstrap.min-7e310722.js";const p=document.querySelector("#drinkList");let v=document.querySelector("#teaTypeSelect"),h=document.querySelector("#ingredientsSelect"),o=[],f=[];const I=()=>{const t=o.map(a=>!a||!a.TeaType?"":a.Ingredients.length===0?`${a.TeaType}`:`${a.TeaType},${a.Ingredients}`),e=[];for(let a=0;a<t.length;a++)e.push(t[a].split(","));let n="",s=[];e.forEach(a=>{a.forEach((g,b)=>{n+=`<li class="drinks-tag">${g}</li>`,b===a.length-1&&(s.push(n),n="")}),f.push(s),s=[]})},S=()=>{let t="";o.forEach(e=>{t+=`
+import"./bootstrap.min-7e310722.js";const p=document.querySelector("#drinkList");let k=document.querySelector("#teaTypeSelect"),v=document.querySelector("#ingredientsSelect"),o=[],f=[];const I=()=>{const t=o.map(a=>!a||!a.TeaType?"":a.Ingredients.length===0?`${a.TeaType}`:`${a.TeaType},${a.Ingredients}`),e=[];for(let a=0;a<t.length;a++)e.push(t[a].split(","));let n="",s=[];e.forEach(a=>{a.forEach((g,b)=>{n+=`<li class="drinks-tag">${g}</li>`,b===a.length-1&&(s.push(n),n="")}),f.push(s),s=[]})},S=()=>{let t="";o.forEach(e=>{t+=`
           <li class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
@@ -12,7 +12,7 @@ import"./bootstrap.min-7e310722.js";const p=document.querySelector("#drinkList")
                 <p class="drinks-card-content mb-24 mb-md-32">${e.Description}</p>
               </div>
               <div class="d-flex justify-content-between align-items-end ms-16">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center drinkStoreTag">
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${e.StoreName}</p>
                 </div>
@@ -22,7 +22,7 @@ import"./bootstrap.min-7e310722.js";const p=document.querySelector("#drinkList")
                   </span>搜尋店家</a>
               </div>
           </li>
-        `}),p.innerHTML=t},_=()=>{S(),L(o)};function N(){const t=document.querySelectorAll(".collect-btn");console.log(t),t.forEach(function(e){e.addEventListener("click",function(n){n.target.value=="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):n.target.value=="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid")),console.log("hi")})})}v.addEventListener("change",k);h.addEventListener("change",k);function k(){let t=o;v.value!==""&&(t=t.filter(e=>e.TeaType.includes(v.value))),h.value!==""&&(t=t.filter(e=>e.Ingredients.includes(h.value))),$(t),L(t),y(t)}function $(t){let e="";t.forEach(n=>{e+=`
+        `}),p.innerHTML=t},_=()=>{S(),L(o)};function N(){const t=document.querySelectorAll(".collect-btn");console.log(t),t.forEach(function(e){e.addEventListener("click",function(n){n.target.value=="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):n.target.value=="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid")),console.log("hi")})})}k.addEventListener("change",h);v.addEventListener("change",h);function h(){let t=o;k.value!==""&&(t=t.filter(e=>e.TeaType.includes(k.value))),v.value!==""&&(t=t.filter(e=>e.Ingredients.includes(v.value))),$(t),L(t),y(t)}function $(t){let e="";t.forEach(n=>{e+=`
       <li class="drinks-card px-16 py-24 px-md-24">
         <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
           value="collected"></button>
@@ -36,7 +36,7 @@ import"./bootstrap.min-7e310722.js";const p=document.querySelector("#drinkList")
             <p class="drinks-card-content mb-24 mb-md-32">${n.Description}</p>
           </div>
           <div class="d-flex justify-content-between align-items-end ms-16">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center drinkStoreTag">
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${n.StoreName}</p>
                 </div>
@@ -60,7 +60,7 @@ import"./bootstrap.min-7e310722.js";const p=document.querySelector("#drinkList")
                 <p class="drinks-card-content mb-24 mb-md-32">${i.Description}</p>
               </div>
               <div class="d-flex justify-content-between align-items-end ms-16">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center drinkStoreTag">
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${i.StoreName}</p>
                 </div>
@@ -74,14 +74,14 @@ import"./bootstrap.min-7e310722.js";const p=document.querySelector("#drinkList")
       <li class="page-item mx-4 ${l===a?"active":""}">   
         <a class="page-link" href="#" data-page="${l}">${l}</a>
       </li>
-    `;const i=a===1?"text-gray":"",u=a===s?"text-gray":"",P=a===1?"disabled":"",w=a===1?"disabled":"",E=a===s?"disabled":"",T=a===s?"disabled":"";r.innerHTML=`
+    `;const i=a===1?"text-gray":"",u=a===s?"text-gray":"",P=a===1?"disabled":"",T=a===1?"disabled":"",w=a===s?"disabled":"",E=a===s?"disabled":"";r.innerHTML=`
     <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${P}">
       <a class="page-link ${i}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
       </a>
     </li>
 
-    <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block ${w}">
+    <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block ${T}">
       <a class="page-link ${i}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">chevron_left</span>
       </a>
@@ -89,14 +89,14 @@ import"./bootstrap.min-7e310722.js";const p=document.querySelector("#drinkList")
 
     ${c}
 
-    <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${E}">
+    <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${w}">
       <a class="page-link ${u}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">chevron_right</span>
       </a>
     </li>
 
-    <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${T}">
+    <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${E}">
       <a class="page-link ${u}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
       </a>
-    </li>`,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",x=>{x.preventDefault();const B=parseInt(l.dataset.page);m(B)})});const d=[a];document.getElementById("previousPageBtn").addEventListener("click",l=>{l.preventDefault(),d[0]>1&&m(d[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",l=>{l.preventDefault(),d[0]!==s&&m(d[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",l=>{l.preventDefault(),d[0]>1&&m(1)}),document.getElementById("last-page-btn").addEventListener("click",l=>{l.preventDefault(),d[0]!==s&&m(s)})}function m(r){a=r,g(a),window.scrollTo(0,400)}g(a)},L=t=>{const e=document.querySelector("#searchDrinks"),n=()=>{let s=t.filter(a=>a.DrinkName.includes(e.value));$(s),y(s)};e.addEventListener("keydown",s=>{s.keyCode===13&&n()}),e.addEventListener("blur",s=>{n()})};axios.get("https://json-server-project-wtkt.onrender.com/drinks").then(t=>{o=t.data,I(),_(),k(),y(o),N()}).catch(t=>{console.error("Error fetching data:",t)});
+    </li>`,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",x=>{x.preventDefault();const B=parseInt(l.dataset.page);m(B)})});const d=[a];document.getElementById("previousPageBtn").addEventListener("click",l=>{l.preventDefault(),d[0]>1&&m(d[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",l=>{l.preventDefault(),d[0]!==s&&m(d[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",l=>{l.preventDefault(),d[0]>1&&m(1)}),document.getElementById("last-page-btn").addEventListener("click",l=>{l.preventDefault(),d[0]!==s&&m(s)})}function m(r){a=r,g(a),window.scrollTo(0,400)}g(a)},L=t=>{const e=document.querySelector("#searchDrinks"),n=()=>{let s=t.filter(a=>a.DrinkName.includes(e.value));$(s),y(s)};e.addEventListener("keydown",s=>{s.keyCode===13&&n()}),e.addEventListener("blur",s=>{n()})};axios.get("https://json-server-project-wtkt.onrender.com/drinks").then(t=>{o=t.data,I(),_(),h(),y(o),N()}).catch(t=>{console.error("Error fetching data:",t)});
