@@ -1,4 +1,4 @@
-import"./bootstrap.min-cf743eeb.js";const l=document.querySelector(".userData"),i=document.querySelector(".drinkCollections"),a=document.querySelector(".shopCollectionsArea");function n(s){l.innerHTML=`
+import"./bootstrap.min-dc8deaa7.js";const l=document.querySelector(".userData"),i=document.querySelector(".drinkCollections"),a=document.querySelector(".shopCollectionsArea");function n(s){l.innerHTML=`
     <img src="../assets/images/member.png" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
     <p class="fs-32 text-white">${s[0].username}</p>
     <p class="fs-20 text-white">${s[0].email}</p>
