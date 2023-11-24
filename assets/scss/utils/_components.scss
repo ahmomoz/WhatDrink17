@@ -335,3 +335,11 @@
         height: 360px;
     }
 }
+
+
+.breadcrumb-item{
+    color: $black;
+}
+.breadcrumb-item .active{
+    color: $primary !important;
+}
