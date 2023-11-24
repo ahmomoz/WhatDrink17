@@ -1,4 +1,4 @@
-import"./bootstrap.min-0bbeed66.js";const p=document.querySelector("#storeList");let g=document.querySelector("#deliverySelect"),x=document.querySelector("#CooperationSelect"),d=[],b=[];const w=()=>{d.forEach(a=>{const e={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let t="";for(const s in e)a[s]&&(t+=`<li class="stores-tag">${e[s]}</li>`);b.push(t),t=""})},T=()=>{let a="";d.forEach(e=>{a+=`
+import"./bootstrap.min-141e3aaa.js";const p=document.querySelector("#storeList");let g=document.querySelector("#deliverySelect"),x=document.querySelector("#CooperationSelect"),d=[],b=[];const w=()=>{d.forEach(a=>{const e={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let t="";for(const s in e)a[s]&&(t+=`<li class="stores-tag">${e[s]}</li>`);b.push(t),t=""})},T=()=>{let a="";d.forEach(e=>{a+=`
         <li class="stores-card">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
@@ -19,10 +19,10 @@ import"./bootstrap.min-0bbeed66.js";const p=document.querySelector("#storeList")
               <ul class="stores-tag-group mb-16">
                 ${b[e.id-1]}
               </ul>
-              <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
+              <a href="stores-info.html?id=${e.id}" class="stores-card-btn">查看店家資訊</a>
             </div>
           </li>
-        `}),p.innerHTML=a},_=()=>{T(),$(d)};function C(){const a=document.querySelectorAll(".collect-btn");console.log(a),a.forEach(function(e){e.addEventListener("click",function(t){t.target.value=="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):t.target.value=="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid")),console.log("hi")})})}g.addEventListener("change",m);x.addEventListener("change",m);function m(){let a=d;g.value!==""&&(g.value==="uber eat"?a=a.filter(e=>e.uber):g.value==="food panda"&&(a=a.filter(e=>e.foodpanda))),x.value!==""&&(a=a.filter(e=>e.hasEvent)),P(a),$(a),v(a)}function P(a){let e="";a.forEach(t=>{e+=`
+        `}),p.innerHTML=a},_=()=>{T(),P(d)};function C(){const a=document.querySelectorAll(".collect-btn");console.log(a),a.forEach(function(e){e.addEventListener("click",function(t){t.target.value=="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):t.target.value=="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid")),console.log("hi")})})}g.addEventListener("change",m);x.addEventListener("change",m);function m(){let a=d;g.value!==""&&(g.value==="uber eat"?a=a.filter(e=>e.uber):g.value==="food panda"&&(a=a.filter(e=>e.foodpanda))),x.value!==""&&(a=a.filter(e=>e.hasEvent)),$(a),P(a),v(a)}function $(a){let e="";a.forEach(t=>{e+=`
       <li class="stores-card">
       <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
         value="collected"></button>
@@ -67,7 +67,7 @@ import"./bootstrap.min-0bbeed66.js";const p=document.querySelector("#storeList")
             <ul class="stores-tag-group mb-16">
               ${b[n.id-1]}
             </ul>
-            <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
+            <a href="stores-info.html?id=${n.id}" class="stores-card-btn">查看店家資訊</a>
           </div>
         </li>
           `}),p.innerHTML=o}function E(){const r=document.getElementById("pagination");r.innerHTML="";let o="";for(let l=1;l<=s;l++)o+=`
@@ -99,4 +99,4 @@ import"./bootstrap.min-0bbeed66.js";const p=document.querySelector("#storeList")
         <a class="page-link ${u}" href="#" aria-label="Next">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
         </a>
-      </li>`,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",y=>{y.preventDefault();const I=parseInt(l.dataset.page);f(I)})});const c=[i];document.getElementById("previousPageBtn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&f(c[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==s&&f(c[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&f(1)}),document.getElementById("last-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==s&&f(s)})}function f(r){i=r,h(i),window.scrollTo(0,400)}h(i)},$=a=>{const e=document.querySelector("#searchStores"),t=()=>{let s=a;e.value!==""&&(s=s.filter(i=>i.name.includes(e.value))),P(s),v(s)};e.addEventListener("keydown",s=>{s.keyCode===13&&t()}),e.addEventListener("blur",s=>{t()})};axios.get("https://json-server-project-wtkt.onrender.com/shops").then(a=>{d=a.data,w(),_(),m(),v(d),C()}).catch(a=>{console.error("Error fetching data:",a)});
+      </li>`,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",y=>{y.preventDefault();const I=parseInt(l.dataset.page);f(I)})});const c=[i];document.getElementById("previousPageBtn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&f(c[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==s&&f(c[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&f(1)}),document.getElementById("last-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==s&&f(s)})}function f(r){i=r,h(i),window.scrollTo(0,400)}h(i)},P=a=>{const e=document.querySelector("#searchStores"),t=()=>{let s=a;e.value!==""&&(s=s.filter(i=>i.name.includes(e.value))),$(s),v(s)};e.addEventListener("keydown",s=>{s.keyCode===13&&t()}),e.addEventListener("blur",s=>{t()})};axios.get("https://json-server-project-wtkt.onrender.com/shops").then(a=>{d=a.data,w(),_(),m(),v(d),C()}).catch(a=>{console.error("Error fetching data:",a)});
