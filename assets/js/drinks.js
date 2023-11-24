@@ -58,7 +58,7 @@ const drinkRender = () => {
                 <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
               </div>
               <div class="d-flex justify-content-between align-items-end ms-16">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center drinkStoreTag">
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
                 </div>
@@ -139,7 +139,7 @@ function displayFilteredData(data) {  //用於更新畫面的函數
             <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
           </div>
           <div class="d-flex justify-content-between align-items-end ms-16">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center drinkStoreTag">
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
                 </div>
@@ -196,7 +196,7 @@ function renderCards(data) {
                 <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
               </div>
               <div class="d-flex justify-content-between align-items-end ms-16">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center drinkStoreTag">
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
                 </div>
