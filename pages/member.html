@@ -32,7 +32,7 @@
               <li class="breadcrumb-item active text-white" aria-current="page" class="fs-16">會員專區</li>
             </ol>
           </nav>
-          <div class="text-center pt-24">
+          <div class="text-center pt-24 userData">
             <img src="../assets/images/member.png" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
             <p class="fs-32 text-white">Irene Huang</p>
             <p class="fs-20 text-white">irene880214@gmail.com</p>
@@ -69,7 +69,7 @@
           <!-- 收藏飲品 -->
           <div class="tab-pane fade show active" id="collectDrinks" role="tabpanel" aria-labelledby="collectDrinks-tab">
             <!-- 飲料列表 -->
-            <ul class="d-flex flex-wrap justify-content-between m-0 p-0">
+            <ul class="d-flex flex-wrap justify-content-between m-0 p-0 drinkCollections">
               <!-- 飲料項目 01-->
               <li class="drinks-card px-16 py-24 px-md-24">
                 <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24" value="uncollect"></button>
@@ -194,7 +194,7 @@
           <div class="tab-pane fade position-relative" id="collectDStores" role="tabpanel"
             aria-labelledby="collectDStores-tab">
             <!-- 店家列表 -->
-            <ul class="d-flex flex-wrap justify-content-between m-0 p-0">
+            <ul class="d-flex flex-wrap justify-content-between m-0 p-0 shopCollectionsArea">
               <!-- 店家項目 01-->
               <li class="stores-card px-16 py-24 px-md-24">
                 <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24" value="uncollect"></button>
@@ -352,7 +352,9 @@
     </div>
     <%- include('./layout/footer'); -%>
 
-      <script type="module" src="../main.js"></script>
+    <script type="module" src="../main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script type="module" src="../assets/js/member.js"></script>
 </body>
 
 </html>

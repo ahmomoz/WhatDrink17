@@ -110,7 +110,7 @@ function applyFilters() {  //條件篩選的函數
 
   displayFilteredData(filteredData); //顯示篩選後的數據
   searchRender(filteredData);  //若於篩選條件中搜尋，顯示搜尋後的數據
-  renderPagination(storeData); //頁碼邏輯
+  renderPagination(filteredData);  //更新篩選後的頁碼
 };
 function displayFilteredData(data) {  //用於更新畫面的函數
   let str = '';
@@ -216,15 +216,20 @@ const renderPagination = (pageData) =>{
     };
     const preIsGray = currentPage === 1 ? 'text-gray' : ''; //檢查當前頁面是否為1，是的話加上灰色樣式
     const nextIsGray = currentPage === totalPages ? 'text-gray' : ''; //檢查當前頁面是否為最後一頁，是的話加上灰色樣式
+
+    const firstPageDisabled = currentPage === 1 ? 'disabled' : ''; // 如果當前頁面為第一頁，添加disabled屬性
+  const previousPageDisabled = currentPage === 1 ? 'disabled' : ''; // 如果當前頁面為第一頁，添加disabled屬性
+  const nextPageDisabled = currentPage === totalPages ? 'disabled' : ''; // 如果當前頁面為最後一頁，添加disabled屬性
+  const lastPageDisabled = currentPage === totalPages ? 'disabled' : ''; // 如果當前頁面為最後一頁，添加disabled屬性
   
     buttonsContainer.innerHTML =`
-      <li id="first-page-btn" class="page-item mx-4 d-none d-md-block">
+      <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${firstPageDisabled}">
         <a class="page-link ${preIsGray}" href="#" aria-label="Previous">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
         </a>
       </li>
   
-      <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block">
+      <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block ${previousPageDisabled}">
         <a class="page-link ${preIsGray}" href="#" aria-label="Previous">
           <span class="material-symbols-outlined align-middle">chevron_left</span>
         </a>
@@ -232,13 +237,13 @@ const renderPagination = (pageData) =>{
   
       ${str}
   
-      <li id="next-page-btn" class="page-item mx-4 d-none d-md-block">
+      <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${nextPageDisabled}">
         <a class="page-link ${nextIsGray}" href="#" aria-label="Next">
           <span class="material-symbols-outlined align-middle">chevron_right</span>
         </a>
       </li>
   
-      <li id="last-page-btn" class="page-item mx-4 d-none d-md-block">
+      <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${lastPageDisabled}">
         <a class="page-link ${nextIsGray}" href="#" aria-label="Next">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
         </a>
@@ -278,14 +283,18 @@ const renderPagination = (pageData) =>{
       const firstPageBtn = document.getElementById("first-page-btn");
       firstPageBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        onPageButtonClick(1);
+        if (page[0]> 1) {
+          onPageButtonClick(1);
+        };
       });
   
       // 最後頁按鈕事件監聽器
       const lastPageBtn = document.getElementById("last-page-btn");
       lastPageBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        onPageButtonClick(totalPages);
+        if (page[0]!==totalPages) {
+          onPageButtonClick(totalPages);
+        };
       });
   };
   
@@ -294,10 +303,7 @@ const renderPagination = (pageData) =>{
     // 頁面按鈕點擊事件
     currentPage = page;
     displayData(currentPage);
-    window.scrollTo({      //讓頁面跑到最上方的語法
-      top: 0,
-      behavior: 'smooth', // 使用平滑的滾動效果
-    });
+    window.scrollTo(0,400);   //讓頁面跑到最上方的語法
   };
   // 初始化頁面顯示
   displayData(currentPage);
@@ -307,15 +313,22 @@ const renderPagination = (pageData) =>{
 //搜尋邏輯------------------------------------------------------
 const searchRender = (data) => {
   const searchInput = document.querySelector("#searchStores");
-  searchInput.addEventListener('keydown', e =>{
-    if(e.keyCode===13){  //enter的keyCode是13
-      let searchData = data;
+  const handleSearch = () => {                     //搜尋邏輯函式
+    let searchData = data;
         if (searchInput.value !== "") {  //搜尋
           searchData = searchData.filter(item => item.name.includes(searchInput.value));
         };
-      displayFilteredData(searchData); //顯示搜尋後的數據
-      renderPagination(searchData);  //更新搜尋後的頁碼
+    displayFilteredData(searchData); //顯示搜尋後的數據
+    renderPagination(searchData);  //更新搜尋後的頁碼
+  };
+
+  searchInput.addEventListener('keydown', e =>{   //ENTER按下觸發
+    if (e.keyCode === 13) {
+      handleSearch();
     }
+  });
+  searchInput.addEventListener('blur', e =>{  //輸入框失焦觸發
+    handleSearch();
   });
 };
 
