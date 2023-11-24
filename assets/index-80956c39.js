@@ -1,4 +1,4 @@
-import"./bootstrap.min-dc8deaa7.js";import{a as m}from"./axios-28bc18a3.js";const b=document.querySelector("#lastestNews");let f=[];function k(){let e="";f.forEach(function(t){e+=`
+import"./bootstrap.min-7e310722.js";import{a as m}from"./axios-28bc18a3.js";const b=document.querySelector("#lastestNews");let f=[];function k(){let e="";f.forEach(function(t){e+=`
         <div class="swiper-slide">
         <img src="${t.photo1}" class="lastestNews-img w-100 rounded-16 mb-8" alt="banner">
         <p class="fs-18 fw-500">${t.title}</p>
@@ -18,7 +18,7 @@ import"./bootstrap.min-dc8deaa7.js";import{a as m}from"./axios-28bc18a3.js";cons
         <p class="drinks-card-content mb-24 mb-md-32">${t.Description}</p>
       </div>
       <div class="d-flex justify-content-between align-items-end ms-16">
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center drinkStoreTag">
           <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
           <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${t.StoreName}</p>
         </div>
