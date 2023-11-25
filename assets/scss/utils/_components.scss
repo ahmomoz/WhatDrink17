@@ -4,6 +4,13 @@
 }
 
 //寬度
+.w-md-80 {
+    width: 100% !important;
+
+    @include md {
+        width: 80% !important;
+    }
+}
 .w-md-50 {
     width: 100% !important;
 
@@ -234,6 +241,11 @@
     &:hover {
         background-color: $primary;
         color: $white;
+    }
+
+    &-collcted{
+        background-color: $primary !important;
+        color: $white !important;
     }
 }
 

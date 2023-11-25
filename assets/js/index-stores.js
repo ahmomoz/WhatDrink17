@@ -4,6 +4,33 @@ let storeTagAry = [];
 let userStoreCollections = [];// 存放用戶收藏店家
 let topFourStore = [];// 空陣列存放取出的店家數據
 
+//將用戶飲料資料由外部寫入
+axios.get('https://json-server-project-wtkt.onrender.com/userShopCollections')
+    .then(response => {
+        userStoreCollections = response.data;
+        // console.log(userStoreCollections);
+        getTopFourStore();
+        storeTagPush();  //組合Tag陣列
+        storeRenderData(); //載入預設飲料卡片
+        isCollect(); //收藏愛心CSS
+
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+//將店家資料由外部寫入
+axios.get('https://json-server-project-wtkt.onrender.com/shops')
+    .then(response => {
+        storeData = response.data;
+        // storeTagPush()  //組合Tag陣列
+        // storeRenderData();   //載入預設店家卡片
+        // isCollect(); ////收藏愛心CSS
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
 //店家tag組合函式----------------------------------------
 const storeTagPush = () => {      //合併外送、合作活動成一個陣列
     const storeTag = storeData.forEach(item => {
@@ -76,7 +103,7 @@ function getTopFourStore() {
         })
     });
     // 驗證
-    console.log(topFourStore);
+    // console.log(topFourStore);
 }
 
 //載入預設店家卡片函式------------------------------------------------
@@ -133,39 +160,14 @@ function isCollect() {
                 item.value = "uncollect";
                 item.classList.remove("fa-regular");
                 item.classList.add("fa-solid");
+                //驗證
+                // console.log(item);
                 //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
             } else if (e.target.value == "uncollect") {
                 item.value = "collected";
                 item.classList.add("fa-regular");
                 item.classList.remove("fa-solid");
-            }
+            };
         });
     });
 };
-
-//將店家資料由外部寫入
-axios.get('https://json-server-project-wtkt.onrender.com/shops')
-    .then(response => {
-        storeData = response.data;
-        // storeTagPush()  //組合Tag陣列
-        // storeRenderData();   //載入預設店家卡片
-        // isCollect(); ////收藏愛心CSS
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });
-
-//將用戶飲料資料由外部寫入
-axios.get('https://json-server-project-wtkt.onrender.com/userShopCollections')
-    .then(response => {
-        userStoreCollections = response.data;
-        // console.log(userStoreCollections);
-        getTopFourStore();
-        storeTagPush();  //組合Tag陣列
-        storeRenderData(); //載入預設飲料卡片
-        isCollect(); //收藏愛心CSS
-
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });

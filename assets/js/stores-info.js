@@ -14,6 +14,8 @@ axios.get(`https://json-server-project-wtkt.onrender.com/shops?id=${storeId}`)
     breadcrumbPush(); //載入麵包屑路徑
     storeTagPush(); //載入店家標籤
     storeInfoRenderData(); //載入個別店家卡片
+    isCollect(); //收藏愛心CSS
+
     // console.log(storeInfoData);
   })
   .catch(error => {
@@ -60,10 +62,10 @@ const storeInfoRender = () => {
   storeInfoData.forEach(item => {
     str += `              
         <div class="row">
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-lg-4 mb-24 mb-lg-0">
           <img src="${item.logo}" class="w-100" alt="logo">
         </div>
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-lg-8">
           <div class="d-flex align-items-start flex-wrap mb-16 mb-md-0">
 
             <div class="me-md-16 mb-16">
@@ -77,11 +79,9 @@ const storeInfoRender = () => {
               </ul>
             </div>
 
-            <div class="w-md-50 d-flex justify-content-between align-items-center mb-md-16">
-              <a href="#" class="btn-collect px-12 py-8 border border-primary rounded-pill"><span
-                  class="material-symbols-outlined me-4">
-                  favorite
-                </span>收藏店家</a>
+            <div class="w-md-80 ms-auto d-flex justify-content-between align-items-center mb-md-16">
+              <button type="button" class="btn-collect px-12 py-8 border border-primary rounded-pill" value="collected">
+              <i class="fa-regular fa-heart me-4 btn-collect-icon"></i>收藏店家</button>
               <ul class="d-flex m-0 p-0">
                 <li class="me-16"><a href="#"><span class="material-symbols-outlined">
                       language
@@ -110,4 +110,33 @@ const storeInfoRender = () => {
 //初始化預設飲料卡片函式--------------------------------------------
 const storeInfoRenderData = () => {
   storeInfoRender();
+};
+
+//收藏愛心CSS樣式函式-----------------------------------------------
+function isCollect() {
+  const collectBtn = document.querySelector(".btn-collect"); //抓按鈕class
+  const collectBtnIcon = document.querySelector(".btn-collect-icon"); //抓按鈕class
+
+  // console.log(collectBtn);//驗證
+  collectBtn.addEventListener("click", function (e) {
+    //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
+    if (collectBtn.value == "collected") {
+      collectBtn.value = "uncollect";
+      // collectBtn.classList.remove("fa-regular");
+      collectBtn.classList.add("btn-collect-collcted");
+      collectBtnIcon.classList.remove("fa-regular");
+      collectBtnIcon.classList.add("fa-solid");
+      console.log(collectBtn);
+
+      //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
+    } else if (collectBtn.value == "uncollect") {
+      collectBtn.value = "collected";
+      collectBtn.classList.remove("btn-collect-collcted");
+      collectBtnIcon.classList.remove("fa-solid");
+      collectBtnIcon.classList.add("fa-regular");
+    }
+    //驗證
+    // console.log("hi")
+  })
+
 };

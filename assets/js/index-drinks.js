@@ -6,6 +6,31 @@ let drinkTagAry = [];
 let userDrinkCollections = [];// 存放用戶收藏飲料
 let topSixDrinks = [];// 空陣列存放取出的飲料數據
 
+//將用戶飲料資料由外部寫入
+axios.get('https://json-server-project-wtkt.onrender.com/userDrinkCollections')
+  .then(response => {
+    userDrinkCollections = response.data;
+    getTopSixDrinks();
+    drinkTagPush();  //組合Tag陣列
+    drinkRenderData(); //載入預設飲料卡片
+    isCollect(); //收藏愛心CSS
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+//將飲料資料由外部寫入
+axios.get('https://json-server-project-wtkt.onrender.com/drinks')
+  .then(response => {
+    drinkData = response.data;
+    // drinkTagPush();  //組合Tag陣列
+    // drinkRenderData(); //載入預設飲料卡片
+    // isCollect(); //收藏愛心CSS
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
 //茶種、配料tag組合函式----------------------------------------
 const drinkTagPush = () => {  //合併茶種、配料成一個陣列
   const drinkTag = drinkData.map(item => {
@@ -164,53 +189,29 @@ const drinkRenderData = () => {
   drinkRender();
 };
 
-//收藏愛心CSS樣式函式-----------------------------------------------
-function isCollect() {
-  const collectBtn = document.querySelectorAll(".collect-btn"); //抓按鈕class
-  // console.log(collectBtn);//驗證
-  //跑 querySelectorAll 陣列
-  collectBtn.forEach(function (item) {
-    //監聽按鈕
-    item.addEventListener("click", function (e) {
-      //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
-      if (e.target.value == "collected") {
-        item.value = "uncollect";
-        item.classList.remove("fa-regular");
-        item.classList.add("fa-solid");
-        //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
-      } else if (e.target.value == "uncollect") {
-        item.value = "collected";
-        item.classList.add("fa-regular");
-        item.classList.remove("fa-solid");
-      }
-      //驗證
-      // console.log("hi")
-    });
-  });
-};
+// //收藏愛心CSS樣式函式-----------------------------------------------
+// function isCollect() {
+//   const collectBtn = document.querySelectorAll(".collect-btn"); //抓按鈕class
+//   // console.log(collectBtn);//驗證
+//   //跑 querySelectorAll 陣列
+//   collectBtn.forEach(function (item) {
+//     //監聽按鈕
+//     item.addEventListener("click", function (e) {
+//       //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
+//       if (e.target.value == "collected") {
+//         item.value = "uncollect";
+//         item.classList.remove("fa-regular");
+//         item.classList.add("fa-solid");
+//         //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
+//       } else if (e.target.value == "uncollect") {
+//         item.value = "collected";
+//         item.classList.add("fa-regular");
+//         item.classList.remove("fa-solid");
+//       }
+//       //驗證
+//       // console.log("hi")
+//     });
+//   });
+// };
 
-//將飲料資料由外部寫入
-axios.get('https://json-server-project-wtkt.onrender.com/drinks')
-  .then(response => {
-    drinkData = response.data;
-    // drinkTagPush();  //組合Tag陣列
-    // drinkRenderData(); //載入預設飲料卡片
-    // isCollect(); //收藏愛心CSS
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
 
-//將用戶飲料資料由外部寫入
-axios.get('https://json-server-project-wtkt.onrender.com/userDrinkCollections')
-  .then(response => {
-    userDrinkCollections = response.data;
-    // console.log(userDrinkCollections);
-    getTopSixDrinks();
-    drinkTagPush();  //組合Tag陣列
-    drinkRenderData(); //載入預設飲料卡片
-    isCollect(); //收藏愛心CSS
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
