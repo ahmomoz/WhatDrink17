@@ -35,5 +35,5 @@ async function loginUser(event) {
 }
 
 function redirectToHome() {
-  window.location.href = "/WhatDrink17/pages/index.html";
+  window.location.href = "index.html";
 }

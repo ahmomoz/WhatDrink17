@@ -37,6 +37,15 @@ function getDrinks() {
     });
 }
 
+// 登出後 清空 Session Storage
+const logoutButton = document.querySelector("#logout-button");
+if (logoutButton) {
+  logoutButton.addEventListener("click", function () {
+    sessionStorage.clear();
+    redirectToLogin();
+  });
+}
+
 //頂部使用者資料
 const userDataArea = document.querySelector(".userData");
 
