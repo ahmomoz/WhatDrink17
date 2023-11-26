@@ -1,4 +1,4 @@
-import"./bootstrap.min-4ba85d86.js";const n=sessionStorage.getItem("jwtToken");function i(){return n?(a(),!0):(console.log("無權限: 沒有找到 Token"),l(),!1)}i();function l(){console.log("重新導回登入頁"),window.location.href="/WhatDrink17/logIn.html"}function a(){axios.get("https://drinkpicker-nclv.onrender.com/660/drinks",{headers:{Authorization:`Bearer ${n}`}}).then(s=>{console.log("飲料資料:",s.data)}).catch(s=>{console.error("錯誤:",s.response?s.response.data:"無法連接到伺服器")})}const c=document.querySelector(".userData"),d=document.querySelector(".drinkCollections"),m=document.querySelector(".shopCollectionsArea");function u(s){const t=sessionStorage.getItem("user_email");sessionStorage.getItem("user_id");const e=sessionStorage.getItem("user_nickname");c.innerHTML=`
+import"./bootstrap.min-4ba85d86.js";const n=sessionStorage.getItem("jwtToken");function i(){return n?(a(),!0):(console.log("無權限: 沒有找到 Token"),l(),!1)}i();function l(){console.log("重新導回登入頁"),window.location.href="logIn.html"}function a(){axios.get("https://drinkpicker-nclv.onrender.com/660/drinks",{headers:{Authorization:`Bearer ${n}`}}).then(s=>{console.log("飲料資料:",s.data)}).catch(s=>{console.error("錯誤:",s.response?s.response.data:"無法連接到伺服器")})}const c=document.querySelector(".userData"),d=document.querySelector(".drinkCollections"),m=document.querySelector(".shopCollectionsArea");function u(s){const t=sessionStorage.getItem("user_email");sessionStorage.getItem("user_id");const e=sessionStorage.getItem("user_nickname");c.innerHTML=`
     <img src="../assets/images/member.png" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
     <p class="fs-32 text-white">${e}</p>
     <p class="fs-20 text-white">${t}</p>
@@ -18,7 +18,7 @@ import"./bootstrap.min-4ba85d86.js";const n=sessionStorage.getItem("jwtToken");f
               location_on
             </span>搜尋店家</a>
         </div>
-      </li>`;d.innerHTML=t}function h(s){let t="";for(let e=0;e<s.length;e++)t+=`<li class="stores-card px-16 py-24 px-md-24">
+      </li>`;d.innerHTML=t}function g(s){let t="";for(let e=0;e<s.length;e++)t+=`<li class="stores-card px-16 py-24 px-md-24">
     <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24" value="uncollect"></button>
     <img src="${s[e].logo}" class="mb-8" alt="store image">
     <div class="stores-card-body">
@@ -41,4 +41,4 @@ import"./bootstrap.min-4ba85d86.js";const n=sessionStorage.getItem("jwtToken");f
       </ul>
       <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
     </div>
-  </li>`;m.innerHTML=t}axios.get("https://json-server-project-wtkt.onrender.com/users?id=1").then(s=>{s.data,u()});axios.get("https://json-server-project-wtkt.onrender.com/userDrinkCollections?userId=1").then(s=>{const r=`https://json-server-project-wtkt.onrender.com/drinks?id=${s.data.map(o=>o.drinkId).join("&id=")}`;axios.get(r).then(o=>{console.log(o.data),p(o.data)})}).catch(s=>{console.error("發生錯誤:",s)});axios.get("https://json-server-project-wtkt.onrender.com/userShopCollections?userId=1").then(s=>{const r=`https://json-server-project-wtkt.onrender.com/shops?id=${s.data.map(o=>o.shopId).join("&id=")}`;axios.get(r).then(o=>{console.log(o.data),h(o.data)})}).catch(s=>{console.error("發生錯誤:",s)});
+  </li>`;m.innerHTML=t}axios.get("https://json-server-project-wtkt.onrender.com/users?id=1").then(s=>{s.data,u()});axios.get("https://json-server-project-wtkt.onrender.com/userDrinkCollections?userId=1").then(s=>{const r=`https://json-server-project-wtkt.onrender.com/drinks?id=${s.data.map(o=>o.drinkId).join("&id=")}`;axios.get(r).then(o=>{console.log(o.data),p(o.data)})}).catch(s=>{console.error("發生錯誤:",s)});axios.get("https://json-server-project-wtkt.onrender.com/userShopCollections?userId=1").then(s=>{const r=`https://json-server-project-wtkt.onrender.com/shops?id=${s.data.map(o=>o.shopId).join("&id=")}`;axios.get(r).then(o=>{console.log(o.data),g(o.data)})}).catch(s=>{console.error("發生錯誤:",s)});
