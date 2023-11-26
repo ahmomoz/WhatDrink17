@@ -15,7 +15,7 @@ isAuthenticated();
 // 導回登入頁
 function redirectToLogin() {
   console.log("重新導回登入頁");
-  window.location.href = "/WhatDrink17/logIn.html";
+  window.location.href = "logIn.html";
 }
 
 // 依權限取得資料
