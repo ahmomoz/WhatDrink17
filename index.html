@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/index-aa58ca76.js"></script>
+  <script type="module" crossorigin src="/WhatDrink17/assets/index-7e799c86.js"></script>
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/bootstrap.min-4ba85d86.js">
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/axios-28bc18a3.js">
   <link rel="stylesheet" href="/WhatDrink17/assets/bootstrap-f3c4dca1.css">
@@ -120,18 +120,18 @@
           <div class="col-11 col-lg-5">
             <h1 class="text-white mb-16 mb-md-24 ms-8 text-center text-lg-start">不知道今天要喝什麼嗎？</h1>
             <div class="w-80 d-flex justify-content-between bg-white rounded-pill p-4 mb-16 mb-md-24">
-              <input class="w-50 form-control border-0 p-12 p-md-16 rounded-pill" type="search" placeholder="今天想要來點..."
-                aria-label="Search">
-              <button class="bg-primary border-0 rounded-pill fs-18 text-white px-24 px-md-36"
+              <input id="searchInput" class="w-50 form-control border-0 p-12 p-md-16 rounded-pill" type="search" placeholder="今天想要來點..."
+                >
+              <button id="searchButton" class="bg-primary border-0 rounded-pill fs-18 text-white px-24 px-md-36"
                 type="submit">搜搜看</button>
             </div>
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-start">
               <p class="fs-14 text-white me-8">熱門關鍵字</p>
               <ul class="d-flex flex-wrap m-0 p-0">
-                <li class="fs-14 bg-primary rounded-pill me-4"><a href="#" class="px-12 py-2 text-white">奶茶</a></li>
-                <li class="fs-14 bg-primary rounded-pill me-4"><a href="#" class="px-12 py-2 text-white">紅茶</a></li>
-                <li class="fs-14 bg-primary rounded-pill me-4"><a href="#" class="px-12 py-2 text-white">珍珠</a></li>
-                <li class="fs-14 bg-primary rounded-pill me-4"><a href="#" class="px-12 py-2 text-white">椰果</a></li>
+                <li id="tagSearch" class="fs-14 bg-primary rounded-pill me-4" value="奶茶"><a href="#" class="px-12 py-2 text-white">奶茶</a></li>
+                <li id="tagSearch" class="fs-14 bg-primary rounded-pill me-4" value="紅茶"><a href="#" class="px-12 py-2 text-white">紅茶</a></li>
+                <li id="tagSearch" class="fs-14 bg-primary rounded-pill me-4" value="珍珠"><a href="#" class="px-12 py-2 text-white">珍珠</a></li>
+                <li id="tagSearch" class="fs-14 bg-primary rounded-pill me-4" value="拿鐵"><a href="#" class="px-12 py-2 text-white">拿鐵</a></li>
               </ul>
             </div>
           </div>
@@ -529,6 +529,7 @@
     </div>
 </div>
       <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+      
       
       
       
