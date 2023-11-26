@@ -36,7 +36,7 @@ async function loginUser(event) {
       sessionStorage.setItem("user_email", user_email);
       sessionStorage.setItem("user_id", user_id);
       sessionStorage.setItem("user_nickname", user_nickname);
-      redirectToMember(); // 登入成功後的操作，例如跳轉到另一個頁面
+      redirectToHome(); // 登入成功後的操作，例如跳轉到另一個頁面
     } else {
       alert("登入失敗，請檢查帳號或密碼"); // 登入失敗後的操作
     }
@@ -46,6 +46,6 @@ async function loginUser(event) {
   }
 }
 
-function redirectToMember() {
-  window.location.href = "/WhatDrink17/pages/member.html";
+function redirectToHome() {
+  window.location.href = "index.html";
 }
