@@ -7,7 +7,7 @@ document
     // 使用 Axios 發送 POST 請求
     axios({
       method: "post",
-      url: "http://127.0.0.1:3002/forgot-password",
+      url: "https://passcheck-ktd6.onrender.com/forgot-password",
       data: {
         email: email,
       },
