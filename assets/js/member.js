@@ -1,3 +1,42 @@
+const token = sessionStorage.getItem("jwtToken");
+
+// 確認是否登入
+function isAuthenticated() {
+  if (!token) {
+    console.log("無權限: 沒有找到 Token");
+    redirectToLogin();
+    return false;
+  }
+  getDrinks();
+  return true;
+}
+isAuthenticated();
+
+// 導回登入頁
+function redirectToLogin() {
+  console.log("重新導回登入頁");
+  window.location.href = "/WhatDrink17/pages/login.html";
+}
+
+// 依權限取得資料
+function getDrinks() {
+  axios
+    .get("https://drinkpicker-nclv.onrender.com/660/drinks", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((response) => {
+      console.log("飲料資料:", response.data);
+    })
+    .catch((error) => {
+      console.error(
+        "錯誤:",
+        error.response ? error.response.data : "無法連接到伺服器"
+      );
+    });
+}
+
 //頂部使用者資料
 const userDataArea = document.querySelector(".userData");
 
@@ -10,11 +49,15 @@ const shopCollectionsArea = document.querySelector(".shopCollectionsArea");
 // 渲染使用者資料
 // 目前還沒結合登入，暫時寫死userId=1的地方
 function renderUserData(data) {
+  const user_email = sessionStorage.getItem("user_email");
+  const user_id = sessionStorage.getItem("user_id");
+  const user_nickname = sessionStorage.getItem("user_nickname");
   userDataArea.innerHTML = `
     <img src="../assets/images/member.png" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
-    <p class="fs-32 text-white">${data[0].username}</p>
-    <p class="fs-20 text-white">${data[0].email}</p>
-    `
+    <p class="fs-32 text-white">${user_nickname}</p>
+    <p class="fs-20 text-white">${user_email}</p>
+    
+    `;
 }
 
 // 渲染飲料列表資料
@@ -37,7 +80,7 @@ function renderUserDrinkCollections(data) {
               location_on
             </span>搜尋店家</a>
         </div>
-      </li>`
+      </li>`;
   }
   drinkCollectionsArea.innerHTML = text;
 }
@@ -70,54 +113,63 @@ function renderUserShopCollections(data) {
       </ul>
       <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
     </div>
-  </li>`
+  </li>`;
   }
   shopCollectionsArea.innerHTML = text;
 }
 
 //自server取得使用者資料後執行renderUserData
-axios.get('https://json-server-project-wtkt.onrender.com/users?id=1')
-  .then(response => {
+axios
+  .get("https://json-server-project-wtkt.onrender.com/users?id=1")
+  .then((response) => {
     let userData = response.data;
-    renderUserData(userData)
+    renderUserData(userData);
   });
 
 //自server取得該使用者收藏清單的drinkId列表並轉化成飲料資料的矩陣
-axios.get(`https://json-server-project-wtkt.onrender.com/userDrinkCollections?userId=1`)
-  .then(response => {
+axios
+  .get(
+    `https://json-server-project-wtkt.onrender.com/userDrinkCollections?userId=1`
+  )
+  .then((response) => {
     const userDrinkCollections = response.data;
     // 抓取全部DrinkId
-    const drinkIds = userDrinkCollections.map(item => item.drinkId);
+    const drinkIds = userDrinkCollections.map((item) => item.drinkId);
     // 組成取得飲料資料的URL
-    const drinksUrl = `https://json-server-project-wtkt.onrender.com/drinks?id=${drinkIds.join('&id=')}`;
+    const drinksUrl = `https://json-server-project-wtkt.onrender.com/drinks?id=${drinkIds.join(
+      "&id="
+    )}`;
 
     // 取得飲料資料
-    axios.get(drinksUrl)
-      .then(response => {
-        console.log(response.data);
-        renderUserDrinkCollections(response.data);
-      })
+    axios.get(drinksUrl).then((response) => {
+      console.log(response.data);
+      renderUserDrinkCollections(response.data);
+    });
   })
-  .catch(error => {
-    console.error('發生錯誤:', error);
+  .catch((error) => {
+    console.error("發生錯誤:", error);
   });
 
 //自server取得該使用者收藏清單的storeId列表並轉化成飲料資料的矩陣
-axios.get(`https://json-server-project-wtkt.onrender.com/userShopCollections?userId=1`)
-  .then(response => {
+axios
+  .get(
+    `https://json-server-project-wtkt.onrender.com/userShopCollections?userId=1`
+  )
+  .then((response) => {
     const usershopCollections = response.data;
     // 抓取全部shopId
-    const shopIds = usershopCollections.map(item => item.shopId);
+    const shopIds = usershopCollections.map((item) => item.shopId);
     // 組成取得店家資料的URL
-    const shopsUrl = `https://json-server-project-wtkt.onrender.com/shops?id=${shopIds.join('&id=')}`;
+    const shopsUrl = `https://json-server-project-wtkt.onrender.com/shops?id=${shopIds.join(
+      "&id="
+    )}`;
 
     // 取得店家資料
-    axios.get(shopsUrl)
-      .then(response => {
-        console.log(response.data);
-        renderUserShopCollections(response.data);
-      })
+    axios.get(shopsUrl).then((response) => {
+      console.log(response.data);
+      renderUserShopCollections(response.data);
+    });
   })
-  .catch(error => {
-    console.error('發生錯誤:', error);
+  .catch((error) => {
+    console.error("發生錯誤:", error);
   });

@@ -1,84 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>今天喝什麼？ | 新北飲料資訊站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="../assets/images/favicon-whatdrink.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script
+      src="https://kit.fontawesome.com/6b74f216f9.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>今天喝什麼？ | 新北飲料資訊站</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="../assets/images/favicon-whatdrink.ico">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <script src="https://kit.fontawesome.com/6b74f216f9.js" crossorigin="anonymous"></script>
-  <!-- swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-</head>
-
-<body>
-  <!-- logo -->
-  <div class="navbar-brand mt-24 d-flex justify-content-center d-md-block ms-md-24">
-    <a href="index.html"><img src="../assets/images/logo.svg" alt="logo"></a>
-  </div>
-  <!-- logo end-->
-  <div class="pt-24">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-10 col-md-6 col-lg-4">
-          <h1 class="fs-24 text-center mb-8">會員登入</h1>
-          <p class="text-center text-gray-dark mb-24">立即登入，把喜歡的店家和飲料加入收藏！</p>
-          <form class="mb-24">
-            <!-- 帳號 -->
-            <div class="mb-16">
-              <label for="logInEmail" class="form-label mb-2">帳號</label>
-              <input type="text" class="form-control" id="logInEmail" aria-describedby="logInEmailFeedback"
-                placeholder="請輸入信箱帳號" required>
-              <div id="logInEmailFeedback" class="invalid-feedback">
-                信箱格式錯誤
+  <body>
+    <!-- logo -->
+    <div
+      class="navbar-brand mt-24 d-flex justify-content-center d-md-block ms-md-24"
+    >
+      <a href="index.html"
+        ><img src="../assets/images/logo.svg" alt="logo"
+      /></a>
+    </div>
+    <!-- logo end-->
+    <div class="pt-24">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-10 col-md-6 col-lg-4">
+            <h1 class="fs-24 text-center mb-8">會員登入</h1>
+            <p class="text-center text-gray-dark mb-24">
+              立即登入，把喜歡的店家和飲料加入收藏！
+            </p>
+            <!-- onsubmit="registerUser(event) -->
+            <form class="mb-24" id="loginForm">
+              <!-- 帳號 -->
+              <div class="mb-16">
+                <label for="logInEmail" class="form-label mb-2">帳號</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="logInEmail"
+                  aria-describedby="logInEmailFeedback"
+                  placeholder="請輸入信箱帳號"
+                  required
+                />
+                <div id="logInEmailFeedback" class="invalid-feedback">
+                  信箱格式錯誤
+                </div>
               </div>
-            </div>
-            <!-- 帳號 end-->
-            <!-- 密碼 -->
-            <div class="mb-4">
-              <label for="logInEmail" class="form-label mb-2">密碼</label>
-              <input type="text" class="form-control" id="logInEmail" aria-describedby="logInEmailFeedback"
-                placeholder="請輸入密碼" required>
-              <div id="logInEmailFeedback" class="invalid-feedback">
-                email格式錯誤
+              <!-- 帳號 end-->
+              <!-- 密碼 -->
+              <div class="mb-4">
+                <label for="logInEmail" class="form-label mb-2">密碼</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="logInPassword"
+                  aria-describedby="logInEmailFeedback"
+                  placeholder="請輸入密碼"
+                  required
+                />
+                <div id="logInEmailFeedback" class="invalid-feedback">
+                  email格式錯誤
+                </div>
               </div>
+              <!-- 密碼 end-->
+              <!-- 忘記密碼 -->
+              <div class="d-flex justify-content-end mb-16">
+                <a
+                  href="forgetPassword.html"
+                  class="fs-14 text-end text-gray-dark"
+                  >忘記密碼？</a
+                >
+              </div>
+              <!-- 忘記密碼 end-->
+              <button type="submit" class="btn-primary w-100 mx-auto">
+                登入
+              </button>
+            </form>
+            <p class="or fs-14 text-center text-gray mb-24">OR</p>
+            <div class="sso-btn mb-24">
+              <a href="#" class="stretched-link"
+                ><img
+                  src="../assets/images/icon-google.svg"
+                  alt="google"
+                  class="me-8"
+                />Google 登入</a
+              >
             </div>
-            <!-- 密碼 end-->
-            <!-- 忘記密碼 -->
-            <div class="d-flex justify-content-end mb-16">
-              <a href="forgetPassword.html" class="fs-14 text-end text-gray-dark">忘記密碼？</a>
+            <div class="d-flex justify-content-center align-items-center">
+              <p class="me-4">還不是會員？</p>
+              <a href="signUp.html" class="text-primary">註冊會員</a>
             </div>
-            <!-- 忘記密碼 end-->
-            <button type="submit" class="btn-primary w-100 mx-auto">登入</button>
-          </form>
-          <p class="or fs-14 text-center text-gray mb-24">OR</p>
-          <div class="sso-btn mb-24">
-            <a href="#" class="stretched-link"><img src="../assets/images/icon-google.svg" alt="google"
-                class="me-8">Google 登入</a>
-          </div>
-          <div class="d-flex justify-content-center align-items-center">
-            <p class="me-4">還不是會員？</p>
-            <a href="signUp.html" class="text-primary">註冊會員</a>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-
-
-
-  <script type="module" src="../main.js"></script>
-</body>
-
+    <script type="module" src="../main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="../assets/js/login.js"></script>
+    <script></script>
+  </body>
 </html>
