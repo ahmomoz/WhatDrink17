@@ -62,7 +62,7 @@ const drinkRender = () => {
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
                 </div>
-                <a href="#" class="d-block text-primary text-end"><span
+                <a href="stores-info.html?id=${item.ShopID}" class="d-block text-primary text-end"><span
                     class="material-symbols-outlined me-2 align-middle">
                     location_on
                   </span>搜尋店家</a>
@@ -71,6 +71,7 @@ const drinkRender = () => {
         `;
     });
     drinkList.innerHTML = str;
+    isCollect(); //收藏愛心CSS
 };
 
 //初始化預設飲料卡片函式--------------------------------------------
@@ -143,7 +144,7 @@ function displayFilteredData(data) {  //用於更新畫面的函數
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
                 </div>
-                <a href="#" class="d-block text-primary text-end"><span
+                <a href="stores-info.html?id=${item.ShopID}" class="d-block text-primary text-end"><span
                     class="material-symbols-outlined me-2 align-middle">
                     location_on
                   </span>搜尋店家</a>
@@ -200,7 +201,7 @@ function renderCards(data) {
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
                   <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName}</p>
                 </div>
-                <a href="#" class="d-block text-primary text-end"><span
+                <a href="stores-info.html?id=${item.ShopID}" class="d-block text-primary text-end"><span
                     class="material-symbols-outlined me-2 align-middle">
                     location_on
                   </span>搜尋店家</a>
@@ -209,6 +210,7 @@ function renderCards(data) {
         `;
     });
     drinkList.innerHTML = str;
+    isCollect(); //收藏愛心CSS
 };
 
 //渲染分頁按鈕的邏輯，根據前頁和總頁數產生分頁按鈕
@@ -319,7 +321,6 @@ function onPageButtonClick(page) {
 };
 // 初始化頁面顯示
 displayData(currentPage);
-
 };
 
 
@@ -353,7 +354,6 @@ axios.get('https://json-server-project-wtkt.onrender.com/drinks')
     drinkRenderData(); //載入預設飲料卡片
     applyFilters();  //載入預設篩選器
     renderPagination(drinkData); //頁碼邏輯
-    isCollect(); //收藏愛心CSS
 })
 .catch(error => {
   console.error('Error fetching data:', error);
