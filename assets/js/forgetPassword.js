@@ -18,7 +18,7 @@ document
         );
 
         // 請求成功後導航到首頁
-        window.location.href = "/WhatDrink17/pages/index.html";
+        window.location.href = "index.html";
       })
       .catch(function (error) {
         console.error("Error:", error);
