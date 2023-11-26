@@ -1,32 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>今天喝什麼？ | 新北飲料資訊站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="/WhatDrink17/assets/favicon-whatdrink-aa849470.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <script
+      src="https://kit.fontawesome.com/6b74f216f9.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- swiper -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script type="module" crossorigin src="/WhatDrink17/assets/member-87705dfe.js"></script>
+    <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/bootstrap.min-4ba85d86.js">
+    <link rel="stylesheet" href="/WhatDrink17/assets/bootstrap-f3c4dca1.css">
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>今天喝什麼？ | 新北飲料資訊站</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="icon" href="/WhatDrink17/assets/favicon-whatdrink-aa849470.ico">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-  <script src="https://kit.fontawesome.com/6b74f216f9.js" crossorigin="anonymous"></script>
-  <!-- swiper -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/member-fc1493bf.js"></script>
-  <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/bootstrap.min-4ba85d86.js">
-  <link rel="stylesheet" href="/WhatDrink17/assets/bootstrap-f3c4dca1.css">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white px-16 px-md-24 py-16 shadow shadow-sm" id="nav">
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white px-16 px-md-24 py-16 shadow shadow-sm" id="nav">
     <div class="container-fluid">
         <a class="navbar-brand align-middle" id="hi" href="index.html"><img src="/WhatDrink17/assets/logo-e7e0ca87.svg" alt="今天喝什麼？"></a>
 
@@ -118,12 +132,25 @@
         <div class="container">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb d-flex">
-              <li class="breadcrumb-item"><a href="index.html" class="text-white fs-16">首頁</a></li>
-              <li class="breadcrumb-item active text-white" aria-current="page" class="fs-16">會員專區</li>
+              <li class="breadcrumb-item">
+                <a href="index.html" class="text-white fs-16">首頁</a>
+              </li>
+              <li
+                class="breadcrumb-item active text-white"
+                aria-current="page"
+                class="fs-16"
+              >
+                會員專區
+              </li>
             </ol>
           </nav>
           <div class="text-center pt-24 userData">
-            <img src="/WhatDrink17/assets/member-73b3c0a5.png" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
+            <img
+              src="/WhatDrink17/assets/member-73b3c0a5.png"
+              class="rounded-circle mb-8"
+              style="width: 80px"
+              alt="user image"
+            />
             <p class="fs-32 text-white">Irene Huang</p>
             <p class="fs-20 text-white">irene880214@gmail.com</p>
           </div>
@@ -132,23 +159,50 @@
 
       <div class="container">
         <!-- 分頁頁籤 -->
-        <ul class="nav nav-tabs border-bottom pb-4 mb-24" id="myTab" role="tablist">
+        <ul
+          class="nav nav-tabs border-bottom pb-4 mb-24"
+          id="myTab"
+          role="tablist"
+        >
           <li class="nav-item me-40" role="presentation">
-            <button class="nav-link active fs-20" id="collectDrinks-tab" data-bs-toggle="tab"
-              data-bs-target="#collectDrinks" type="button" role="tab" aria-controls="collectDrinks"
-              aria-selected="true">
+            <button
+              class="nav-link active fs-20"
+              id="collectDrinks-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#collectDrinks"
+              type="button"
+              role="tab"
+              aria-controls="collectDrinks"
+              aria-selected="true"
+            >
               收藏飲品
             </button>
           </li>
           <li class="nav-item me-40" role="presentation">
-            <button class="nav-link fs-20" id="collectDStores-tab" data-bs-toggle="tab" data-bs-target="#collectDStores"
-              type="button" role="tab" aria-controls="collectDStores" aria-selected="false">
+            <button
+              class="nav-link fs-20"
+              id="collectDStores-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#collectDStores"
+              type="button"
+              role="tab"
+              aria-controls="collectDStores"
+              aria-selected="false"
+            >
               收藏店家
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link fs-20" id="setting-tab" data-bs-toggle="tab" data-bs-target="#setting" type="button"
-              role="tab" aria-controls="setting" aria-selected="false">
+            <button
+              class="nav-link fs-20"
+              id="setting-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#setting"
+              type="button"
+              role="tab"
+              aria-controls="setting"
+              aria-selected="false"
+            >
               帳號設定
             </button>
           </li>
@@ -157,34 +211,50 @@
         <!-- 分頁內容 -->
         <div class="tab-content" id="storeTabContent">
           <!-- 收藏飲品 -->
-          <div class="tab-pane fade show active" id="collectDrinks" role="tabpanel" aria-labelledby="collectDrinks-tab">
+          <div
+            class="tab-pane fade show active"
+            id="collectDrinks"
+            role="tabpanel"
+            aria-labelledby="collectDrinks-tab"
+          >
             <!-- 飲料列表 -->
-            <ul class="d-flex flex-wrap justify-content-between m-0 p-0 drinkCollections">
+            <ul
+              class="d-flex flex-wrap justify-content-between m-0 p-0 drinkCollections"
+            >
               <!-- 飲料項目 01-->
               <li class="drinks-card px-16 py-24 px-md-24">
-                <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                  value="uncollect"></button>
-                <img src="/WhatDrink17/assets/drink-01-fac5d53e.png" alt="drink image">
+                <button
+                  type="button"
+                  class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
+                  value="uncollect"
+                ></button>
+                <img src="/WhatDrink17/assets/drink-01-fac5d53e.png" alt="drink image" />
                 <div class="drinks-card-body ms-16">
                   <h4 class="mb-8 mb-md-12">珍珠伯爵紅茶拿鐵</h4>
                   <ul class="drinks-tag-group mb-8 mb-md-12">
                     <li class="drinks-tag">奶茶</li>
                     <li class="drinks-tag">牛奶</li>
                   </ul>
-                  <p class="drinks-card-content mb-24 mb-md-32">茶底使用濃郁伯爵紅茶，帶有佛手柑香氣，香與味在飲品中隨時間釋放多層次風味。
-                    珍珠咀嚼蜜香滋味呈現豐富並拉長整體風味感受。</p>
-                  <a href="#" class="d-block text-primary text-end"><span
-                      class="material-symbols-outlined me-2s align-middle">
-                      location_on
-                    </span>搜尋店家</a>
+                  <p class="drinks-card-content mb-24 mb-md-32">
+                    茶底使用濃郁伯爵紅茶，帶有佛手柑香氣，香與味在飲品中隨時間釋放多層次風味。
+                    珍珠咀嚼蜜香滋味呈現豐富並拉長整體風味感受。
+                  </p>
+                  <a href="#" class="d-block text-primary text-end"
+                    ><span class="material-symbols-outlined me-2s align-middle">
+                      location_on </span
+                    >搜尋店家</a
+                  >
                 </div>
               </li>
               <!-- 飲料項目 end-->
               <!-- 飲料項目 02-->
               <li class="drinks-card px-16 py-24 px-md-24">
-                <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                  value="uncollect"></button>
-                <img src="/WhatDrink17/assets/drink-02-eaf57290.png" alt="drink image">
+                <button
+                  type="button"
+                  class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
+                  value="uncollect"
+                ></button>
+                <img src="/WhatDrink17/assets/drink-02-eaf57290.png" alt="drink image" />
                 <div class="drinks-card-body ms-16">
                   <h4 class="mb-8 mb-md-12">蜜桃果粒冰沙</h4>
                   <ul class="drinks-tag-group mb-8 mb-md-12">
@@ -194,18 +264,22 @@
                   <p class="drinks-card-content mb-24 mb-md-32">
                     蜜桃果丁搭配現打蜜桃冰沙，下層是彈嫩手工綠茶凍。回甘茶香交疊清甜果香，每口都能吃到飽滿多汁蜜桃果肉，幸福指數爆表！
                   </p>
-                  <a href="#" class="d-block text-primary text-end"><span
-                      class="material-symbols-outlined me-2s align-middle">
-                      location_on
-                    </span>搜尋店家</a>
+                  <a href="#" class="d-block text-primary text-end"
+                    ><span class="material-symbols-outlined me-2s align-middle">
+                      location_on </span
+                    >搜尋店家</a
+                  >
                 </div>
               </li>
               <!-- 飲料項目 end-->
               <!-- 飲料項目 03-->
               <li class="drinks-card px-16 py-24 px-md-24">
-                <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                  value="uncollect"></button>
-                <img src="/WhatDrink17/assets/drink-03-eb56bb4a.png" alt="drink image">
+                <button
+                  type="button"
+                  class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
+                  value="uncollect"
+                ></button>
+                <img src="/WhatDrink17/assets/drink-03-eb56bb4a.png" alt="drink image" />
                 <div class="drinks-card-body ms-16">
                   <h4 class="mb-8 mb-md-12">芝芝葡萄果粒</h4>
                   <ul class="drinks-tag-group mb-8 mb-md-12">
@@ -213,19 +287,23 @@
                     <li class="drinks-tag">冰沙</li>
                     <li class="drinks-tag">奶蓋</li>
                   </ul>
-                  <p class="drinks-card-content mb-24 mb-md-32">新鮮葡萄打製成冰沙，放入一顆顆多汁飽滿的去籽葡萄果肉，再淋上由紐西蘭芝士搭配喜馬拉雅山玫瑰鹽打發而成的芝芝奶霜
+                  <p class="drinks-card-content mb-24 mb-md-32">
+                    新鮮葡萄打製成冰沙，放入一顆顆多汁飽滿的去籽葡萄果肉，再淋上由紐西蘭芝士搭配喜馬拉雅山玫瑰鹽打發而成的芝芝奶霜
                   </p>
-                  <a href="#" class="d-block text-primary text-end"><span
-                      class="material-symbols-outlined me-2s align-middle">
-                      location_on
-                    </span>搜尋店家</a>
+                  <a href="#" class="d-block text-primary text-end"
+                    ><span class="material-symbols-outlined me-2s align-middle">
+                      location_on </span
+                    >搜尋店家</a
+                  >
                 </div>
               </li>
               <!-- 飲料項目 end-->
               <!-- 飲料項目 04-->
               <li class="drinks-card px-16 py-24 px-md-24">
-                <a href="#" class="collect-btn text-primary fs-24"><i class="fa-solid fa-heart"></i></a>
-                <img src="/WhatDrink17/assets/drink-04-751fbd7f.png" alt="drink image">
+                <a href="#" class="collect-btn text-primary fs-24"
+                  ><i class="fa-solid fa-heart"></i
+                ></a>
+                <img src="/WhatDrink17/assets/drink-04-751fbd7f.png" alt="drink image" />
                 <div class="drinks-card-body ms-16">
                   <h4 class="mb-8 mb-md-12">許慶良酪梨布丁鮮奶</h4>
                   <ul class="drinks-tag-group mb-8 mb-md-12">
@@ -233,19 +311,24 @@
                     <li class="drinks-tag">牛奶</li>
                   </ul>
                   <p class="drinks-card-content mb-24 mb-md-32">
-                    以具有「森林奶油」美譽之稱的酪梨搭配順口的許慶良鮮乳再加入滑順的手工鮮奶布丁點綴口感升級再升級，讓人喝了就停不下來(⁎⁍̴̛ᴗ⁍̴̛⁎)</p>
-                  <a href="#" class="d-block text-primary text-end"><span
-                      class="material-symbols-outlined me-2s align-middle">
-                      location_on
-                    </span>搜尋店家</a>
+                    以具有「森林奶油」美譽之稱的酪梨搭配順口的許慶良鮮乳再加入滑順的手工鮮奶布丁點綴口感升級再升級，讓人喝了就停不下來(⁎⁍̴̛ᴗ⁍̴̛⁎)
+                  </p>
+                  <a href="#" class="d-block text-primary text-end"
+                    ><span class="material-symbols-outlined me-2s align-middle">
+                      location_on </span
+                    >搜尋店家</a
+                  >
                 </div>
               </li>
               <!-- 飲料項目 end-->
               <!-- 飲料項目 05-->
               <li class="drinks-card px-16 py-24 px-md-24">
-                <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                  value="uncollect"></button>
-                <img src="/WhatDrink17/assets/drink-05-43466438.png" alt="drink image">
+                <button
+                  type="button"
+                  class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
+                  value="uncollect"
+                ></button>
+                <img src="/WhatDrink17/assets/drink-05-43466438.png" alt="drink image" />
                 <div class="drinks-card-body ms-16">
                   <h4 class="mb-8 mb-md-12">椰椰芋圓奶霜</h4>
                   <ul class="drinks-tag-group mb-8 mb-md-12">
@@ -254,30 +337,38 @@
                     <li class="drinks-tag">奶蓋</li>
                   </ul>
                   <p class="drinks-card-content mb-24 mb-md-32">
-                    喝得到整顆椰子！米其林認證100%椰子水、進口椰肉、椰漿打成綿密冰沙。下層Ｑ彈小芋圓，再用鮮乳奶霜封頂，撒上椰子脆片酥爽清脆</p>
-                  <a href="#" class="d-block text-primary text-end"><span
-                      class="material-symbols-outlined me-2s align-middle">
-                      location_on
-                    </span>搜尋店家</a>
+                    喝得到整顆椰子！米其林認證100%椰子水、進口椰肉、椰漿打成綿密冰沙。下層Ｑ彈小芋圓，再用鮮乳奶霜封頂，撒上椰子脆片酥爽清脆
+                  </p>
+                  <a href="#" class="d-block text-primary text-end"
+                    ><span class="material-symbols-outlined me-2s align-middle">
+                      location_on </span
+                    >搜尋店家</a
+                  >
                 </div>
               </li>
               <!-- 飲料項目 end-->
               <!-- 飲料項目 06-->
               <li class="drinks-card px-16 py-24 px-md-24">
-                <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                  value="uncollect"></button>
-                <img src="/WhatDrink17/assets/drink-06-19fee824.png" alt="drink image">
+                <button
+                  type="button"
+                  class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
+                  value="uncollect"
+                ></button>
+                <img src="/WhatDrink17/assets/drink-06-19fee824.png" alt="drink image" />
                 <div class="drinks-card-body ms-16">
                   <h4 class="mb-8 mb-md-12">台灣鮮搾柳丁綠</h4>
                   <ul class="drinks-tag-group mb-8 mb-md-12">
                     <li class="drinks-tag">水果</li>
                     <li class="drinks-tag">綠茶</li>
                   </ul>
-                  <p class="drinks-card-content mb-24 mb-md-32">大苑子與您歡樂慶中秋，銷售排行前三名的國民飲品「台灣鮮搾柳丁綠」於中秋節當日9/29正式回歸！</p>
-                  <a href="#" class="d-block text-primary text-end"><span
-                      class="material-symbols-outlined me-2s align-middle">
-                      location_on
-                    </span>搜尋店家</a>
+                  <p class="drinks-card-content mb-24 mb-md-32">
+                    大苑子與您歡樂慶中秋，銷售排行前三名的國民飲品「台灣鮮搾柳丁綠」於中秋節當日9/29正式回歸！
+                  </p>
+                  <a href="#" class="d-block text-primary text-end"
+                    ><span class="material-symbols-outlined me-2s align-middle">
+                      location_on </span
+                    >搜尋店家</a
+                  >
                 </div>
               </li>
               <!-- 飲料項目 end-->
@@ -286,15 +377,28 @@
           </div>
           <!-- 收藏飲品 end -->
           <!-- 收藏店家 -->
-          <div class="tab-pane fade position-relative" id="collectDStores" role="tabpanel"
-            aria-labelledby="collectDStores-tab">
+          <div
+            class="tab-pane fade position-relative"
+            id="collectDStores"
+            role="tabpanel"
+            aria-labelledby="collectDStores-tab"
+          >
             <!-- 店家列表 -->
-            <ul class="d-flex flex-wrap justify-content-between m-0 p-0 shopCollectionsArea">
+            <ul
+              class="d-flex flex-wrap justify-content-between m-0 p-0 shopCollectionsArea"
+            >
               <!-- 店家項目 01-->
               <li class="stores-card px-16 py-24 px-md-24">
-                <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                  value="uncollect"></button>
-                <img src="/WhatDrink17/assets/store-01-fd5b119a.png" class="mb-8" alt="store image">
+                <button
+                  type="button"
+                  class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
+                  value="uncollect"
+                ></button>
+                <img
+                  src="/WhatDrink17/assets/store-01-fd5b119a.png"
+                  class="mb-8"
+                  alt="store image"
+                />
                 <div class="stores-card-body">
                   <div class="d-flex justify-content-between">
                     <h5 class="mb-8 mb-md-12">大苑子</h5>
@@ -307,21 +411,31 @@
                     </ul>
                   </div>
                   <p class="stores-card-content mb-16">
-                    傳達農業價值已經變成大苑子根深柢固的企業文化與精神，未來仍將堅守初衷，持續挖掘用心經營的果農，用好品質且可追溯源頭的水果,從食品源頭為顧客層層把關。</p>
+                    傳達農業價值已經變成大苑子根深柢固的企業文化與精神，未來仍將堅守初衷，持續挖掘用心經營的果農，用好品質且可追溯源頭的水果,從食品源頭為顧客層層把關。
+                  </p>
                   <ul class="stores-tag-group mb-16">
                     <li class="stores-tag">uber eat</li>
                     <li class="stores-tag">food panda</li>
                     <li class="stores-tag">合作活動</li>
                   </ul>
-                  <a href="stores-info.html" class="stores-card-btn">查看店家資訊</a>
+                  <a href="stores-info.html" class="stores-card-btn"
+                    >查看店家資訊</a
+                  >
                 </div>
               </li>
               <!-- 店家項目 end-->
               <!-- 店家項目 02-->
               <li class="stores-card px-16 py-24 px-md-24">
-                <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                  value="uncollect"></button>
-                <img src="/WhatDrink17/assets/store-02-c05b190f.png" class="mb-8" alt="store image">
+                <button
+                  type="button"
+                  class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
+                  value="uncollect"
+                ></button>
+                <img
+                  src="/WhatDrink17/assets/store-02-c05b190f.png"
+                  class="mb-8"
+                  alt="store image"
+                />
                 <div class="stores-card-body">
                   <div class="d-flex justify-content-between">
                     <h5 class="mb-8 mb-md-12">麻古茶坊</h5>
@@ -334,7 +448,8 @@
                     </ul>
                   </div>
                   <p class="stores-card-content mb-16">
-                    一個平凡的清晨四點，母牛的叫聲劃破本了寂靜的天際，空氣中還留著夜雨後的青草香，這是小牛即將出生的信號，今天的牧場，將既熱鬧又忙碌，新生命的喜悅。</p>
+                    一個平凡的清晨四點，母牛的叫聲劃破本了寂靜的天際，空氣中還留著夜雨後的青草香，這是小牛即將出生的信號，今天的牧場，將既熱鬧又忙碌，新生命的喜悅。
+                  </p>
                   <ul class="stores-tag-group mb-16">
                     <li class="stores-tag">uber eat</li>
                     <li class="stores-tag">food panda</li>
@@ -346,9 +461,16 @@
               <!-- 店家項目 end-->
               <!-- 店家項目 03-->
               <li class="stores-card px-16 py-24 px-md-24">
-                <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                  value="uncollect"></button>
-                <img src="/WhatDrink17/assets/store-03-b146a60f.png" class="mb-8" alt="store image">
+                <button
+                  type="button"
+                  class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
+                  value="uncollect"
+                ></button>
+                <img
+                  src="/WhatDrink17/assets/store-03-b146a60f.png"
+                  class="mb-8"
+                  alt="store image"
+                />
                 <div class="stores-card-body">
                   <div class="d-flex justify-content-between">
                     <h5 class="mb-8 mb-md-12">迷客夏</h5>
@@ -361,7 +483,8 @@
                     </ul>
                   </div>
                   <p class="stores-card-content mb-16">
-                    麻古茶坊於2008年創立，以南台灣為基石，打造果粒茶飲創始品牌。嚴選當季鮮果農產，秉持著「自己都不能接受的東西，絕不推銷給客人」的理念</p>
+                    麻古茶坊於2008年創立，以南台灣為基石，打造果粒茶飲創始品牌。嚴選當季鮮果農產，秉持著「自己都不能接受的東西，絕不推銷給客人」的理念
+                  </p>
                   <ul class="stores-tag-group mb-16">
                     <li class="stores-tag">uber eat</li>
                     <li class="stores-tag">food panda</li>
@@ -373,9 +496,16 @@
               <!-- 店家項目 end-->
               <!-- 店家項目 04-->
               <li class="stores-card px-16 py-24 px-md-24">
-                <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                  value="uncollect"></button>
-                <img src="/WhatDrink17/assets/store-04-e443bce9.png" class="mb-8" alt="store image">
+                <button
+                  type="button"
+                  class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
+                  value="uncollect"
+                ></button>
+                <img
+                  src="/WhatDrink17/assets/store-04-e443bce9.png"
+                  class="mb-8"
+                  alt="store image"
+                />
                 <div class="stores-card-body">
                   <div class="d-flex justify-content-between">
                     <h5 class="mb-8 mb-md-12">五桐號</h5>
@@ -388,7 +518,8 @@
                     </ul>
                   </div>
                   <p class="stores-card-content mb-16">
-                    茶，貫穿古今餘4700年，是中華文化的代表，而它的發源地，就在河南的桐柏區，相傳神農氏採荼於此地，是為茶的起源。</p>
+                    茶，貫穿古今餘4700年，是中華文化的代表，而它的發源地，就在河南的桐柏區，相傳神農氏採荼於此地，是為茶的起源。
+                  </p>
                   <ul class="stores-tag-group mb-16">
                     <li class="stores-tag">uber eat</li>
                     <li class="stores-tag">food panda</li>
@@ -403,15 +534,29 @@
           </div>
           <!-- 收藏店家 end -->
           <!-- 帳號設定 -->
-          <div class="tab-pane fade position-relative" id="setting" role="tabpanel" aria-labelledby="setting-tab">
+          <div
+            class="tab-pane fade position-relative"
+            id="setting"
+            role="tabpanel"
+            aria-labelledby="setting-tab"
+          >
             <div class="row justify-content-center">
               <div class="col-12 col-md-6">
                 <form class="py-64">
                   <!-- 帳號 -->
                   <div class="d-flex align-items-center mb-24">
-                    <label for="userName" class="w-25 form-label me-4">名稱</label>
-                    <input type="text" value="Irene Huang" class="w-75 form-control" id="userName"
-                      aria-describedby="userNameFeedback" placeholder="請輸入信箱帳號" required>
+                    <label for="userName" class="w-25 form-label me-4"
+                      >名稱</label
+                    >
+                    <input
+                      type="text"
+                      value="Irene Huang"
+                      class="w-75 form-control"
+                      id="userName"
+                      aria-describedby="userNameFeedback"
+                      placeholder="請輸入信箱帳號"
+                      required
+                    />
                     <div id="userNameFeedback" class="invalid-feedback">
                       名稱為必填
                     </div>
@@ -419,9 +564,18 @@
                   <!-- 帳號 end-->
                   <!-- 帳號 -->
                   <div class="d-flex align-items-center mb-24">
-                    <label for="logInEmail" class="w-25 form-label me-4">帳號</label>
-                    <input type="text" value="irene880214@gmail.com" class="w-75 form-control" id="logInEmail"
-                      aria-describedby="logInEmailFeedback" placeholder="請輸入信箱帳號" required>
+                    <label for="logInEmail" class="w-25 form-label me-4"
+                      >帳號</label
+                    >
+                    <input
+                      type="text"
+                      value="irene880214@gmail.com"
+                      class="w-75 form-control"
+                      id="logInEmail"
+                      aria-describedby="logInEmailFeedback"
+                      placeholder="請輸入信箱帳號"
+                      required
+                    />
                     <div id="logInEmailFeedback" class="invalid-feedback">
                       信箱格式錯誤
                     </div>
@@ -429,20 +583,40 @@
                   <!-- 帳號 end-->
                   <!-- 密碼 -->
                   <div class="d-flex align-items-center mb-24">
-                    <label for="logInEmail" class="w-25 form-label me-4">密碼</label>
+                    <label for="logInEmail" class="w-25 form-label me-4"
+                      >密碼</label
+                    >
                     <div class="w-75 d-flex">
-                      <input type="text" value="********" class="w-75 form-control me-8" id="logInEmail"
-                        aria-describedby="logInEmailFeedback" placeholder="請輸入密碼" disabled>
-                      <button type="submit" class="w-25 fs-14 bg-white text-primary text-nowrap border-0">修改密碼</button>
+                      <input
+                        type="text"
+                        value="********"
+                        class="w-75 form-control me-8"
+                        id="logInEmail"
+                        aria-describedby="logInEmailFeedback"
+                        placeholder="請輸入密碼"
+                        disabled
+                      />
+                      <!-- 刪除 button type="submit" -->
+                      <button
+                        id="modifyPasswordButton"
+                        class="w-25 fs-14 bg-white text-primary text-nowrap border-0"
+                      >
+                        修改密碼
+                      </button>
                     </div>
                   </div>
                   <!-- 密碼 end-->
                 </form>
                 <div class="border"></div>
-                <button type="submit" class="d-block bg-white w-25 mx-auto border-0 text-danger pt-24">登出</button>
+                <button
+                  id="logout-button"
+                  type="submit"
+                  class="d-block bg-white w-25 mx-auto border-0 text-danger pt-24"
+                >
+                  登出
+                </button>
               </div>
             </div>
-
           </div>
           <!-- 帳號設定 end -->
         </div>
@@ -473,9 +647,8 @@
         </div>
     </div>
 </div>
-      
-      <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-      
-</body>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    
+  </body>
 </html>
