@@ -1,38 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>今天喝什麼？ | 新北飲料資訊站</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" href="../assets/images/favicon-whatdrink.ico" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <script
-      src="https://kit.fontawesome.com/6b74f216f9.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- swiper -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  </head>
-  <body>
-    <%- include('./layout/header'); -%>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>今天喝什麼？ | 新北飲料資訊站</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" href="../assets/images/favicon-whatdrink.ico" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://kit.fontawesome.com/6b74f216f9.js" crossorigin="anonymous"></script>
+  <!-- swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+  <%- include('./layout/header'); -%>
     <!-- 搜尋結果 -->
     <!-- header -->
     <div>
@@ -45,11 +36,7 @@
             <li class="breadcrumb-item">
               <a href="drinks.html" class="text-gray fs-16">熱門飲品</a>
             </li>
-            <li
-              class="breadcrumb-item active text-gray"
-              aria-current="page"
-              class="fs-16"
-            >
+            <li class="breadcrumb-item active text-gray" aria-current="page" class="fs-16">
               鮮奶茶
             </li>
           </ol>
@@ -61,16 +48,11 @@
     </div>
     <div class="mb-40">
       <div class="container">
-        <div
-          class="d-flex flex-column-reverse flex-md-row justify-content-md-between"
-        >
+        <div class="d-flex flex-column-reverse flex-md-row justify-content-md-between">
           <!-- 篩選器-->
           <div class="d-flex flex-column flex-md-row">
-            <select
-              id="teaTypeSelect"
-              class="form-select rounded-pill drink-nav-padding me-md-8 mb-16 mb-md-0"
-              aria-label="teaClass"
-            >
+            <select id="teaTypeSelect" class="form-select rounded-pill drink-nav-padding me-md-8 mb-16 mb-md-0"
+              aria-label="teaClass">
               <option selected value="">全部茶種</option>
               <option value="紅茶">紅茶</option>
               <option value="綠茶">綠茶</option>
@@ -81,11 +63,7 @@
               <option value="牛奶">牛奶</option>
               <option value="鮮果汁">鮮果汁</option>
             </select>
-            <select
-              id="ingredientsSelect"
-              class="form-select rounded-pill drink-nav-padding"
-              aria-label="mixingClass"
-            >
+            <select id="ingredientsSelect" class="form-select rounded-pill drink-nav-padding" aria-label="mixingClass">
               <option selected value="">不限配料</option>
               <option value="珍珠">珍珠</option>
               <option value="波霸">波霸</option>
@@ -97,23 +75,12 @@
           </div>
           <!-- 篩選器 end-->
           <!-- 搜尋bar-->
-          <div
-            class="input-group mb-3 w-md-25 bg-white border-bottom border-gray-dark mb-24 mb-md-0"
-          >
-            <span
-              class="material-symbols-outlined input-group-text bg-white border-0 p-0 fs-24 me-4"
-              id="basic-addon1"
-            >
+          <div class="input-group mb-3 w-md-25 bg-white border-bottom border-gray-dark mb-24 mb-md-0">
+            <span class="material-symbols-outlined input-group-text bg-white border-0 p-0 fs-24 me-4" id="basic-addon1">
               search
             </span>
-            <input
-              type="text"
-              id="searchDrinks"
-              class="form-control border-0 p-0 rounded-0"
-              placeholder="今天想要來點..."
-              aria-label="Searchame"
-              aria-describedby="basic-addon1"
-            />
+            <input type="text" id="searchDrinks" class="form-control border-0 p-0 rounded-0" placeholder="今天想要來點..."
+              aria-label="Searchame" aria-describedby="basic-addon1" />
           </div>
           <!-- 搜尋bar end-->
         </div>
@@ -121,15 +88,10 @@
     </div>
     <div class="container">
       <!-- 飲料列表 -->
-      <ul
-        id="drinkList"
-        class="d-flex flex-wrap justify-content-between m-0 p-0"
-      >
+      <ul id="drinkList" class="d-flex flex-wrap justify-content-between m-0 p-0">
         <!-- 飲料項目 01-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-01.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">珍珠伯爵紅茶拿鐵</h4>
@@ -141,19 +103,15 @@
               茶底使用濃郁伯爵紅茶，帶有佛手柑香氣，香與味在飲品中隨時間釋放多層次風味。
               珍珠咀嚼蜜香滋味呈現豐富並拉長整體風味感受。
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 end-->
         <!-- 飲料項目 02-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-02.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">蜜桃果粒冰沙</h4>
@@ -164,19 +122,15 @@
             <p class="drinks-card-content mb-24 mb-md-32">
               蜜桃果丁搭配現打蜜桃冰沙，下層是彈嫩手工綠茶凍。回甘茶香交疊清甜果香，每口都能吃到飽滿多汁蜜桃果肉，幸福指數爆表！
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 end-->
         <!-- 飲料項目 03-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-03.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">芝芝葡萄果粒</h4>
@@ -188,19 +142,15 @@
             <p class="drinks-card-content mb-24 mb-md-32">
               新鮮葡萄打製成冰沙，放入一顆顆多汁飽滿的去籽葡萄果肉，再淋上由紐西蘭芝士搭配喜馬拉雅山玫瑰鹽打發而成的芝芝奶霜
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 end-->
         <!-- 飲料項目 04-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-04.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">許慶良酪梨布丁鮮奶</h4>
@@ -211,19 +161,15 @@
             <p class="drinks-card-content mb-24 mb-md-32">
               以具有「森林奶油」美譽之稱的酪梨搭配順口的許慶良鮮乳再加入滑順的手工鮮奶布丁點綴口感升級再升級，讓人喝了就停不下來(⁎⁍̴̛ᴗ⁍̴̛⁎)
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 end-->
         <!-- 飲料項目 05-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-05.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">椰椰芋圓奶霜</h4>
@@ -235,19 +181,15 @@
             <p class="drinks-card-content mb-24 mb-md-32">
               喝得到整顆椰子！米其林認證100%椰子水、進口椰肉、椰漿打成綿密冰沙。下層Ｑ彈小芋圓，再用鮮乳奶霜封頂，撒上椰子脆片酥爽清脆
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 end-->
         <!-- 飲料項目 06-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-06.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">台灣鮮搾柳丁綠</h4>
@@ -258,18 +200,14 @@
             <p class="drinks-card-content mb-24 mb-md-32">
               大苑子與您歡樂慶中秋，銷售排行前三名的國民飲品「台灣鮮搾柳丁綠」於中秋節當日9/29正式回歸！
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 07-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-07.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">春芽冷露</h4>
@@ -280,18 +218,14 @@
             <p class="drinks-card-content mb-24 mb-md-32">
               春芽冷露是一股耐人尋味的質感，如同愛好茶酒和詩詞的阿伯。冬瓜陳年的尾韻，於茶葉清甜圓潤的餘韻下回甘，兩者所釋放的渾厚香氣，尋尋覓覓使人意猶未盡。
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 08-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-08.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">熟成歐蕾</h4>
@@ -302,18 +236,14 @@
             <p class="drinks-card-content mb-24 mb-md-32">
               濃郁的紅茶香，本是味覺記憶中的絕品，與溫順甘醇的鮮奶兩相平衡，為奶茶的底蘊更添一股味蕾衝擊，絲滑細膩使人覺醒。
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 09-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-09.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">桂花烏龍凍飲</h4>
@@ -323,18 +253,14 @@
             <p class="drinks-card-content mb-24 mb-md-32">
               中焙烏龍茶製成金黃茶湯，配搭醇茶手工製作的Q彈茶凍，以淡雅清香的桂花蜜點綴，喝起來清甜不膩。
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 10-->
         <li class="drinks-card px-16 py-24 px-md-24">
-          <a href="#" class="collect-btn text-primary"
-            ><span class="material-symbols-outlined"> favorite </span></a
-          >
+          <a href="#" class="collect-btn text-primary"><span class="material-symbols-outlined"> favorite </span></a>
           <img src="../assets/images/drink-10.png" alt="drink image" />
           <div class="drinks-card-body ms-16">
             <h4 class="mb-8 mb-md-12">老實人紅茶</h4>
@@ -344,35 +270,27 @@
             <p class="drinks-card-content mb-24 mb-md-32">
               正統紅茶，香醇茶香。紅茶茶葉產地為印度/斯里蘭卡。
             </p>
-            <a href="#" class="d-block text-primary text-end"
-              ><span class="material-symbols-outlined me-2s align-middle">
-                location_on </span
-              >搜尋店家</a
-            >
+            <a href="#" class="d-block text-primary text-end"><span
+                class="material-symbols-outlined me-2s align-middle">
+                location_on </span>搜尋店家</a>
           </div>
         </li>
         <!-- 飲料項目 end-->
       </ul>
       <!-- 飲料列表 end -->
     </div>
-    <div
-      class="container mt-md-80 mb-md-160 mt-sm-40 mb-sm-120 d-flex justify-content-center"
-    >
+    <div class="container mt-md-80 mb-md-160 mt-sm-40 mb-sm-120 d-flex justify-content-center">
       <!-- 頁碼 -->
       <nav aria-label="d-flex navigation">
         <ul class="pagination my-0">
           <li class="page-item mx-4 d-none d-md-block">
             <a class="page-link text-gray" href="#" aria-label="Previous">
-              <span class="material-symbols-outlined align-middle"
-                >keyboard_double_arrow_left</span
-              >
+              <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
             </a>
           </li>
           <li class="page-item mx-4 d-none d-md-block">
             <a class="page-link text-gray" href="#" aria-label="Previous">
-              <span class="material-symbols-outlined align-middle"
-                >chevron_left</span
-              >
+              <span class="material-symbols-outlined align-middle">chevron_left</span>
             </a>
           </li>
           <li class="page-item mx-4 active">
@@ -386,16 +304,12 @@
           </li>
           <li class="page-item mx-4 d-none d-md-block">
             <a class="page-link" href="#" aria-label="Next">
-              <span class="material-symbols-outlined align-middle"
-                >chevron_right</span
-              >
+              <span class="material-symbols-outlined align-middle">chevron_right</span>
             </a>
           </li>
           <li class="page-item mx-4 d-none d-md-block">
             <a class="page-link" href="#" aria-label="Next">
-              <span class="material-symbols-outlined align-middle"
-                >keyboard_double_arrow_right</span
-              >
+              <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
             </a>
           </li>
         </ul>
@@ -403,8 +317,9 @@
     </div>
     <%- include('./layout/footer'); -%>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    <script type="module" src="../main.js"></script>
-    <script type="module" src="../assets/js/searchResult.js"></script>
-  </body>
+      <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+      <script type="module" src="../main.js"></script>
+      <script type="module" src="../assets/js/searchResult.js"></script>
+</body>
+
 </html>

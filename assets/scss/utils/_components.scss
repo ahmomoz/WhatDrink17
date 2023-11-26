@@ -1,9 +1,9 @@
-//位置
+//position
 .top-75 {
     top: 75%;
 }
 
-//寬度
+//size
 .w-md-80 {
     width: 100% !important;
 
@@ -11,6 +11,7 @@
         width: 80% !important;
     }
 }
+
 .w-md-50 {
     width: 100% !important;
 
@@ -18,6 +19,7 @@
         width: 50% !important;
     }
 }
+
 .w-md-25 {
     width: 100% !important;
 
@@ -25,12 +27,19 @@
         width: 25% !important;
     }
 }
-//字重
+
+// img
+.object-fit {
+    object-fit: cover !important;
+}
+
+//font
+//--font weight
 .fw-500 {
     font-weight: 500;
 }
 
-//標題
+//--text style
 .text-title {
     font-size: 48px;
     background: linear-gradient(180deg, $primary, $warning);
@@ -60,6 +69,8 @@
     font-size: 16px;
     letter-spacing: 8px;
     text-align: center;
+    font-weight: bold;
+    color: $gray-dark !important;
 
     @include md {
         font-size: 20px;
@@ -71,6 +82,7 @@
     font-size: 16px;
     letter-spacing: 8px;
     text-align: center;
+    font-weight: bold;
     color: $white !important;
 
     @include md {
@@ -79,7 +91,7 @@
     }
 }
 
-//圓角
+//rounded
 .rounded-8 {
     border-radius: 8px;
 }
@@ -99,7 +111,7 @@
 }
 
 
-//圖片背景
+//background
 .bg-home {
     width: 100%;
     height: auto;
@@ -123,7 +135,7 @@
     }
 }
 
-//logo
+//nav
 .navbar-brand {
     a {
         height: 32px;
@@ -142,7 +154,26 @@
     }
 }
 
-//社群
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+    position: relative;
+
+    &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 2px;
+        background-color: $primary;
+        left: 0;
+        bottom: -4px;
+    }
+}
+
+.nav-tabs .nav-link {
+    padding: 0;
+}
+
+//footer
 .social {
     &-item {
         img {
@@ -151,11 +182,12 @@
     }
 }
 
-//懸浮按鈕
+//fab
 .fab {
     width: 48px;
 }
 
+//breadcrumb
 .breadcrumb-item.active.text-white {
     a {
         color: $white !important;
@@ -166,6 +198,67 @@
     color: $white !important;
 }
 
+.breadcrumb-item {
+    color: $black;
+}
+
+.breadcrumb-item .active {
+    color: $primary !important;
+}
+
+//pagination
+.pagination {
+    align-items: center !important;
+
+    li {
+        a {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            border: 0 !important;
+            border-radius: 40px;
+            padding: 0;
+
+            span {
+                padding-bottom: 6px;
+            }
+
+            &:active,
+            &:hover,
+            &:focus {
+                color: #FFFFFF;
+                background-color: $primary;
+                // border-radius: 40px;
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+@media(max-width:768px) {
+    .mt-md-20 {
+        margin-top: 20px !important;
+    }
+
+    .form-select {
+        height: 48px;
+        font-size: 20px !important;
+    }
+
+    .mb-md-14 {
+        margin-bottom: 14px;
+    }
+
+    .mt-sm-40 {
+        margin-top: 40px;
+    }
+
+    .mb-sm-120 {
+        margin-bottom: 120px;
+    }
+}
+
+//button
 .btn-primary {
     display: block;
     padding: 10px 0;
@@ -186,6 +279,54 @@
 
 }
 
+.sso-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $gray-light;
+    border-radius: 100px;
+    padding: 12px 0;
+
+}
+
+.btn-collect {
+    display: flex;
+    align-items: center;
+    background-color: $white;
+    border: 1px solid $primary;
+    color: $primary;
+
+    &:hover {
+        background-color: $primary;
+        color: $white;
+    }
+
+    &-collcted {
+        background-color: $primary !important;
+        color: $white !important;
+    }
+}
+
+.collect-btn {
+    background-color: transparent !important;
+    top: 20px !important;
+    left: 16px !important;
+}
+
+//form
+.form-select {
+    display: inline !important;
+    width: auto !important;
+}
+
+.form-control.form-control-textArea {
+    border-radius: 8px !important;
+    height: 320px;
+}
+
+
+// decoration
 .or {
     position: relative;
 
@@ -210,152 +351,12 @@
     }
 }
 
-.sso-btn {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid $gray-light;
-    border-radius: 100px;
-    padding: 12px 0;
-
-}
-
-.form-select {
-    display: inline !important;
-    width: auto !important;
-}
-
-.form-control.form-control-textArea {
-    border-radius: 8px !important;
-    height: 320px;
-}
-
-.btn-collect {
-    display: flex;
-    align-items: center;
-    background-color: $white;
-    border: 1px solid $primary;
-    color: $primary;
-
-    &:hover {
-        background-color: $primary;
-        color: $white;
-    }
-
-    &-collcted{
-        background-color: $primary !important;
-        color: $white !important;
-    }
-}
-
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-item.show .nav-link {
-    position: relative;
-
-    &:after {
-        position: absolute;
-        content: "";
-        width: 100%;
-        height: 2px;
-        background-color: $primary;
-        left: 0;
-        bottom: -4px;
-    }
-}
-
-.nav-tabs .nav-link {
-    padding: 0;
-}
-
-
-// 圖片放大
-.image-cover-modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    position: fixed;
-    z-index: 30;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.9);
-    transition: opacity ease 0.3s;
-    pointer-events: none;
-}
-
-.model-shown {
-    pointer-events: all;
-    opacity: 1;
-}
-
-.image-cover-modal-content {
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-}
-
-#image-cover-caption {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 3rem;
-    bottom: 0;
-    line-height: 3rem;
-    text-align: center;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.33);
-}
-
-@media only screen and (max-width: 45rem) {
-    .image-cover-modal-content {
-        max-width: 100%;
-        max-height: 100%;
-    }
-}
-
-.topest{
-    z-index: 1039;
-}
-
-.collect-btn{
-    background-color: transparent !important;
-    top: 20px !important;
-    left: 16px !important;
-}
-
-.object-fit{
-    object-fit: cover !important;
-}
-.tri{
+.tri {
     width: 4px !important;
     height: auto;
 }
 
-.lastestNews-img{
-    object-fit: cover;
-    height: 200px;
-
-    @include md {
-        height: 240px;
-    }
-    @include lg {
-        height: 360px;
-    }
-}
-
-
-.breadcrumb-item{
-    color: $black;
-}
-.breadcrumb-item .active{
-    color: $primary !important;
-}
-
-.drinkStoreTag{
+//--飲料店家標籤
+.drinkStoreTag {
     margin-left: -24px;
 }

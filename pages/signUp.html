@@ -1,144 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>今天喝什麼？ | 新北飲料資訊站</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" href="../assets/images/favicon-whatdrink.ico" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <script
-      src="https://kit.fontawesome.com/6b74f216f9.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- swiper -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  </head>
 
-  <body>
-    <!-- logo -->
-    <div
-      class="navbar-brand mt-24 d-flex justify-content-center d-md-block ms-md-24"
-    >
-      <a href="index.html"
-        ><img src="../assets/images/logo.svg" alt="logo"
-      /></a>
-    </div>
-    <!-- logo end-->
-    <div class="pt-24">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-10 col-md-6 col-lg-4">
-            <h1 class="fs-24 text-center mb-8">註冊會員</h1>
-            <p class="text-center text-gray-dark mb-16">
-              立即加入，把喜歡的店家和飲料加入收藏！
-            </p>
-            <form class="mb-24" id="signUpForm">
-              <!-- 暱稱 -->
-              <div class="mb-12">
-                <label for="signUpName" class="form-label mb-4">暱稱</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="signUpName"
-                  aria-describedby="signUpNameFeedback"
-                  placeholder="限16個字元"
-                  required
-                />
-              </div>
-              <!-- 暱稱 end-->
-              <!-- 帳號 -->
-              <div class="mb-12">
-                <label for="signUpEmail" class="form-label mb-2">帳號</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="signUpEmail"
-                  aria-describedby="signUpEmailFeedback"
-                  placeholder="請輸入信箱帳號"
-                  required
-                />
-                <div id="signUpEmailFeedback" class="invalid-feedback">
-                  信箱格式錯誤
-                </div>
-              </div>
-              <!-- 帳號 end-->
-              <!-- 密碼 -->
-              <div class="mb-12">
-                <label for="signUpPassword" class="form-label mb-2">密碼</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="signUpPassword"
-                  aria-describedby="signUpPasswordFeedback"
-                  placeholder="請輸入密碼"
-                  required
-                />
-                <div id="signUpPasswordFeedback" class="invalid-feedback">
-                  密碼格式錯誤
-                </div>
-              </div>
-              <!-- 密碼 end-->
-              <!-- 確認密碼 -->
-              <div class="mb-16">
-                <label for="signUpPassword2" class="form-label mb-2"
-                  >確認密碼</label
-                >
-                <input
-                  type="password"
-                  class="form-control"
-                  id="signUpPassword2"
-                  aria-describedby="signUpPassword2Feedback"
-                  placeholder="請再次輸入密碼"
-                  required
-                />
-                <div id="signUpPassword2Feedback" class="invalid-feedback">
-                  密碼格式錯誤
-                </div>
-              </div>
-              <!-- 確認密碼 end-->
-              <button type="submit" class="btn-primary w-100 mx-auto">
-                註冊帳號
-              </button>
-            </form>
-            <p class="or fs-14 text-center text-gray mb-24">OR</p>
-            <div class="sso-btn mb-24">
-              <a href="#" class="stretched-link"
-                ><img
-                  src="../assets/images/icon-google.svg"
-                  alt="google"
-                  class="me-8"
-                />Google 註冊</a
-              >
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>今天喝什麼？ | 新北飲料資訊站</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" href="../assets/images/favicon-whatdrink.ico" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Akshar:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script src="https://kit.fontawesome.com/6b74f216f9.js" crossorigin="anonymous"></script>
+  <!-- swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+  <!-- logo -->
+  <div class="navbar-brand mt-24 d-flex justify-content-center d-md-block ms-md-24">
+    <a href="index.html"><img src="../assets/images/logo.svg" alt="logo" /></a>
+  </div>
+  <!-- logo end-->
+  <div class="pt-24">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-10 col-md-6 col-lg-4">
+          <h1 class="fs-24 text-center mb-8">註冊會員</h1>
+          <p class="text-center text-gray-dark mb-16">
+            立即加入，把喜歡的店家和飲料加入收藏！
+          </p>
+          <form class="mb-24" id="signUpForm">
+            <!-- 暱稱 -->
+            <div class="mb-12">
+              <label for="signUpName" class="form-label mb-4">暱稱</label>
+              <input type="text" class="form-control" id="signUpName" aria-describedby="signUpNameFeedback"
+                placeholder="限16個字元" required />
             </div>
-            <div class="d-flex justify-content-center align-items-center">
-              <p class="me-4">已經是會員？</p>
-              <a href="logIn.html" class="text-primary">會員登入</a>
+            <!-- 暱稱 end-->
+            <!-- 帳號 -->
+            <div class="mb-12">
+              <label for="signUpEmail" class="form-label mb-2">帳號</label>
+              <input type="email" class="form-control" id="signUpEmail" aria-describedby="signUpEmailFeedback"
+                placeholder="請輸入信箱帳號" required />
+              <div id="signUpEmailFeedback" class="invalid-feedback">
+                信箱格式錯誤
+              </div>
             </div>
+            <!-- 帳號 end-->
+            <!-- 密碼 -->
+            <div class="mb-12">
+              <label for="signUpPassword" class="form-label mb-2">密碼</label>
+              <input type="password" class="form-control" id="signUpPassword" aria-describedby="signUpPasswordFeedback"
+                placeholder="請輸入密碼" required />
+              <div id="signUpPasswordFeedback" class="invalid-feedback">
+                密碼格式錯誤
+              </div>
+            </div>
+            <!-- 密碼 end-->
+            <!-- 確認密碼 -->
+            <div class="mb-16">
+              <label for="signUpPassword2" class="form-label mb-2">確認密碼</label>
+              <input type="password" class="form-control" id="signUpPassword2"
+                aria-describedby="signUpPassword2Feedback" placeholder="請再次輸入密碼" required />
+              <div id="signUpPassword2Feedback" class="invalid-feedback">
+                密碼格式錯誤
+              </div>
+            </div>
+            <!-- 確認密碼 end-->
+            <button type="submit" class="btn-primary w-100 mx-auto">
+              註冊帳號
+            </button>
+          </form>
+          <p class="or fs-14 text-center text-gray mb-24">OR</p>
+          <div class="sso-btn mb-24">
+            <a href="#" class="stretched-link"><img src="../assets/images/icon-google.svg" alt="google"
+                class="me-8" />Google 註冊</a>
+          </div>
+          <div class="d-flex justify-content-center align-items-center">
+            <p class="me-4">已經是會員？</p>
+            <a href="logIn.html" class="text-primary">會員登入</a>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <script type="module" src="../main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="../assets/js/signUp.js"></script>
-  </body>
+  <script type="module" src="../main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="module" src="../assets/js/signUp.js"></script>
+</body>
+
 </html>

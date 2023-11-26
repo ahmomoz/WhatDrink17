@@ -1,3 +1,4 @@
+//頁首
 .bg-banner {
   width: 100%;
   height: 320px;
@@ -15,7 +16,8 @@
   }
 }
 
-//輪播套件
+//消息輪播
+//--輪播套件
 .swiper-button-prev:after,
 .swiper-rtl .swiper-button-next:after {
   content: "";
@@ -28,6 +30,20 @@
 
 .swiper-pagination-bullet-active {
   background-color: $primary !important;
+}
+
+//--輪播圖片
+.lastestNews-img {
+  object-fit: cover;
+  height: 200px;
+
+  @include md {
+    height: 240px;
+  }
+
+  @include lg {
+    height: 360px;
+  }
 }
 
 //飲料卡片
@@ -83,12 +99,7 @@
   }
 }
 
-.collect-btn {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-}
-
+//店家卡片
 .stores {
   &-tag {
     &-group {
@@ -97,6 +108,7 @@
       margin: 0;
       padding: 0;
     }
+
     padding: 2px 8px;
     margin-right: 4px;
     margin-bottom: 4px;
@@ -122,12 +134,15 @@
     @include md {
       width: calc((100% - 16px) / 2);
     }
+
     @include lg {
       width: calc((100% - 16px * 2) / 3);
     }
+
     @include xl {
       width: calc((100% - 16px * 3) / 4);
     }
+
     img {
       width: 100%;
       object-fit: contain;
@@ -143,7 +158,7 @@
       -webkit-box-orient: vertical;
     }
 
-    &-btn{
+    &-btn {
       display: block;
       margin: 0 auto;
       padding: 8px 0;
@@ -166,4 +181,3 @@
     right: 24px;
   }
 }
-
