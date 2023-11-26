@@ -1,4 +1,4 @@
-import"./bootstrap.min-66cd0a72.js";const a=document.querySelector(".news-content"),r=document.querySelector(".page-button"),s=window.location.href.split("?id=").pop(),n=document.querySelector(".breadcrumb");axios.get(`https://json-server-project-wtkt.onrender.com/latestNews?id=${s}`).then(e=>{let t=e.data;c(t)});function c(e){let t=`
+import"./bootstrap.min-255f8910.js";const a=document.querySelector(".news-content"),r=document.querySelector(".page-button"),s=window.location.href.split("?id=").pop(),n=document.querySelector(".breadcrumb");axios.get(`https://json-server-project-wtkt.onrender.com/latestNews?id=${s}`).then(e=>{let t=e.data;c(t)});function c(e){let t=`
           <li class="breadcrumb-item d-inline"><a href="index.html" class="breadcrumb-item fs-16">首頁</a></li>
           <li class="breadcrumb-item d-inline"><a href="news-list.html" class="breadcrumb-item fs-16">最新消息</a></li>
           <li class="breadcrumb-item active d-inline" aria-current="page" class="fs-16">${e[0].title}</li>
