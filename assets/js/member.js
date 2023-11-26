@@ -46,6 +46,14 @@ if (logoutButton) {
   });
 }
 
+// 修改密碼
+// 獲取修改密碼按鈕
+const modifyPasswordButton = document.querySelector("#modifyPasswordButton");
+modifyPasswordButton.addEventListener("click", function (event) {
+  event.preventDefault(); // 防止表單提交
+  window.location.href = "modifyPassword.html"; // 導航到修改密碼頁面
+});
+
 //頂部使用者資料
 const userDataArea = document.querySelector(".userData");
 
