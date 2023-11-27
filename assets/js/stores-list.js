@@ -65,7 +65,7 @@ const storeRenderData = () => {
   searchRender(storeData); //搜尋邏輯
 };
 
-//收藏愛心CSS樣式函式-----------------------------------------------
+/**收藏愛心CSS樣式函式-----------------------------------------------
 function isCollect(){
   const collectBtn = document.querySelectorAll(".collect-btn"); //抓按鈕class
   console.log(collectBtn);//驗證
@@ -87,8 +87,26 @@ function isCollect(){
             console.log("hi")//驗證
         });
     });
-};
+};**/
 
+/**收藏愛心CSS樣式直接加在卡片監聽邏輯-------------------------------------------**/
+storeList.addEventListener("click", function (e) {
+  console.log(e.target);
+  if (e.target.classList.contains("collect-btn")) {
+    const btn = e.target;
+      //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
+    if (btn.value === "collected") {
+      btn.value = "uncollect";
+      btn.classList.remove("fa-regular");
+      btn.classList.add("fa-solid");
+      //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
+    } else if (btn.value === "uncollect") {
+      btn.value = "collected";
+      btn.classList.add("fa-regular");
+      btn.classList.remove("fa-solid");
+    }
+  }
+});
 
 //店家篩選器邏輯-----------------------------------------------------
 deliverySelect.addEventListener('change', applyFilters); //監聽下拉變化事件
@@ -327,9 +345,6 @@ const searchRender = (data) => {
       handleSearch();
     }
   });
-  searchInput.addEventListener('blur', e =>{  //輸入框失焦觸發
-    handleSearch();
-  });
 };
 
 //將店家資料由外部寫入
@@ -340,7 +355,7 @@ axios.get('https://json-server-project-wtkt.onrender.com/shops')
     storeRenderData();   //載入預設店家卡片
     applyFilters();  //載入預設篩選器
     renderPagination(storeData); //頁碼邏輯
-    isCollect(); //收藏愛心CSS
+
 })
 .catch(error => {
   console.error('Error fetching data:', error);
