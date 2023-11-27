@@ -7,33 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let userDrinkCollections = []; // 存放用戶收藏飲料
   let topSixDrinks = []; // 空陣列存放取出的飲料數據
 
-  // //將用戶飲料資料由外部寫入
-  // axios
-  //   .get("https://json-server-project-wtkt.onrender.com/userDrinkCollections")
-  //   .then((response) => {
-  //     userDrinkCollections = response.data;
-  //     getTopSixDrinks();
-  //     drinkTagPush(); //組合Tag陣列
-  //     drinkRenderData(); //載入預設飲料卡片
-  //     // isCollect(); //收藏愛心CSS
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error fetching data:", error);
-  //   });
-
-  // //將飲料資料由外部寫入
-  // axios
-  //   .get("https://json-server-project-wtkt.onrender.com/drinks")
-  //   .then((response) => {
-  //     drinkData = response.data;
-  //     // drinkTagPush();  //組合Tag陣列
-  //     // drinkRenderData(); //載入預設飲料卡片
-  //     // isCollect(); //收藏愛心CSS
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error fetching data:", error);
-  //   });
-
   // 使用 Promise.all 同時執行兩個請求
   Promise.all([
     axios.get(
@@ -50,11 +23,29 @@ document.addEventListener("DOMContentLoaded", () => {
       getTopSixDrinks();
       drinkTagPush(); //組合Tag陣列
       drinkRenderData(); //載入預設飲料卡片
-      // isCollect(); //收藏愛心CSS
+      isCollect(); //收藏愛心CSS
     })
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
+
+  // //將用戶飲料資料由外部寫入
+  // Promise.all([
+  //   axios.get("https://json-server-project-wtkt.onrender.com/userDrinkCollections"),
+  //   axios.get("https://json-server-project-wtkt.onrender.com/drinks"),
+  // ])
+  //   .then((responses) => {
+  //     userDrinkCollections = responses[0].data;
+  //     drinkData = responses[1].data;
+
+  //     getTopSixDrinks();
+  //     drinkTagPush(); //組合Tag陣列
+  //     drinkRenderData(); //載入預設飲料卡片
+  //     isCollect(); //收藏愛心CSS
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error fetching data:", error);
+  //   });
 
   //茶種、配料tag組合函式----------------------------------------
   const drinkTagPush = () => {
@@ -163,9 +154,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="d-flex justify-content-between align-items-end ms-16">
         <div class="d-flex align-items-center drinkStoreTag">
           <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
-          <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${
-            item.StoreName
-          }</p>
+          <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName
+        }</p>
         </div>
         <a href="#" class="d-block text-primary text-end"><span
             class="material-symbols-outlined me-2 align-middle">
