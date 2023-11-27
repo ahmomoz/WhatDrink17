@@ -4,15 +4,13 @@
 @import './utils/mixin';
 @import './utils/components';
 
-
 @import './layout/header.scss';
 @import './layout/footer.scss';
 
-
-@import './pages/index.scss';
+@import './pages/_index.scss';
 @import './pages/_drinks.scss';
-@import './pages/_news-list.scss';
-@import './pages/_searchResult.scss';
-@import './pages/_stores-list.scss';
+@import './pages/_news.scss';
+@import './pages/_search.scss';
+@import './pages/_stores.scss';
 
 @import "../../node_modules/bootstrap";

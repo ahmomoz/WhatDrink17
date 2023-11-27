@@ -5,33 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let userStoreCollections = []; // 存放用戶收藏店家
   let topFourStore = []; // 空陣列存放取出的店家數據
 
-  //   //將用戶飲料資料由外部寫入
-  //   axios
-  //     .get("https://json-server-project-wtkt.onrender.com/userShopCollections")
-  //     .then((response) => {
-  //       userStoreCollections = response.data;
-  //       // console.log(userStoreCollections);
-  //       getTopFourStore();
-  //       storeTagPush(); //組合Tag陣列
-  //       storeRenderData(); //載入預設飲料卡片
-  //       isCollect(); //收藏愛心CSS
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //     });
 
-  //   //將店家資料由外部寫入
-  //   axios
-  //     .get("https://json-server-project-wtkt.onrender.com/shops")
-  //     .then((response) => {
-  //       storeData = response.data;
-  //       // storeTagPush()  //組合Tag陣列
-  //       // storeRenderData();   //載入預設店家卡片
-  //       // isCollect(); ////收藏愛心CSS
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching data:", error);
-  //     });
 
   // 使用 Promise.all 同時執行兩個請求
   Promise.all([
@@ -53,6 +27,25 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => {
       console.error("Error fetching data:", error);
     });
+
+  // //將用戶飲料資料由外部寫入
+  // Promise.all([
+  //   axios.get("https://drinkpicker-nclv.onrender.com/userShopCollections"),
+  //   axios.get("https://drinkpicker-nclv.onrender.com/shops"),
+  // ])
+  //   .then((responses) => {
+  //     userDrinkCollections = responses[0].data;
+  //     drinkData = responses[1].data;
+
+  //     getTopSixDrinks();
+  //     drinkTagPush(); //組合Tag陣列
+  //     drinkRenderData(); //載入預設飲料卡片
+  //     // isCollect(); //收藏愛心CSS
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error fetching data:", error);
+  //   });
+
 
   //店家tag組合函式----------------------------------------
   const storeTagPush = () => {
@@ -154,9 +147,8 @@ document.addEventListener("DOMContentLoaded", () => {
               <ul class="stores-tag-group mb-16">
                 ${storeTagAry[item.id - 1]}
               </ul>
-              <a href="stores-info.html?id=${
-                item.id
-              }" class="stores-card-btn">查看店家資訊</a>
+              <a href="stores-info.html?id=${item.id
+        }" class="stores-card-btn">查看店家資訊</a>
             </div>
           </li>
         `;
