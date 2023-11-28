@@ -1,4 +1,4 @@
-import"./bootstrap.min-09f15819.js";function B(t){let e=localStorage.getItem("searchTerm");if(e){N.textContent=e;let n=t.filter(s=>s.DrinkName.includes(e));x(n),b(n)}}const p=document.querySelector("#searchDrinkList"),N=document.querySelector("#searchBreadcrumb");let k=document.querySelector("#teaTypeSelect"),v=document.querySelector("#ingredientsSelect"),d=[],f=[];const _=()=>{const t=d.map(a=>!a||!a.TeaType?"":a.Ingredients.length===0?`${a.TeaType}`:`${a.TeaType},${a.Ingredients}`),e=[];for(let a=0;a<t.length;a++)e.push(t[a].split(","));let n="",s=[];e.forEach(a=>{a.forEach((g,h)=>{n+=`<li class="drinks-tag">${g}</li>`,h===a.length-1&&(s.push(n),n="")}),f.push(s),s=[]})},j=()=>{let t="";d.forEach(e=>{t+=`
+import"./bootstrap.min-66c8f441.js";const g=document.querySelector("#drinkList");let h=document.querySelector("#teaTypeSelect"),k=document.querySelector("#ingredientsSelect"),o=[],f=[];const S=()=>{const t=o.map(a=>!a||!a.TeaType?"":a.Ingredients.length===0?`${a.TeaType}`:`${a.TeaType},${a.Ingredients}`),e=[];for(let a=0;a<t.length;a++)e.push(t[a].split(","));let s="",n=[];e.forEach(a=>{a.forEach((p,b)=>{s+=`<li class="drinks-tag">${p}</li>`,b===a.length-1&&(n.push(s),s="")}),f.push(n),n=[]})},B=()=>{let t="";o.forEach(e=>{t+=`
           <li class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
@@ -22,31 +22,31 @@ import"./bootstrap.min-09f15819.js";function B(t){let e=localStorage.getItem("se
                   </span>搜尋店家</a>
               </div>
           </li>
-        `}),p.innerHTML=t,D()},q=()=>{j(),L(d)};function D(){const t=document.querySelectorAll(".collect-btn");console.log(t),t.forEach(function(e){e.addEventListener("click",function(n){n.target.value=="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):n.target.value=="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid")),console.log("hi")})})}k.addEventListener("change",y);v.addEventListener("change",y);function y(){let t=d;k.value!==""&&(t=t.filter(e=>e.TeaType.includes(k.value))),v.value!==""&&(t=t.filter(e=>e.Ingredients.includes(v.value))),x(t),L(t),b(t)}function x(t){let e="";t.forEach(n=>{e+=`
+        `}),g.innerHTML=t},_=()=>{B(),D(o)};g.addEventListener("click",function(t){if(console.log(t.target),t.target.classList.contains("collect-btn")){const e=t.target;e.value==="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):e.value==="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid"))}});h.addEventListener("change",v);k.addEventListener("change",v);function v(){let t=o;h.value!==""&&(t=t.filter(e=>e.TeaType.includes(h.value))),k.value!==""&&(t=t.filter(e=>e.Ingredients.includes(k.value))),$(t),D(t),y(t)}function $(t){let e="";t.forEach(s=>{e+=`
       <li class="drinks-card px-16 py-24 px-md-24">
         <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
           value="collected"></button>
-        <img src="${n.ImageLink}" alt="drink image">
+        <img src="${s.ImageLink}" alt="drink image">
         <div class="w-100 d-flex flex-column justify-content-between">
           <div class="drinks-card-body ms-16">
-            <h4 class="mb-8 mb-md-12">${n.DrinkName}</h4>
+            <h4 class="mb-8 mb-md-12">${s.DrinkName}</h4>
             <ul class="drinks-tag-group mb-8 mb-md-12">
-              ${f[n.id-1]}
+              ${f[s.id-1]}
             </ul>
-            <p class="drinks-card-content mb-24 mb-md-32">${n.Description}</p>
+            <p class="drinks-card-content mb-24 mb-md-32">${s.Description}</p>
           </div>
           <div class="d-flex justify-content-between align-items-end ms-16">
                 <div class="d-flex align-items-center drinkStoreTag">
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
-                  <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${n.StoreName}</p>
+                  <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${s.StoreName}</p>
                 </div>
-                <a href="stores-info.html?id=${n.ShopID}" class="d-block text-primary text-end"><span
+                <a href="stores-info.html?id=${s.ShopID}" class="d-block text-primary text-end"><span
                     class="material-symbols-outlined me-2 align-middle">
                     location_on
                   </span>搜尋店家</a>
           </div>
       </li>
-    `}),p.innerHTML=e}const b=t=>{const e=t.length,n=10,s=Math.ceil(e/n);let a=1;function g(r){const c=(r-1)*n,i=c+n,u=t.slice(c,i);h(u),T()}function h(r){p.innerHTML="";let c="";r.forEach(i=>{c+=`
+    `}),g.innerHTML=e}const y=t=>{const e=t.length,s=10,n=Math.ceil(e/s);let a=1;function p(r){const d=(r-1)*s,i=d+s,u=t.slice(d,i);b(u),L()}function b(r){g.innerHTML="";let d="";r.forEach(i=>{d+=`
           <li class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
@@ -70,26 +70,26 @@ import"./bootstrap.min-09f15819.js";function B(t){let e=localStorage.getItem("se
                   </span>搜尋店家</a>
               </div>
           </li>
-        `}),p.innerHTML=c,D()}function T(){const r=document.getElementById("pagination");r.innerHTML="";let c="";for(let l=1;l<=s;l++)c+=`
+        `}),g.innerHTML=d}function L(){const r=document.getElementById("pagination");r.innerHTML="";let d="";for(let l=1;l<=n;l++)d+=`
       <li class="page-item mx-4 ${l===a?"active":""}">   
         <a class="page-link" href="#" data-page="${l}">${l}</a>
       </li>
-    `;const i=a===1?"text-gray":"",u=a===s?"text-gray":"",P=a===1?"disabled":"",w=a===1?"disabled":"",S=a===s?"disabled":"",E=a===s?"disabled":"";r.innerHTML=`
+    `;const i=a===1?"text-gray":"",u=a===n?"text-gray":"",P=a===1?"disabled":"",T=a===1?"disabled":"",w=a===n?"disabled":"",E=a===n?"disabled":"";r.innerHTML=`
     <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${P}">
       <a class="page-link ${i}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
       </a>
     </li>
 
-    <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block ${w}">
+    <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block ${T}">
       <a class="page-link ${i}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">chevron_left</span>
       </a>
     </li>
 
-    ${c}
+    ${d}
 
-    <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${S}">
+    <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${w}">
       <a class="page-link ${u}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">chevron_right</span>
       </a>
@@ -99,4 +99,4 @@ import"./bootstrap.min-09f15819.js";function B(t){let e=localStorage.getItem("se
       <a class="page-link ${u}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
       </a>
-    </li>`,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",$=>{$.preventDefault();const I=parseInt(l.dataset.page);m(I)})});const o=[a];document.getElementById("previousPageBtn").addEventListener("click",l=>{l.preventDefault(),o[0]>1&&m(o[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",l=>{l.preventDefault(),o[0]!==s&&m(o[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",l=>{l.preventDefault(),o[0]>1&&m(1)}),document.getElementById("last-page-btn").addEventListener("click",l=>{l.preventDefault(),o[0]!==s&&m(s)})}function m(r){a=r,g(a),window.scrollTo(0,400)}g(a)},L=t=>{const e=document.querySelector("#searchDrinks"),n=()=>{let s=t.filter(a=>a.DrinkName.includes(e.value));x(s),b(s)};e.addEventListener("keydown",s=>{s.keyCode===13&&n()}),e.addEventListener("blur",s=>{n()})};axios.get("https://json-server-project-wtkt.onrender.com/drinks").then(t=>{d=t.data,_(),q(),y(),b(d),B(d)}).catch(t=>{console.error("Error fetching data:",t)});
+    </li>`,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",x=>{x.preventDefault();const I=parseInt(l.dataset.page);m(I)})});const c=[a];document.getElementById("previousPageBtn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&m(c[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==n&&m(c[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&m(1)}),document.getElementById("last-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==n&&m(n)})}function m(r){a=r,p(a),window.scrollTo(0,400)}p(a)},D=t=>{const e=document.querySelector("#searchDrinks"),s=()=>{let n=t.filter(a=>a.DrinkName.includes(e.value));$(n),y(n)};e.addEventListener("keyup",n=>{n.keyCode===13&&s()})};axios.get("https://json-server-project-wtkt.onrender.com/drinks").then(t=>{o=t.data,S(),_(),v(),y(o)}).catch(t=>{console.error("Error fetching data:",t)});

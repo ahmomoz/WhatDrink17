@@ -1,4 +1,4 @@
-import"./bootstrap.min-09f15819.js";import{a as t}from"./axios-28bc18a3.js";const d=document.querySelector("#storeInfo");let a=[],o=[];const m=document.querySelector(".breadcrumb"),u=window.location.href.split("?id=").pop();t.get(`https://json-server-project-wtkt.onrender.com/shops?id=${u}`).then(s=>{a=s.data,f(),r(),p(),h()}).catch(s=>{console.error("Error fetching data:",s)});const f=()=>{let s="";a.forEach(e=>{s+=`
+import"./bootstrap.min-66c8f441.js";import{a as t}from"./axios-28bc18a3.js";const d=document.querySelector("#storeInfo");let a=[],o=[];const m=document.querySelector(".breadcrumb"),u=window.location.href.split("?id=").pop();t.get(`https://json-server-project-wtkt.onrender.com/shops?id=${u}`).then(s=>{a=s.data,f(),r(),p(),h()}).catch(s=>{console.error("Error fetching data:",s)});const f=()=>{let s="";a.forEach(e=>{s+=`
     <li class="breadcrumb-item d-inline"><a href="index.html" class="breadcrumb-item fs-16">首頁</a></li>
     <li class="breadcrumb-item d-inline"><a href="stores-list.html" class="breadcrumb-item fs-16">熱門店家</a></li>
     <li class="breadcrumb-item active d-inline" aria-current="page" class="fs-16">${e.name}</li>
