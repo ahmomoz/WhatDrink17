@@ -34,6 +34,15 @@
 }
 
 //font
+// symbol
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 300,
+        'GRAD' 0,
+        'opsz' 24
+}
+
 //--font weight
 .fw-500 {
     font-weight: 500;
@@ -88,6 +97,12 @@
     @include md {
         font-size: 20px;
         letter-spacing: 10px;
+    }
+}
+
+.sm-title {
+    @include sm {
+        font-size: 32px !important;
     }
 }
 
@@ -318,6 +333,11 @@
 .form-select {
     display: inline !important;
     width: auto !important;
+
+    @include md {
+        height: 48px;
+        font-size: 20px !important;
+    }
 }
 
 .form-control.form-control-textArea {

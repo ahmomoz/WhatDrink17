@@ -1,9 +1,14 @@
 .drinks {
     &-card {
         border: 1px solid $gray-light;
+    }
 }
+
+.drink-nav-height {
+    height: 40px;
 }
+
 .drink-nav-padding {
-    padding-left: 20px!important;
-    padding-right: 68px!important;
+    padding-left: 20px !important;
+    padding-right: 68px !important;
 }
