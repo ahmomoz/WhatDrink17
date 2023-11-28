@@ -4,6 +4,7 @@
 const drinkList = document.querySelector("#drinkList"); //卡片列表
 let teaTypeSelect = document.querySelector("#teaTypeSelect"); //茶種篩選
 let ingredientsSelect = document.querySelector("#ingredientsSelect"); //配料篩選
+let userDrinkCollections = [] ;
 let drinkData = [];
 let drinkTagAry = [];
 const token = sessionStorage.getItem("jwtToken");  //身分token變數
@@ -46,7 +47,7 @@ const drinkRender = () => {
     let str='';
     drinkData.forEach(item => {
         str+=`
-          <li class="drinks-card px-16 py-24 px-md-24">
+          <li class="drinks-card px-16 py-24 px-md-24" data-drink-id="${item.id}">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
             <img src="${item.ImageLink}" alt="drink image">
@@ -80,13 +81,28 @@ const drinkRenderData = () => {
   searchRender(drinkData); //搜尋邏輯
 };
 
+//預設愛心函式------------------------------------------------------
+const heartCheck = () => {
+    // 獲取卡片元素的函數
+    const getCardElement = (drinkId) => {
+      return document.querySelector(`.drinks-card[data-drink-id="${drinkId}"] .collect-btn`);
+    };
+    // 根據用戶飲料收藏數據為已收藏的卡片添加樣式
+    userDrinkCollections.forEach(collection => {
+      const cardElement = getCardElement(collection.drinkId);
+      if (cardElement) {
+        cardElement.value = "collected";
+        cardElement.classList.remove("fa-regular");
+        cardElement.classList.add("fa-solid");
+      }
+    });
+};
 /**收藏愛心CSS樣式直接加在卡片監聽邏輯-------------------------------------------**/
-drinkList.addEventListener("click", function (e) {
-  if (!token) { //確認是否為會員，不是的話導向會員頁
+/**drinkList.addEventListener("click", function (e) {
+  if (!token) {                                    //確認是否為會員，不是的話導向會員頁
     console.log("無權限: 沒有找到 Token");
     redirectToLogin();  //導向登入頁函數
-    return false;
-  }else{             //是會員，可執行收藏功能
+  }else{                                          //是會員，可執行收藏功能
     if (e.target.classList.contains("collect-btn")) {
       const btn = e.target;
         //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
@@ -102,6 +118,71 @@ drinkList.addEventListener("click", function (e) {
       };
     };
   };  
+});**/
+drinkList.addEventListener("click", function (e) {
+  if (!token) { //確認是否為會員，不是的話導向會員頁
+    console.log("無權限: 沒有找到 Token");
+    redirectToLogin(); //導向登入頁函數
+  } else { //是會員，可執行收藏功能
+    if (e.target.classList.contains("collect-btn")) {
+      const btn = e.target;
+      const card = btn.closest('.drinks-card');  // 找到包含按鈕的卡片元素
+      const drinkId = card.dataset.drinkId;  // 從卡片元素的自定義屬性中獲取飲料ID
+      console.log(drinkId); //驗證點擊到的id
+
+      // 收藏 API 的 URL
+      const collectionUrl = 'https://json-server-project-wtkt.onrender.com/userDrinkCollections';
+
+      // 檢查收藏 API 的 URL
+      const checkCollectionUrl = `${collectionUrl}?userId=1&drinkId=${drinkId}`;
+
+      // 發送 GET 請求檢查飲料是否已經被收藏
+      axios.get(checkCollectionUrl)
+        .then(response => {
+          const isCollected = response.data.length > 0; // 如果查詢結果的數組長度大於 0，表示已經收藏
+
+          // 根據收藏狀態切換樣式
+          if (isCollected) {
+            // 飲料已被收藏，設定為未收藏狀態
+            console.log("已收藏改未收藏");
+            btn.value = "uncollect";
+            btn.classList.remove("fa-solid");
+            btn.classList.add("fa-regular");
+            
+            // 發送 DELETE 請求刪除收藏
+            axios.delete(`${collectionUrl}/${response.data[0].id}`)
+              .then(deleteResponse => {
+                console.log("收藏已刪除", deleteResponse);
+              })
+              .catch(deleteError => {
+                console.error('Error deleting collection:', deleteError);
+              });
+            return
+          } else {
+            // 飲料未被收藏，設定為已收藏狀態
+            console.log("未收藏改已收藏");
+            btn.value = "collected";
+            btn.classList.remove("fa-regular");
+            btn.classList.add("fa-solid");
+          }
+
+          //根據收藏狀態發送 POST 請求更新收藏
+          axios.post(collectionUrl, {
+            userId: 1,
+            drinkId: parseInt(drinkId)
+          })
+          .then(postResponse => {
+            console.log("收藏已新增", postResponse);
+          })
+          .catch(postError => {
+            console.error('Error adding collection:', postError);
+          });
+        })
+        .catch(error => {
+          console.error('Error checking collection status:', error);
+        });
+    }
+  }
 });
 //導回登入頁函數-------------------------------------------------------
 function redirectToLogin() {
@@ -126,12 +207,13 @@ function applyFilters() {  //條件篩選的函數
   displayFilteredData(filteredData); //顯示篩選後的數據
   searchRender(filteredData);  //若於篩選條件中搜尋，顯示搜尋後的數據
   renderPagination(filteredData);  //更新篩選後的頁碼
+  heartCheck();  //檢查是否為收藏，是的話預設愛心樣式
 };
 function displayFilteredData(data) {  //用於更新畫面的函數
   let str = '';
   data.forEach(item => {
     str += `
-      <li class="drinks-card px-16 py-24 px-md-24">
+      <li class="drinks-card px-16 py-24 px-md-24" data-drink-id="${item.id}">
         <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
           value="collected"></button>
         <img src="${item.ImageLink}" alt="drink image">
@@ -180,6 +262,9 @@ function displayData(page) {   //計算目前頁面顯示的卡片數量範圍
 
   // 渲染分頁按鈕
   renderPaginationButtons();
+
+  //檢查是否為收藏，是的話預設愛心樣式
+  heartCheck(); 
 };
 
 function renderCards(data) {
@@ -188,7 +273,7 @@ function renderCards(data) {
   let str='';
   data.forEach(item => {
     str+=`
-          <li class="drinks-card px-16 py-24 px-md-24">
+          <li class="drinks-card px-16 py-24 px-md-24" data-drink-id="${item.id}">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
             <img src="${item.ImageLink}" alt="drink image">
@@ -335,6 +420,7 @@ const searchRender = (data) => {
     item.DrinkName.includes(searchInput.value));
     displayFilteredData(searchData);
     renderPagination(searchData);
+    heartCheck();  //檢查是否為收藏，是的話預設愛心樣式
   };
   
   // 使用 blur 事件處理失焦時的搜尋
@@ -349,17 +435,26 @@ const searchRender = (data) => {
 };
 
 
-//將飲料資料由外部寫入----------------------------------------
-axios.get('https://json-server-project-wtkt.onrender.com/drinks')
-.then(response => {
-    drinkData = response.data;
+//將資料由外部寫入----------------------------------------------
+
+Promise.all([
+  axios.get(
+    "https://json-server-project-wtkt.onrender.com/userDrinkCollections?userId=1"
+  ),
+  axios.get("https://json-server-project-wtkt.onrender.com/drinks"),
+])
+  .then((responses) => {
+    userDrinkCollections = responses[0].data;       //請求使用者收藏飲料資料
+    drinkData = responses[1].data;                 //請求飲料資料
+
+    
     drinkTagPush();  //組合Tag陣列
     drinkRenderData(); //載入預設飲料卡片
     applyFilters();  //載入預設篩選器
     renderPagination(drinkData); //頁碼邏輯
-})
-.catch(error => {
-  console.error('Error fetching data:', error);
-});
 
-
+    heartCheck();  //檢查是否為收藏，是的話預設愛心樣式
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
