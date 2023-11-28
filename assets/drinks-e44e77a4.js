@@ -1,4 +1,4 @@
-import"./bootstrap.min-66c8f441.js";const g=document.querySelector("#drinkList");let h=document.querySelector("#teaTypeSelect"),k=document.querySelector("#ingredientsSelect"),o=[],f=[];const S=()=>{const t=o.map(a=>!a||!a.TeaType?"":a.Ingredients.length===0?`${a.TeaType}`:`${a.TeaType},${a.Ingredients}`),e=[];for(let a=0;a<t.length;a++)e.push(t[a].split(","));let s="",n=[];e.forEach(a=>{a.forEach((p,b)=>{s+=`<li class="drinks-tag">${p}</li>`,b===a.length-1&&(n.push(s),s="")}),f.push(n),n=[]})},B=()=>{let t="";o.forEach(e=>{t+=`
+import"./bootstrap.min-66c8f441.js";const g=document.querySelector("#drinkList");let h=document.querySelector("#teaTypeSelect"),k=document.querySelector("#ingredientsSelect"),o=[],f=[];const S=sessionStorage.getItem("jwtToken"),B=()=>{const t=o.map(a=>!a||!a.TeaType?"":a.Ingredients.length===0?`${a.TeaType}`:`${a.TeaType},${a.Ingredients}`),e=[];for(let a=0;a<t.length;a++)e.push(t[a].split(","));let n="",s=[];e.forEach(a=>{a.forEach((p,b)=>{n+=`<li class="drinks-tag">${p}</li>`,b===a.length-1&&(s.push(n),n="")}),f.push(s),s=[]})},_=()=>{let t="";o.forEach(e=>{t+=`
           <li class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
@@ -22,31 +22,31 @@ import"./bootstrap.min-66c8f441.js";const g=document.querySelector("#drinkList")
                   </span>搜尋店家</a>
               </div>
           </li>
-        `}),g.innerHTML=t},_=()=>{B(),D(o)};g.addEventListener("click",function(t){if(console.log(t.target),t.target.classList.contains("collect-btn")){const e=t.target;e.value==="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):e.value==="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid"))}});h.addEventListener("change",v);k.addEventListener("change",v);function v(){let t=o;h.value!==""&&(t=t.filter(e=>e.TeaType.includes(h.value))),k.value!==""&&(t=t.filter(e=>e.Ingredients.includes(k.value))),$(t),D(t),y(t)}function $(t){let e="";t.forEach(s=>{e+=`
+        `}),g.innerHTML=t},N=()=>{_(),D(o)};g.addEventListener("click",function(t){if(S){if(t.target.classList.contains("collect-btn")){const e=t.target;e.value==="collected"?(e.value="uncollect",e.classList.remove("fa-regular"),e.classList.add("fa-solid")):e.value==="uncollect"&&(e.value="collected",e.classList.add("fa-regular"),e.classList.remove("fa-solid"))}}else return console.log("無權限: 沒有找到 Token"),j(),!1});function j(){alert("登入後即可使用收藏功能"),window.location.href="logIn.html"}h.addEventListener("change",v);k.addEventListener("change",v);function v(){let t=o;h.value!==""&&(t=t.filter(e=>e.TeaType.includes(h.value))),k.value!==""&&(t=t.filter(e=>e.Ingredients.includes(k.value))),$(t),D(t),y(t)}function $(t){let e="";t.forEach(n=>{e+=`
       <li class="drinks-card px-16 py-24 px-md-24">
         <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
           value="collected"></button>
-        <img src="${s.ImageLink}" alt="drink image">
+        <img src="${n.ImageLink}" alt="drink image">
         <div class="w-100 d-flex flex-column justify-content-between">
           <div class="drinks-card-body ms-16">
-            <h4 class="mb-8 mb-md-12">${s.DrinkName}</h4>
+            <h4 class="mb-8 mb-md-12">${n.DrinkName}</h4>
             <ul class="drinks-tag-group mb-8 mb-md-12">
-              ${f[s.id-1]}
+              ${f[n.id-1]}
             </ul>
-            <p class="drinks-card-content mb-24 mb-md-32">${s.Description}</p>
+            <p class="drinks-card-content mb-24 mb-md-32">${n.Description}</p>
           </div>
           <div class="d-flex justify-content-between align-items-end ms-16">
                 <div class="d-flex align-items-center drinkStoreTag">
                   <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
-                  <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${s.StoreName}</p>
+                  <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${n.StoreName}</p>
                 </div>
-                <a href="stores-info.html?id=${s.ShopID}" class="d-block text-primary text-end"><span
+                <a href="stores-info.html?id=${n.ShopID}" class="d-block text-primary text-end"><span
                     class="material-symbols-outlined me-2 align-middle">
                     location_on
                   </span>搜尋店家</a>
           </div>
       </li>
-    `}),g.innerHTML=e}const y=t=>{const e=t.length,s=10,n=Math.ceil(e/s);let a=1;function p(r){const d=(r-1)*s,i=d+s,u=t.slice(d,i);b(u),L()}function b(r){g.innerHTML="";let d="";r.forEach(i=>{d+=`
+    `}),g.innerHTML=e}const y=t=>{const e=t.length,n=10,s=Math.ceil(e/n);let a=1;function p(r){const c=(r-1)*n,i=c+n,u=t.slice(c,i);b(u),L()}function b(r){g.innerHTML="";let c="";r.forEach(i=>{c+=`
           <li class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
@@ -70,33 +70,33 @@ import"./bootstrap.min-66c8f441.js";const g=document.querySelector("#drinkList")
                   </span>搜尋店家</a>
               </div>
           </li>
-        `}),g.innerHTML=d}function L(){const r=document.getElementById("pagination");r.innerHTML="";let d="";for(let l=1;l<=n;l++)d+=`
+        `}),g.innerHTML=c}function L(){const r=document.getElementById("pagination");r.innerHTML="";let c="";for(let l=1;l<=s;l++)c+=`
       <li class="page-item mx-4 ${l===a?"active":""}">   
         <a class="page-link" href="#" data-page="${l}">${l}</a>
       </li>
-    `;const i=a===1?"text-gray":"",u=a===n?"text-gray":"",P=a===1?"disabled":"",T=a===1?"disabled":"",w=a===n?"disabled":"",E=a===n?"disabled":"";r.innerHTML=`
-    <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${P}">
+    `;const i=a===1?"text-gray":"",u=a===s?"text-gray":"",T=a===1?"disabled":"",w=a===1?"disabled":"",P=a===s?"disabled":"",I=a===s?"disabled":"";r.innerHTML=`
+    <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${T}">
       <a class="page-link ${i}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
       </a>
     </li>
 
-    <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block ${T}">
+    <li id="previousPageBtn" class="page-item mx-4 d-none d-md-block ${w}">
       <a class="page-link ${i}" href="#" aria-label="Previous">
         <span class="material-symbols-outlined align-middle">chevron_left</span>
       </a>
     </li>
 
-    ${d}
+    ${c}
 
-    <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${w}">
+    <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${P}">
       <a class="page-link ${u}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">chevron_right</span>
       </a>
     </li>
 
-    <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${E}">
+    <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${I}">
       <a class="page-link ${u}" href="#" aria-label="Next">
         <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
       </a>
-    </li>`,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",x=>{x.preventDefault();const I=parseInt(l.dataset.page);m(I)})});const c=[a];document.getElementById("previousPageBtn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&m(c[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==n&&m(c[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]>1&&m(1)}),document.getElementById("last-page-btn").addEventListener("click",l=>{l.preventDefault(),c[0]!==n&&m(n)})}function m(r){a=r,p(a),window.scrollTo(0,400)}p(a)},D=t=>{const e=document.querySelector("#searchDrinks"),s=()=>{let n=t.filter(a=>a.DrinkName.includes(e.value));$(n),y(n)};e.addEventListener("keyup",n=>{n.keyCode===13&&s()})};axios.get("https://json-server-project-wtkt.onrender.com/drinks").then(t=>{o=t.data,S(),_(),v(),y(o)}).catch(t=>{console.error("Error fetching data:",t)});
+    </li>`,document.querySelectorAll(".page-link").forEach(l=>{l.addEventListener("click",x=>{x.preventDefault();const E=parseInt(l.dataset.page);m(E)})});const d=[a];document.getElementById("previousPageBtn").addEventListener("click",l=>{l.preventDefault(),d[0]>1&&m(d[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",l=>{l.preventDefault(),d[0]!==s&&m(d[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",l=>{l.preventDefault(),d[0]>1&&m(1)}),document.getElementById("last-page-btn").addEventListener("click",l=>{l.preventDefault(),d[0]!==s&&m(s)})}function m(r){a=r,p(a),window.scrollTo(0,400)}p(a)},D=t=>{const e=document.querySelector("#searchDrinks"),n=()=>{let s=t.filter(a=>a.DrinkName.includes(e.value));$(s),y(s)};e.addEventListener("keyup",s=>{s.keyCode===13&&n()})};axios.get("https://json-server-project-wtkt.onrender.com/drinks").then(t=>{o=t.data,B(),N(),v(),y(o)}).catch(t=>{console.error("Error fetching data:",t)});
