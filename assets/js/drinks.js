@@ -7,7 +7,7 @@ let ingredientsSelect = document.querySelector("#ingredientsSelect"); //配料�
 let userDrinkCollections = [] ;
 let drinkData = [];
 let drinkTagAry = [];
-const token = sessionStorage.getItem("jwtToken");  //身分token變數
+const userId = sessionStorage.getItem("user_id");
 
 //茶種、配料tag組合函式----------------------------------------
 const drinkTagPush = () => {  //合併茶種、配料成一個陣列
@@ -98,29 +98,8 @@ const heartCheck = () => {
     });
 };
 /**收藏愛心CSS樣式直接加在卡片監聽邏輯-------------------------------------------**/
-/**drinkList.addEventListener("click", function (e) {
-  if (!token) {                                    //確認是否為會員，不是的話導向會員頁
-    console.log("無權限: 沒有找到 Token");
-    redirectToLogin();  //導向登入頁函數
-  }else{                                          //是會員，可執行收藏功能
-    if (e.target.classList.contains("collect-btn")) {
-      const btn = e.target;
-        //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
-      if (btn.value === "collected") {
-        btn.value = "uncollect";
-        btn.classList.remove("fa-regular");
-        btn.classList.add("fa-solid");
-        //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
-      } else if (btn.value === "uncollect") {
-        btn.value = "collected";
-        btn.classList.add("fa-regular");
-        btn.classList.remove("fa-solid");
-      };
-    };
-  };  
-});**/
 drinkList.addEventListener("click", function (e) {
-  if (!token) { //確認是否為會員，不是的話導向會員頁
+  if (!userId) { //確認是否為會員，不是的話導向會員頁
     console.log("無權限: 沒有找到 Token");
     redirectToLogin(); //導向登入頁函數
   } else { //是會員，可執行收藏功能
@@ -134,7 +113,7 @@ drinkList.addEventListener("click", function (e) {
       const collectionUrl = 'https://json-server-project-wtkt.onrender.com/userDrinkCollections';
 
       // 檢查收藏 API 的 URL
-      const checkCollectionUrl = `${collectionUrl}?userId=1&drinkId=${drinkId}`;
+      const checkCollectionUrl = `${collectionUrl}?userId=${userId}&drinkId=${drinkId}`;
 
       // 發送 GET 請求檢查飲料是否已經被收藏
       axios.get(checkCollectionUrl)
@@ -168,7 +147,7 @@ drinkList.addEventListener("click", function (e) {
 
           //根據收藏狀態發送 POST 請求更新收藏
           axios.post(collectionUrl, {
-            userId: 1,
+            userId: userId,
             drinkId: parseInt(drinkId)
           })
           .then(postResponse => {
@@ -439,7 +418,7 @@ const searchRender = (data) => {
 
 Promise.all([
   axios.get(
-    "https://json-server-project-wtkt.onrender.com/userDrinkCollections?userId=1"
+    `https://json-server-project-wtkt.onrender.com/userDrinkCollections?userId=${userId}`
   ),
   axios.get("https://json-server-project-wtkt.onrender.com/drinks"),
 ])
