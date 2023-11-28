@@ -86,7 +86,6 @@ const drinkRender = () => {
         `;
     });
     searchDrinkList.innerHTML = str;
-    isCollect(); //收藏愛心CSS
 };
 
 //初始化預設飲料卡片函式--------------------------------------------
@@ -94,30 +93,25 @@ const drinkRenderData = () => {
   drinkRender();
   searchRender(drinkData); //搜尋邏輯
 };
+/**收藏愛心CSS樣式直接加在卡片監聽邏輯-------------------------------------------**/
+searchDrinkList.addEventListener("click", function (e) {
+  console.log(e.target);
+  if (e.target.classList.contains("collect-btn")) {
+    const btn = e.target;
+      //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
+    if (btn.value === "collected") {
+      btn.value = "uncollect";
+      btn.classList.remove("fa-regular");
+      btn.classList.add("fa-solid");
+      //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
+    } else if (btn.value === "uncollect") {
+      btn.value = "collected";
+      btn.classList.add("fa-regular");
+      btn.classList.remove("fa-solid");
+    }
+  }
+});
 
-//收藏愛心CSS樣式函式-----------------------------------------------
-function isCollect(){
-  const collectBtn = document.querySelectorAll(".collect-btn"); //抓按鈕class
-  console.log(collectBtn);//驗證
-    //跑 querySelectorAll 陣列
-    collectBtn.forEach(function (item) {
-        //監聽按鈕
-        item.addEventListener("click", function (e) {
-            //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
-            if (e.target.value == "collected") {
-                item.value = "uncollect";
-                item.classList.remove("fa-regular");
-                item.classList.add("fa-solid");
-            //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
-            } else if (e.target.value == "uncollect") {
-                item.value = "collected";
-                item.classList.add("fa-regular");
-                item.classList.remove("fa-solid");
-            }
-            console.log("hi")//驗證
-        });
-    });
-};
 
 
 //飲料篩選器邏輯-----------------------------------------------------
@@ -137,6 +131,7 @@ function applyFilters() {  //條件篩選的函數
   displayFilteredData(filteredData); //顯示篩選後的數據
   searchRender(filteredData);  //若於篩選條件中搜尋，顯示搜尋後的數據
   renderPagination(filteredData);  //更新篩選後的頁碼
+  searchBreadcrumb.textContent="搜尋結果"; //重新執行新的搜尋，更新麵包屑文字
 };
 function displayFilteredData(data) {  //用於更新畫面的函數
   let str = '';
@@ -225,7 +220,6 @@ function renderCards(data) {
         `;
     });
     searchDrinkList.innerHTML = str;
-    isCollect(); //收藏愛心CSS
 };
 
 //渲染分頁按鈕的邏輯，根據前頁和總頁數產生分頁按鈕
@@ -347,14 +341,16 @@ const searchRender = (data) => {
     item.DrinkName.includes(searchInput.value));
     displayFilteredData(searchData);
     renderPagination(searchData);
+    searchBreadcrumb.textContent="搜尋結果"; //重新執行新的搜尋，更新麵包屑文字
   };
-  searchInput.addEventListener('keydown', e =>{   //ENTER按下觸發
+  // 使用 blur 事件處理失焦時的搜尋
+  //searchInput.addEventListener('blur', executeSearch);
+
+  // 使用 keyup 事件處理按下 ENTER 時的搜尋
+  searchInput.addEventListener('keyup', e => {
     if (e.keyCode === 13) {
       handleSearch();
     }
-  });
-  searchInput.addEventListener('blur', e =>{  //輸入框失焦觸發
-    handleSearch();
   });
 };
 

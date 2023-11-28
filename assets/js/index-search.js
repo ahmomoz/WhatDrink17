@@ -1,6 +1,6 @@
 const searchButton = document.querySelector("#searchButton"); //搜尋按鈕
 const searchInput = document.querySelector("#searchInput");  //搜尋文字輸入框
-const tagSearch = document.querySelectorAll("#tagSearch");
+const tagSearch = document.querySelectorAll(".tagSearch");
 
 //搜尋導向其他頁面監聽-----------------------------------------------------------
 searchButton.addEventListener('click',function(){  //點擊搜尋按鈕觸發
