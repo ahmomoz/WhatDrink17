@@ -1,4 +1,4 @@
-import"./bootstrap.min-78ccea25.js";const u=document.querySelector("#storeList");let p=document.querySelector("#deliverySelect"),x=document.querySelector("#CooperationSelect"),d=[],b=[];const w=()=>{d.forEach(a=>{const e={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let l="";for(const t in e)a[t]&&(l+=`<li class="stores-tag">${e[t]}</li>`);b.push(l),l=""})},T=()=>{let a="";d.forEach(e=>{a+=`
+import"./bootstrap.min-09f15819.js";const u=document.querySelector("#storeList");let p=document.querySelector("#deliverySelect"),x=document.querySelector("#CooperationSelect"),d=[],b=[];const w=()=>{d.forEach(a=>{const e={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let l="";for(const t in e)a[t]&&(l+=`<li class="stores-tag">${e[t]}</li>`);b.push(l),l=""})},T=()=>{let a="";d.forEach(e=>{a+=`
         <li class="stores-card">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
