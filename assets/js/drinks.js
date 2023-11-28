@@ -6,6 +6,7 @@ let teaTypeSelect = document.querySelector("#teaTypeSelect"); //茶種篩選
 let ingredientsSelect = document.querySelector("#ingredientsSelect"); //配料篩選
 let drinkData = [];
 let drinkTagAry = [];
+const token = sessionStorage.getItem("jwtToken");  //身分token變數
 
 //茶種、配料tag組合函式----------------------------------------
 const drinkTagPush = () => {  //合併茶種、配料成一個陣列
@@ -81,22 +82,32 @@ const drinkRenderData = () => {
 
 /**收藏愛心CSS樣式直接加在卡片監聽邏輯-------------------------------------------**/
 drinkList.addEventListener("click", function (e) {
-  console.log(e.target);
-  if (e.target.classList.contains("collect-btn")) {
-    const btn = e.target;
-      //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
-    if (btn.value === "collected") {
-      btn.value = "uncollect";
-      btn.classList.remove("fa-regular");
-      btn.classList.add("fa-solid");
-      //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
-    } else if (btn.value === "uncollect") {
-      btn.value = "collected";
-      btn.classList.add("fa-regular");
-      btn.classList.remove("fa-solid");
-    }
-  }
+  if (!token) { //確認是否為會員，不是的話導向會員頁
+    console.log("無權限: 沒有找到 Token");
+    redirectToLogin();  //導向登入頁函數
+    return false;
+  }else{             //是會員，可執行收藏功能
+    if (e.target.classList.contains("collect-btn")) {
+      const btn = e.target;
+        //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
+      if (btn.value === "collected") {
+        btn.value = "uncollect";
+        btn.classList.remove("fa-regular");
+        btn.classList.add("fa-solid");
+        //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
+      } else if (btn.value === "uncollect") {
+        btn.value = "collected";
+        btn.classList.add("fa-regular");
+        btn.classList.remove("fa-solid");
+      };
+    };
+  };  
 });
+//導回登入頁函數-------------------------------------------------------
+function redirectToLogin() {
+  alert("登入後即可使用收藏功能"); 
+  window.location.href = "logIn.html";
+}
 
 //飲料篩選器邏輯-----------------------------------------------------
 teaTypeSelect.addEventListener('change', applyFilters); //監聽下拉變化事件
