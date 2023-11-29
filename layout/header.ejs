@@ -27,8 +27,8 @@
                                 <span class="material-symbols-outlined">
                                     search
                                 </span>
-                                <form class="w-75 d-flex">
-                                    <input class="form-control me-2 border-0 border-bottom rounded-0" type="search"
+                                <form id="searchForm" class="w-75 d-flex">
+                                    <input id="menuSearchInput" class="form-control me-2 border-0 border-bottom rounded-0" type="search"
                                         placeholder="Search" aria-label="Search">
                                 </form>
                             </div>
@@ -48,7 +48,7 @@
                             <a class="" href="stores-list.html">熱門店家</a>
                         </li>
                         <li class="list-group-item">
-                            <a class="text-danger" href="logIn.html">登出</a>
+                            <a id="isLogin" class="text-danger" href="logIn.html">登出</a>
                         </li>
                     </ul>
 
@@ -86,3 +86,5 @@
         <a href="#nav" class="stretched-link fs-14 text-center">TOTOP</a>
     </div>
 </div>
+
+<script src="/assets/js/header.js"></script>
