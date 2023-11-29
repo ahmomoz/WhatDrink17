@@ -1,11 +1,13 @@
 //店家資訊頁----------------------------------------------------------------------
 
 //變數命名
-const storeList = document.querySelector("#storeList");
+const storeList = document.querySelector("#storeList");  //卡片列表
 let deliverySelect = document.querySelector("#deliverySelect"); //外送篩選
 let CooperationSelect = document.querySelector("#CooperationSelect"); //合作活動篩選
+let userShopCollections = [] ;
 let storeData=[];
 let storeTagAry = [];
+const userId = sessionStorage.getItem("user_id");
 
 //店家tag組合函式----------------------------------------
 const storeTagPush = () =>{      //合併外送、合作活動成一個陣列
@@ -31,7 +33,7 @@ const storeRender = () => {
     let str='';
     storeData.forEach(item => {
         str+=`
-        <li class="stores-card">
+        <li class="stores-card" data-shop-id="${item.id}">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
             <img src="${item.logo}" class="mb-8" alt="store image">
@@ -59,54 +61,105 @@ const storeRender = () => {
     storeList.innerHTML = str;
 };
 
-//初始化預設飲料卡片函式--------------------------------------------
+//初始化預設店家卡片函式--------------------------------------------
 const storeRenderData = () => {
   storeRender();
   searchRender(storeData); //搜尋邏輯
 };
 
-/**收藏愛心CSS樣式函式-----------------------------------------------
-function isCollect(){
-  const collectBtn = document.querySelectorAll(".collect-btn"); //抓按鈕class
-  console.log(collectBtn);//驗證
-    //跑 querySelectorAll 陣列
-    collectBtn.forEach(function (item) {
-        //監聽按鈕
-        item.addEventListener("click", function (e) {
-            //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
-            if (e.target.value == "collected") {
-                item.value = "uncollect";
-                item.classList.remove("fa-regular");
-                item.classList.add("fa-solid");
-            //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
-            } else if (e.target.value == "uncollect") {
-                item.value = "collected";
-                item.classList.add("fa-regular");
-                item.classList.remove("fa-solid");
-            }
-            console.log("hi")//驗證
-        });
-    });
-};**/
+//預設愛心函式------------------------------------------------------
+const heartCheck = () => {
+  // 獲取卡片元素的函數
+  const getCardElement = (shopId) => {
+    return document.querySelector(`.stores-card[data-shop-id="${shopId}"] .collect-btn`);
+  };
+  // 根據用戶店家收藏數據為已收藏的卡片添加樣式
+  userShopCollections.forEach(collection => {
+    const cardElement = getCardElement(collection.shopId);
+    if (cardElement) {
+      cardElement.value = "collected";
+      cardElement.classList.remove("fa-regular");
+      cardElement.classList.add("fa-solid");
+    }
+  });
+};
 
 /**收藏愛心CSS樣式直接加在卡片監聽邏輯-------------------------------------------**/
 storeList.addEventListener("click", function (e) {
-  console.log(e.target);
-  if (e.target.classList.contains("collect-btn")) {
-    const btn = e.target;
-      //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
-    if (btn.value === "collected") {
-      btn.value = "uncollect";
-      btn.classList.remove("fa-regular");
-      btn.classList.add("fa-solid");
-      //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
-    } else if (btn.value === "uncollect") {
-      btn.value = "collected";
-      btn.classList.add("fa-regular");
-      btn.classList.remove("fa-solid");
+  const btn = e.target.closest('.collect-btn');
+  if (btn) {
+    if (!userId) { //確認是否為會員，不是的話導向會員頁
+      console.log("無權限: 沒有找到 Token");
+      redirectToLogin(); //導向登入頁函數
+    } else { //是會員，可執行收藏功能
+      if (e.target.classList.contains("collect-btn")) {
+        const btn = e.target;
+        const card = btn.closest('.stores-card');  // 找到包含按鈕的卡片元素
+        const shopId = card.dataset.shopId;  // 從卡片元素的自定義屬性中獲取店家ID
+        console.log(shopId); //驗證點擊到的id
+
+        // 收藏 API 的 URL
+        const collectionUrl = 'https://json-server-project-wtkt.onrender.com/userShopCollections';
+
+        // 檢查收藏 API 的 URL
+        const checkCollectionUrl = `${collectionUrl}?userId=${userId}&shopId=${shopId}`;
+
+        // 發送 GET 請求檢查店家是否已經被收藏
+        axios.get(checkCollectionUrl)
+          .then(response => {
+            const isCollected = response.data.length > 0; // 如果查詢結果的數組長度大於 0，表示已經收藏
+
+            // 根據收藏狀態切換樣式
+            if (isCollected) {
+              // 店家已被收藏，設定為未收藏狀態
+              console.log("已收藏改未收藏");
+              btn.value = "uncollect";
+              btn.classList.remove("fa-solid");
+              btn.classList.add("fa-regular");
+              
+              // 發送 DELETE 請求刪除收藏
+              axios.delete(`${collectionUrl}/${response.data[0].id}`)
+                .then(deleteResponse => {
+                  console.log("收藏已刪除", deleteResponse);
+                  alert("已取消收藏");
+                })
+                .catch(deleteError => {
+                  console.error('Error deleting collection:', deleteError);
+                });
+              return
+            } else {
+              // 店家未被收藏，設定為已收藏狀態
+              console.log("未收藏改已收藏");
+              btn.value = "collected";
+              btn.classList.remove("fa-regular");
+              btn.classList.add("fa-solid");
+            }
+
+            //根據收藏狀態發送 POST 請求更新收藏
+            axios.post(collectionUrl, {
+              userId: parseInt(userId),
+              shopId: parseInt(shopId)
+            })
+            .then(postResponse => {
+              console.log("收藏已新增", postResponse);
+              alert("已新增收藏");
+            })
+            .catch(postError => {
+              console.error('Error adding collection:', postError);
+            });
+          })
+          .catch(error => {
+            console.error('Error checking collection status:', error);
+          });
+      }
     }
-  }
+  };
 });
+//導回登入頁函數-------------------------------------------------------
+function redirectToLogin() {
+  alert("登入後即可使用收藏功能"); 
+  window.location.href = "logIn.html";
+};
 
 //店家篩選器邏輯-----------------------------------------------------
 deliverySelect.addEventListener('change', applyFilters); //監聽下拉變化事件
@@ -129,12 +182,13 @@ function applyFilters() {  //條件篩選的函數
   displayFilteredData(filteredData); //顯示篩選後的數據
   searchRender(filteredData);  //若於篩選條件中搜尋，顯示搜尋後的數據
   renderPagination(filteredData);  //更新篩選後的頁碼
+  heartCheck();  //檢查是否為收藏，是的話預設愛心樣式
 };
 function displayFilteredData(data) {  //用於更新畫面的函數
   let str = '';
   data.forEach(item => {
     str += `
-      <li class="stores-card">
+      <li class="stores-card" data-shop-id="${item.id}">
       <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
         value="collected"></button>
       <img src="${item.logo}" class="mb-8" alt="store image">
@@ -181,6 +235,9 @@ const renderPagination = (pageData) =>{
   
     // 渲染分頁按鈕
     renderPaginationButtons();
+
+    //檢查是否為收藏，是的話預設愛心樣式
+    heartCheck(); 
   };
   
   function renderCards(data) {
@@ -189,7 +246,7 @@ const renderPagination = (pageData) =>{
     let str='';
     data.forEach(item => {
       str+=`
-          <li class="stores-card">
+          <li class="stores-card" data-shop-id="${item.id}">
           <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
             value="collected"></button>
           <img src="${item.logo}" class="mb-8" alt="store image">
@@ -338,6 +395,7 @@ const searchRender = (data) => {
         };
     displayFilteredData(searchData); //顯示搜尋後的數據
     renderPagination(searchData);  //更新搜尋後的頁碼
+    heartCheck();  //檢查是否為收藏，是的話預設愛心樣式
   };
 
   searchInput.addEventListener('keydown', e =>{   //ENTER按下觸發
@@ -348,16 +406,24 @@ const searchRender = (data) => {
 };
 
 //將店家資料由外部寫入
-axios.get('https://json-server-project-wtkt.onrender.com/shops')
-.then(response => {
-    storeData = response.data;
+Promise.all([
+  axios.get(
+    `https://json-server-project-wtkt.onrender.com/userShopCollections?userId=${userId}`
+  ),
+  axios.get("https://json-server-project-wtkt.onrender.com/shops"),
+])
+  .then((responses) => {
+    userShopCollections = responses[0].data;       //請求使用者收藏店家資料
+    storeData = responses[1].data;                 //請求店家資料
+
+    
     storeTagPush()  //組合Tag陣列
     storeRenderData();   //載入預設店家卡片
     applyFilters();  //載入預設篩選器
     renderPagination(storeData); //頁碼邏輯
 
-})
-.catch(error => {
-  console.error('Error fetching data:', error);
-});
-
+    heartCheck();  //檢查是否為收藏，是的話預設愛心樣式
+  })
+  .catch((error) => {
+    console.error("Error fetching data:", error);
+  });
