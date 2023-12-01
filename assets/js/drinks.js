@@ -124,7 +124,6 @@ drinkList.addEventListener("click", function (e) {
             // 根據收藏狀態切換樣式
             if (isCollected) {
               // 飲料已被收藏，設定為未收藏狀態
-              console.log("已收藏改未收藏");
               btn.value = "uncollect";
               btn.classList.remove("fa-solid");
               btn.classList.add("fa-regular");
@@ -132,8 +131,7 @@ drinkList.addEventListener("click", function (e) {
               // 發送 DELETE 請求刪除收藏
               axios.delete(`${collectionUrl}/${response.data[0].id}`)
                 .then(deleteResponse => {
-                  console.log("收藏已刪除", deleteResponse);
-                  alert("已取消收藏");
+                  Swal.fire("已取消收藏");
                 })
                 .catch(deleteError => {
                   console.error('Error deleting collection:', deleteError);
@@ -141,7 +139,6 @@ drinkList.addEventListener("click", function (e) {
               return
             } else {
               // 飲料未被收藏，設定為已收藏狀態
-              console.log("未收藏改已收藏");
               btn.value = "collected";
               btn.classList.remove("fa-regular");
               btn.classList.add("fa-solid");
@@ -153,8 +150,7 @@ drinkList.addEventListener("click", function (e) {
               drinkId: parseInt(drinkId)
             })
             .then(postResponse => {
-              console.log("收藏已新增", postResponse);
-              alert("已新增收藏");
+              Swal.fire("收藏成功");
             })
             .catch(postError => {
               console.error('Error adding collection:', postError);
