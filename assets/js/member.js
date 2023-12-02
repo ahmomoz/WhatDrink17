@@ -1,4 +1,12 @@
 const token = sessionStorage.getItem("jwtToken");
+const user_email = sessionStorage.getItem("user_email");
+const user_id = sessionStorage.getItem("user_id");
+const user_nickname = sessionStorage.getItem("user_nickname");
+const user_picture = sessionStorage.getItem("user_picture");
+
+import { addUserDrinkCollection, deleteUserDrinkCollection } from "./api.js";
+import { addUserShopCollection, deleteUserShopCollection } from "./api.js";
+import { API_BASE_DB_URL } from "./config";
 
 // 確認是否登入
 function isAuthenticated() {
@@ -7,7 +15,7 @@ function isAuthenticated() {
     redirectToLogin();
     return false;
   }
-  getDrinks();
+  // getDrinks();
   return true;
 }
 isAuthenticated();
@@ -16,25 +24,6 @@ isAuthenticated();
 function redirectToLogin() {
   console.log("重新導回登入頁");
   window.location.href = "logIn.html";
-}
-
-// 依權限取得資料
-function getDrinks() {
-  axios
-    .get("https://drinkpicker-nclv.onrender.com/660/drinks", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => {
-      console.log("飲料資料:", response.data);
-    })
-    .catch((error) => {
-      console.error(
-        "錯誤:",
-        error.response ? error.response.data : "無法連接到伺服器"
-      );
-    });
 }
 
 // 登出後 清空 Session Storage
@@ -65,31 +54,58 @@ const shopCollectionsArea = document.querySelector(".shopCollectionsArea");
 
 // 渲染使用者資料
 // 目前還沒結合登入，暫時寫死userId=1的地方
-function renderUserData(data) {
-  const user_email = sessionStorage.getItem("user_email");
-  const user_id = sessionStorage.getItem("user_id");
-  const user_nickname = sessionStorage.getItem("user_nickname");
+function renderUserData() {
+  const url_picture = user_picture ? user_picture : "/assets/images/member.png";
   userDataArea.innerHTML = `
-    <img src="../assets/images/member.png" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
+    <img src="${url_picture}" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
     <p class="fs-32 text-white">${user_nickname}</p>
     <p class="fs-20 text-white">${user_email}</p>
-    
     `;
 }
 
 // 渲染飲料列表資料
 // 飲料標籤渲染待補
+// function renderUserDrinkCollections(data) {
+//   console.log(data);
+//   let text = "";
+//   for (let i = 0; i < data.length; i++) {
+//     text += `<li class="drinks-card px-16 py-24 px-md-24">
+//         <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24" value="uncollect"></button>
+//         <img src="${data[i].ImageLink}" alt="drink image">
+//         <div class="drinks-card-body ms-16">
+//           <h4 class="mb-8 mb-md-12">${data[i].DrinkName}</h4>
+//           <ul class="drinks-tag-group mb-8 mb-md-12">
+//             <li class="drinks-tag">奶茶</li>
+//             <li class="drinks-tag">牛奶</li>
+//           </ul>
+//           <p class="drinks-card-content mb-24 mb-md-32">${data[i].Description}</p>
+//           <a href="#" class="d-block text-primary text-end"><span
+//               class="material-symbols-outlined me-2s align-middle">
+//               location_on
+//             </span>搜尋店家</a>
+//         </div>
+//       </li>`;
+//   }
+//   drinkCollectionsArea.innerHTML = text;
+// }
 function renderUserDrinkCollections(data) {
+  // console.log(data);
   let text = "";
   for (let i = 0; i < data.length; i++) {
+    // 合併 TeaType 和 Ingredients 陣列，並為每個標籤創建 HTML
+    let tagsHtml = data[i].TeaType.concat(data[i].Ingredients)
+      .map((tag) => `<li class="drinks-tag">${tag}</li>`)
+      .join("");
+
+    // console.log(tagsHtml);
+
     text += `<li class="drinks-card px-16 py-24 px-md-24">
         <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24" value="uncollect"></button>
         <img src="${data[i].ImageLink}" alt="drink image">
         <div class="drinks-card-body ms-16">
           <h4 class="mb-8 mb-md-12">${data[i].DrinkName}</h4>
           <ul class="drinks-tag-group mb-8 mb-md-12">
-            <li class="drinks-tag">奶茶</li>
-            <li class="drinks-tag">牛奶</li>
+            ${tagsHtml}
           </ul>
           <p class="drinks-card-content mb-24 mb-md-32">${data[i].Description}</p>
           <a href="#" class="d-block text-primary text-end"><span
@@ -137,32 +153,34 @@ function renderUserShopCollections(data) {
 /**-------------------------------tag組合邏輯--------------------------------**/
 //飲料tag組合函式----------------------------------------
 let drinkTagAry = [];
-const drinkTagPush = (data) => {  //合併茶種、配料成一個陣列
-  const drinkTag = data.map(item => {
-    if (!item || !item.TeaType) {    //防呆
-      return ''; 
-    };
-    if(item.Ingredients.length===0){
-      return `${item.TeaType}`   //如果沒有配料就只推入茶種
-    }else{
-      return `${item.TeaType},${item.Ingredients}` //推入茶種,配料
-    };
+const drinkTagPush = (data) => {
+  //合併茶種、配料成一個陣列
+  const drinkTag = data.map((item) => {
+    if (!item || !item.TeaType) {
+      //防呆
+      return "";
+    }
+    if (item.Ingredients.length === 0) {
+      return `${item.TeaType}`; //如果沒有配料就只推入茶種
+    } else {
+      return `${item.TeaType},${item.Ingredients}`; //推入茶種,配料
+    }
   });
-  const drinkTag2=[]; //去掉逗點
-  for(let i = 0 ; i<drinkTag.length ; i++){
-    drinkTag2.push(drinkTag[i].split(','));
-  };
+  const drinkTag2 = []; //去掉逗點
+  for (let i = 0; i < drinkTag.length; i++) {
+    drinkTag2.push(drinkTag[i].split(","));
+  }
 
-  let tagStr = '';
-  let partialTags = [];   //保存部分標籤
-  drinkTag2.forEach(tags => {
+  let tagStr = "";
+  let partialTags = []; //保存部分標籤
+  drinkTag2.forEach((tags) => {
     tags.forEach((i, index) => {
-        tagStr += `<li class="drinks-tag">${i}</li>`;
-        if (index === tags.length - 1) {
-            // 將完整字串推入drinkTagAry
-            partialTags.push(tagStr);
-            tagStr = ''; // 清空tagStr以便推入下一個標籤組，避免重複
-        }
+      tagStr += `<li class="drinks-tag">${i}</li>`;
+      if (index === tags.length - 1) {
+        // 將完整字串推入drinkTagAry
+        partialTags.push(tagStr);
+        tagStr = ""; // 清空tagStr以便推入下一個標籤組，避免重複
+      }
     });
     drinkTagAry.push(partialTags);
     partialTags = []; // 清空partialTags，避免重複推入
@@ -171,35 +189,115 @@ const drinkTagPush = (data) => {  //合併茶種、配料成一個陣列
 
 //店家tag組合函式----------------------------------------
 let storeTagAry = [];
-const storeTagPush = (data) =>{      //合併外送、合作活動成一個陣列
-  const storeTag = data.forEach(item => {
+const storeTagPush = (data) => {
+  //合併外送、合作活動成一個陣列
+  const storeTag = data.forEach((item) => {
     const tags = {
-      uber: 'uber eat',
-      foodpanda: 'food panda',
-      hasEvent: '合作活動'
+      uber: "uber eat",
+      foodpanda: "food panda",
+      hasEvent: "合作活動",
     };
-    let tagStr = '';
+    let tagStr = "";
     for (const key in tags) {
       if (item[key]) {
         tagStr += `<li class="stores-tag">${tags[key]}</li>`;
       }
     }
     storeTagAry.push(tagStr);
-    tagStr=''; // 清空tagStr，避免重複推入
+    tagStr = ""; // 清空tagStr，避免重複推入
   });
 };
 
+// 綁定飲料收藏按鈕
+function bindCollectButtonDrinkEvents() {
+  // 獲取所有收藏按鈕
+  const collectButtons = document.querySelectorAll(".collect-drink-btn");
+
+  // 為每個按鈕添加點擊事件
+  collectButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      // 獲取飲料 ID
+      const drinkId = this.getAttribute("data-drink-id");
+
+      if (button.value === "uncollect") {
+        // 收藏飲料
+        addUserDrinkCollection(user_id, drinkId); // 假設 user_id 已定義
+
+        button.value = "collect";
+        button.classList.remove("fa-regular");
+        button.classList.add("fa-solid");
+
+        console.log("收藏的飲料 ID:", drinkId);
+      } else {
+        // 取消收藏
+        deleteUserDrinkCollection(user_id, drinkId); // 假設 user_id 已定義
+
+        button.value = "uncollect";
+        button.classList.remove("fa-solid");
+        button.classList.add("fa-regular");
+
+        console.log("取消收藏的飲料 ID:", drinkId);
+      }
+    });
+  });
+}
+
+// 綁定店家收藏按鈕
+function bindCollectButtonStoreEvents() {
+  // 獲取所有店家收藏按鈕
+  const collectButtons = document.querySelectorAll(".collect-store-btn");
+
+  // 為每個按鈕添加點擊事件
+  collectButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      // 獲取店家 ID
+      const storeId = this.getAttribute("data-store-id");
+
+      if (button.value === "uncollect") {
+        // 收藏店家
+        addUserShopCollection(user_id, storeId); // 假設 user_id 已定義
+
+        button.value = "collect";
+        button.classList.remove("fa-regular");
+        button.classList.add("fa-solid");
+
+        console.log("收藏的店家 ID:", storeId);
+      } else {
+        // 取消收藏
+        deleteUserShopCollection(user_id, storeId); // 假設 user_id 已定義
+
+        button.value = "uncollect";
+        button.classList.remove("fa-solid");
+        button.classList.add("fa-regular");
+
+        console.log("取消收藏的店家 ID:", storeId);
+      }
+    });
+  });
+}
+
+function fillUserInfo() {
+  if (user_nickname && user_email) {
+    const nicknameInput = document.getElementById("userName");
+    const emailInput = document.getElementById("logInEmail");
+
+    if (nicknameInput && emailInput) {
+      nicknameInput.value = user_nickname;
+      emailInput.value = user_email;
+    }
+  }
+}
 
 /**-------------------------------頁碼邏輯--------------------------------**/
 //飲料頁頁碼邏輯------------------------------------------------------
-const drinkRenderPagination = (pageData) =>{
-
+const drinkRenderPagination = (pageData) => {
   const totalItems = pageData.length; //飲料卡片數量
-  const itemsPerPage = 10;  //每頁顯示十個卡片
+  const itemsPerPage = 10; //每頁顯示十個卡片
   const totalPages = Math.ceil(totalItems / itemsPerPage); //計算總頁數
-  let currentPage = 1;  //當前頁數，預設為第一頁
+  let currentPage = 1; //當前頁數，預設為第一頁
 
-  function displayData(page) {   //計算目前頁面顯示的卡片數量範圍
+  function displayData(page) {
+    //計算目前頁面顯示的卡片數量範圍
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     // 獲取目前頁面的數據
@@ -210,23 +308,24 @@ const drinkRenderPagination = (pageData) =>{
 
     // 渲染分頁按鈕
     renderPaginationButtons();
-  };
+  }
 
   function renderCards(data) {
     drinkCollectionsArea.innerHTML = ""; // 清空容器
 
-    let str='';
-    data.forEach(item => {
-      str+=`
+    let str = "";
+    // console.log(drinkTagAry);
+    data.forEach((item, index) => {
+      // console.log(item);
+      str += `
             <li class="drinks-card px-16 py-24 px-md-24">
-              <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-                value="collected"></button>
+            <button type="button" class="collect-btn collect-drink-btn border-0 text-primary fa-solid fa-heart fs-24" data-drink-id="${item.id}" value="collected"></button>
               <img src="${item.ImageLink}" alt="drink image">
               <div class="w-100 d-flex flex-column justify-content-between">
                 <div class="drinks-card-body ms-16">
                   <h4 class="mb-8 mb-md-12">${item.DrinkName}</h4>
                   <ul class="drinks-tag-group mb-8 mb-md-12">
-                    ${drinkTagAry[item.id-1]}
+                    ${drinkTagAry[index]}
                   </ul>
                   <p class="drinks-card-content mb-24 mb-md-32">${item.Description}</p>
                 </div>
@@ -242,9 +341,9 @@ const drinkRenderPagination = (pageData) =>{
                 </div>
             </li>
           `;
-      });
-      drinkCollectionsArea.innerHTML = str;
-  };
+    });
+    drinkCollectionsArea.innerHTML = str;
+  }
 
   //渲染分頁按鈕的邏輯，根據前頁和總頁數產生分頁按鈕
   function renderPaginationButtons() {
@@ -252,24 +351,24 @@ const drinkRenderPagination = (pageData) =>{
     drinkButtonsContainer.innerHTML = ""; // 清空按鈕容器
 
     // 生成頁碼按鈕
-    let str='';
+    let str = "";
     for (let i = 1; i <= totalPages; i++) {
-      const isActive = i === currentPage ? 'active' : ''; // 檢查是否為當前頁面，是的話加上active樣式
+      const isActive = i === currentPage ? "active" : ""; // 檢查是否為當前頁面，是的話加上active樣式
       str += `
         <li class="page-item mx-4 ${isActive}">   
           <a class="page-link" href="#" data-page="${i}">${i}</a>
         </li>
       `;
-    };
-    const preIsGray = currentPage === 1 ? 'text-gray' : ''; //檢查當前頁面是否為1，是的話加上灰色樣式
-    const nextIsGray = currentPage === totalPages ? 'text-gray' : ''; //檢查當前頁面是否為最後一頁，是的話加上灰色樣式
+    }
+    const preIsGray = currentPage === 1 ? "text-gray" : ""; //檢查當前頁面是否為1，是的話加上灰色樣式
+    const nextIsGray = currentPage === totalPages ? "text-gray" : ""; //檢查當前頁面是否為最後一頁，是的話加上灰色樣式
 
-    const firstPageDisabled = currentPage === 1 ? 'disabled' : ''; // 如果當前頁面為第一頁，添加disabled屬性
-    const previousPageDisabled = currentPage === 1 ? 'disabled' : ''; // 如果當前頁面為第一頁，添加disabled屬性
-    const nextPageDisabled = currentPage === totalPages ? 'disabled' : ''; // 如果當前頁面為最後一頁，添加disabled屬性
-    const lastPageDisabled = currentPage === totalPages ? 'disabled' : ''; // 如果當前頁面為最後一頁，添加disabled屬性
+    const firstPageDisabled = currentPage === 1 ? "disabled" : ""; // 如果當前頁面為第一頁，添加disabled屬性
+    const previousPageDisabled = currentPage === 1 ? "disabled" : ""; // 如果當前頁面為第一頁，添加disabled屬性
+    const nextPageDisabled = currentPage === totalPages ? "disabled" : ""; // 如果當前頁面為最後一頁，添加disabled屬性
+    const lastPageDisabled = currentPage === totalPages ? "disabled" : ""; // 如果當前頁面為最後一頁，添加disabled屬性
 
-    drinkButtonsContainer.innerHTML =`
+    drinkButtonsContainer.innerHTML = `
       <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${firstPageDisabled}">
         <a class="page-link ${preIsGray}" href="#" aria-label="Previous">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
@@ -296,96 +395,96 @@ const drinkRenderPagination = (pageData) =>{
         </a>
       </li>`;
 
-      // 設定切頁按鈕事件監聽
-      const pageLinks = document.querySelectorAll(".page-link");
-      pageLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault(); //取消a連結效果
-          const pageNumber = parseInt(link.dataset.page);
-          onPageButtonClick(pageNumber);
-        });
-      })
-
-      const page=[currentPage]; //存放目前頁面數字
-
-      // 前一頁按鈕事件監聽器
-      const previousPageBtn = document.getElementById("previousPageBtn");
-      previousPageBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (page[0]> 1) {
-          onPageButtonClick(page[0] - 1);
-        }
+    // 設定切頁按鈕事件監聽
+    const pageLinks = document.querySelectorAll(".page-link");
+    pageLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); //取消a連結效果
+        const pageNumber = parseInt(link.dataset.page);
+        onPageButtonClick(pageNumber);
       });
+    });
 
-      // 後一頁按鈕事件監聽器
-      const nextPageBtn = document.getElementById("next-page-btn");
-      nextPageBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (page[0]!==totalPages) {
-          onPageButtonClick(page[0] + 1);
-        }
-      });
+    const page = [currentPage]; //存放目前頁面數字
 
-      // 最前頁按鈕事件監聽器
-      const firstPageBtn = document.getElementById("first-page-btn");
-      firstPageBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (page[0]> 1) {
+    // 前一頁按鈕事件監聽器
+    const previousPageBtn = document.getElementById("previousPageBtn");
+    previousPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (page[0] > 1) {
+        onPageButtonClick(page[0] - 1);
+      }
+    });
+
+    // 後一頁按鈕事件監聽器
+    const nextPageBtn = document.getElementById("next-page-btn");
+    nextPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (page[0] !== totalPages) {
+        onPageButtonClick(page[0] + 1);
+      }
+    });
+
+    // 最前頁按鈕事件監聽器
+    const firstPageBtn = document.getElementById("first-page-btn");
+    firstPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (page[0] > 1) {
         onPageButtonClick(1);
-        };
-      });
+      }
+    });
 
-      // 最後頁按鈕事件監聽器
-      const lastPageBtn = document.getElementById("last-page-btn");
-      lastPageBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (page[0]!==totalPages) {
+    // 最後頁按鈕事件監聽器
+    const lastPageBtn = document.getElementById("last-page-btn");
+    lastPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (page[0] !== totalPages) {
         onPageButtonClick(totalPages);
-        };
-      });
-  };
-
+      }
+    });
+  }
 
   function onPageButtonClick(page) {
     // 頁面按鈕點擊事件
     currentPage = page;
     displayData(currentPage);
-    window.scrollTo(0,400);   //讓頁面跑到最上方的語法
-  };
+    window.scrollTo(0, 400); //讓頁面跑到最上方的語法
+  }
   // 初始化頁面顯示
   displayData(currentPage);
 };
 
 //店家頁頁碼邏輯------------------------------------------------------
-const storeRenderPagination = (pageData) =>{
-
+const storeRenderPagination = (pageData) => {
   const totalItems = pageData.length; //卡片數量
-  const itemsPerPage = 12;  //每頁顯示十個卡片
+  const itemsPerPage = 12; //每頁顯示十個卡片
   const totalPages = Math.ceil(totalItems / itemsPerPage); //計算總頁數
-  let currentPage = 1;  //當前頁數，預設為第一頁
-  
-  function displayData(page) {   //計算目前頁面顯示的卡片數量範圍
+  let currentPage = 1; //當前頁數，預設為第一頁
+
+  function displayData(page) {
+    //計算目前頁面顯示的卡片數量範圍
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     // 獲取目前頁面的數據
     const currentPageData = pageData.slice(startIndex, endIndex);
-  
+
     // 渲染當前頁面的數據
     renderCards(currentPageData);
-  
+
     // 渲染分頁按鈕
     renderPaginationButtons();
-  };
-  
+  }
+
   function renderCards(data) {
     shopCollectionsArea.innerHTML = ""; // 清空容器
-  
-    let str='';
-    data.forEach(item => {
-      str+=`
+
+    let str = "";
+    data.forEach((item) => {
+      str += `
           <li class="stores-card">
-          <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24"
-            value="collected"></button>
+          <button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-solid fa-heart fs-24" data-store-id="${
+            item.id
+          }" value="collected"></button>
           <img src="${item.logo}" class="mb-8" alt="store image">
           <div class="stores-card-body px-16 pt-8 pb-24 px-md-24">
             <div class="d-flex justify-content-between">
@@ -401,40 +500,42 @@ const storeRenderPagination = (pageData) =>{
             <p class="stores-card-content mb-16">
               ${item.Description}</p>
             <ul class="stores-tag-group mb-16">
-              ${storeTagAry[item.id-1]}
+              ${storeTagAry[item.id - 1]}
             </ul>
-            <a href="stores-info.html?id=${item.id}" class="stores-card-btn">查看店家資訊</a>
+            <a href="stores-info.html?id=${
+              item.id
+            }" class="stores-card-btn">查看店家資訊</a>
           </div>
         </li>
           `;
-      });
-      shopCollectionsArea.innerHTML = str;
-  };
-  
+    });
+    shopCollectionsArea.innerHTML = str;
+  }
+
   //渲染分頁按鈕的邏輯，根據前頁和總頁數產生分頁按鈕
   function renderPaginationButtons() {
     const storeButtonsContainer = document.getElementById("storePagination");
     storeButtonsContainer.innerHTML = ""; // 清空按鈕容器
-  
+
     // 生成頁碼按鈕
-    let str='';
+    let str = "";
     for (let i = 1; i <= totalPages; i++) {
-      const isActive = i === currentPage ? 'active' : ''; // 檢查是否為當前頁面，是的話加上active樣式
+      const isActive = i === currentPage ? "active" : ""; // 檢查是否為當前頁面，是的話加上active樣式
       str += `
         <li class="page-item mx-4 ${isActive}">   
           <a class="page-link" href="#" data-page="${i}">${i}</a>
         </li>
       `;
-    };
-    const preIsGray = currentPage === 1 ? 'text-gray' : ''; //檢查當前頁面是否為1，是的話加上灰色樣式
-    const nextIsGray = currentPage === totalPages ? 'text-gray' : ''; //檢查當前頁面是否為最後一頁，是的話加上灰色樣式
+    }
+    const preIsGray = currentPage === 1 ? "text-gray" : ""; //檢查當前頁面是否為1，是的話加上灰色樣式
+    const nextIsGray = currentPage === totalPages ? "text-gray" : ""; //檢查當前頁面是否為最後一頁，是的話加上灰色樣式
 
-    const firstPageDisabled = currentPage === 1 ? 'disabled' : ''; // 如果當前頁面為第一頁，添加disabled屬性
-  const previousPageDisabled = currentPage === 1 ? 'disabled' : ''; // 如果當前頁面為第一頁，添加disabled屬性
-  const nextPageDisabled = currentPage === totalPages ? 'disabled' : ''; // 如果當前頁面為最後一頁，添加disabled屬性
-  const lastPageDisabled = currentPage === totalPages ? 'disabled' : ''; // 如果當前頁面為最後一頁，添加disabled屬性
-  
-    storeButtonsContainer.innerHTML =`
+    const firstPageDisabled = currentPage === 1 ? "disabled" : ""; // 如果當前頁面為第一頁，添加disabled屬性
+    const previousPageDisabled = currentPage === 1 ? "disabled" : ""; // 如果當前頁面為第一頁，添加disabled屬性
+    const nextPageDisabled = currentPage === totalPages ? "disabled" : ""; // 如果當前頁面為最後一頁，添加disabled屬性
+    const lastPageDisabled = currentPage === totalPages ? "disabled" : ""; // 如果當前頁面為最後一頁，添加disabled屬性
+
+    storeButtonsContainer.innerHTML = `
       <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${firstPageDisabled}">
         <a class="page-link ${preIsGray}" href="#" aria-label="Previous">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
@@ -460,99 +561,90 @@ const storeRenderPagination = (pageData) =>{
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
         </a>
       </li>`;
-  
-      // 設定切頁按鈕事件監聽
-      const pageLinks = document.querySelectorAll(".page-link");
-      pageLinks.forEach(link => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault(); //取消a連結效果
-          const pageNumber = parseInt(link.dataset.page);
-          onPageButtonClick(pageNumber);
-        });
-      })
-  
-      const page=[currentPage]; //存放目前頁面數字
-  
-      // 前一頁按鈕事件監聽器
-      const previousPageBtn = document.getElementById("previousPageBtn");
-      previousPageBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (page[0]> 1) {
-          onPageButtonClick(page[0] - 1);
-        }
+
+    // 設定切頁按鈕事件監聽
+    const pageLinks = document.querySelectorAll(".page-link");
+    pageLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); //取消a連結效果
+        const pageNumber = parseInt(link.dataset.page);
+        onPageButtonClick(pageNumber);
       });
-  
-      // 後一頁按鈕事件監聽器
-      const nextPageBtn = document.getElementById("next-page-btn");
-      nextPageBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (page[0]!==totalPages) {
-          onPageButtonClick(page[0] + 1);
-        }
-      });
-  
-      // 最前頁按鈕事件監聽器
-      const firstPageBtn = document.getElementById("first-page-btn");
-      firstPageBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (page[0]> 1) {
-          onPageButtonClick(1);
-        };
-      });
-  
-      // 最後頁按鈕事件監聽器
-      const lastPageBtn = document.getElementById("last-page-btn");
-      lastPageBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (page[0]!==totalPages) {
-          onPageButtonClick(totalPages);
-        };
-      });
-  };
-  
-  
+    });
+
+    const page = [currentPage]; //存放目前頁面數字
+
+    // 前一頁按鈕事件監聽器
+    const previousPageBtn = document.getElementById("previousPageBtn");
+    previousPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (page[0] > 1) {
+        onPageButtonClick(page[0] - 1);
+      }
+    });
+
+    // 後一頁按鈕事件監聽器
+    const nextPageBtn = document.getElementById("next-page-btn");
+    nextPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (page[0] !== totalPages) {
+        onPageButtonClick(page[0] + 1);
+      }
+    });
+
+    // 最前頁按鈕事件監聽器
+    const firstPageBtn = document.getElementById("first-page-btn");
+    firstPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (page[0] > 1) {
+        onPageButtonClick(1);
+      }
+    });
+
+    // 最後頁按鈕事件監聽器
+    const lastPageBtn = document.getElementById("last-page-btn");
+    lastPageBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (page[0] !== totalPages) {
+        onPageButtonClick(totalPages);
+      }
+    });
+  }
+
   function onPageButtonClick(page) {
     // 頁面按鈕點擊事件
     currentPage = page;
     displayData(currentPage);
-    window.scrollTo(0,400);   //讓頁面跑到最上方的語法
-  };
+    window.scrollTo(0, 400); //讓頁面跑到最上方的語法
+  }
   // 初始化頁面顯示
   displayData(currentPage);
-  
-  };
-
-
+};
 
 /**-------------------------------資料寫入--------------------------------**/
 //自server取得使用者資料後執行renderUserData
-axios
-  .get("https://json-server-project-wtkt.onrender.com/users?id=1")
-  .then((response) => {
-    let userData = response.data;
-    renderUserData(userData);
-  });
+axios.get(`${API_BASE_DB_URL}/users/${user_id}`).then((response) => {
+  let userData = response.data;
+  renderUserData(userData);
+});
 
 //自server取得該使用者收藏清單的drinkId列表並轉化成飲料資料的矩陣
 axios
-  .get(
-    `https://json-server-project-wtkt.onrender.com/userDrinkCollections?userId=1`
-  )
+  .get(`${API_BASE_DB_URL}/userDrinkCollections?userId=${user_id}`)
   .then((response) => {
     const userDrinkCollections = response.data;
     // 抓取全部DrinkId
     const drinkIds = userDrinkCollections.map((item) => item.drinkId);
     // 組成取得飲料資料的URL
-    const drinksUrl = `https://json-server-project-wtkt.onrender.com/drinks?id=${drinkIds.join(
-      "&id="
-    )}`;
+    const drinksUrl = `${API_BASE_DB_URL}/drinks?id=${drinkIds.join("&id=")}`;
 
     // 取得飲料資料
     axios.get(drinksUrl).then((response) => {
-      console.log(response.data);
-      drinkTagPush(response.data);  //飲料Tag函式
-      renderUserDrinkCollections(response.data);   //渲染飲料收藏頁面
-      drinkRenderPagination(response.data);  //渲染飲料收藏頁碼
+      // console.log(response.data);
+      drinkTagPush(response.data); //飲料Tag函式
+      // renderUserDrinkCollections(response.data); //渲染飲料收藏頁面
+      drinkRenderPagination(response.data); //渲染飲料收藏頁碼
+      bindCollectButtonDrinkEvents();
     });
   })
   .catch((error) => {
@@ -561,26 +653,25 @@ axios
 
 //自server取得該使用者收藏清單的storeId列表並轉化成飲料資料的矩陣
 axios
-  .get(
-    `https://json-server-project-wtkt.onrender.com/userShopCollections?userId=1`
-  )
+  .get(`${API_BASE_DB_URL}/userShopCollections?userId=${user_id}`)
   .then((response) => {
     const usershopCollections = response.data;
     // 抓取全部shopId
     const shopIds = usershopCollections.map((item) => item.shopId);
     // 組成取得店家資料的URL
-    const shopsUrl = `https://json-server-project-wtkt.onrender.com/shops?id=${shopIds.join(
-      "&id="
-    )}`;
+    const shopsUrl = `${API_BASE_DB_URL}/shops?id=${shopIds.join("&id=")}`;
 
     // 取得店家資料
     axios.get(shopsUrl).then((response) => {
-      console.log(response.data);
-      storeTagPush(response.data);  //店家Tag函式
-      renderUserShopCollections(response.data);  //渲染店家收藏頁面
-      storeRenderPagination(response.data);  //渲染店家收藏頁碼
+      // console.log(response.data);
+      storeTagPush(response.data); //店家Tag函式
+      // renderUserShopCollections(response.data); //渲染店家收藏頁面
+      storeRenderPagination(response.data); //渲染店家收藏頁碼
+      bindCollectButtonStoreEvents();
     });
   })
   .catch((error) => {
     console.error("發生錯誤:", error);
   });
+
+fillUserInfo();

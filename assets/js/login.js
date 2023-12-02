@@ -105,6 +105,7 @@ async function loginUser(email, password) {
     const user_email = res.data.user.email;
     const user_id = res.data.user.id;
     const user_nickname = res.data.user.nickname;
+    const user_picture = res.data.user.nickname;
 
     if (accessToken) {
       console.log("登入成功", res.data);
@@ -112,6 +113,8 @@ async function loginUser(email, password) {
       sessionStorage.setItem("user_email", user_email);
       sessionStorage.setItem("user_id", user_id);
       sessionStorage.setItem("user_nickname", user_nickname);
+      sessionStorage.setItem("user_picture", user_picture);
+
       redirectToHome(); // 登入成功後的操作，例如跳轉到另一個頁面
     } else {
       alert("登入失敗，請檢查帳號或密碼"); // 登入失敗後的操作
