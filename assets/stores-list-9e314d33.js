@@ -1,4 +1,4 @@
-import"./bootstrap.min-66c8f441.js";const g=document.querySelector("#storeList");let m=document.querySelector("#deliverySelect"),L=document.querySelector("#CooperationSelect"),P=[],p=[],v=[];const h=sessionStorage.getItem("user_id"),j=()=>{p.forEach(e=>{const t={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let s="";for(const a in t)e[a]&&(s+=`<li class="stores-tag">${t[a]}</li>`);v.push(s),s=""})},_=()=>{let e="";p.forEach(t=>{e+=`
+import"./bootstrap.min-09f15819.js";const g=document.querySelector("#storeList");let m=document.querySelector("#deliverySelect"),L=document.querySelector("#CooperationSelect"),P=[],p=[],v=[];const h=sessionStorage.getItem("user_id"),j=()=>{p.forEach(e=>{const t={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let s="";for(const a in t)e[a]&&(s+=`<li class="stores-tag">${t[a]}</li>`);v.push(s),s=""})},_=()=>{let e="";p.forEach(t=>{e+=`
         <li class="stores-card" data-shop-id="${t.id}">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
