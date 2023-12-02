@@ -1,38 +1,38 @@
-function getCookie(name) {
-  var nameEQ = name + "=";
-  var ca = document.cookie.split(";");
-  for (var i = 0; i < ca.length; i++) {
-    var c = ca[i];
-    while (c.charAt(0) == " ") c = c.substring(1);
-    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
-}
+// function getCookie(name) {
+//   var nameEQ = name + "=";
+//   var ca = document.cookie.split(";");
+//   for (var i = 0; i < ca.length; i++) {
+//     var c = ca[i];
+//     while (c.charAt(0) == " ") c = c.substring(1);
+//     if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+//   }
+//   return null;
+// }
 
-window.onload = function () {
-  var myCookie = getCookie("token"); // 將 'cookieName' 替換為您想檢查的 cookie 名稱
-  if (myCookie) {
-    console.log("找到 cookie:", myCookie);
-    axios
-      .get("https://authbridge.onrender.com/user", {
-        headers: {
-          Authorization: myCookie,
-        },
-      })
-      .then((res) => {
-        if (res) {
-          const email = res.data.email;
-          loginUser(email, myCookie);
-          // console.log(res);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  } else {
-    console.log("未找到指定的 cookie");
-  }
-};
+const urlParams = new URLSearchParams(window.location.search);
+const JWT_token = urlParams.get("token");
+console.log(JWT_token);
+if (token) {
+  console.log("找到 token:", JWT_token);
+  axios
+    .get("https://authbridge.onrender.com/user", {
+      headers: {
+        Authorization: JWT_token,
+      },
+    })
+    .then((res) => {
+      if (res) {
+        const email = res.data.email;
+        loginUser(email, JWT_token);
+        // console.log(res);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+} else {
+  console.log("未找到指定的 token");
+}
 
 const token = sessionStorage.getItem("jwtToken");
 
