@@ -12,7 +12,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const JWT_token = urlParams.get("token");
 console.log(JWT_token);
-if (token) {
+if (JWT_token) {
   console.log("找到 token:", JWT_token);
   axios
     .get("https://authbridge.onrender.com/user", {
