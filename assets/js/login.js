@@ -40,7 +40,7 @@ const token = sessionStorage.getItem("jwtToken");
 function isAuthenticated() {
   if (token) {
     console.log("有權限: 找到 Token");
-    redirectToMember();
+    // redirectToMember();
     return true;
   }
   return false;
@@ -105,7 +105,7 @@ async function loginUser(email, password) {
     const user_email = res.data.user.email;
     const user_id = res.data.user.id;
     const user_nickname = res.data.user.nickname;
-    const user_picture = res.data.user.nickname;
+    const user_picture = res.data.user.picture;
 
     if (accessToken) {
       console.log("登入成功", res.data);
