@@ -1,4 +1,4 @@
-import"./bootstrap.min-66c8f441.js";import{A as y}from"./config-ca05e4f1.js";const m=document.querySelector(".newsArea");function k(i){let c="";for(let a=0;a<i.length;a++){const l=i[a].Description.substring(0,100);c+=`<div class="col-12 news-card mb-0" id="newsCard">
+import"./bootstrap.min-faf78b7c.js";import{A as y}from"./config-ca05e4f1.js";const m=document.querySelector(".newsArea");function k(i){let c="";for(let a=0;a<i.length;a++){const l=i[a].Description.substring(0,100);c+=`<div class="col-12 news-card mb-0" id="newsCard">
         <div class="card border-0">
             <div class="row">
                 <div class="col-12 col-lg-6 px-12">
