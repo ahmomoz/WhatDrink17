@@ -1,4 +1,4 @@
-import"./bootstrap.min-faf78b7c.js";import{A as n}from"./config-ca05e4f1.js";const o=document.querySelector(".news-content"),i=document.querySelector(".page-button"),s=window.location.href.split("?id=").pop(),c=document.querySelector(".breadcrumb");axios.get(`${n}/latestNews?id=${s}`).then(a=>{let l=a.data;m(l)});function m(a){let l=`
+import"./bootstrap.min-feac71ab.js";import{A as n}from"./config-ca05e4f1.js";const o=document.querySelector(".news-content"),i=document.querySelector(".page-button"),s=window.location.href.split("?id=").pop(),c=document.querySelector(".breadcrumb");axios.get(`${n}/latestNews?id=${s}`).then(a=>{let l=a.data;m(l)});function m(a){let l=`
           <li class="breadcrumb-item d-inline"><a href="index.html" class="breadcrumb-item fs-16">首頁</a></li>
           <li class="breadcrumb-item d-inline"><a href="news-list.html" class="breadcrumb-item fs-16">最新消息</a></li>
           <li class="breadcrumb-item active d-inline" aria-current="page" class="fs-16">${a[0].title}</li>

@@ -1,4 +1,4 @@
-import"./bootstrap.min-faf78b7c.js";import{a as S}from"./axios-28bc18a3.js";import{A as y}from"./config-ca05e4f1.js";document.addEventListener("DOMContentLoaded",()=>{const r=document.querySelector("#lastestNews");let o=[];function d(){let c="";o.forEach(function(i){c+=`
+import"./bootstrap.min-feac71ab.js";import{a as S}from"./axios-28bc18a3.js";import{A as y}from"./config-ca05e4f1.js";document.addEventListener("DOMContentLoaded",()=>{const r=document.querySelector("#lastestNews");let o=[];function d(){let c="";o.forEach(function(i){c+=`
         <div class="swiper-slide">
         <img src="${i.photo1}" class="lastestNews-img w-100 rounded-16 mb-8" alt="banner">
         <p class="fs-18 fw-500">${i.title}</p>
