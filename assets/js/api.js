@@ -77,7 +77,10 @@ export async function deleteUserDrinkCollection(userId, drinkId) {
  * @param {number} shopId - 商店的ID。
  */
 export async function addUserShopCollection(userId, shopId) {
-  addToCollection(`${API_BASE_DB_URL}/userShopCollections`, { userId, shopId });
+  addToCollection(`${API_BASE_DB_URL}/666/userShopCollections`, {
+    userId,
+    shopId,
+  });
 }
 
 /**
