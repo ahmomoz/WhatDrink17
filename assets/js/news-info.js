@@ -1,11 +1,12 @@
 // 變數區
+import { API_BASE_DB_URL } from "./config";
 const newsArea = document.querySelector(".news-content");
 const pageButton = document.querySelector(".page-button");
 const newsId = window.location.href.split("?id=").pop();
 const breadcrumb = document.querySelector(".breadcrumb");
 
 // 根據網址中的id取得相對應的新聞資料後渲染至頁面
-axios.get(`https://json-server-project-wtkt.onrender.com/latestNews?id=${newsId}`)
+axios.get(`${API_BASE_DB_URL}/latestNews?id=${newsId}`)
   .then(response => {
     let data = response.data;
     newsInfoRender(data);
@@ -85,7 +86,7 @@ function newsInfoRender(data) {
   }
 
   // 從server上get最新消息總篇數，並根據篇數渲染上一篇下一篇按鈕
-  axios.get(`https://json-server-project-wtkt.onrender.com/latestNews`)
+  axios.get(`${API_BASE_DB_URL}/latestNews`)
     .then(response => {
       let totalPage = 0;
       totalPage = response.data.length;

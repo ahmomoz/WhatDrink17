@@ -1,10 +1,12 @@
+import { API_BASE_DB_URL } from "./config";
+console.log(API_BASE_DB_URL)
 // 送出按鈕
 const submitButton = document.querySelector(".submitButton");
 
 // 送出按鈕的eventListener
 submitButton.addEventListener("click", function () {
   axios
-    .post("https://json-server-project-wtkt.onrender.com/feedbacks", {
+    .post("${API_BASE_DB_URL}/feedbacks", {
       memberId: 1,
       category: document.querySelector(".form-select").value,
       content: document.querySelector(".form-control-textArea").value,

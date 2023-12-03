@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //使用axios去get新消息資料後執行newsListRender
   axios
-    .get("https://json-server-project-wtkt.onrender.com/latestNews")
+    .get(`${API_BASE_DB_URL}/latestNews`)
     .then((response) => {
       lastestNewsData = response.data;
       lastestNewsRender();

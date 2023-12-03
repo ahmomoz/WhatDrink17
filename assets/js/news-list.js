@@ -1,3 +1,4 @@
+import { API_BASE_DB_URL } from "./config";
 const newsArea = document.querySelector(".newsArea")
 
 //取得列表功能本體function
@@ -197,7 +198,7 @@ const renderPagination = (pageData) =>{
     
 
 //使用axios去get新消息資料後執行newsListRender
-axios.get('https://json-server-project-wtkt.onrender.com/latestNews')
+axios.get(`${API_BASE_DB_URL}/latestNews`)
 .then(response => {
     let data = response.data;
     newsListRender(data);
