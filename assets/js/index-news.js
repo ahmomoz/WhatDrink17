@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_BASE_DB_URL } from "./config";
 
 document.addEventListener("DOMContentLoaded", () => {
   const lastestNews = document.querySelector("#lastestNews");
