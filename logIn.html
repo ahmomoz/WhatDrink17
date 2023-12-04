@@ -105,28 +105,46 @@
               </button>
             </form>
             <p class="or fs-14 text-center text-gray mb-24">OR</p>
-            <!-- <div class="sso-btn mb-24">
-              <a href="#" class="stretched-link"
+            <div class="sso-btn mb-24">
+              <!-- <a href="#" class="stretched-link"
                 ><img
                   src="../assets/images/icon-google.svg"
                   alt="google"
                   class="me-8"
                 />Google 登入</a
+              > -->
+              <a
+                href="#"
+                class="stretched-link"
+                onclick="document.getElementById('googleLoginForm').submit(); return false;"
               >
-            </div> -->
+                <img
+                  src="/WhatDrink17/assets/icon-google-6a912dce.svg"
+                  alt="google"
+                  class="me-8"
+                />Google 登入
+              </a>
+            </div>
 
-            <form action="https://authbridge.onrender.com/login" method="POST">
-              <!-- 移除原本的 <a> 標籤 -->
+            <form
+              id="googleLoginForm"
+              action="https://authbridge.onrender.com/login"
+              method="POST"
+              style="display: none"
+            >
+              <!-- 表單內容，如果有的話 -->
+            </form>
+            <!-- <form action="https://authbridge.onrender.com/login" method="POST">
               <div class="sso-btn mb-24">
                 <button type="submit">
                   <img
-                    src="/WhatDrink17/assets/icon-google-6a912dce.svg"
+                    src="../assets/images/icon-google.svg"
                     alt="google"
                     class="me-8"
                   />Google 登入
                 </button>
               </div>
-            </form>
+            </form> -->
             <div class="d-flex justify-content-center align-items-center">
               <p class="me-4">還不是會員？</p>
               <a href="signUp.html" class="text-primary">註冊會員</a>
