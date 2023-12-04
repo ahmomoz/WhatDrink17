@@ -2,7 +2,7 @@ import"./bootstrap.min-feac71ab.js";import{c as H,e as N,b as U,d as j}from"./ap
     <img src="${a}" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
     <p class="fs-32 text-white">${I}</p>
     <p class="fs-20 text-white">${$}</p>
-    `}let T=[];const J=a=>{const s=a.map(o=>!o||!o.TeaType?"":o.Ingredients.length===0?`${o.TeaType}`:`${o.TeaType},${o.Ingredients}`),n=[];for(let o=0;o<s.length;o++)n.push(s[o].split(","));let l="",e=[];n.forEach(o=>{o.forEach((p,f)=>{l+=`<li class="drinks-tag">${p}</li>`,f===o.length-1&&(e.push(l),l="")}),T.push(e),e=[]})};let w=[];const K=a=>{a.forEach(s=>{const n={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let l="";for(const e in n)s[e]&&(l+=`<li class="stores-tag">${n[e]}</li>`);w.push(l),l=""})};function O(){document.querySelectorAll(".collect-drink-btn").forEach(s=>{s.addEventListener("click",function(){const n=this.getAttribute("data-drink-id");s.value==="uncollect"?(H(m,n),s.value="collect",s.classList.remove("fa-regular"),s.classList.add("fa-solid"),console.log("收藏的飲料 ID:",n)):(N(m,n),s.value="uncollect",s.classList.remove("fa-solid"),s.classList.add("fa-regular"),console.log("取消收藏的飲料 ID:",n))})})}function Q(){document.querySelectorAll(".collect-store-btn").forEach(s=>{s.addEventListener("click",function(){const n=this.getAttribute("data-store-id");s.value==="uncollect"?(U(m,n),s.value="collect",s.classList.remove("fa-regular"),s.classList.add("fa-solid"),console.log("收藏的店家 ID:",n)):(j(m,n),s.value="uncollect",s.classList.remove("fa-solid"),s.classList.add("fa-regular"),console.log("取消收藏的店家 ID:",n))})})}function V(){if(I&&$){const a=document.getElementById("userName"),s=document.getElementById("logInEmail");a&&s&&(a.value=I,s.value=$)}}const X=a=>{const s=a.length,n=10,l=Math.ceil(s/n);let e=1;function o(r){const c=(r-1)*n,i=c+n,u=a.slice(c,i);p(u),f()}function p(r){E.innerHTML="";let c="";r.forEach((i,u)=>{c+=`
+    `}let T=[];const J=a=>{const s=a.map(o=>!o||!o.TeaType?"":o.Ingredients.length===0?`${o.TeaType}`:`${o.TeaType},${o.Ingredients}`),n=[];for(let o=0;o<s.length;o++)n.push(s[o].split(","));let l="",e=[];n.forEach(o=>{o.forEach((p,f)=>{l+=`<li class="drinks-tag">${p}</li>`,f===o.length-1&&(e.push(l),l="")}),T.push(e),e=[]})};let w=[];const K=a=>{a.forEach(s=>{const n={uber:"uber eat",foodpanda:"food panda",hasEvent:"合作活動"};let l="";for(const e in n)s[e]&&(l+=`<li class="stores-tag">${n[e]}</li>`);w.push(l),l=""})};function O(){document.querySelectorAll(".collect-drink-btn").forEach(s=>{s.addEventListener("click",function(){const n=this.getAttribute("data-drink-id");s.value==="uncollect"?(H(m,n),s.value="collect",s.classList.remove("fa-regular"),s.classList.add("fa-solid"),console.log("收藏的飲料 ID:",n)):(N(m,n),s.value="uncollect",s.classList.remove("fa-solid"),s.classList.add("fa-regular"),console.log("取消收藏的飲料 ID:",n))})})}function Q(){document.querySelectorAll(".collect-store-btn").forEach(s=>{s.addEventListener("click",function(){const n=this.getAttribute("data-store-id");s.value==="uncollect"?(U(m,n),s.value="collect",s.classList.remove("fa-regular"),s.classList.add("fa-solid"),console.log("收藏的店家 ID:",n)):(j(m,n),s.value="uncollect",s.classList.remove("fa-solid"),s.classList.add("fa-regular"),console.log("取消收藏的店家 ID:",n))})})}function V(){if(I&&$){const a=document.getElementById("userName"),s=document.getElementById("logInEmail");a&&s&&(a.value=I,s.value=$)}}const X=a=>{const s=a.length,n=10,l=Math.ceil(s/n);let e=1;function o(r){const c=(r-1)*n,i=c+n,d=a.slice(c,i);p(d),f()}function p(r){E.innerHTML="";let c="";r.forEach((i,d)=>{c+=`
             <li class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn collect-drink-btn border-0 text-primary fa-solid fa-heart fs-24" data-drink-id="${i.id}" value="collected"></button>
               <img src="${i.ImageLink}" alt="drink image">
@@ -10,7 +10,7 @@ import"./bootstrap.min-feac71ab.js";import{c as H,e as N,b as U,d as j}from"./ap
                 <div class="drinks-card-body ms-16">
                   <h4 class="mb-8 mb-md-12">${i.DrinkName}</h4>
                   <ul class="drinks-tag-group mb-8 mb-md-12">
-                    ${T[u]}
+                    ${T[d]}
                   </ul>
                   <p class="drinks-card-content mb-24 mb-md-32">${i.Description}</p>
                 </div>
@@ -29,7 +29,7 @@ import"./bootstrap.min-feac71ab.js";import{c as H,e as N,b as U,d as j}from"./ap
         <li class="page-item mx-4 ${t===e?"active":""}">   
           <a class="page-link" href="#" data-page="${t}">${t}</a>
         </li>
-      `;const i=e===1?"text-gray":"",u=e===l?"text-gray":"",k=e===1?"disabled":"",v=e===1?"disabled":"",y=e===l?"disabled":"",x=e===l?"disabled":"";r.innerHTML=`
+      `;const i=e===1?"text-gray":"",d=e===l?"text-gray":"",k=e===1?"disabled":"",v=e===1?"disabled":"",y=e===l?"disabled":"",x=e===l?"disabled":"";r.innerHTML=`
       <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${k}">
         <a class="page-link ${i}" href="#" aria-label="Previous">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
@@ -45,16 +45,16 @@ import"./bootstrap.min-feac71ab.js";import{c as H,e as N,b as U,d as j}from"./ap
       ${c}
 
       <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${y}">
-        <a class="page-link ${u}" href="#" aria-label="Next">
+        <a class="page-link ${d}" href="#" aria-label="Next">
           <span class="material-symbols-outlined align-middle">chevron_right</span>
         </a>
       </li>
 
       <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${x}">
-        <a class="page-link ${u}" href="#" aria-label="Next">
+        <a class="page-link ${d}" href="#" aria-label="Next">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
         </a>
-      </li>`,document.querySelectorAll(".page-link").forEach(t=>{t.addEventListener("click",b=>{b.preventDefault();const P=parseInt(t.dataset.page);g(P)})});const d=[e];document.getElementById("previousPageBtn").addEventListener("click",t=>{t.preventDefault(),d[0]>1&&g(d[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",t=>{t.preventDefault(),d[0]!==l&&g(d[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",t=>{t.preventDefault(),d[0]>1&&g(1)}),document.getElementById("last-page-btn").addEventListener("click",t=>{t.preventDefault(),d[0]!==l&&g(l)})}function g(r){e=r,o(e),window.scrollTo(0,400)}o(e)},Y=a=>{const s=a.length,n=12,l=Math.ceil(s/n);let e=1;function o(r){const c=(r-1)*n,i=c+n,u=a.slice(c,i);p(u),f()}function p(r){L.innerHTML="";let c="";r.forEach(i=>{c+=`
+      </li>`,document.querySelectorAll(".page-link").forEach(t=>{t.addEventListener("click",b=>{b.preventDefault();const P=parseInt(t.dataset.page);u(P)})});const g=[e];document.getElementById("previousPageBtn").addEventListener("click",t=>{t.preventDefault(),g[0]>1&&u(g[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",t=>{t.preventDefault(),g[0]!==l&&u(g[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",t=>{t.preventDefault(),g[0]>1&&u(1)}),document.getElementById("last-page-btn").addEventListener("click",t=>{t.preventDefault(),g[0]!==l&&u(l)})}function u(r){e=r,o(e),window.scrollTo(0,400)}o(e)},Y=a=>{const s=a.length,n=12,l=Math.ceil(s/n);let e=1;function o(r){const c=(r-1)*n,i=c+n,d=a.slice(c,i);p(d),f()}function p(r){L.innerHTML="";let c="";r.forEach((i,d)=>{c+=`
           <li class="stores-card">
           <button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-solid fa-heart fs-24" data-store-id="${i.id}" value="collected"></button>
           <img src="${i.logo}" class="mb-8" alt="store image">
@@ -72,7 +72,7 @@ import"./bootstrap.min-feac71ab.js";import{c as H,e as N,b as U,d as j}from"./ap
             <p class="stores-card-content mb-16">
               ${i.Description}</p>
             <ul class="stores-tag-group mb-16">
-              ${w[i.id-1]}
+              ${w[d]}
             </ul>
             <a href="stores-info.html?id=${i.id}" class="stores-card-btn">查看店家資訊</a>
           </div>
@@ -81,7 +81,7 @@ import"./bootstrap.min-feac71ab.js";import{c as H,e as N,b as U,d as j}from"./ap
         <li class="page-item mx-4 ${t===e?"active":""}">   
           <a class="page-link" href="#" data-page="${t}">${t}</a>
         </li>
-      `;const i=e===1?"text-gray":"",u=e===l?"text-gray":"",k=e===1?"disabled":"",v=e===1?"disabled":"",y=e===l?"disabled":"",x=e===l?"disabled":"";r.innerHTML=`
+      `;const i=e===1?"text-gray":"",d=e===l?"text-gray":"",k=e===1?"disabled":"",v=e===1?"disabled":"",y=e===l?"disabled":"",x=e===l?"disabled":"";r.innerHTML=`
       <li id="first-page-btn" class="page-item mx-4 d-none d-md-block ${k}">
         <a class="page-link ${i}" href="#" aria-label="Previous">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_left</span>
@@ -97,13 +97,13 @@ import"./bootstrap.min-feac71ab.js";import{c as H,e as N,b as U,d as j}from"./ap
       ${c}
   
       <li id="next-page-btn" class="page-item mx-4 d-none d-md-block ${y}">
-        <a class="page-link ${u}" href="#" aria-label="Next">
+        <a class="page-link ${d}" href="#" aria-label="Next">
           <span class="material-symbols-outlined align-middle">chevron_right</span>
         </a>
       </li>
   
       <li id="last-page-btn" class="page-item mx-4 d-none d-md-block ${x}">
-        <a class="page-link ${u}" href="#" aria-label="Next">
+        <a class="page-link ${d}" href="#" aria-label="Next">
           <span class="material-symbols-outlined align-middle">keyboard_double_arrow_right</span>
         </a>
-      </li>`,document.querySelectorAll(".page-link").forEach(t=>{t.addEventListener("click",b=>{b.preventDefault();const P=parseInt(t.dataset.page);g(P)})});const d=[e];document.getElementById("previousPageBtn").addEventListener("click",t=>{t.preventDefault(),d[0]>1&&g(d[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",t=>{t.preventDefault(),d[0]!==l&&g(d[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",t=>{t.preventDefault(),d[0]>1&&g(1)}),document.getElementById("last-page-btn").addEventListener("click",t=>{t.preventDefault(),d[0]!==l&&g(l)})}function g(r){e=r,o(e),window.scrollTo(0,400)}o(e)};axios.get(`${h}/users/${m}`).then(a=>{a.data,F()});axios.get(`${h}/userDrinkCollections?userId=${m}`).then(a=>{const n=a.data.map(e=>e.drinkId),l=`${h}/drinks?id=${n.join("&id=")}`;axios.get(l).then(e=>{J(e.data),X(e.data),O()})}).catch(a=>{console.error("發生錯誤:",a)});axios.get(`${h}/userShopCollections?userId=${m}`).then(a=>{const n=a.data.map(e=>e.shopId),l=`${h}/shops?id=${n.join("&id=")}`;axios.get(l).then(e=>{K(e.data),Y(e.data),Q()})}).catch(a=>{console.error("發生錯誤:",a)});V();
+      </li>`,document.querySelectorAll(".page-link").forEach(t=>{t.addEventListener("click",b=>{b.preventDefault();const P=parseInt(t.dataset.page);u(P)})});const g=[e];document.getElementById("previousPageBtn").addEventListener("click",t=>{t.preventDefault(),g[0]>1&&u(g[0]-1)}),document.getElementById("next-page-btn").addEventListener("click",t=>{t.preventDefault(),g[0]!==l&&u(g[0]+1)}),document.getElementById("first-page-btn").addEventListener("click",t=>{t.preventDefault(),g[0]>1&&u(1)}),document.getElementById("last-page-btn").addEventListener("click",t=>{t.preventDefault(),g[0]!==l&&u(l)})}function u(r){e=r,o(e),window.scrollTo(0,400)}o(e)};axios.get(`${h}/users/${m}`).then(a=>{a.data,F()});axios.get(`${h}/userDrinkCollections?userId=${m}`).then(a=>{const n=a.data.map(e=>e.drinkId),l=`${h}/drinks?id=${n.join("&id=")}`;axios.get(l).then(e=>{J(e.data),X(e.data),O()})}).catch(a=>{console.error("發生錯誤:",a)});axios.get(`${h}/userShopCollections?userId=${m}`).then(a=>{const n=a.data.map(e=>e.shopId),l=`${h}/shops?id=${n.join("&id=")}`;axios.get(l).then(e=>{K(e.data),Y(e.data),Q()})}).catch(a=>{console.error("發生錯誤:",a)});V();
