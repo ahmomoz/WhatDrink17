@@ -480,12 +480,10 @@ const storeRenderPagination = (pageData) => {
     shopCollectionsArea.innerHTML = ""; // 清空容器
 
     let str = "";
-    data.forEach((item) => {
+    data.forEach((item, index) => {
       str += `
           <li class="stores-card">
-          <button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-solid fa-heart fs-24" data-store-id="${
-            item.id
-          }" value="collected"></button>
+          <button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-solid fa-heart fs-24" data-store-id="${item.id}" value="collected"></button>
           <img src="${item.logo}" class="mb-8" alt="store image">
           <div class="stores-card-body px-16 pt-8 pb-24 px-md-24">
             <div class="d-flex justify-content-between">
@@ -501,11 +499,9 @@ const storeRenderPagination = (pageData) => {
             <p class="stores-card-content mb-16">
               ${item.Description}</p>
             <ul class="stores-tag-group mb-16">
-              ${storeTagAry[item.id - 1]}
+              ${storeTagAry[index]}
             </ul>
-            <a href="stores-info.html?id=${
-              item.id
-            }" class="stores-card-btn">查看店家資訊</a>
+            <a href="stores-info.html?id=${item.id}" class="stores-card-btn">查看店家資訊</a>
           </div>
         </li>
           `;
