@@ -1,3 +1,7 @@
+import { API_BASE_DB_URL } from "./config";
+import { addUserDrinkCollection, deleteUserDrinkCollection } from "./api.js";
+const user_id = sessionStorage.getItem("user_id");
+
 document.addEventListener("DOMContentLoaded", () => {
   //熱門 飲料----------------------------------------------------------------------
   //變數命名
@@ -5,23 +9,25 @@ document.addEventListener("DOMContentLoaded", () => {
   let drinkData = [];
   let drinkTagAry = [];
   let userDrinkCollections = []; // 存放用戶收藏飲料
+  let userDrinkCollectionList = [];
   let topSixDrinks = []; // 空陣列存放取出的飲料數據
 
   // 使用 Promise.all 同時執行兩個請求
   Promise.all([
-    axios.get(
-      "https://json-server-project-wtkt.onrender.com/userDrinkCollections"
-    ),
-    axios.get("https://json-server-project-wtkt.onrender.com/drinks"),
+    axios.get(`${API_BASE_DB_URL}/userDrinkCollections`),
+    axios.get(`${API_BASE_DB_URL}/drinks`),
+    axios.get(`${API_BASE_DB_URL}/userDrinkCollections?userId=${user_id}`),
   ])
     .then((responses) => {
       // responses[0] 是第一個請求的響應，responses[1] 是第二個請求的響應
       userDrinkCollections = responses[0].data;
       drinkData = responses[1].data;
+      userDrinkCollectionList = responses[2].data.map((item) => +item.drinkId);
 
       // 這裡可以調用其他函數，如 getTopSixDrinks、drinkTagPush 和 drinkRenderData
       getTopSixDrinks();
       drinkTagPush(); //組合Tag陣列
+      // checkUserShopCollection();
       drinkRenderData(); //載入預設飲料卡片
       isCollect(); //收藏愛心CSS
     })
@@ -120,10 +126,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const drinkRender = () => {
     let str = "";
     topSixDrinks.forEach((item) => {
+      // console.log(item.id);
+      // console.log(userDrinkCollectionList);
+      // console.log(userDrinkCollectionList.includes(item.id));
+      const btn_tag = userDrinkCollectionList.includes(+item.id)
+        ? `<button type="button" class="collect-btn collect-drink-btn border-0 text-primary fa-heart fs-24 fa-solid" data-drink-id="${item.id}" value="collected" aria-hidden="true"></button>`
+        : `<button type="button" class="collect-btn collect-drink-btn border-0 text-primary fa-regular fa-heart fs-24" data-drink-id="${item.id}" value="uncollect" aria-hidden="true"></button>`;
+
       str += `
     <li class="drinks-card px-16 py-24 px-md-24">
-    <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
-      value="collected"></button>
+    ${btn_tag}
     <img src="${item.ImageLink}" alt="drink image">
     <div class="w-100 d-flex flex-column justify-content-between">
       <div class="drinks-card-body ms-16">
@@ -136,8 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="d-flex justify-content-between align-items-end ms-16">
         <div class="d-flex align-items-center drinkStoreTag">
           <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/tri.svg" class="tri" alt="">
-          <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${item.StoreName
-        }</p>
+          <p class="bg-primary rounded-2 fw-medium text-white ps-12 pe-10 py-4">${
+            item.StoreName
+          }</p>
         </div>
         <a href="#" class="d-block text-primary text-end"><span
             class="material-symbols-outlined me-2 align-middle">
@@ -190,26 +203,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //收藏愛心CSS樣式函式-----------------------------------------------
   function isCollect() {
-    const collectBtn = document.querySelectorAll(".collect-btn"); //抓按鈕class
+    const collectBtn = document.querySelectorAll(".collect-drink-btn"); //抓按鈕class
     // console.log(collectBtn);//驗證
     //跑 querySelectorAll 陣列
     collectBtn.forEach(function (item) {
       //監聽按鈕
       item.addEventListener("click", function (e) {
-        //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
+        const drinkId = this.getAttribute("data-drink-id");
+        // console.log(drinkId);
+
+        //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
         if (e.target.value == "collected") {
           item.value = "uncollect";
-          item.classList.remove("fa-regular");
-          item.classList.add("fa-solid");
-          //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
-        } else if (e.target.value == "uncollect") {
-          item.value = "collected";
           item.classList.add("fa-regular");
           item.classList.remove("fa-solid");
+          deleteUserDrinkCollection(user_id, drinkId);
+          //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
+        } else if (e.target.value == "uncollect") {
+          item.value = "collected";
+          item.classList.remove("fa-regular");
+          item.classList.add("fa-solid");
+          addUserDrinkCollection(user_id, drinkId);
         }
         //驗證
-        // console.log("hi")
+        // console.log("hi");
       });
     });
-  };
+  }
 });

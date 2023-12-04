@@ -2,6 +2,16 @@ import axios from "axios";
 import { API_BASE_DB_URL } from "./config";
 
 /**
+ * 獲取授權頭。
+ * @returns {object} - 包含授權頭的對象。
+ */
+function getAuthHeader() {
+  // 從 sessionStorage 獲取 JWT
+  const token = sessionStorage.getItem("jwtToken");
+  return { headers: { Authorization: `Bearer ${token}` } };
+}
+
+/**
  * 發送GET請求到指定URL以獲取集合數據。
  * @param {string} url - 要請求的URL。
  * @param {object} params - 請求的參數。
@@ -9,7 +19,7 @@ import { API_BASE_DB_URL } from "./config";
  */
 async function fetchCollection(url, params) {
   try {
-    const response = await axios.get(url, { params });
+    const response = await axios.get(url, { ...getAuthHeader(), params });
     return response.data;
   } catch (error) {
     console.error("錯誤:", error);
@@ -24,7 +34,7 @@ async function fetchCollection(url, params) {
  */
 async function addToCollection(url, data) {
   try {
-    await axios.post(url, data);
+    await axios.post(url, data, getAuthHeader());
   } catch (error) {
     console.error("錯誤:", error);
   }
@@ -36,7 +46,7 @@ async function addToCollection(url, data) {
  */
 async function removeFromCollection(url) {
   try {
-    await axios.delete(url);
+    await axios.delete(url, getAuthHeader());
   } catch (error) {
     console.error("錯誤:", error);
   }
@@ -77,7 +87,7 @@ export async function deleteUserDrinkCollection(userId, drinkId) {
  * @param {number} shopId - 商店的ID。
  */
 export async function addUserShopCollection(userId, shopId) {
-  addToCollection(`${API_BASE_DB_URL}/666/userShopCollections`, {
+  addToCollection(`${API_BASE_DB_URL}/600/userShopCollections`, {
     userId,
     shopId,
   });
