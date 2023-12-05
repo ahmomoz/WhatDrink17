@@ -1,4 +1,4 @@
-import"./bootstrap.min-feac71ab.js";import{a as x,e as $,c as I}from"./api-1053ecda.js";import{A as g}from"./config-ca05e4f1.js";document.addEventListener("DOMContentLoaded",()=>{const s=document.querySelector("#lastestNews");let a=[];function f(){let i="";a.forEach(function(u){i+=`
+import"./bootstrap.min-feac71ab.js";import{b as x,c as $,e as I}from"./api-4c8ad0b6.js";import{A as g}from"./config-ca05e4f1.js";document.addEventListener("DOMContentLoaded",()=>{const s=document.querySelector("#lastestNews");let a=[];function f(){let i="";a.forEach(function(u){i+=`
         <div class="swiper-slide">
         <img src="${u.photo1}" class="lastestNews-img w-100 rounded-16 mb-8" alt="banner">
         <p class="fs-18 fw-500">${u.title}</p>
