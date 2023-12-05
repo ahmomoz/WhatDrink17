@@ -1,4 +1,6 @@
 //店家資訊頁----------------------------------------------------------------------
+import { addUserShopCollection, deleteUserShopCollection } from "./api.js";
+import { API_BASE_DB_URL } from "./config";
 
 //變數命名
 const storeList = document.querySelector("#storeList");  //卡片列表
@@ -89,20 +91,15 @@ storeList.addEventListener("click", function (e) {
   const btn = e.target.closest('.collect-btn');
   if (btn) {
     if (!userId) { //確認是否為會員，不是的話導向會員頁
-      console.log("無權限: 沒有找到 Token");
       redirectToLogin(); //導向登入頁函數
     } else { //是會員，可執行收藏功能
       if (e.target.classList.contains("collect-btn")) {
         const btn = e.target;
         const card = btn.closest('.stores-card');  // 找到包含按鈕的卡片元素
         const shopId = card.dataset.shopId;  // 從卡片元素的自定義屬性中獲取店家ID
-        console.log(shopId); //驗證點擊到的id
-
-        // 收藏 API 的 URL
-        const collectionUrl = 'https://json-server-project-wtkt.onrender.com/userShopCollections';
 
         // 檢查收藏 API 的 URL
-        const checkCollectionUrl = `${collectionUrl}?userId=${userId}&shopId=${shopId}`;
+        const checkCollectionUrl = `${API_BASE_DB_URL}/userShopCollections?userId=${userId}&shopId=${shopId}`;
 
         // 發送 GET 請求檢查店家是否已經被收藏
         axios.get(checkCollectionUrl)
@@ -112,37 +109,20 @@ storeList.addEventListener("click", function (e) {
             // 根據收藏狀態切換樣式
             if (isCollected) {
               // 店家已被收藏，設定為未收藏狀態
+              deleteUserShopCollection(userId, shopId); // 發送 DELETE 請求刪除收藏
               btn.value = "uncollect";
               btn.classList.remove("fa-solid");
               btn.classList.add("fa-regular");
-              
-              // 發送 DELETE 請求刪除收藏
-              axios.delete(`${collectionUrl}/${response.data[0].id}`)
-                .then(deleteResponse => {
-                  Swal.fire("已取消收藏");
-                })
-                .catch(deleteError => {
-                  console.error('Error deleting collection:', deleteError);
-                });
+              Swal.fire("已取消收藏");
               return
             } else {
               // 店家未被收藏，設定為已收藏狀態
+              addUserShopCollection(userId, shopId); ////根據收藏狀態發送 POST 請求更新收藏
               btn.value = "collected";
               btn.classList.remove("fa-regular");
               btn.classList.add("fa-solid");
-            }
-
-            //根據收藏狀態發送 POST 請求更新收藏
-            axios.post(collectionUrl, {
-              userId: parseInt(userId),
-              shopId: parseInt(shopId)
-            })
-            .then(postResponse => {
               Swal.fire("收藏成功");
-            })
-            .catch(postError => {
-              console.error('Error adding collection:', postError);
-            });
+            };
           })
           .catch(error => {
             console.error('Error checking collection status:', error);
@@ -153,7 +133,7 @@ storeList.addEventListener("click", function (e) {
 });
 //導回登入頁函數-------------------------------------------------------
 function redirectToLogin() {
-  alert("登入後即可使用收藏功能"); 
+  Swal.fire("登入後即可使用收藏功能"); 
   window.location.href = "logIn.html";
 };
 
@@ -404,12 +384,13 @@ const searchRender = (data) => {
 //將店家資料由外部寫入
 Promise.all([
   axios.get(
-    `https://json-server-project-wtkt.onrender.com/userShopCollections?userId=${userId}`
+    `${API_BASE_DB_URL}/userShopCollections?userId=${userId}`
   ),
   axios.get("https://json-server-project-wtkt.onrender.com/shops"),
 ])
   .then((responses) => {
     userShopCollections = responses[0].data;       //請求使用者收藏店家資料
+    console.log(userShopCollections);
     storeData = responses[1].data;                 //請求店家資料
 
     

@@ -231,14 +231,31 @@ function bindCollectButtonDrinkEvents() {
         console.log("收藏的飲料 ID:", drinkId);
       } else {
         // 取消收藏
-        deleteUserDrinkCollection(user_id, drinkId); // 假設 user_id 已定義
+        Swal.fire({
+          title: "您確定要取消收藏嗎？",
+          text: "此項目將會從收藏列表移除",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "YES"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            deleteUserDrinkCollection(user_id, drinkId); // 假設 user_id 已定義
 
-        button.value = "uncollect";
-        button.classList.remove("fa-solid");
-        button.classList.add("fa-regular");
-
-        console.log("取消收藏的飲料 ID:", drinkId);
-      }
+            button.value = "uncollect";
+            button.classList.remove("fa-solid");
+            button.classList.add("fa-regular");
+    
+            console.log("取消收藏的飲料 ID:", drinkId);
+              Swal.fire({
+                  title: "已取消收藏",
+                  text: "此項目已從收藏列表移除",
+                  icon: "success"
+              });
+            };
+        }); 
+      };
     });
   });
 }
@@ -265,13 +282,29 @@ function bindCollectButtonStoreEvents() {
         console.log("收藏的店家 ID:", storeId);
       } else {
         // 取消收藏
-        deleteUserShopCollection(user_id, storeId); // 假設 user_id 已定義
+        Swal.fire({
+          title: "您確定要取消收藏嗎？",
+          text: "此項目將會從收藏列表移除",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "YES"
+        }).then((result) => {
+          if (result.isConfirmed) {
+              deleteUserShopCollection(user_id, storeId); // 假設 user_id 已定義
+              button.value = "uncollect";
+              button.classList.remove("fa-solid");
+              button.classList.add("fa-regular");
 
-        button.value = "uncollect";
-        button.classList.remove("fa-solid");
-        button.classList.add("fa-regular");
-
-        console.log("取消收藏的店家 ID:", storeId);
+              console.log("取消收藏的店家 ID:", storeId);
+              Swal.fire({
+                  title: "已取消收藏",
+                  text: "此項目已從收藏列表移除",
+                  icon: "success"
+              });
+            };
+        }); 
       }
     });
   });

@@ -1,4 +1,6 @@
 //飲料搜尋資訊頁----------------------------------------------------------------------
+import { addUserDrinkCollection, deleteUserDrinkCollection } from "./api.js";
+import { API_BASE_DB_URL } from "./config";
 
 //變數命名
 const searchDrinkList = document.querySelector("#searchDrinkList"); //卡片列表
@@ -102,19 +104,17 @@ searchDrinkList.addEventListener("click", function (e) {
   const btn = e.target.closest('.collect-btn');
   if (btn) {
     if (!userId) { //確認是否為會員，不是的話導向會員頁
-      console.log("無權限: 沒有找到 Token");
       redirectToLogin(); //導向登入頁函數
     } else { //是會員，可執行收藏功能
       if (e.target.classList.contains("collect-btn")) {
         const card = btn.closest('.drinks-card');  // 找到包含按鈕的卡片元素
         const drinkId = card.dataset.drinkId;  // 從卡片元素的自定義屬性中獲取飲料ID
-        console.log(drinkId); //驗證點擊到的id
 
         // 收藏 API 的 URL
-        const collectionUrl = 'https://json-server-project-wtkt.onrender.com/userDrinkCollections';
+        //const collectionUrl = 'https://json-server-project-wtkt.onrender.com/userDrinkCollections';
 
         // 檢查收藏 API 的 URL
-        const checkCollectionUrl = `${collectionUrl}?userId=${userId}&drinkId=${drinkId}`;
+        const checkCollectionUrl = `${API_BASE_DB_URL}/userDrinkCollections?userId=${userId}&drinkId=${drinkId}`;
 
         // 發送 GET 請求檢查飲料是否已經被收藏
         axios.get(checkCollectionUrl)
@@ -124,37 +124,20 @@ searchDrinkList.addEventListener("click", function (e) {
             // 根據收藏狀態切換樣式
             if (isCollected) {
               // 飲料已被收藏，設定為未收藏狀態
+              deleteUserDrinkCollection(userId, drinkId);  // 發送 DELETE 請求刪除收藏
               btn.value = "uncollect";
               btn.classList.remove("fa-solid");
               btn.classList.add("fa-regular");
-              
-              // 發送 DELETE 請求刪除收藏
-              axios.delete(`${collectionUrl}/${response.data[0].id}`)
-                .then(deleteResponse => {
-                  Swal.fire("已取消收藏");
-                })
-                .catch(deleteError => {
-                  console.error('Error deleting collection:', deleteError);
-                });
+              Swal.fire("已取消收藏");
               return
             } else {
               // 飲料未被收藏，設定為已收藏狀態
+              addUserDrinkCollection(userId, drinkId);  //根據收藏狀態發送 POST 請求更新收藏
               btn.value = "collected";
               btn.classList.remove("fa-regular");
               btn.classList.add("fa-solid");
-            }
-
-            //根據收藏狀態發送 POST 請求更新收藏
-            axios.post(collectionUrl, {
-              userId: parseInt(userId),
-              drinkId: parseInt(drinkId)
-            })
-            .then(postResponse => {
               Swal.fire("收藏成功");
-            })
-            .catch(postError => {
-              console.error('Error adding collection:', postError);
-            });
+            };
           })
           .catch(error => {
             console.error('Error checking collection status:', error);
@@ -165,7 +148,7 @@ searchDrinkList.addEventListener("click", function (e) {
 });
 //導回登入頁函數-------------------------------------------------------
 function redirectToLogin() {
-  alert("登入後即可使用收藏功能"); 
+  Swal.fire("登入後即可使用收藏功能"); 
   window.location.href = "logIn.html";
 };
 
@@ -432,7 +415,7 @@ function indexSearchRender(data){
 //將飲料資料由外部寫入----------------------------------------
 Promise.all([
   axios.get(
-    `https://json-server-project-wtkt.onrender.com/userDrinkCollections?userId=${userId}`
+    `${API_BASE_DB_URL}/userDrinkCollections?userId=${userId}`
   ),
   axios.get("https://json-server-project-wtkt.onrender.com/drinks"),
 ])
