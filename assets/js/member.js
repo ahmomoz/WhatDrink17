@@ -238,7 +238,7 @@ function bindCollectButtonDrinkEvents() {
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "YES"
+          confirmButtonText: "YES",
         }).then((result) => {
           if (result.isConfirmed) {
             deleteUserDrinkCollection(user_id, drinkId); // 假設 user_id 已定義
@@ -246,16 +246,16 @@ function bindCollectButtonDrinkEvents() {
             button.value = "uncollect";
             button.classList.remove("fa-solid");
             button.classList.add("fa-regular");
-    
+
             console.log("取消收藏的飲料 ID:", drinkId);
-              Swal.fire({
-                  title: "已取消收藏",
-                  text: "此項目已從收藏列表移除",
-                  icon: "success"
-              });
-            };
-        }); 
-      };
+            Swal.fire({
+              title: "已取消收藏",
+              text: "此項目已從收藏列表移除",
+              icon: "success",
+            });
+          }
+        });
+      }
     });
   });
 }
@@ -289,22 +289,22 @@ function bindCollectButtonStoreEvents() {
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "YES"
+          confirmButtonText: "YES",
         }).then((result) => {
           if (result.isConfirmed) {
-              deleteUserShopCollection(user_id, storeId); // 假設 user_id 已定義
-              button.value = "uncollect";
-              button.classList.remove("fa-solid");
-              button.classList.add("fa-regular");
+            deleteUserShopCollection(user_id, storeId); // 假設 user_id 已定義
+            button.value = "uncollect";
+            button.classList.remove("fa-solid");
+            button.classList.add("fa-regular");
 
-              console.log("取消收藏的店家 ID:", storeId);
-              Swal.fire({
-                  title: "已取消收藏",
-                  text: "此項目已從收藏列表移除",
-                  icon: "success"
-              });
-            };
-        }); 
+            console.log("取消收藏的店家 ID:", storeId);
+            Swal.fire({
+              title: "已取消收藏",
+              text: "此項目已從收藏列表移除",
+              icon: "success",
+            });
+          }
+        });
       }
     });
   });
@@ -345,6 +345,7 @@ const drinkRenderPagination = (pageData) => {
   }
 
   function renderCards(data) {
+    // console.log(data);
     drinkCollectionsArea.innerHTML = ""; // 清空容器
 
     let str = "";
@@ -658,50 +659,100 @@ axios.get(`${API_BASE_DB_URL}/users/${user_id}`).then((response) => {
   renderUserData(userData);
 });
 
-//自server取得該使用者收藏清單的drinkId列表並轉化成飲料資料的矩陣
-axios
-  .get(`${API_BASE_DB_URL}/userDrinkCollections?userId=${user_id}`)
-  .then((response) => {
-    const userDrinkCollections = response.data;
-    // 抓取全部DrinkId
-    const drinkIds = userDrinkCollections.map((item) => item.drinkId);
-    // 組成取得飲料資料的URL
-    const drinksUrl = `${API_BASE_DB_URL}/drinks?id=${drinkIds.join("&id=")}`;
+// //自server取得該使用者收藏清單的drinkId列表並轉化成飲料資料的矩陣
+// axios
+//   .get(`${API_BASE_DB_URL}/userDrinkCollections?userId=${user_id}`)
+//   .then((response) => {
+//     const userDrinkCollections = response.data;
+//     // 抓取全部DrinkId
+//     const drinkIds = userDrinkCollections.map((item) => item.drinkId);
+//     // 組成取得飲料資料的URL
+//     const drinksUrl = `${API_BASE_DB_URL}/drinks?id=${drinkIds.join("&id=")}`;
 
-    // 取得飲料資料
-    axios.get(drinksUrl).then((response) => {
-      // console.log(response.data);
-      drinkTagPush(response.data); //飲料Tag函式
-      // renderUserDrinkCollections(response.data); //渲染飲料收藏頁面
-      drinkRenderPagination(response.data); //渲染飲料收藏頁碼
-      bindCollectButtonDrinkEvents();
-    });
-  })
-  .catch((error) => {
-    console.error("發生錯誤:", error);
-  });
+//     // 取得飲料資料
+//     axios.get(drinksUrl).then((response) => {
+//       // console.log(response.data);
+//       drinkTagPush(response.data); //飲料Tag函式
+//       // renderUserDrinkCollections(response.data); //渲染飲料收藏頁面
+//       drinkRenderPagination(response.data); //渲染飲料收藏頁碼
+//       bindCollectButtonDrinkEvents();
+//     });
+//   })
+//   .catch((error) => {
+//     console.error("發生錯誤:", error);
+//   });
 
-//自server取得該使用者收藏清單的storeId列表並轉化成飲料資料的矩陣
-axios
-  .get(`${API_BASE_DB_URL}/userShopCollections?userId=${user_id}`)
-  .then((response) => {
-    const usershopCollections = response.data;
-    // 抓取全部shopId
-    const shopIds = usershopCollections.map((item) => item.shopId);
-    // 組成取得店家資料的URL
-    const shopsUrl = `${API_BASE_DB_URL}/shops?id=${shopIds.join("&id=")}`;
+// //自server取得該使用者收藏清單的storeId列表並轉化成飲料資料的矩陣
+// axios
+//   .get(`${API_BASE_DB_URL}/userShopCollections?userId=${user_id}`)
+//   .then((response) => {
+//     const usershopCollections = response.data;
+//     // 抓取全部shopId
+//     const shopIds = usershopCollections.map((item) => item.shopId);
+//     // 組成取得店家資料的URL
+//     const shopsUrl = `${API_BASE_DB_URL}/shops?id=${shopIds.join("&id=")}`;
 
-    // 取得店家資料
-    axios.get(shopsUrl).then((response) => {
-      // console.log(response.data);
-      storeTagPush(response.data); //店家Tag函式
-      // renderUserShopCollections(response.data); //渲染店家收藏頁面
-      storeRenderPagination(response.data); //渲染店家收藏頁碼
-      bindCollectButtonStoreEvents();
-    });
-  })
-  .catch((error) => {
-    console.error("發生錯誤:", error);
-  });
+//     // 取得店家資料
+//     axios.get(shopsUrl).then((response) => {
+//       // console.log(response.data);
+//       storeTagPush(response.data); //店家Tag函式
+//       // renderUserShopCollections(response.data); //渲染店家收藏頁面
+//       storeRenderPagination(response.data); //渲染店家收藏頁碼
+//       bindCollectButtonStoreEvents();
+//     });
+//   })
+//   .catch((error) => {
+//     console.error("發生錯誤:", error);
+//   });
 
 fillUserInfo();
+
+function loadAndDisplayDrinks() {
+  axios
+    .get(`${API_BASE_DB_URL}/userDrinkCollections?userId=${user_id}`)
+    .then((response) => {
+      const userDrinkCollections = response.data;
+      const drinkIds = userDrinkCollections.map((item) => item.drinkId);
+      const drinksUrl = `${API_BASE_DB_URL}/drinks?id=${drinkIds.join("&id=")}`;
+
+      axios.get(drinksUrl).then((response) => {
+        drinkTagPush(response.data);
+        drinkRenderPagination(response.data);
+        bindCollectButtonDrinkEvents();
+        // showTabContent("collectDrinks");
+      });
+    })
+    .catch((error) => {
+      console.error("發生錯誤:", error);
+    });
+}
+
+function loadAndDisplayStores() {
+  axios
+    .get(`${API_BASE_DB_URL}/userShopCollections?userId=${user_id}`)
+    .then((response) => {
+      const usershopCollections = response.data;
+      const shopIds = usershopCollections.map((item) => item.shopId);
+      const shopsUrl = `${API_BASE_DB_URL}/shops?id=${shopIds.join("&id=")}`;
+
+      axios.get(shopsUrl).then((response) => {
+        storeTagPush(response.data);
+        storeRenderPagination(response.data);
+        bindCollectButtonStoreEvents();
+        // showTabContent("collectDStores");
+      });
+    })
+    .catch((error) => {
+      console.error("發生錯誤:", error);
+    });
+}
+
+// 初始化頁面時加載預設標籤內容
+loadAndDisplayDrinks(); // 或者根據您的需求調用 loadAndDisplayStores
+
+document
+  .getElementById("collectDrinks-tab")
+  .addEventListener("click", loadAndDisplayDrinks);
+document
+  .getElementById("collectDStores-tab")
+  .addEventListener("click", loadAndDisplayStores);
