@@ -8,7 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let topFourStore = []; // 空陣列存放取出的店家數據
   const userId = sessionStorage.getItem("user_id");
 
-
+// 導回登入頁
+function redirectToLogin() {
+  console.log("重新導回登入頁");
+  window.location.href = "logIn.html";
+}
   // 使用 Promise.all 同時執行兩個請求
   Promise.all([
     axios.get(
@@ -107,11 +111,26 @@ document.addEventListener("DOMContentLoaded", () => {
   //載入預設店家卡片函式------------------------------------------------
   const storeRender = () => {
     let str = "";
+    let tempStoreIds = []
+    let userStoreCollectionList = [];
+    axios.get(`https://drinkpicker-nclv.onrender.com/userShopCollections?userId=${userId}`)
+    .then(function (response){
+      let temp = [];
+      temp = response.data;
+      for(let i=0; i<temp.length; i++){
+      userStoreCollectionList[i] = temp[i].shopId;
+    }
+    userStoreCollectionList = userStoreCollectionList.map(item => Number(item)).filter(item => !isNaN(item));
     topFourStore.forEach((item) => {
+      console.log(item.id)
+      console.log(userStoreCollectionList)
+      const btn_tag = userStoreCollectionList.includes(item.id)
+      ? `<button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-heart fs-24 fa-solid" data-shop-id="${item.id}" value="collected" aria-hidden="true"></button>`
+      : `<button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-regular fa-heart fs-24" data-shop-id="${item.id}" value="uncollect" aria-hidden="true"></button>`;  
+      console.log(btn_tag)
       str += `
         <li class="stores-card" data-shop-id="${item.id}">
-            <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
-              value="collected"></button>
+            ${btn_tag}
             <img src="${item.logo}" class="mb-8" alt="store image">
             <div class="stores-card-body px-16 pt-8 pb-24 px-md-24">
               <div class="d-flex justify-content-between">
@@ -137,13 +156,28 @@ document.addEventListener("DOMContentLoaded", () => {
       // console.log(str);
     });
     popularStoreList.innerHTML = str;
+  })
+
+
+
   };
 
   // 初始化預設飲料卡片函式--------------------------------------------
   const storeRenderData = () => {
     storeRender();
+    heartCheck();
   };
 
+
+
+
+  //預設愛心函式------------------------------------------------------
+  const heartCheck = () => {
+    // 取得頁面上店家卡片
+  };
+
+
+  //收藏店家功能-----------------------------------------------------
   popularStoreList.addEventListener("click", function (e) {
     const btn = e.target.closest('.collect-btn');
     if (btn) {
