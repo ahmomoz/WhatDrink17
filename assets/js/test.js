@@ -1,5 +1,5 @@
 const collectBtn = document.querySelectorAll(".collect-btn"); //抓按鈕class
-console.log(collectBtn); //驗證
+// console.log(collectBtn); //驗證
 function isCollect() {
   //跑 querySelectorAll 陣列
   collectBtn.forEach(function (item) {

@@ -122,12 +122,12 @@ function redirectToLogin() {
     }
     userStoreCollectionList = userStoreCollectionList.map(item => Number(item)).filter(item => !isNaN(item));
     topFourStore.forEach((item) => {
-      console.log(item.id)
-      console.log(userStoreCollectionList)
+      // console.log(item.id)
+      // console.log(userStoreCollectionList)
       const btn_tag = userStoreCollectionList.includes(item.id)
       ? `<button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-heart fs-24 fa-solid" data-shop-id="${item.id}" value="collected" aria-hidden="true"></button>`
       : `<button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-regular fa-heart fs-24" data-shop-id="${item.id}" value="uncollect" aria-hidden="true"></button>`;  
-      console.log(btn_tag)
+      // console.log(btn_tag)
       str += `
         <li class="stores-card" data-shop-id="${item.id}">
             ${btn_tag}
