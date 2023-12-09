@@ -1,10 +1,12 @@
+import { API_BASE_DB_URL } from "./config";
+import { addUserShopCollection, deleteUserShopCollection } from "./api.js";
 document.addEventListener("DOMContentLoaded", () => {
   const popularStoreList = document.querySelector("#popularStoreList");
   let storeData = [];
   let storeTagAry = [];
   let userStoreCollections = []; // 存放用戶收藏店家
   let topFourStore = []; // 空陣列存放取出的店家數據
-
+  const userId = sessionStorage.getItem("user_id");
 
 
   // 使用 Promise.all 同時執行兩個請求
@@ -107,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let str = "";
     topFourStore.forEach((item) => {
       str += `
-        <li class="stores-card">
+        <li class="stores-card" data-shop-id="${item.id}">
             <button type="button" class="collect-btn border-0 text-primary fa-regular fa-heart fs-24"
               value="collected"></button>
             <img src="${item.logo}" class="mb-8" alt="store image">
@@ -142,5 +144,49 @@ document.addEventListener("DOMContentLoaded", () => {
     storeRender();
   };
 
-
+  popularStoreList.addEventListener("click", function (e) {
+    const btn = e.target.closest('.collect-btn');
+    if (btn) {
+      if (!userId) { //確認是否為會員，不是的話導向會員頁
+        redirectToLogin(); //導向登入頁函數
+      } else { //是會員，可執行收藏功能
+        if (e.target.classList.contains("collect-btn")) {
+          const btn = e.target;
+          const card = btn.closest('.stores-card');  // 找到包含按鈕的卡片元素
+          console.log(card.dataset)
+          const shopId = card.dataset.shopId;  // 從卡片元素的自定義屬性中獲取店家ID
+          // 檢查收藏 API 的 URL
+          const checkCollectionUrl = `${API_BASE_DB_URL}/userShopCollections?userId=${userId}&shopId=${shopId}`;
+  
+          // 發送 GET 請求檢查店家是否已經被收藏
+          axios.get(checkCollectionUrl)
+            .then(response => {
+              const isCollected = response.data.length > 0; // 如果查詢結果的數組長度大於 0，表示已經收藏
+  
+              // 根據收藏狀態切換樣式
+              if (isCollected) {
+                // 店家已被收藏，設定為未收藏狀態
+                deleteUserShopCollection(userId, shopId); // 發送 DELETE 請求刪除收藏
+                btn.value = "uncollect";
+                btn.classList.remove("fa-solid");
+                btn.classList.add("fa-regular");
+                Swal.fire("已取消收藏");
+                return
+              } else {
+                // 店家未被收藏，設定為已收藏狀態
+                addUserShopCollection(userId, shopId); ////根據收藏狀態發送 POST 請求更新收藏
+                btn.value = "collected";
+                btn.classList.remove("fa-regular");
+                btn.classList.add("fa-solid");
+                Swal.fire("收藏成功");
+              };
+            })
+            .catch(error => {
+              console.error('Error checking collection status:', error);
+            });
+        }
+      }
+    };
+  });
 });
+
