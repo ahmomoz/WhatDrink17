@@ -133,7 +133,6 @@ storeList.addEventListener("click", function (e) {
 });
 //導回登入頁函數-------------------------------------------------------
 function redirectToLogin() {
-  Swal.fire("登入後即可使用收藏功能"); 
   window.location.href = "logIn.html";
 };
 
@@ -390,7 +389,6 @@ Promise.all([
 ])
   .then((responses) => {
     userShopCollections = responses[0].data;       //請求使用者收藏店家資料
-    console.log(userShopCollections);
     storeData = responses[1].data;                 //請求店家資料
 
     

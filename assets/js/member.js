@@ -11,7 +11,6 @@ import { API_BASE_DB_URL } from "./config";
 // 確認是否登入
 function isAuthenticated() {
   if (!token) {
-    console.log("無權限: 沒有找到 Token");
     redirectToLogin();
     return false;
   }
@@ -22,7 +21,6 @@ isAuthenticated();
 
 // 導回登入頁
 function redirectToLogin() {
-  console.log("重新導回登入頁");
   window.location.href = "logIn.html";
 }
 
@@ -67,7 +65,6 @@ function renderUserData() {
 // 渲染飲料列表資料
 // 飲料標籤渲染待補
 // function renderUserDrinkCollections(data) {
-//   console.log(data);
 //   let text = "";
 //   for (let i = 0; i < data.length; i++) {
 //     text += `<li class="drinks-card px-16 py-24 px-md-24">
@@ -90,15 +87,12 @@ function renderUserData() {
 //   drinkCollectionsArea.innerHTML = text;
 // }
 function renderUserDrinkCollections(data) {
-  // console.log(data);
   let text = "";
   for (let i = 0; i < data.length; i++) {
     // 合併 TeaType 和 Ingredients 陣列，並為每個標籤創建 HTML
     let tagsHtml = data[i].TeaType.concat(data[i].Ingredients)
       .map((tag) => `<li class="drinks-tag">${tag}</li>`)
       .join("");
-
-    // console.log(tagsHtml);
 
     text += `<li class="drinks-card px-16 py-24 px-md-24">
         <button type="button" class="collect-btn border-0 text-primary fa-solid fa-heart fs-24" value="uncollect"></button>
@@ -227,8 +221,6 @@ function bindCollectButtonDrinkEvents() {
         button.value = "collect";
         button.classList.remove("fa-regular");
         button.classList.add("fa-solid");
-
-        console.log("收藏的飲料 ID:", drinkId);
       } else {
         // 取消收藏
         Swal.fire({
@@ -247,7 +239,6 @@ function bindCollectButtonDrinkEvents() {
             button.classList.remove("fa-solid");
             button.classList.add("fa-regular");
 
-            console.log("取消收藏的飲料 ID:", drinkId);
             Swal.fire({
               title: "已取消收藏",
               text: "此項目已從收藏列表移除",
@@ -279,7 +270,6 @@ function bindCollectButtonStoreEvents() {
         button.classList.remove("fa-regular");
         button.classList.add("fa-solid");
 
-        console.log("收藏的店家 ID:", storeId);
       } else {
         // 取消收藏
         Swal.fire({
@@ -297,7 +287,6 @@ function bindCollectButtonStoreEvents() {
             button.classList.remove("fa-solid");
             button.classList.add("fa-regular");
 
-            console.log("取消收藏的店家 ID:", storeId);
             Swal.fire({
               title: "已取消收藏",
               text: "此項目已從收藏列表移除",
@@ -345,13 +334,10 @@ const drinkRenderPagination = (pageData) => {
   }
 
   function renderCards(data) {
-    // console.log(data);
     drinkCollectionsArea.innerHTML = ""; // 清空容器
 
     let str = "";
-    // console.log(drinkTagAry);
     data.forEach((item, index) => {
-      // console.log(item);
       str += `
             <li class="drinks-card px-16 py-24 px-md-24">
             <button type="button" class="collect-btn collect-drink-btn border-0 text-primary fa-solid fa-heart fs-24" data-drink-id="${item.id}" value="collected"></button>
@@ -671,7 +657,6 @@ axios.get(`${API_BASE_DB_URL}/users/${user_id}`).then((response) => {
 
 //     // 取得飲料資料
 //     axios.get(drinksUrl).then((response) => {
-//       // console.log(response.data);
 //       drinkTagPush(response.data); //飲料Tag函式
 //       // renderUserDrinkCollections(response.data); //渲染飲料收藏頁面
 //       drinkRenderPagination(response.data); //渲染飲料收藏頁碼
@@ -694,7 +679,6 @@ axios.get(`${API_BASE_DB_URL}/users/${user_id}`).then((response) => {
 
 //     // 取得店家資料
 //     axios.get(shopsUrl).then((response) => {
-//       // console.log(response.data);
 //       storeTagPush(response.data); //店家Tag函式
 //       // renderUserShopCollections(response.data); //渲染店家收藏頁面
 //       storeRenderPagination(response.data); //渲染店家收藏頁碼
