@@ -218,12 +218,14 @@ document.addEventListener("DOMContentLoaded", () => {
           item.classList.add("fa-regular");
           item.classList.remove("fa-solid");
           deleteUserDrinkCollection(user_id, drinkId);
+          Swal.fire("已取消收藏");
           //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
         } else if (e.target.value == "uncollect") {
           item.value = "collected";
           item.classList.remove("fa-regular");
           item.classList.add("fa-solid");
           addUserDrinkCollection(user_id, drinkId);
+          Swal.fire("收藏成功");
         }
         //驗證
         // console.log("hi");

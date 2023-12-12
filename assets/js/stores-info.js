@@ -178,6 +178,7 @@ function isCollect() {
       collectBtnIcon.classList.add("fa-regular");
       // console.log(collectBtn)
       deleteUserShopCollection(user_id, storeId); // 假設 user_id 已定義
+      Swal.fire("已取消收藏");
 
       //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
     } else {
@@ -187,6 +188,7 @@ function isCollect() {
       collectBtnIcon.classList.add("fa-solid");
       // console.log(collectBtn);
       addUserShopCollection(user_id, storeId); // 假設 user_id 已定義
+      Swal.fire("收藏成功");
     }
     //驗證
     // console.log("hi")

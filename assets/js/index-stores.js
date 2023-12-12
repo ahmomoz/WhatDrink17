@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 導回登入頁
 function redirectToLogin() {
-  console.log("重新導回登入頁");
   window.location.href = "logIn.html";
 }
   // 使用 Promise.all 同時執行兩個請求
@@ -104,8 +103,6 @@ function redirectToLogin() {
         }
       });
     });
-    // 驗證
-    // console.log(topFourStore);
   }
 
   //載入預設店家卡片函式------------------------------------------------
@@ -187,7 +184,6 @@ function redirectToLogin() {
         if (e.target.classList.contains("collect-btn")) {
           const btn = e.target;
           const card = btn.closest('.stores-card');  // 找到包含按鈕的卡片元素
-          console.log(card.dataset)
           const shopId = card.dataset.shopId;  // 從卡片元素的自定義屬性中獲取店家ID
           // 檢查收藏 API 的 URL
           const checkCollectionUrl = `${API_BASE_DB_URL}/userShopCollections?userId=${userId}&shopId=${shopId}`;
