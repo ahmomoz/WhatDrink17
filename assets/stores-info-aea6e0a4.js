@@ -1,4 +1,4 @@
-import"./bootstrap.min-feac71ab.js";import{b as t,d as f,a as p}from"./api-4c8ad0b6.js";import{A as c}from"./config-ca05e4f1.js";const h=document.querySelector("#storeInfo");let o=[],n=[];const g=document.querySelector(".breadcrumb"),a=window.location.href.split("?id=").pop(),r=sessionStorage.getItem("user_id");t.get(`${c}/shops?id=${a}`).then(async s=>{o=s.data,y(),m(),await v(),w(),I()}).catch(s=>{console.error("Error fetching data:",s)});let d;async function v(){try{d=(await t.get(`${c}/userShopCollections?userId=${r}&shopId=${a}`)).data.length===1}catch(s){console.error("Error fetching data:",s)}}const y=()=>{let s="";o.forEach(e=>{s+=`
+import"./bootstrap.min-feac71ab.js";import{b as t,d as f,a as p}from"./api-4c8ad0b6.js";import{A as c}from"./config-ca05e4f1.js";const h=document.querySelector("#storeInfo");let o=[],n=[];const g=document.querySelector(".breadcrumb"),a=window.location.href.split("?id=").pop(),r=sessionStorage.getItem("user_id");t.get(`${c}/shops?id=${a}`).then(async s=>{o=s.data,y(),m(),await v(),w(),S()}).catch(s=>{console.error("Error fetching data:",s)});let d;async function v(){try{d=(await t.get(`${c}/userShopCollections?userId=${r}&shopId=${a}`)).data.length===1}catch(s){console.error("Error fetching data:",s)}}const y=()=>{let s="";o.forEach(e=>{s+=`
     <li class="breadcrumb-item d-inline"><a href="index.html" class="breadcrumb-item fs-16">首頁</a></li>
     <li class="breadcrumb-item d-inline"><a href="stores-list.html" class="breadcrumb-item fs-16">熱門店家</a></li>
     <li class="breadcrumb-item active d-inline" aria-current="page" class="fs-16">${e.name}</li>
@@ -42,7 +42,7 @@ import"./bootstrap.min-feac71ab.js";import{b as t,d as f,a as p}from"./api-4c8ad
           </ul>
         </div>
       </div>
-`}),h.innerHTML=s},w=()=>{$()};function I(){const s=document.querySelector(".btn-collect"),e=document.querySelector(".btn-collect-icon");s.addEventListener("click",function(l){s.value=="collected"?(s.value="uncollect",s.classList.remove("btn-collect-collcted"),e.classList.remove("fa-solid"),e.classList.add("fa-regular"),f(r,a)):(s.value="collected",s.classList.add("btn-collect-collcted"),e.classList.remove("fa-regular"),e.classList.add("fa-solid"),p(r,a))})}const L=document.querySelector("#branchesList");let u=[];const S=window.location.href.split("?id=").pop();t.get(`${c}/shopBranches?shopId=${S}`).then(s=>{u=s.data,x()}).catch(s=>{console.error("Error fetching data:",s)});const E=()=>{let s="";u.forEach(e=>{s+=`              
+`}),h.innerHTML=s},w=()=>{$()};function S(){const s=document.querySelector(".btn-collect"),e=document.querySelector(".btn-collect-icon");s.addEventListener("click",function(l){s.value=="collected"?(s.value="uncollect",s.classList.remove("btn-collect-collcted"),e.classList.remove("fa-solid"),e.classList.add("fa-regular"),f(r,a),Swal.fire("已取消收藏")):(s.value="collected",s.classList.add("btn-collect-collcted"),e.classList.remove("fa-regular"),e.classList.add("fa-solid"),p(r,a),Swal.fire("收藏成功"))})}const I=document.querySelector("#branchesList");let u=[];const L=window.location.href.split("?id=").pop();t.get(`${c}/shopBranches?shopId=${L}`).then(s=>{u=s.data,x()}).catch(s=>{console.error("Error fetching data:",s)});const E=()=>{let s="";u.forEach(e=>{s+=`              
         <div class="col-12 col-md-6 col-lg-4 mb-16">
     <div class="border rounded-16 px-40 py-24">
       <p class="fs-20 fw-500 mb-12">${e.branchName}</p>
@@ -68,5 +68,5 @@ import"./bootstrap.min-feac71ab.js";import{b as t,d as f,a as p}from"./api-4c8ad
       </ul>
     </div>
   </div>
-`}),L.innerHTML=s},x=()=>{E()},D=document.querySelector("#lastestMenu");let b=[];const _=window.location.href.split("?id=").pop();t.get(`${c}/shops?id=${_}`).then(s=>{b=s.data,q()}).catch(s=>{console.error("Error fetching data:",s)});const R=()=>{let s="";b.forEach(e=>{s+=`              
+`}),I.innerHTML=s},x=()=>{E()},D=document.querySelector("#lastestMenu");let b=[];const _=window.location.href.split("?id=").pop();t.get(`${c}/shops?id=${_}`).then(s=>{b=s.data,q()}).catch(s=>{console.error("Error fetching data:",s)});const R=()=>{let s="";b.forEach(e=>{s+=`              
         <img src="${e.menu}" class="d-block mw-100" alt="菜單">`}),D.innerHTML=s},q=()=>{R()};
