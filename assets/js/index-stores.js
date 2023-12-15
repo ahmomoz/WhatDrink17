@@ -69,12 +69,9 @@ function redirectToLogin() {
         storeIdCount[storeId] = 1;
       }
     }
-    // 驗證
-    // console.log(storeIdCount);
 
     // 用 Object.entries 將物件轉為陣列
     const storeIdCountArr = Object.entries(storeIdCount);
-    // console.log(storeIdCountArray);
 
     // 使用 sort 由大到小排序
     storeIdCountArr.sort(function (a, b) {
@@ -84,16 +81,10 @@ function redirectToLogin() {
     // 取得排序後的前6個元素
     let topFourStoreIds = storeIdCountArr.slice(0, 4);
 
-    // 驗證
-    // console.log(topFourStore);
-
     // 使用 map 方法取出每個陣列的第一個值（storeId）
     let topFourIds = topFourStoreIds.map(function (item) {
       return item[0];
     });
-
-    // 驗證
-    // console.log(topFourIds);
 
     // 找出對應的飲料數據
     storeData.forEach(function (item) {
@@ -119,12 +110,9 @@ function redirectToLogin() {
     }
     userStoreCollectionList = userStoreCollectionList.map(item => Number(item)).filter(item => !isNaN(item));
     topFourStore.forEach((item) => {
-      // console.log(item.id)
-      // console.log(userStoreCollectionList)
       const btn_tag = userStoreCollectionList.includes(item.id)
       ? `<button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-heart fs-24 fa-solid" data-shop-id="${item.id}" value="collected" aria-hidden="true"></button>`
       : `<button type="button" class="collect-btn collect-store-btn border-0 text-primary fa-regular fa-heart fs-24" data-shop-id="${item.id}" value="uncollect" aria-hidden="true"></button>`;  
-      // console.log(btn_tag)
       str += `
         <li class="stores-card" data-shop-id="${item.id}">
             ${btn_tag}
@@ -150,7 +138,6 @@ function redirectToLogin() {
             </div>
           </li>
         `;
-      // console.log(str);
     });
     popularStoreList.innerHTML = str;
   })

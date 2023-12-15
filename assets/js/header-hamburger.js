@@ -7,7 +7,6 @@ const userId = sessionStorage.getItem("user_id");
 //漢堡列表中的登入登出函數-------------------------------------------
 const loginRender = () => {
     if (!userId) {   //確認是否為會員，不是的話顯示登入
-        console.log("無權限: 沒有找到 Token");
         isLogin.textContent="登入";    //渲染登入字樣
     }else{                 //是會員，點擊即可登出
         isLogin.addEventListener('click', e => {
@@ -30,7 +29,6 @@ menuSearchInput.addEventListener('keydown', e =>{   //ENTER按下觸發
 //漢堡搜尋欄-搜尋導向其他頁面函式---------------------------------------------
 function search(){             //以輸入框中的文字為搜尋導向
     let searchTerm = menuSearchInput.value; //獲得搜尋bar的值
-    //console.log(menuSearchInput.value);
     // 使用 LocalStorage 保存搜索參數
     localStorage.setItem('searchTerm', searchTerm);
     // 將瀏覽器位置重定向到另一個搜尋頁面

@@ -63,7 +63,7 @@ async function handleSignUpSubmit(event) {
         password,
       }
     );
-    console.log("註冊成功", res.data);
+    //console.log("註冊成功", res.data);
     Swal.fire("註冊成功！", "", "success").then(() => redirectToHome()); // 使用 SweetAlert2 顯示成功信息
   } catch (error) {
     console.error("註冊失敗", error);

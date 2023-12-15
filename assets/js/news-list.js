@@ -29,7 +29,6 @@ function newsListRender(data){
     </div>
     <hr class="mb-40 mt-20 mt-lg-40">`
     }
-    console.log(text);
     newsArea.innerHTML = text;
 };
 

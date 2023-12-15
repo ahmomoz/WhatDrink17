@@ -18,8 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     lastestNews.innerHTML = str;
-    // console.log(lastestNews);
-  }
+  };
 
   //使用axios去get新消息資料後執行newsListRender
   axios

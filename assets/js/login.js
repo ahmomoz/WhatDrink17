@@ -100,10 +100,10 @@ async function validateUser(token) {
   try {
     const res = await sendRequest(AUTH_API, "GET", token);
     if (res && res.data.email) {
-      console.log("用戶身份驗證成功:", res.data.email);
+      //console.log("用戶身份驗證成功:", res.data.email);
       loginUser(res.data.email, token);
     } else {
-      console.log("用戶身份驗證失敗");
+      //console.log("用戶身份驗證失敗");
     }
   } catch (err) {
     console.error("身份驗證過程中發生錯誤:", err);
@@ -115,7 +115,7 @@ async function loginUser(email, password) {
   // 測試函數
   const isValid = true;
   // const { isValid, errors } = validateForm(email, password);
-  console.log(isValid); // 這將會顯示 true 或 false
+  // console.log(isValid); // 這將會顯示 true 或 false
   // console.log(errors); // 這將會顯示一個包含所有錯誤訊息的陣列
 
   if (!isValid) return;
@@ -123,14 +123,14 @@ async function loginUser(email, password) {
   try {
     const res = await sendRequest(LOGIN_API, "POST", null, { email, password });
     if (res.status === 200 && res.data.accessToken) {
-      console.log("登入成功", res.data);
+      //console.log("登入成功", res.data);
       handleSessionStorage(res.data);
       redirectToHome();
     } else {
       handleLoginError();
     }
   } catch (error) {
-    console.error("登入錯誤", error);
+    //console.error("登入錯誤", error);
     handleLoginError();
   }
 }
@@ -187,7 +187,7 @@ function handleSessionStorage(data) {
 
 // 登入錯誤處理
 function handleLoginError() {
-  alert("登入失敗，請檢查帳號或密碼");
+  Swal.fire("登入失敗，請檢查帳號或密碼");
 }
 
 // 重定向到首頁
@@ -210,10 +210,10 @@ async function sendRequest(url, method, token = "", data = {}) {
 function isAuthenticated() {
   const token = sessionStorage.getItem("jwtToken");
   if (token) {
-    console.log("找到 Session Token");
+    //console.log("找到 Session Token");
     return true;
   }
-  console.log("未找到 Session Token");
+  //console.log("未找到 Session Token");
   return false;
 }
 
@@ -228,10 +228,10 @@ document
   });
 
 if (JWT_token) {
-  console.log("找到 JWT_token", JWT_token);
+  //console.log("找到 JWT_token", JWT_token);
   validateUser(JWT_token);
 } else {
-  console.log("未找到 JWT_token");
+  //console.log("未找到 JWT_token");
 }
 
 isAuthenticated();

@@ -4,7 +4,7 @@ const modifyPasswordForm = document.querySelector("#modifyPasswordForm");
 modifyPasswordForm.addEventListener("submit", async function (event) {
   event.preventDefault();
 
-  console.log("確認綁訂成功");
+  //console.log("確認綁訂成功");
 
   const newPassword = document.getElementById("resetPassword").value;
   const confirmPassword = document.getElementById("resetPasswordConfirm").value;
@@ -19,8 +19,8 @@ modifyPasswordForm.addEventListener("submit", async function (event) {
   const userId = sessionStorage.getItem("user_id");
   const userToken = sessionStorage.getItem("jwtToken");
 
-  console.log(userEmail);
-  console.log(userToken);
+  //console.log(userEmail);
+  //console.log(userToken);
 
   try {
     const response = await axios.patch(
@@ -28,12 +28,12 @@ modifyPasswordForm.addEventListener("submit", async function (event) {
       { password: newPassword },
       { headers: { Authorization: `Bearer ${userToken}` } }
     );
-    console.log("密碼修改成功", response.data);
+    //console.log("密碼修改成功", response.data);
     // 密碼修改成功後的操作
     redirectToHome();
   } catch (error) {
-    console.error("密碼修改失敗", error);
-    alert("密碼修改失敗：" + error.response.data);
+    //console.error("密碼修改失敗", error);
+    Swal.fire("密碼修改失敗：" + error.response.data);
     // 處理錯誤
   }
 });

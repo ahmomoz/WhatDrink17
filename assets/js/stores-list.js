@@ -82,7 +82,7 @@ const heartCheck = () => {
       cardElement.value = "collected";
       cardElement.classList.remove("fa-regular");
       cardElement.classList.add("fa-solid");
-    }
+    };
   });
 };
 
@@ -391,7 +391,7 @@ Promise.all([
     userShopCollections = responses[0].data;       //請求使用者收藏店家資料
     storeData = responses[1].data;                 //請求店家資料
 
-    
+    //取得資料後，執行相關函式
     storeTagPush()  //組合Tag陣列
     storeRenderData();   //載入預設店家卡片
     applyFilters();  //載入預設篩選器

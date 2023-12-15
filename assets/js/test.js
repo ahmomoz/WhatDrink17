@@ -16,7 +16,6 @@ function isCollect() {
         item.classList.add("fa-regular");
         item.classList.remove("fa-solid");
       }
-      console.log("hi"); //驗證
     });
   });
 }

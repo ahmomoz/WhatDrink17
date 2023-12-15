@@ -6,29 +6,10 @@ const breadcrumb = document.querySelector(".breadcrumb");
 
 import axios from "axios";
 const storeId = window.location.href.split("?id=").pop();
-// console.log("storeId", storeId);
 
 import { API_BASE_DB_URL } from "./config";
 import { addUserShopCollection, deleteUserShopCollection } from "./api.js";
 const user_id = sessionStorage.getItem("user_id");
-// console.log("user_id", user_id);
-
-// //將店家資料由外部寫入
-// axios
-//   .get(`${API_BASE_DB_URL}/shops?id=${storeId}`)
-//   .then((response) => {
-//     storeInfoData = response.data;
-//     breadcrumbPush(); //載入麵包屑路徑
-//     storeTagPush(); //載入店家標籤
-//     checkUserShopCollection(); // 確認使用者是否收藏
-//     storeInfoRenderData(); //載入個別店家卡片
-//     isCollect(); //收藏愛心CSS
-
-//     // console.log(storeInfoData);
-//   })
-//   .catch((error) => {
-//     console.error("Error fetching data:", error);
-//   });
 
 // 將店家資料由外部寫入
 axios
@@ -49,17 +30,11 @@ axios
 // 確認使用者是否收藏
 let check_userShopCollection;
 async function checkUserShopCollection() {
-  // console.log(
-  //   `${API_BASE_DB_URL}/userShopCollections?userId=${user_id}&shopId=${storeId}`
-  // );
-  // console.log(user_id, storeId);
   try {
     const res = await axios.get(
       `${API_BASE_DB_URL}/userShopCollections?userId=${user_id}&shopId=${storeId}`
     );
     check_userShopCollection = res.data.length === 1;
-    // console.log(check_userShopCollection);
-    // console.log(res);
   } catch (err) {
     console.error("Error fetching data:", err);
   }
@@ -90,12 +65,11 @@ const storeTagPush = () => {
     for (const key in tags) {
       if (item[key]) {
         tagStr += `<li class="stores-tag">${tags[key]}</li>`;
-      }
-    }
+      };
+    };
     storeTagAry.push(tagStr);
     tagStr = ""; // 清空tagStr，避免重複推入
   });
-  // console.log(storeTagAry[0]);
 };
 
 //載入預設分店卡片函式------------------------------------------------
@@ -103,7 +77,6 @@ const storeInfoRender = () => {
   storeTagPush();
   let str = "";
 
-  // console.log("check_userShopCollection", check_userShopCollection);
   const btn_tag = check_userShopCollection
     ? `<button type="button" class="btn-collect px-12 py-8 border border-primary rounded-pill  btn-collect-collcted" value="collected">
     <i class="fa-heart me-4 btn-collect-icon fa-solid" aria-hidden="true"></i>收藏店家</button>`
@@ -153,7 +126,6 @@ const storeInfoRender = () => {
   });
 
   storeInfo.innerHTML = str;
-  // console.log(storeTagAry[0]);
 };
 
 //初始化預設飲料卡片函式--------------------------------------------
@@ -165,32 +137,35 @@ const storeInfoRenderData = () => {
 function isCollect() {
   const collectBtn = document.querySelector(".btn-collect"); //抓按鈕class
   const collectBtnIcon = document.querySelector(".btn-collect-icon"); //抓按鈕class
-
-  // console.log(collectBtn);//驗證
   collectBtn.addEventListener("click", function (e) {
-    // console.log(collectBtn);
-    //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
-    if (collectBtn.value == "collected") {
-      collectBtn.value = "uncollect";
-      // collectBtn.classList.remove("fa-regular");
-      collectBtn.classList.remove("btn-collect-collcted");
-      collectBtnIcon.classList.remove("fa-solid");
-      collectBtnIcon.classList.add("fa-regular");
-      // console.log(collectBtn)
-      deleteUserShopCollection(user_id, storeId); // 假設 user_id 已定義
-      Swal.fire("已取消收藏");
-
-      //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
-    } else {
-      collectBtn.value = "collected";
-      collectBtn.classList.add("btn-collect-collcted");
-      collectBtnIcon.classList.remove("fa-regular");
-      collectBtnIcon.classList.add("fa-solid");
-      // console.log(collectBtn);
-      addUserShopCollection(user_id, storeId); // 假設 user_id 已定義
-      Swal.fire("收藏成功");
-    }
-    //驗證
-    // console.log("hi")
+    if(user_id===null){   //確認是否為會員，不是的話導向會員頁
+      redirectToLogin(); //導向登入頁函數
+    }else{
+      //還沒收藏時，value 預設傳送 collected，點擊後改傳uncollect，並移除外框樣式class、新增填滿樣式class
+      if (collectBtn.value == "collected") {
+        collectBtn.value = "uncollect";
+        collectBtn.classList.remove("btn-collect-collcted");
+        collectBtnIcon.classList.remove("fa-solid");
+        collectBtnIcon.classList.add("fa-regular");
+        deleteUserShopCollection(user_id, storeId); // 假設 user_id 已定義
+        Swal.fire("已取消收藏");
+  
+        //已經收藏時，value 已改成傳送 uncollect，點擊後變為 collected，並移除填滿樣式class，新增外框樣式class
+      } else {
+        collectBtn.value = "collected";
+        collectBtn.classList.add("btn-collect-collcted");
+        collectBtnIcon.classList.remove("fa-regular");
+        collectBtnIcon.classList.add("fa-solid");
+        addUserShopCollection(user_id, storeId); // 假設 user_id 已定義
+        Swal.fire("收藏成功");
+      };
+    };
   });
-}
+};
+
+
+
+//導回登入頁函數-------------------------------------------------------
+function redirectToLogin() {
+  window.location.href = "logIn.html";
+};
