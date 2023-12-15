@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/stores-info-aea6e0a4.js"></script>
+  <script type="module" crossorigin src="/WhatDrink17/assets/stores-info-6589695d.js"></script>
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/bootstrap.min-feac71ab.js">
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/config-ca05e4f1.js">
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/api-4c8ad0b6.js">
@@ -127,7 +127,6 @@ const userId = sessionStorage.getItem("user_id");
 //漢堡列表中的登入登出函數-------------------------------------------
 const loginRender = () => {
     if (!userId) {   //確認是否為會員，不是的話顯示登入
-        console.log("無權限: 沒有找到 Token");
         isLogin.textContent="登入";    //渲染登入字樣
     }else{                 //是會員，點擊即可登出
         isLogin.addEventListener('click', e => {
@@ -356,7 +355,7 @@ function search(){             //以輸入框中的文字為搜尋導向
           <!-- 最新菜單 -->
           <div class="tab-pane fade position-relative" id="lastestMenu" role="tabpanel"
             aria-labelledby="lastestMenu-tab">
-            <img src="../assets/images/menu.png" class="d-block mw-100" alt="菜單">
+            <img src="https://raw.githubusercontent.com/ahmomoz/WhatDrink17/main/assets/images/menus/menus-01.jpg" class="d-block mw-100" alt="菜單">
           </div>
           <!-- 最新菜單 end -->
         </div>

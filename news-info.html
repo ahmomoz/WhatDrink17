@@ -125,7 +125,6 @@ const userId = sessionStorage.getItem("user_id");
 //漢堡列表中的登入登出函數-------------------------------------------
 const loginRender = () => {
     if (!userId) {   //確認是否為會員，不是的話顯示登入
-        console.log("無權限: 沒有找到 Token");
         isLogin.textContent="登入";    //渲染登入字樣
     }else{                 //是會員，點擊即可登出
         isLogin.addEventListener('click', e => {

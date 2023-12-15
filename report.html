@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-  <script type="module" crossorigin src="/WhatDrink17/assets/report-a9760312.js"></script>
+  <script type="module" crossorigin src="/WhatDrink17/assets/report-29d0b977.js"></script>
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/bootstrap.min-feac71ab.js">
   <link rel="modulepreload" crossorigin href="/WhatDrink17/assets/config-ca05e4f1.js">
   <link rel="stylesheet" href="/WhatDrink17/assets/bootstrap-9e372359.css">
@@ -126,7 +126,6 @@ const userId = sessionStorage.getItem("user_id");
 //漢堡列表中的登入登出函數-------------------------------------------
 const loginRender = () => {
     if (!userId) {   //確認是否為會員，不是的話顯示登入
-        console.log("無權限: 沒有找到 Token");
         isLogin.textContent="登入";    //渲染登入字樣
     }else{                 //是會員，點擊即可登出
         isLogin.addEventListener('click', e => {
@@ -213,6 +212,7 @@ function search(){             //以輸入框中的文字為搜尋導向
       
       
       <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
 </body>
 
 </html>
