@@ -54,7 +54,7 @@ const shopCollectionsArea = document.querySelector(".shopCollectionsArea");
 // 目前還沒結合登入，暫時寫死userId=1的地方
 function renderUserData() {
   const url_picture =
-    user_picture === "undefined" ? "/assets/images/member.png" : user_picture;
+    user_picture === null ? "/assets/images/member.png" : user_picture;
   userDataArea.innerHTML = `
     <img src="${url_picture}" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
     <p class="fs-32 text-white">${user_nickname}</p>
@@ -269,7 +269,6 @@ function bindCollectButtonStoreEvents() {
         button.value = "collect";
         button.classList.remove("fa-regular");
         button.classList.add("fa-solid");
-
       } else {
         // 取消收藏
         Swal.fire({
