@@ -1,21 +1,18 @@
 import { API_BASE_DB_URL } from "./config";
 import { addUserShopCollection, deleteUserShopCollection } from "./api.js";
+const userId = sessionStorage.getItem("user_id");
+
 document.addEventListener("DOMContentLoaded", () => {
   const popularStoreList = document.querySelector("#popularStoreList");
   let storeData = [];
   let storeTagAry = [];
   let userStoreCollections = []; // 存放用戶收藏店家
   let topFourStore = []; // 空陣列存放取出的店家數據
-  const userId = sessionStorage.getItem("user_id");
 
-// 導回登入頁
-function redirectToLogin() {
-  window.location.href = "logIn.html";
-}
   // 使用 Promise.all 同時執行兩個請求
   Promise.all([
     axios.get(
-      "https://json-server-project-wtkt.onrender.com/userShopCollections"
+      `${API_BASE_DB_URL}/userShopCollections`
     ),
     axios.get("https://json-server-project-wtkt.onrender.com/shops"),
   ])
@@ -99,9 +96,8 @@ function redirectToLogin() {
   //載入預設店家卡片函式------------------------------------------------
   const storeRender = () => {
     let str = "";
-    let tempStoreIds = []
     let userStoreCollectionList = [];
-    axios.get(`https://drinkpicker-nclv.onrender.com/userShopCollections?userId=${userId}`)
+    axios.get(`${API_BASE_DB_URL}/userShopCollections?userId=${userId}`)
     .then(function (response){
       let temp = [];
       temp = response.data;
@@ -149,17 +145,7 @@ function redirectToLogin() {
   // 初始化預設飲料卡片函式--------------------------------------------
   const storeRenderData = () => {
     storeRender();
-    heartCheck();
   };
-
-
-
-
-  //預設愛心函式------------------------------------------------------
-  const heartCheck = () => {
-    // 取得頁面上店家卡片
-  };
-
 
   //收藏店家功能-----------------------------------------------------
   popularStoreList.addEventListener("click", function (e) {
@@ -207,3 +193,7 @@ function redirectToLogin() {
   });
 });
 
+// 導回登入頁函數
+function redirectToLogin() {
+  window.location.href = "logIn.html";
+};
