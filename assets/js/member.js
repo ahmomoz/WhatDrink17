@@ -55,7 +55,7 @@ const shopCollectionsArea = document.querySelector(".shopCollectionsArea");
 function renderUserData() {
   // console.log(user_picture);
   const url_picture =
-    user_picture === "undefined" ? "/assets/images/member.png" : user_picture;
+    user_picture == "undefined" ? "../assets/images/member.png" : user_picture;
   userDataArea.innerHTML = `
     <img src="${url_picture}" class="rounded-circle mb-8" style="width: 80px;" alt="user image">
     <p class="fs-32 text-white">${user_nickname}</p>
